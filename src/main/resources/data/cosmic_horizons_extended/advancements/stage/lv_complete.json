@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": { "item": "minecraft:iron_ingot" },
+    "title": { "text": "CHEX: LV Complete" },
+    "description": { "text": "Complete LV-tier goals." },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "impossible": { "trigger": "minecraft:impossible" }
+  }
+}
+

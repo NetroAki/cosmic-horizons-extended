@@ -1,0 +1,6 @@
+﻿{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cosmic_horizons_extended:item/space_suit_helmet_t3"
+  }
+}

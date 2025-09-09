@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cosmic_horizons_extended:item/rp1_bucket"
+  }
+}

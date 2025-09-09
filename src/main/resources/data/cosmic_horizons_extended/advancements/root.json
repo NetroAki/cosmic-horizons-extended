@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "cosmic_horizons_extended:rocket_controller"
+    },
+    "title": {
+      "translate": "advancements.cosmic_horizons_extended.root.title"
+    },
+    "description": {
+      "translate": "advancements.cosmic_horizons_extended.root.description"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "craft_rocket_controller": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["cosmic_horizons_extended:rocket_controller"]
+          }
+        ]
+      }
+    }
+  }
+}

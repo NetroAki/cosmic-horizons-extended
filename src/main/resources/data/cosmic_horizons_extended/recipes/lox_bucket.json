@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I",
+    "B"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:ice"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "cosmic_horizons_extended:lox_bucket",
+    "count": 1
+  }
+}

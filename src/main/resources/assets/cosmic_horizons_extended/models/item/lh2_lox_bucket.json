@@ -1,0 +1,6 @@
+{
+  "parent": "forge:item/default",
+  "loader": "forge:fluid_container",
+  "fluid": "cosmic_horizons_extended:lh2_lox"
+}
+

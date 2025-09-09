@@ -1,0 +1,53 @@
+{
+  // Cosmic Horizons Extended - Fallback Ores Configuration
+  // This file maps GTCEu ore tags to vanilla Minecraft blocks when GTCEu is not available
+
+  // Basic metals (LV tier)
+  "gtceu:ores/aluminium": "minecraft:iron_ore",
+  "gtceu:ores/tin": "minecraft:copper_ore",
+  "gtceu:ores/copper": "minecraft:copper_ore",
+  "gtceu:ores/lead": "minecraft:iron_ore",
+  "gtceu:ores/zinc": "minecraft:iron_ore",
+  "gtceu:ores/titanium": "minecraft:iron_ore",
+
+  // Intermediate metals (MV tier)
+  "gtceu:ores/nickel": "minecraft:iron_ore",
+  "gtceu:ores/sulfur": "minecraft:redstone_ore",
+  "gtceu:ores/rare_earth": "minecraft:lapis_ore",
+  "gtceu:ores/platinum": "minecraft:gold_ore",
+  "gtceu:ores/iridium": "minecraft:diamond_ore",
+
+  // Advanced metals (HV tier)
+  "gtceu:ores/tungsten": "minecraft:ancient_debris",
+  "gtceu:ores/molybdenum": "minecraft:ancient_debris",
+
+  // Exotic materials (EV tier)
+  "gtceu:ores/naquadah": "minecraft:ancient_debris",
+  "gtceu:ores/neutronium": "minecraft:ancient_debris",
+
+  // Cosmic materials (IV tier)
+  "gtceu:ores/cosmic_neutronium": "minecraft:ancient_debris",
+  "gtceu:ores/infinity": "minecraft:ancient_debris",
+
+  // Additional common GTCEu ores
+  "gtceu:ores/iron": "minecraft:iron_ore",
+  "gtceu:ores/gold": "minecraft:gold_ore",
+  "gtceu:ores/diamond": "minecraft:diamond_ore",
+  "gtceu:ores/emerald": "minecraft:emerald_ore",
+  "gtceu:ores/redstone": "minecraft:redstone_ore",
+  "gtceu:ores/lapis": "minecraft:lapis_ore",
+  "gtceu:ores/coal": "minecraft:coal_ore",
+  "gtceu:ores/quartz": "minecraft:nether_quartz_ore",
+  "gtceu:ores/netherrack": "minecraft:netherrack",
+  "gtceu:ores/endstone": "minecraft:end_stone",
+
+  // Deepslate variants
+  "gtceu:ores/deepslate_iron": "minecraft:deepslate_iron_ore",
+  "gtceu:ores/deepslate_gold": "minecraft:deepslate_gold_ore",
+  "gtceu:ores/deepslate_diamond": "minecraft:deepslate_diamond_ore",
+  "gtceu:ores/deepslate_emerald": "minecraft:deepslate_emerald_ore",
+  "gtceu:ores/deepslate_redstone": "minecraft:deepslate_redstone_ore",
+  "gtceu:ores/deepslate_lapis": "minecraft:deepslate_lapis_ore",
+  "gtceu:ores/deepslate_coal": "minecraft:deepslate_coal_ore",
+  "gtceu:ores/deepslate_copper": "minecraft:deepslate_copper_ore",
+}

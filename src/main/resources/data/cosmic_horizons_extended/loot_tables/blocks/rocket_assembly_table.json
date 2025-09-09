@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:rocket_assembly_table"
+        }
+      ]
+    }
+  ]
+}

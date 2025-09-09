@@ -1,0 +1,11 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "P P"
+  ],
+  "key": {
+    "P": { "item": "minecraft:gold_ingot" }
+  },
+  "result": { "item": "cosmic_horizons_extended:space_suit_helmet_t2", "count": 1 }
+}
