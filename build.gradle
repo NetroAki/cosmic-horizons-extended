@@ -1,16 +1,21 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'dev.architectury.loom' version '1.5-SNAPSHOT' apply false
 }
+
+// Root does not apply Forge/Mixin; mixin applied in :forge if needed
 
 group = 'com.netroaki'
 version = '0.1.0'
 
+def isRoot = project == rootProject
+
 ext {
-    // GTCEu Modern coordinates if using GTCEu Maven instead of CurseMaven
     mc_version = '1.20.1'
-    gtm_version = '7.1.4'
+    gtm_version = '7.2.0-SNAPSHOT'
 }
+
+// Architectury plugin not required; Loom applied per-module
 
 java {
     toolchain {
@@ -21,6 +26,7 @@ java {
 
 repositories {
     mavenCentral()
+    maven { url = 'https://maven.architectury.dev/' }
     maven {
         name = 'Fabric'
         url = 'https://maven.fabricmc.net/'
@@ -56,77 +62,23 @@ repositories {
         name = 'JitPack'
         url = 'https://jitpack.io'
     }
-}
-
-minecraft {
-    mappings channel: 'official', version: '1.20.1'
-
-    runs {
-        client {
-            workingDirectory project.file('run/client')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            mods {
-                cosmic_horizons_extended {
-                    source sourceSets.main
-                }
-            }
-        }
-        server {
-            workingDirectory project.file('run/server')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            mods {
-                cosmic_horizons_extended {
-                    source sourceSets.main
-                }
-            }
-        }
-        data {
-            workingDirectory project.file('run/data')
-            args '--mod', 'cosmic_horizons_extended', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info'
-            mods {
-                cosmic_horizons_extended {
-                    source sourceSets.main
-                }
-            }
-        }
+    maven {
+        name = 'Sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    maven {
+        name = 'firstdarkdev'
+        url = 'https://maven.firstdarkdev.xyz/snapshots'
+    }
+    maven {
+        name = 'Architectury'
+        url = 'https://maven.architectury.dev/'
     }
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDir 'src/generated/resources'
-        }
-    }
-}
-
-dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.4.1'
-
-    // Mixin Extras (required by GTCEu) – JitPack
-    implementation fg.deobf("io.github.llamalad7:mixinextras-forge:0.5.0")
-
-    // Cosmic Horizons (soft) – Modrinth 0.0.7.3
-    runtimeOnly fg.deobf("maven.modrinth:cosmic-horizons-cosmos:0.0.7.3")
-
-    // Cosmos Unbound (soft) – CurseMaven coords provided
-    runtimeOnly fg.deobf("curse.maven:cosmos-unbound-1200939:6195968")
-
-    // GregTech CEu Modern – development mode (compileOnly to avoid runtime mixin conflicts)
-    compileOnly fg.deobf("com.gregtechceu.gtceu:gtceu-${mc_version}:${gtm_version}")
-    
-    // Uncomment the line below and comment the line above to test with GTCEu at runtime
-    // runtimeOnly fg.deobf("com.gregtechceu.gtceu:gtceu-${mc_version}:${gtm_version}")
-
-    // JEI (optional) – BlameJared maven
-    runtimeOnly fg.deobf("mezz.jei:jei-1.20.1-forge:15.20.0.112")
-
-}
+// Root acts as aggregator; Forge runs live in :forge
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
+
