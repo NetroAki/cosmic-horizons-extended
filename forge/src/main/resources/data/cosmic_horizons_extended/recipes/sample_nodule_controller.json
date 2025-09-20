@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    { "type": "cosmic_horizons_extended:tier_unlocked", "minTier": 2 }
+  ],
+  "pattern": [
+    "III",
+    "IRI",
+    "III"
+  ],
+  "key": {
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "item": "minecraft:redstone" }
+  },
+  "result": { "item": "minecraft:compass" }
+}
+
+

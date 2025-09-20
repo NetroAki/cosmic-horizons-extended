@@ -1,0 +1,11 @@
+{
+  "feature": "cosmic_horizons_extended:pandora_spore_soil_patch",
+  "placement": [
+    { "type": "minecraft:in_square" },
+    { "type": "minecraft:count", "count": 2 },
+    { "type": "minecraft:heightmap", "heightmap": "WORLD_SURFACE_WG" },
+    { "type": "minecraft:biome" }
+  ]
+}
+
+

@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "cosmic_horizons_extended:arrakis_stormlands",
+  "features": [
+    "cosmic_horizons_extended:arrakis_storm_crystal_shards_placed"
+  ],
+  "step": "vegetal_decoration"
+}
+
+

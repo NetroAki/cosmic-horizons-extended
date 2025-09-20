@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cosmic_horizons_extended:block/aurelian_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "cosmic_horizons_extended:block/aurelian_log"
+    },
+    "axis=z": {
+      "model": "cosmic_horizons_extended:block/aurelian_log_horizontal",
+      "x": 90
+    }
+  }
+}
+

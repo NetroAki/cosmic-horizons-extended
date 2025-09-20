@@ -1,0 +1,62 @@
+# Cosmic Horizons Extended (CHEX) - Common Configuration
+# This file contains the main configuration options for the CHEX mod
+
+[general]
+# Enable debug logging for development
+debugMode = false
+# Enable experimental features
+experimentalFeatures = false
+
+[rockets]
+# Allow higher tier fuel to be used on lower tier rockets
+acceptHigherTierFuel = true
+# Enable fuel consumption on successful launches
+consumeFuelOnLaunch = true
+# Enable fuel validation before launch
+validateFuelBeforeLaunch = true
+
+[suits]
+# Enable suit enforcement in dimensions
+enforceSuitRequirements = true
+# Enable suit damage when requirements not met
+damageOnInsufficientSuit = true
+# Enable suit durability system
+enableSuitDurability = true
+
+[planets]
+# Enable automatic planet discovery from Cosmic Horizons
+autoDiscoverPlanets = true
+# Enable planet-specific hazard generation
+enablePlanetHazards = true
+# Enable planet-specific ore generation
+enablePlanetOres = true
+
+[travel]
+# Enable travel graph validation
+validateTravelGraph = true
+# Enable travel restrictions based on rocket tier
+enforceTravelRestrictions = true
+# Enable travel logging for debugging
+logTravelAttempts = false
+
+[ore_progression]
+# Enable GTNH-style ore progression
+enableOreProgression = true
+# Enable fallback ores when GTCEu is not available
+enableFallbackOres = true
+# Enable ore generation logging
+logOreGeneration = false
+
+[networking]
+# Enable client-server synchronization
+enableSync = true
+# Sync interval in ticks (20 ticks = 1 second)
+syncInterval = 20
+
+[performance]
+# Enable performance optimizations
+enableOptimizations = true
+# Chunk processing batch size
+chunkBatchSize = 16
+# Maximum chunks processed per tick
+maxChunksPerTick = 4

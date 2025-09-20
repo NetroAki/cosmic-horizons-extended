@@ -1,0 +1,21 @@
+{
+  "attached_dimention_id": "cosmic_horizons_extended:torus_world",
+  "dimensional_data": {
+    "dimension_type": "space",
+    "weather": false,
+    "clouds": false,
+    "sky_objects": false,
+    "gravity": 0,
+    "air_resistance": 1
+  },
+  "skybox_data": {
+    "attached_skybox_texture_id": "stars_01",
+    "alpha": 255,
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0
+  },
+  "sky_data": {}
+}
+
+

@@ -1,0 +1,87 @@
+
+Getting started
+Adubbz edited this page on Aug 17 · 17 revisions
+Concepts
+
+TerraBlender provides compatibility between biome mods by assigning each mod its own region in which they can define the biomes they wish to generate.
+
+Regions are selected randomly during world generation according to their weight. Mods that weight their regions highly will have them occur more frequently than those with a low weight.
+Gradle setup
+
+To configure your build.gradle to use TerraBlender you should:
+
+    Ensure you have the Forge Maven in your buildscript -> repositories block:
+
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+    dependencies {
+        <...>
+    }
+}
+
+    Add TerraBlender to your dependencies block, ensuring you replace x.x.x with your Minecraft version and y.y.y.y with your TerraBlender version as appropriate:
+
+Forge
+
+dependencies {
+    implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:x.x.x-y.y.y.y')
+}
+
+NeoForge
+
+dependencies {
+    implementation 'com.github.glitchfiend:TerraBlender-neoforge:x.x.x-y.y.y.y'
+}
+
+Fabric
+
+dependencies {
+    modImplementation 'com.github.glitchfiend:TerraBlender-fabric:x.x.x-y.y.y.y'
+}
+
+    If using Forge, you may potentially need to include Mixins in your build.gradle for them to function correctly in your dev environment. This can be done by adjusting your buildscript block and apply plugin: section to include the following:
+
+buildscript {
+    repositories {
+        <...>
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }
+    dependencies {
+        <...>
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'org.spongepowered.mixin'
+
+After doing this, you may need to re-run gradlew idea and regenerate your run configurations.
+
+An alternative approach to doing the same thing is to add the following to your run configurations:
+
+property 'mixin.env.remapRefMap', 'true'
+property 'mixin.env.refMapRemappingFile',"${buildDir}/createSrgToMcp/output.srg"
+
+Fabric setup
+
+On Fabric, it is advised that you perform all TerraBlender-related actions inside a class which implements the TerraBlenderApi entrypoint and overrides onTerraBlenderInitialized as follows:
+
+public class TestMod implements TerraBlenderApi
+{
+    @Override
+    public void onTerraBlenderInitialized() 
+    {
+        // Your code here.
+    }
+}
+
+You will also need to modify the entrypoints section of your fabric.mod.json to include your terrablender entry point. For example:
+
+    "entrypoints": {
+      "terrablender": [
+        "test.TestMod"
+      ]
+    },

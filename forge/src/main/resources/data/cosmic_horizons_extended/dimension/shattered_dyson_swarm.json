@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:the_end",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "minecraft:end",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "cosmic_horizons_extended:shattered_dyson_habitat_dome"
+    }
+  }
+}

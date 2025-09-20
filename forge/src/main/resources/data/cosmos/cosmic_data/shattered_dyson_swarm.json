@@ -1,0 +1,31 @@
+{
+  "attached_dimention_id": "cosmic_horizons_extended:shattered_dyson_swarm",
+  "dimensional_data": {
+    "dimension_type": "planet",
+    "weather": false,
+    "clouds": false,
+    "sky_objects": false,
+    "gravity": 50,
+    "air_resistance": 0.9,
+    "atmospheric_data": {
+      "atmosphere_y": 540,
+      "travel_to": "cosmic_horizons_extended:torus_world",
+      "origin_x": 0,
+      "origin_y": 128,
+      "origin_z": 0,
+      "overlay_texture_id": "stars_01",
+      "shipbit_y": 24,
+      "ship_min_y": 120
+    }
+  },
+  "skybox_data": {
+    "attached_skybox_texture_id": "stars_01",
+    "alpha": 190,
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0
+  },
+  "sky_data": {}
+}
+
+

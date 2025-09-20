@@ -1,0 +1,86 @@
+{
+  "//": "CHEX Travel Graph Configuration - Defines which planets are accessible at each rocket tier",
+  version: "1.0.0",
+  travel_graph: {
+    "1": {
+      name: "Low Earth Orbit",
+      planets: ["cosmos:earth_moon", "cosmos:mercury"],
+      description: "Basic rocket tier - local system access",
+    },
+    "2": {
+      name: "Moon and Nearby",
+      planets: ["cosmos:earth_moon", "cosmos:mercury", "cosmos:venus"],
+      description: "Advanced rocket tier - inner planets",
+    },
+    "3": {
+      name: "Mars Orbit",
+      planets: ["cosmos:mars", "cosmic_horizons_extended:pandora"],
+      description: "Improved rocket tier - Mars and nearby worlds",
+    },
+    "4": {
+      name: "Mars Surface",
+      planets: [
+        "cosmos:mars",
+        "cosmic_horizons_extended:arrakis",
+        "cosmos:jupiter",
+      ],
+      description: "Enhanced rocket tier - Mars surface and gas giants",
+    },
+    "5": {
+      name: "Outer Planets",
+      planets: [
+        "cosmos:jupiter",
+        "cosmos:europa",
+        "cosmic_horizons_extended:aqua_mundus",
+      ],
+      description: "Superior rocket tier - outer planets and moons",
+    },
+    "6": {
+      name: "Gas Giants",
+      planets: [
+        "cosmos:saturn",
+        "cosmos:uranus",
+        "cosmic_horizons_extended:inferno_prime",
+      ],
+      description: "Elite rocket tier - gas giants and volcanic worlds",
+    },
+    "7": {
+      name: "Outer System",
+      planets: [
+        "cosmos:neptune",
+        "cosmos:pluto",
+        "cosmic_horizons_extended:kepler_452b",
+      ],
+      description: "Master rocket tier - outer system and exoplanets",
+    },
+    "8": {
+      name: "Exoplanets",
+      planets: [
+        "cosmos:alpha_system",
+        "cosmos:b_1400_centauri",
+        "cosmos:j_1407b",
+      ],
+      description: "Legendary rocket tier - nearby exoplanets",
+    },
+    "9": {
+      name: "Advanced Exoplanets",
+      planets: [
+        "cosmos:j_1900",
+        "cosmos:glacio",
+        "cosmic_horizons_extended:aurelia_ringworld",
+      ],
+      description: "Mythic rocket tier - advanced exoplanets and megastructures",
+    },
+    "10": {
+      name: "Ultimate Destinations",
+      planets: ["cosmos:gaia_bh_1", "cosmos:solar_system"],
+      description: "Cosmic rocket tier - ultimate destinations and black holes",
+    },
+  },
+  restrictions: {
+    enforce_tier_requirements: true,
+    allow_higher_tier_fuel: true,
+    require_suit_for_hazards: true,
+    validate_planet_exists: true,
+  },
+}

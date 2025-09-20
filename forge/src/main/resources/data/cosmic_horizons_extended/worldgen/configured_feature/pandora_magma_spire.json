@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 10,
+    "xz_spread": 2,
+    "y_spread": 2,
+    "feature": {
+      "feature": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:simple_state_provider",
+          "state": { "Name": "minecraft:magma_block" }
+        }
+      }
+    }
+  }
+}
+
+

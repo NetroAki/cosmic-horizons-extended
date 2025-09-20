@@ -39,4 +39,15 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store# Project planning / AI-generated docs
+Architecturary
+PROJECT_CONTEXT.md
+TB_STRATEGY.md
+MISSING_FEATURES.md
+Checklist
+Research
+Planet Design doc
+Ring_world implemetation
+temp_density_functions/
+temp_jei_files/
+run/

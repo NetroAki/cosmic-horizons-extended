@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "cosmic_horizons_extended:pandora_bioluminescent_forest",
+    "cosmic_horizons_extended:pandora_floating_mountains",
+    "cosmic_horizons_extended:pandora_ocean_depths",
+    "cosmic_horizons_extended:pandora_volcanic_wasteland",
+    "cosmic_horizons_extended:pandora_sky_islands"
+  ]
+}

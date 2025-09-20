@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "type": "cosmic_horizons_extended:tier_unlocked",
+      "minTier": 1
+    }
+  ]
+}
+
+

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_outer_wall=false": {
+      "model": "cosmic_horizons_extended:block/ringworld_wall_inner"
+    },
+    "is_outer_wall=true": {
+      "model": "cosmic_horizons_extended:block/ringworld_wall_outer"
+    }
+  }
+}

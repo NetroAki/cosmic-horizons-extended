@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_features",
+  "biomes": "cosmic_horizons_extended:pandora_sky_islands",
+  "features": [
+    "cosmic_horizons_extended:pandora_sky_polished_plate_placed",
+    "cosmic_horizons_extended:pandora_biolume_moss_patch_placed"
+  ],
+  "step": "vegetal_decoration"
+}
+
+

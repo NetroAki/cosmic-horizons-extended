@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "cosmic_horizons_extended:pandora_ocean_depths",
+  "features": [
+    "cosmic_horizons_extended:pandora_lumicoral_cluster_placed"
+  ],
+  "step": "vegetal_decoration"
+}
+
+

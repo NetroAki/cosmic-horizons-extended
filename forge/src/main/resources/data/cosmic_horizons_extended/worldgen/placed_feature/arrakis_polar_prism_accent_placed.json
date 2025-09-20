@@ -1,0 +1,12 @@
+{
+  "feature": "cosmic_horizons_extended:arrakis_polar_prism_accent",
+  "placement": [
+    { "type": "minecraft:in_square" },
+    { "type": "minecraft:count", "count": 2 },
+    { "type": "minecraft:heightmap", "heightmap": "WORLD_SURFACE_WG" },
+    { "type": "minecraft:biome" }
+  ]
+}
+
+
+
