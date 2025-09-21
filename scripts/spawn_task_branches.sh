@@ -18,6 +18,7 @@ for task in "$@"; do
   slug=$(basename "$task" .md)
   branch="feature/${slug}"
   git switch -c "$branch"
+  mkdir -p claims
   claim_file="claims/${slug}.claim"
   {
     echo "claimed-by: supervisor"
