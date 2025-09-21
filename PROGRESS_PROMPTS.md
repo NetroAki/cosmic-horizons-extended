@@ -118,3 +118,7 @@
    - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
    - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
 
+20. Prompt: Merge configuration overrides into discovered planets and validate the override pipeline.
+
+- Outcome: PlanetRegistry now respects `chex-planets.json5` overrides for fuel, suits, descriptions, and hazard unions while still allowing explicit clears. Added unit coverage in `PlanetOverrideMergerTest` confirming merge behaviour and installed JDK 17 to run the suite. `:common:test` passes; full `check` remains blocked by existing Loom remap issues (see chunk `0a29f3`).
+- Reference: progress/step21_planet_registry_overrides.md; notes/planet_registry_overrides.md.

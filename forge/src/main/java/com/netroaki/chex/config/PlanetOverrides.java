@@ -58,7 +58,8 @@ public final class PlanetOverrides {
                       en.requiredSuitTag = e.requiredSuitTag();
                     } else if (e.requiredSuitTier() != null) {
                       en.requiredSuitTag =
-                          String.format("chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
+                          String.format(
+                              "chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
                     }
                     if (e.name() != null) {
                       en.name = e.name();
