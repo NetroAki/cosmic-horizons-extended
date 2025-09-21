@@ -5,8 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -80,15 +80,25 @@ public final class PlanetOverridesCore {
         com.google.gson.stream.JsonReader jr = new com.google.gson.stream.JsonReader(reader);
         jr.setLenient(true);
         JsonObject root = GSON.fromJson(jr, JsonObject.class);
-        Map<String, Entry> map = new HashMap<>();
+        Map<String, Entry> map = new LinkedHashMap<>();
         for (Map.Entry<String, JsonElement> e : root.entrySet()) {
-          if (e.getValue().isJsonObject()) {
-            JsonObject section = e.getValue().getAsJsonObject();
-            for (Map.Entry<String, JsonElement> pe : section.entrySet()) {
-              if (pe.getValue().isJsonObject()) {
-                JsonObject obj = pe.getValue().getAsJsonObject();
-                map.put(pe.getKey(), parseEntry(obj));
-              }
+          if (!e.getValue().isJsonObject()) {
+            continue;
+          }
+
+          JsonObject section = e.getValue().getAsJsonObject();
+          if (isDirectPlanetObject(section)) {
+            putEntry(map, e.getKey(), section);
+            continue;
+          }
+
+          for (Map.Entry<String, JsonElement> nested : section.entrySet()) {
+            if (!nested.getValue().isJsonObject()) {
+              continue;
+            }
+            JsonObject obj = nested.getValue().getAsJsonObject();
+            if (isDirectPlanetObject(obj)) {
+              putEntry(map, nested.getKey(), obj);
             }
           }
         }
@@ -97,6 +107,23 @@ public final class PlanetOverridesCore {
     } catch (Exception ignored) {
       return Optional.empty();
     }
+  }
+
+  private static void putEntry(Map<String, Entry> map, String id, JsonObject obj) {
+    Entry entry = parseEntry(obj);
+    if (entry != null) {
+      map.put(id, entry);
+    }
+  }
+
+  private static boolean isDirectPlanetObject(JsonObject obj) {
+    return obj.has("requiredRocketTier")
+        || obj.has("requiredSuitTier")
+        || obj.has("requiredSuitTag")
+        || obj.has("name")
+        || obj.has("description")
+        || obj.has("fuel")
+        || obj.has("hazards");
   }
 
   private static Entry parseEntry(JsonObject obj) {
@@ -121,7 +148,18 @@ public final class PlanetOverridesCore {
       }
     }
 
-    return new Entry(tier, suitTier, suitTag, name, description, fuel, hazards);
+    if (hazards != null && hazards.isEmpty()) {
+      hazards = null;
+    }
+
+    return new Entry(
+        tier,
+        suitTier,
+        suitTag,
+        name,
+        description,
+        fuel,
+        hazards == null ? null : Set.copyOf(hazards));
   }
 
   private static Integer getInteger(JsonObject obj, String key, int min, int max) {
