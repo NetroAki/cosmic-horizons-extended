@@ -118,3 +118,8 @@
    - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
    - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
 
+
+20. Prompt: How do we ensure Cosmic Horizons discovery planets respect chex-planets overrides with tests in place?
+
+- Outcome: Updated override merger to ignore blank strings, union hazard sets with discovered data, and verified suit/fuel/description merges through new unit coverage.
+- Reference: progress/step21_planet_registry_overrides.md; notes/planet_registry_overrides.md.
