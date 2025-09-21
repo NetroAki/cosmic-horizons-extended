@@ -39,7 +39,21 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store#
+.DS_Store
+
+### Runtime and Temporary Files ###
 temp_density_functions/
 temp_jei_files/
 run/
+*.log
+*.log.*
+crash-reports/
+saves/
+eula.txt
+
+### Additional Build Artifacts ###
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
