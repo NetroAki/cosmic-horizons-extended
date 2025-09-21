@@ -522,6 +522,13 @@ public class PlanetRegistry {
       tier = base.requiredRocketTier();
     }
 
+    Set<String> hazards;
+    if (override != null && override.hazards() != null) {
+      hazards = override.hazards().isEmpty() ? Set.of() : merged.hazards();
+    } else {
+      hazards = merged.hazards().isEmpty() ? base.hazards() : merged.hazards();
+    }
+
     return new PlanetDef(
         base.id(),
         merged.name().isEmpty() ? base.name() : merged.name(),
@@ -532,7 +539,7 @@ public class PlanetRegistry {
         base.gravityLevel(),
         base.hasAtmosphere(),
         base.requiresOxygen(),
-        merged.hazards().isEmpty() ? base.hazards() : merged.hazards(),
+        hazards,
         base.availableMinerals(),
         base.biomeType(),
         base.isOrbit());
