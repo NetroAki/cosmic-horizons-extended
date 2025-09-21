@@ -118,3 +118,8 @@
    - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
    - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
 
+
+20. Prompt: Extend the Cosmic Horizons discovery merge so config overrides apply without losing hazard/description data.
+
+- Outcome: Captured hazard tags from discovery snapshots, updated override merger to union hazards and keep base descriptions, and added unit tests validating the behaviour.
+- Reference: progress/step21_registry_overrides.md; notes/planet_registry_overrides.md.

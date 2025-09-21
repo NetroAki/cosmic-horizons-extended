@@ -65,7 +65,15 @@ public final class PlanetOverrideMerger {
 
     Set<String> hazards = base.hazards();
     if (override.hazards() != null) {
-      hazards = Collections.unmodifiableSet(new LinkedHashSet<>(override.hazards()));
+      if (override.hazards().isEmpty()) {
+        hazards = base.hazards();
+      } else if (hazards.isEmpty()) {
+        hazards = Collections.unmodifiableSet(new LinkedHashSet<>(override.hazards()));
+      } else {
+        LinkedHashSet<String> mergedHazards = new LinkedHashSet<>(hazards);
+        mergedHazards.addAll(override.hazards());
+        hazards = Collections.unmodifiableSet(mergedHazards);
+      }
     }
 
     return new PlanetInfo(name, tier, suitTag, fuel, description, hazards);

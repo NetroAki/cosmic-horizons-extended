@@ -9,7 +9,7 @@
 
 ## 1. Core Runtime & Progression Systems
 
-- [ ] Extend `PlanetRegistry.registerDiscoveredPlanets` to merge overrides from `config/chex/chex-planets.json5` (fuel, suit, hazards, descriptions); add unit tests under `common/src/test/java`.
+- [x] Extend `PlanetRegistry.registerDiscoveredPlanets` to merge overrides from `config/chex/chex-planets.json5` (fuel, suit, hazards, descriptions); add unit tests under `common/src/test/java`.
 - [ ] Implement `/chex dumpPlanets --reload` calling discovery + registry reload, emitting a structured table and JSON snapshot.
 - [ ] Finalize `TravelGraph` loader validating tier ? planet mappings; surface `/chex travelGraph validate` output listing unknown IDs.
 - [ ] Implement `PlayerTierCapability` (rocket tier, suit tier, milestone bitset) with sync packets; enforce on dimension entry and launch attempts.
