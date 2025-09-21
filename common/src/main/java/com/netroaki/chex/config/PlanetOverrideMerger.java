@@ -42,30 +42,44 @@ public final class PlanetOverrideMerger {
     }
 
     String suitTag = base.requiredSuitTag();
-    if (override.requiredSuitTag() != null) {
-      suitTag = override.requiredSuitTag();
+    String overrideSuitTag = sanitizeOverride(override.requiredSuitTag());
+    if (overrideSuitTag != null) {
+      suitTag = overrideSuitTag;
     } else if (override.requiredSuitTier() != null) {
       suitTag = buildSuitTag(override.requiredSuitTier());
     }
 
     String fuel = base.fuel();
-    if (override.fuel() != null) {
-      fuel = override.fuel();
+    String overrideFuel = sanitizeOverride(override.fuel());
+    if (overrideFuel != null) {
+      fuel = overrideFuel;
     }
 
     String description = base.description();
-    if (override.description() != null) {
-      description = override.description();
+    String overrideDescription = sanitizeOverride(override.description());
+    if (overrideDescription != null) {
+      description = overrideDescription;
     }
 
     String name = base.name();
-    if (override.name() != null) {
-      name = override.name();
+    String overrideName = sanitizeOverride(override.name());
+    if (overrideName != null) {
+      name = overrideName;
     }
 
     Set<String> hazards = base.hazards();
     if (override.hazards() != null) {
-      hazards = Collections.unmodifiableSet(new LinkedHashSet<>(override.hazards()));
+      LinkedHashSet<String> mergedHazards = new LinkedHashSet<>(base.hazards());
+      for (String hazard : override.hazards()) {
+        if (hazard == null) {
+          continue;
+        }
+        String normalized = hazard.trim();
+        if (!normalized.isEmpty()) {
+          mergedHazards.add(normalized.toLowerCase(Locale.ROOT));
+        }
+      }
+      hazards = Collections.unmodifiableSet(mergedHazards);
     }
 
     return new PlanetInfo(name, tier, suitTag, fuel, description, hazards);
@@ -73,6 +87,14 @@ public final class PlanetOverrideMerger {
 
   private static int clamp(int value, int min, int max) {
     return Math.max(min, Math.min(max, value));
+  }
+
+  private static String sanitizeOverride(String value) {
+    if (value == null) {
+      return null;
+    }
+    String trimmed = value.trim();
+    return trimmed.isEmpty() ? null : trimmed;
   }
 
   private static String buildSuitTag(int tier) {

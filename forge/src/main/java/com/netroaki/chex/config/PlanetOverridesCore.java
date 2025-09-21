@@ -42,9 +42,10 @@ public final class PlanetOverridesCore {
             for (Map.Entry<String, JsonElement> pe : section.entrySet()) {
               if (pe.getValue().isJsonObject()) {
                 JsonObject obj = pe.getValue().getAsJsonObject();
-                int tier = obj.has("requiredRocketTier")
-                    ? Math.max(1, obj.get("requiredRocketTier").getAsInt())
-                    : 1;
+                int tier =
+                    obj.has("requiredRocketTier")
+                        ? Math.max(1, obj.get("requiredRocketTier").getAsInt())
+                        : 1;
                 String suit =
                     obj.has("requiredSuitTag")
                         ? obj.get("requiredSuitTag").getAsString()
