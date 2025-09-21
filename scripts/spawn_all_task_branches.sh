@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Configure Git for NetroAki account
+git config user.name "NetroAki"
+git config user.email "netroaki@gmail.com"
+
 # Determine task directory
 if [ $# -ge 1 ]; then
   TASK_DIR="$1"

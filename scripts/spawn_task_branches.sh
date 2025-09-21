@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Configure Git for NetroAki account
+git config user.name "NetroAki"
+git config user.email "netroaki@gmail.com"
+
 if [ "$#" -lt 1 ]; then
   echo "Usage: $0 tasks/<date>/T-XXX_slug.md [...more tasks]" >&2
   exit 1
