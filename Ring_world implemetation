@@ -1,0 +1,378 @@
+# Ringworld Illusion — Option A: Block-Entity “Scenery Arc” (Forge 1.20.1)
+
+## Objective
+
+Render distant ring segments as **non-interactive, non-colliding scenery** via a **Block + BlockEntity + BlockEntityRenderer (BER)**. Segments **fade out** smoothly as the camera approaches (no pop-in), blending into a skybox/sky-mesh ring. Avoids reliance on render distance and avoids real world geometry you can touch.
+
+---
+
+## Requirements
+
+* Minecraft **1.20.1**
+* **Forge** (no Architectury)
+* Java **17**
+* Client-side rendering via **BER**
+* Optional: horizon fog/sky tweaks for seamless blending
+
+---
+
+## High-Level Design
+
+1. **ArcSceneryBlock**
+
+   * Invisible/no occlusion/no collision/no selection outline.
+   * Serves only as an anchor for an ArcSceneryBlockEntity.
+2. **ArcSceneryBlockEntity (BE)**
+
+   * Stores render params: `radius`, `arcAngle`, `thickness`, `tilt`, `yaw`, `emissive`, `color`, `texture`, `fadeStart`, `fadeEnd`, `dither`, etc.
+   * Server persists NBT; client reads for rendering. No tick logic required.
+3. **ArcSceneryRenderer (BER)**
+
+   * Tessellates or draws a prebuilt **quad-strip arc** (or baked model).
+   * **Distance-based alpha**: fully visible at far range, fades to 0 as the player nears `fadeStart`.
+   * Skips drawing when inside `fadeStart` for perfect disappearance.
+   * Uses translucent render type; depth-write off during draw to avoid sorting artifacts.
+4. **Placement/Editing**
+
+   * Simple `/setblock` or an admin **wand item** to set params (radius, angles) in BE NBT.
+   * Optional `data merge block` commands for fine tuning.
+5. **Sky/Fog Integration (optional)**
+
+   * DimensionSpecialEffects or fog events to add horizon band and color match.
+
+---
+
+## Package Layout
+
+```
+com.yourmod.ring
+  RingMod.java                      // @Mod entry, registers blocks, BEs, client setup
+  registry/
+    RingBlocks.java
+    RingBlockEntities.java
+  block/
+    ArcSceneryBlock.java
+  blockentity/
+    ArcSceneryBlockEntity.java
+  client/
+    ArcSceneryRenderer.java         // BER
+    RingClient.java                 // client init, renderer binding, fog hooks (optional)
+  config/
+    RingClientConfig.java           // vanishStart/End defaults, dithering, colors
+  util/
+    ArcTessellation.java            // arc quad-strip builder
+assets/yourmodid/textures/ring/arc_segment.png
+META-INF/mods.toml
+```
+
+---
+
+## Registration (Forge)
+
+```java
+// RingBlocks.java
+public final class RingBlocks {
+  public static final String ID = "yourmodid";
+  public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ID);
+  public static final RegistryObject<Block> ARC_SCENERY = BLOCKS.register("arc_scenery",
+      () -> new ArcSceneryBlock(BlockBehaviour.Properties.of().noOcclusion().noCollission().air()));
+  // BlockItem optional (creative only)
+  public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ID);
+  public static final RegistryObject<Item> ARC_SCENERY_ITEM = ITEMS.register("arc_scenery",
+      () -> new BlockItem(ARC_SCENERY.get(), new Item.Properties()));
+}
+
+// RingBlockEntities.java
+public final class RingBlockEntities {
+  public static final DeferredRegister<BlockEntityType<?>> BEs = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, RingBlocks.ID);
+  public static final RegistryObject<BlockEntityType<ArcSceneryBlockEntity>> ARC_SCENERY_BE =
+      BEs.register("arc_scenery",
+          () -> BlockEntityType.Builder.of(ArcSceneryBlockEntity::new, RingBlocks.ARC_SCENERY.get()).build(null));
+}
+
+// RingClient.java (client setup)
+@Mod.EventBusSubscriber(modid = RingBlocks.ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+public final class RingClient {
+  @SubscribeEvent
+  public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers e) {
+    e.registerBlockEntityRenderer(RingBlockEntities.ARC_SCENERY_BE.get(), ArcSceneryRenderer::new);
+  }
+}
+```
+
+---
+
+## ArcSceneryBlock (invisible anchor)
+
+```java
+public class ArcSceneryBlock extends Block implements EntityBlock {
+  public ArcSceneryBlock(Properties p) { super(p); }
+
+  @Override public RenderShape getRenderShape(BlockState s) { return RenderShape.INVISIBLE; }
+  @Override public VoxelShape getShape(BlockState s, BlockGetter w, BlockPos p, CollisionContext c) { return Shapes.empty(); }
+  @Override public boolean skipRendering(BlockState s, BlockState adj, Direction d) { return true; }
+  @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return new ArcSceneryBlockEntity(pos, state); }
+}
+```
+
+---
+
+## ArcSceneryBlockEntity (state & NBT)
+
+```java
+public class ArcSceneryBlockEntity extends BlockEntity {
+  // Render parameters (defaults tuned for ~150–250m viewing)
+  public float radius = 120f;         // world units
+  public float arcAngleDeg = 45f;     // degrees of arc sweep
+  public float thickness = 6f;        // world units
+  public float tiltDeg = 8f;          // X tilt
+  public float yawDeg = 0f;           // Y rotation
+  public int  colorARGB = 0xC0FFFFFF; // premultiplied alpha recommended
+  public ResourceLocation texture = new ResourceLocation("yourmodid","textures/ring/arc_segment.png");
+  public double fadeStart = 96.0;     // start fully vanished at/below this
+  public double fadeEnd   = 192.0;    // fully visible beyond this
+  public boolean emissive = true;
+  public boolean dither   = true;
+
+  public ArcSceneryBlockEntity(BlockPos pos, BlockState state) { super(RingBlockEntities.ARC_SCENERY_BE.get(), pos, state); }
+
+  @Override public void load(CompoundTag tag) {
+    super.load(tag);
+    radius     = tag.getFloat("radius");
+    arcAngleDeg= tag.getFloat("arc");
+    thickness  = tag.getFloat("thick");
+    tiltDeg    = tag.getFloat("tilt");
+    yawDeg     = tag.getFloat("yaw");
+    colorARGB  = tag.getInt("color");
+    fadeStart  = tag.getDouble("fadeStart");
+    fadeEnd    = tag.getDouble("fadeEnd");
+    emissive   = tag.getBoolean("emissive");
+    dither     = tag.getBoolean("dither");
+    if (tag.contains("tex", Tag.TAG_STRING)) texture = new ResourceLocation(tag.getString("tex"));
+  }
+  @Override protected void saveAdditional(CompoundTag tag) {
+    tag.putFloat("radius", radius);
+    tag.putFloat("arc", arcAngleDeg);
+    tag.putFloat("thick", thickness);
+    tag.putFloat("tilt", tiltDeg);
+    tag.putFloat("yaw", yawDeg);
+    tag.putInt("color", colorARGB);
+    tag.putDouble("fadeStart", fadeStart);
+    tag.putDouble("fadeEnd", fadeEnd);
+    tag.putBoolean("emissive", emissive);
+    tag.putBoolean("dither", dither);
+    tag.putString("tex", texture.toString());
+  }
+}
+```
+
+---
+
+## Arc Tessellation Utility (quad-strip arc)
+
+```java
+public final class ArcTessellation {
+  // Builds vertices for a flat arc ring strip in local space (XY plane)
+  public static void buildArc(Matrix4f mat, VertexConsumer v, float radius, float thick, float arcDeg, int segs, float r, float g, float b, float a) {
+    float inner = radius - thick * 0.5f;
+    float outer = radius + thick * 0.5f;
+    float rad = (float) Math.toRadians(arcDeg);
+    float step = rad / segs;
+    float angle = -rad * 0.5f;
+    for (int i=0;i<segs;i++) {
+      float a0 = angle + i * step;
+      float a1 = a0 + step;
+      float c0 = Mth.cos(a0), s0 = Mth.sin(a0);
+      float c1 = Mth.cos(a1), s1 = Mth.sin(a1);
+      // quad strip (outer0, inner0, inner1, outer1)
+      put(v, mat, outer*c0, outer*s0, 0, r,g,b,a);
+      put(v, mat, inner*c0, inner*s0, 0, r,g,b,a);
+      put(v, mat, inner*c1, inner*s1, 0, r,g,b,a);
+      put(v, mat, outer*c1, outer*s1, 0, r,g,b,a);
+    }
+  }
+  private static void put(VertexConsumer v, Matrix4f m, float x,float y,float z, float r,float g,float b,float a) {
+    v.vertex(m, x, y, z).color(r,g,b,a).uv(0,0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(0xF000F0).normal(0,0,1).endVertex();
+  }
+}
+```
+
+---
+
+## ArcSceneryRenderer (fade, orientation, emissive)
+
+```java
+@OnlyIn(Dist.CLIENT)
+public class ArcSceneryRenderer implements BlockEntityRenderer<ArcSceneryBlockEntity> {
+  private static final RenderType TYPE = RenderType.entityTranslucent(new ResourceLocation("yourmodid","textures/ring/arc_segment.png"));
+
+  public ArcSceneryRenderer(BlockEntityRendererProvider.Context ctx) {}
+
+  @Override
+  public void render(ArcSceneryBlockEntity be, float pt, PoseStack pose, MultiBufferSource buf, int light, int overlay) {
+    Level level = be.getLevel();
+    if (level == null) return;
+
+    Minecraft mc = Minecraft.getInstance();
+    Camera cam = mc.gameRenderer.getMainCamera();
+    Vec3 camPos = cam.getPosition();
+    Vec3 world = Vec3.atCenterOf(be.getBlockPos());
+    double d = camPos.distanceTo(world);
+
+    double start = be.fadeStart;
+    double end   = be.fadeEnd;
+    if (d <= start) return;
+    float t = (float)Mth.clamp((d - start) / (end - start), 0.0, 1.0); // 0 near -> 1 far
+    float alpha = t; // fully transparent near, opaque far
+
+    int argb = be.colorARGB;
+    float a = ((argb >>> 24) & 0xFF) / 255f * alpha;
+    if (a <= 0.01f) return;
+    float r = ((argb >>> 16) & 0xFF) / 255f;
+    float g = ((argb >>> 8)  & 0xFF) / 255f;
+    float b = ( argb         & 0xFF) / 255f;
+
+    pose.pushPose();
+    // move to block center in view space
+    pose.translate(world.x - camPos.x, world.y - camPos.y, world.z - camPos.z);
+    // orient: yaw around Y, tilt around X
+    pose.mulPose(Axis.YP.rotationDegrees(be.yawDeg));
+    pose.mulPose(Axis.XP.rotationDegrees(be.tiltDeg));
+
+    // optional dithering: jitter alpha by blue-noise sample (not shown)
+    // disable depth write to reduce sorting artifacts
+    RenderSystem.enableBlend();
+    RenderSystem.depthMask(false);
+
+    VertexConsumer vc = buf.getBuffer(TYPE);
+    Matrix4f mat = pose.last().pose();
+    ArcTessellation.buildArc(mat, vc, be.radius, be.thickness, be.arcAngleDeg, Math.max(12, (int)(be.arcAngleDeg/2)), r,g,b,a);
+
+    RenderSystem.depthMask(true);
+    RenderSystem.disableBlend();
+    pose.popPose();
+  }
+
+  @Override public boolean shouldRenderOffScreen(ArcSceneryBlockEntity be) { return true; }
+  @Override public int getViewDistance() { return 512; } // allow far visibility
+}
+```
+
+---
+
+## Client Config Defaults (optional)
+
+```java
+public final class RingClientConfig {
+  public static double defaultFadeStart = 96.0;
+  public static double defaultFadeEnd   = 192.0;
+  public static boolean defaultDither   = true;
+  public static int defaultColorARGB    = 0xC0FFFFFF;
+}
+```
+
+---
+
+## Assets
+
+* `assets/yourmodid/textures/ring/arc_segment.png`
+
+  * Soft-edged, feathered alpha at top/bottom to avoid aliasing.
+  * Neutral light grey/blue; match your sky ring palette.
+  * Size 512×512 or 1024×1024 for crisp long arcs.
+
+---
+
+## Placement & Editing
+
+* **Creative placement:**
+  `setblock <x> <y> <z> yourmodid:arc_scenery`
+* **Edit parameters with NBT:**
+
+  ```
+  data merge block <x> <y> <z> {
+    radius:120f, arc:60f, thick:8f,
+    tilt:10f, yaw:35f,
+    fadeStart:96.0d, fadeEnd:192.0d,
+    color: -1048577, // ARGB int
+    emissive:1b, dither:1b,
+    tex:"yourmodid:textures/ring/arc_segment.png"
+  }
+  ```
+* Place multiple segments around the play area (e.g., every 200–300 m), all oriented to “point” to the same virtual ring. Use staggered yaw/tilt for parallax variety.
+
+---
+
+## Fog / Sky Blending (optional but recommended)
+
+* **Horizon fog band:** Increase fog density and slightly tint toward ring color between \~120–220 m so the arc fades into the sky ring.
+* Hooks:
+
+  * `ViewportEvent.ComputeFogColor` (adjust horizon tint in ring dimension)
+  * `ViewportEvent.RenderFog` (density curve)
+* **Sky ring:** Use `DimensionSpecialEffects` to render a background ring/cubemap so the scene still reads as a ring when up close (arcs have vanished).
+
+---
+
+## Performance Notes
+
+* BER only builds a few dozen quads per arc → cheap.
+* No ticking, no physics, no AO.
+* `shouldRenderOffScreen = true` ensures visibility even when off-frustum edges are near; keep **count reasonable** (e.g., <200 across a world).
+
+---
+
+## QA Checklist
+
+* At 8–12 chunk render distance, arcs are visible at long range and **fully vanish** before the player can reach them.
+* No selection outline, collision, or occlusion.
+* No z-fighting or harsh banding during fade (use feathered alpha + depth write off).
+* Color matches sky ring; horizon fog hides seam.
+* Multiplayer: params sync via NBT; purely cosmetic on clients.
+
+---
+
+## mods.toml (snippet)
+
+```toml
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="yourmodid"
+version="${file.jarVersion}"
+displayName="Ringworld Scenery Arcs"
+# optional dependencies
+[[dependencies.yourmodid]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+```
+
+---
+
+## Minimal Texture Guidance
+
+* Create `arc_segment.png` with:
+
+  * Soft radial alpha toward both inner/outer edges.
+  * Slight vertical gradient (darker bottom) to imply curvature/ambient occlusion.
+  * Optional subtle starfield speckle at very low opacity for scale.
+
+---
+
+## Extension Hooks (optional)
+
+* Param curve by time (slow brightness drift, simulated day/night).
+* Per-segment UV scroll for “micro parallax”.
+* Multiple layered strips (inner glow + core frame) for depth.
+
+---
+
+## Acceptance Criteria
+
+* Placing an arc scenery block produces a distant ring segment.
+* Approaching from 250 m → 80 m results in a smooth, artifact-free fade to invisible.
+* With the sky ring active, the illusion reads as a continuous megastructure from any render distance.

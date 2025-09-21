@@ -1,0 +1,86 @@
+Here’s a consolidated guide for using (external) libraries in Architectury Loom — suitable for feeding into your AI or as a quick-reference. If you like, I can also format it more formally (pseudocode style, decision tree, etc.).
+
+---
+
+## Guide: Using Libraries with Architectury Loom
+
+---
+
+### 1. Terminology & Concepts
+
+* **Mod**: A project/plugin for a mod loader (Forge, Fabric, etc.).
+* **Non-mod library**: A general Java/third-party library, not built as a mod.
+* **Dependency configurations**: Gradle dependency scopes. Architectury Loom introduces or uses several, especially `mod...` prefixed ones (e.g. `modImplementation`) for mods, etc.
+* **Mappings**: Name mappings used in Minecraft modding (SRG, Intermediary etc.). Loom handles remapping when using mod dependencies.
+
+---
+
+### 2. How to Use Mods as Libraries
+
+When your mod depends on another mod (e.g. Fabric API), you should use one of the `mod...` dependency configurations (for example, `modImplementation`).
+
+* `modImplementation` is like `implementation` but **remaps** the dependency from its original names (SRG / Intermediary) to the mapping set used in your project.
+* This allows you to refer to mod code even across different mapping schemes.
+
+**Example:**
+
+```gradle
+dependencies {
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$project.fabric_api_version"
+}
+```
+
+---
+
+### 3. How to Use Non-Mod Libraries
+
+These are “regular” external Java libraries (like Jankson, Apache Commons, etc.):
+
+* You can use them as in regular Gradle projects, using `implementation` if you need them both at compile-time and runtime.
+* **Exception (Forge only):** Forge’s mod loader (FML) does *not* automatically include non-mod libraries (i.e. non-mods) on the runtime classpath. So if your project is targeting Forge *and* requires the library at runtime, you need to use the `forgeRuntimeLibrary` configuration in addition to `implementation`.
+
+**Example:**
+
+```gradle
+dependencies {
+    implementation 'blue.endless:jankson:1.2.2'
+    forgeRuntimeLibrary 'blue.endless:jankson:1.2.2'
+    // If you only need library at compile time (not at runtime):
+    compileOnly 'com.example:some-other-library:1.0.0'
+}
+```
+
+---
+
+### 4. Nesting Libraries Inside Your Mod Jar
+
+If you want to bundle a non-mod library (or another mod) inside your mod’s distributable jar (so that users don’t have to install it separately), Loom supports the `include` feature.
+
+* You still list the library under `implementation` if you use it in your code.
+* Then add `include 'library:coordinates:version'`.
+* That causes the library to be nested / embedded inside the final jar.
+
+**Example with Jankson:**
+
+```gradle
+dependencies {
+    implementation 'blue.endless:jankson:1.2.2'
+    include 'blue.endless:jankson:1.2.2'
+}
+```
+
+---
+
+### 5. Summary Table / Decision Logic
+
+Here’s a summary of what to do depending on your case:
+
+| Scenario                                           | Use dependency?                                      | Additional config (Forge)?                       | Want to bundle inside your mod jar?                       |
+| -------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------- |
+| Depending on another mod                           | Yes → `modImplementation` (or other `mod...` config) | No                                               | Only if you explicitly want to include it (rare for mods) |
+| Using non-mod library (needed at runtime)          | Yes → `implementation`                               | For Forge: yes, also `forgeRuntimeLibrary`       | If yes, use `include` to nest it                          |
+| Library only needed for compile-time (not runtime) | Use `compileOnly`                                    | + Forge: you do *not* need `forgeRuntimeLibrary` | `include` not necessary unless bundling is desired anyway |
+
+---
+
+If you want, I can produce a machine-readable version (e.g. JSON, decision tree) for your AI, or adapt to your specific mod loader (Forge / Fabric) setup. Do you want me to do that?

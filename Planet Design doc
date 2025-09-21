@@ -1,0 +1,3181 @@
+
+
+# 🌍 Pandora – Visual/Technical Design Document
+
+---
+
+## Planet Overview
+
+* **Tier:** 2 (first alien world).
+* **Atmosphere:** Breathable, dense spore-filled air. Permanent twilight — sky gradient runs violet → indigo → teal aurora bands. Spores drift as ambient glowing particle clouds.
+* **Gravity:** 1.0 (Earth-like).
+* **Hazards:**
+
+  * Floating zones have **levitation updrafts** — cause fall damage risk if not careful.
+  * Volcanic zones emit **heat damage aura**.
+* **Base Stone:** **Pandorite** → block family (stone, cobbled, bricks, mossy, polished). Dark blue base with glowing cyan veins. Drops GT ores (replacing Overworld stone).
+* **GregTech Ore Map:**
+
+  * Forest → Bismuthinite, Phosphorite
+  * Floating → Beryllium, Emerald
+  * Ocean → Nickel, Cobalt, Lithium
+  * Volcanic → Tungsten, Molybdenum, Sulfur
+  * Sky → Aluminium, Rare Earths
+
+---
+
+## Biomes
+
+### 🌌 Bioluminescent Forest
+
+* **Ground Blocks:**
+
+  * *Biolume Moss* → purple grass variant with faint cyan glow.
+  * *Spore Soil* → soft, brown-purple dirt with glowing speckles.
+* **Trees/Flora:**
+
+  * *Bioluminescent Fungal Towers* → trunk uses “Mossy Pandorite Bark” (stone-textured bark with embedded cyan nodes). Cap is wide and flat, made of glowing cyan/purple mushroom blocks with fringe edges. Particles drip like glowing rain. Ground below faintly illuminated.
+  * Underbrush: small mushroom caps (2–3 block tall clusters), spore reeds (thin glowing rods).
+* **Fauna:**
+
+  * *Glowbeast* → Quadruped \~2 blocks tall, deer-like stance but translucent skin with cyan veins glowing inside. Skull has crystal antlers. Drops: **Phosphor Hides** → processed in GT for insulation.
+  * *Sporeflies* → Tiny swarm entities, glowing insect particles circling around a core. When hit, they explode into spore clouds that blind. Drops: **Biolume Extract** → GT dye/photonic material.
+* **Mini-Boss:** **Spore Tyrant**
+
+  * Looks like a massive fungal treant (\~6 blocks tall). Body = thick trunk covered in mossy bark with glowing eyes scattered like fungal lights. Roots act as tendrils.
+  * Ability: slams ground → AoE knockback + spore cloud. Summons *Sporelings* (1-block-tall fungal minions with glowing caps).
+
+---
+
+### 🏔 Floating Mountains
+
+* **Ground Blocks:**
+
+  * *Crystal-Clad Pandorite* → stone with embedded cyan/emerald crystals.
+* **Trees/Flora:**
+
+  * *Skybark Trees* → twisted trunks with cyan-cracked bark. Branches end in crystalline “leaf clusters” that look like stained glass, refracting rainbow light.
+  * Hanging vines tipped with crystal nodules.
+* **Fauna:**
+
+  * *Sky Grazer* → 3-block-long manta ray that floats. Semi-transparent cyan wings with glowing veins. Head has soft lantern-like glow. Passive. Drops: **Light Membranes** → GT filter/solar cell recipe.
+  * *Cliff Hunter* → 2-block-tall predator resembling a raptor fused with crystal armor. Talons are crystalline, glowing at tips. Aggressive.
+* **Mini-Boss:** **Cliff Hunter Alpha**
+
+  * Larger (3-block-tall). Armored in crystal plating. Roars send a shockwave that pushes players off ledges. Jumps between floating islands.
+
+---
+
+### 🌊 Ocean Depths
+
+* **Ground Blocks:**
+
+  * *Lumicoral Blocks* → coral variants with pulsing cyan nodes.
+  * *Glowing Kelp* → tall (6–8 block) kelp with light nodes every 2 blocks.
+* **Trees/Flora:**
+
+  * Coral-trees: branching crystalline coral that glows rhythmically (light level 7–12 pulse).
+* **Fauna:**
+
+  * *Luminfish* → small glowing fish, fins trail light. Drop: **Biolume Extract**.
+  * *Abyss Leviathan* → 8–10 block long eel with glowing red eyes, armored head, dark scales reflecting faintly. Aggressive, lunges with charge attacks. Drops: **Leviathan Scales** → GT reinforced armor recipe.
+* **Mini-Boss:** **Deep-Sea Siren**
+
+  * Humanoid aquatic predator with translucent skin and glowing cyan tattoos across arms/torso. Long flowing kelp-hair emits faint light.
+  * Ability: song → Confusion + Slowness underwater. Teleports short distances through bubble streams. Drops: *Resonant Pearl* → sonar/radar tech in GT.
+
+---
+
+### 🌋 Volcanic Wasteland
+
+* **Ground Blocks:**
+
+  * *Volcanic Pandorite* → cracked black stone with orange lava veins.
+  * *Ash Sand* → black gritty sand that damages bare feet (like cactus damage).
+* **Trees/Flora:**
+
+  * *Magma Spires* → tall black crystal columns with glowing fissures. Emit ember particles.
+  * Cinder Shrubs → ember-like plants glowing faintly, resistant to fire.
+* **Fauna:**
+
+  * *Ash Crawlers* → beetles with obsidian shells and ember eyes. Crawl in packs. Drops: **Cinder Chitin** → GT composite material.
+  * *Fire Wraiths* → smoky flame apparitions with ember cores. Float above lava. Drops: **Volcanic Essence** → heat-resistant crucible upgrade.
+* **Mini-Boss:** **Molten Behemoth**
+
+  * Gigantic quadruped beast with obsidian armor plates, glowing cracks across body. Head looks like molten skull.
+  * Mechanics: each stomp creates a lava fissure. Roars ignite ash shrubs.
+
+---
+
+### ☁️ Sky Islands
+
+* **Ground Blocks:**
+
+  * *Cloudstone* → white, soft-textured stone with light scattering effect.
+  * *Skygrass* → light green-tinted grass with glowing white flowers.
+* **Trees/Flora:**
+
+  * *Featherleaf Trees* → thin white trunks, translucent feather-shaped leaves shimmering pink/cyan. Leaves drift off slowly as glowing particles.
+  * *Cloud Flowers* → spherical blooms glowing faintly in fog.
+* **Fauna:**
+
+  * *Cloud Serpent* → 10-block-long dragon-like serpent with translucent wings. Wings crackle with electricity. Drops: **Wind Essence** → jetpacks/turbines.
+  * *Sky Fluffballs* → spherical floating mobs, covered in glowing fiber. Replace sheep. Drop: **Floating Fiber** → textile recipes.
+* **Mini-Boss:** **Storm Roc**
+
+  * Colossal bird (6–8 block wingspan) with cloud-vapor wings sparking with lightning.
+  * Abilities: swoop grab (carries player), lightning strike dive.
+
+---
+
+## 🌟 Main Boss: **Worldheart Avatar**
+
+* **Arena:**
+  A central floating island, fused from both Bioluminescent Forest and Floating Mountain biomes. A massive glowing tree dominates, roots wrapped around floating crystal boulders.
+
+* **Appearance:**
+  \~12-block tall entity. Lower body = massive root system, cracked with glowing cyan veins. Upper body = humanoid torso of bark fused with crystal. Head alternates between a wooden mask face and a glowing crystal orb. Branches sprout from shoulders, pulsing with light.
+
+* **Phases:**
+
+  1. **Root Phase** → slams ground with roots, shockwaves + sporeling summons.
+  2. **Flight Phase** → levitates tree-body. Floating crystal islands orbit and are hurled as projectiles.
+  3. **Corruption Phase** → arena fills with dense spores. Vision limited to glowing particles and faint silhouettes. Summons elite Spore Tyrants.
+
+* **Drops:**
+
+  * **Pandoran Heartseed** → key GT progression unlock → Tier 3 Rocket Fuel Plant recipes (required for Arrakis).
+  * **Sporeblade** → weapon (6–7 dmg, on-hit spawns cloud of spores → Blindness II for 5s).
+  * **Biolume Core** → circuit part for high-tier GT electronics.
+
+---
+
+## 🎨 Color Scheme
+
+* **Stone:** Indigo base with cyan veins.
+* **Grass:** Deep purple moss with faint blue glimmer.
+* **Foliage:** Cyan/teal translucent with crystalline highlights.
+* **Water:** Indigo glow.
+* **Sky:** Twilight gradient with auroras.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Planet grants access to **Tier 3 GT machinery/rocketry**.
+* **Ore Access:**
+
+  * Tungsten → heat-resistant alloys.
+  * Lithium → batteries.
+  * Beryllium → aerospace.
+  * Rare Earths → circuits.
+* **Drops Integrated into GT:**
+
+  * Phosphor Hides → insulation coating.
+  * Biolume Extract → dyes & photonic chemistry.
+  * Leviathan Scales → advanced armor plating.
+  * Volcanic Essence → crucible upgrades.
+  * Wind Essence → turbines/jetpacks.
+  * Heartseed → Arrakis unlock.
+
+---
+
+# 🌍 Planet Design Document: **Arrakis**
+
+---
+
+## Planet Overview
+
+* **Tier:** 3 (second alien world – post-Pandora).
+* **Atmosphere:** Breathable but extremely dry. A faint orange haze always lingers in the air. Constant fine sand particles blow across the sky, giving the sun a muted glare. Visibility occasionally drops in *Stormlands* due to planet-wide sandstorms.
+* **Gravity:** Normal (1.0).
+* **Hazards:**
+
+  * Constant **hydration drain** mechanic → hunger and thirst tick faster without water/food.
+  * *Stormlands* → periodic sandstorm events cause **blindness + slowness**, reduce ranged weapon accuracy.
+  * *Volcanic Glass Flats (rare micro-biomes inside Stormlands)* → standing barefoot (no boots) causes damage like magma blocks.
+* **Base Stone:** **Arrakite Sandstone** → golden-red sandstone with layered textures. Variants include: smooth, chiseled, cracked, and fossil-embedded.
+* **GregTech Ore Map:**
+
+  * **Great Dunes:** Saltpeter, Potash (fertilizer chain).
+  * **Spice Mines:** Sulfur, Iron, Lead.
+  * **Polar Ice Caps:** Salt, Cryolite.
+  * **Sietch Strongholds:** Copper, Tin, Zinc.
+  * **Stormlands:** Titanium, Zircon, Rutile.
+
+---
+
+## Biomes
+
+---
+
+### 🏜 Great Dunes
+
+* **Terrain/Palette:**
+  Rolling dunes of fine **Arrakite Sand**, colored warm gold by day, deep orange at twilight. Wind-blown ridges shift shape procedurally. Occasional exposed sandstone ridges break the monotony.
+
+* **Ground Blocks:**
+
+  * *Arrakite Sand* (custom golden sand, slightly finer particle effect).
+  * *Dune Fossil Sandstone* (rare, embedded fossil textures).
+
+* **Flora:**
+  Sparse vegetation — hardy *Spice Cactus* with glowing red pods (used in GT chemistry as a source of spice extract). *Dune Grass* grows in ridges, waving in the hot winds.
+
+* **Fauna:**
+
+  * *Sand Striders* → camel-sized quadrupeds with elongated legs and armored hides. Hump-like growths store water. Drop **Hydrated Tissue**, processed into GT electrolytes/chemical coolants.
+  * *Sand Burrowers* → worm-like mobs that erupt from sand in ambush. Their bodies are segmented and armored, with ringed teeth in circular mouths. Drop **Silicate Chitin**, used in GT composites.
+
+* **Mini-Boss:** **Dune Wyrm Alpha**
+
+  * Gigantic worm (\~15 blocks long, half exposed at a time). Body is armored in red-gold chitin.
+  * Mechanics: burrows, emerges in ambush, causes sand geysers on surface. Knockback tremors.
+  * Drops: **Wyrm Core** → needed for advanced GT drill heads and cutting tools.
+
+---
+
+### ⛏ Spice Mines (Underground)
+
+* **Terrain/Palette:**
+  Vast cavernous systems beneath dunes. Rock walls of deep red-brown sandstone veined with glowing “spice lines.” Glow faintly red-orange in the dark.
+
+* **Ground Blocks:**
+
+  * *Spice Ore Nodes* → decorative ore veins, glowing faint red. Do not function as new ores, but drop GT **Sulfur Dust** + “Spice Extract” (organic GT chemical).
+  * *Arrakite Rock Salt* → reddish saltstone blocks.
+
+* **Flora:**
+  Fungal “Spice Caps” — mushroom-like growths feeding off ore veins, orange-brown caps glowing faintly with dust particle effects.
+
+* **Fauna:**
+
+  * *Miner Beetles* → squat armored bugs that chew sandstone. Glow faintly around mandibles. Drop **Crushed Rock Dust** (tiny ores, random).
+  * *Spice Crawlers* → centipede-like predators with glowing orange stripes. Aggressive, swarm players. Drop **Spice Extract**.
+
+* **Mini-Boss:** **Spice Guardian**
+
+  * Massive insectoid with crystal-encrusted armor. Resembles a beetle fused with spice crystal growths.
+  * Mechanics: emits choking “spice clouds” → blindness + nausea. Burrows into walls, emerges behind players.
+  * Drops: **Spice Core** → GT chemical component for high-tier plastics/polymers.
+
+---
+
+### ❄ Polar Ice Caps
+
+* **Terrain/Palette:**
+  White-blue tundra ridges with Arrakite stone buried beneath thick frost. Ice sheets reflect pale golden sunlight. Frozen rivers and caves below surface contain rare resources.
+
+* **Ground Blocks:**
+
+  * *Arrakite Frost Stone* → bluish stone with frosty cracks.
+  * *Polar Ice* → translucent blocks with a faint blue core glow.
+
+* **Flora:**
+  Sparse crystalline ice flowers that bloom once per day-night cycle, scattering snowflake-like particles.
+
+* **Fauna:**
+
+  * *Ice Stalkers* → 2-block-tall lupine predators, crystalline horns, icy breath attack. Drop **Frozen Glands** → coolant fluids in GT.
+  * *Frost Spinners* → spider-like mobs with translucent icy legs, create frost webs that slow players. Drop **Cryo Resin** → GT cryogenic circuit insulators.
+
+* **Mini-Boss:** **Cryo Leviathan**
+
+  * Huge reptilian beast (\~8 blocks long) with ice-crystal armor plates. Emits freezing breath, turning water into temporary ice walls.
+  * Drops: **Cryo Core** → required for GT refrigeration chain.
+
+---
+
+### 🏰 Sietch Strongholds
+
+* **Terrain/Palette:**
+  Vast underground networks of sandstone halls carved into cliffs. Torch sconces (glowing crystal blocks instead of fire) illuminate chambers. Feels semi-urban, with collapsed structures and fungal overgrowth.
+
+* **Ground Blocks:**
+
+  * *Carved Arrakite Bricks* → decorative brick set for strongholds.
+  * *Spice-Lantern Crystals* → glowing orange crystal lamps.
+
+* **Flora:**
+  *Underground Vines* that crawl across walls, glowing faintly green.
+
+* **Fauna:**
+
+  * *Raider NPCs* → humanoid mobs wearing desert-worn clothing, wielding scavenged weapons. Drop salvage (iron scraps, copper wiring).
+  * *Cave Beasts* → blind quadrupeds that roam abandoned tunnels, sniffing players.
+
+* **Mini-Boss:** **Sietch Warlord**
+
+  * Humanoid elite with armor plated in spice-crystal. Wields dual curved blades.
+  * Abilities: can rally raiders for temporary buffs, uses dash attacks.
+  * Drops: **Warlord Sigil** → progression item, unlocks GT stronghold processing quests.
+
+---
+
+### 🌪 Stormlands
+
+* **Terrain/Palette:**
+  Shattered canyons and rocky mesas under permanent sandstorms. The sky is dark orange-brown, constantly filled with storm particles. Lightning strikes randomly in open fields.
+
+* **Ground Blocks:**
+
+  * *Stormstone* → fractured black-orange rock, constantly weathered.
+  * *Glass Flats* (rare patches) → obsidian-like glass blocks from lightning strikes.
+
+* **Flora:**
+  Almost none. Rare “Storm Crystals” grow after lightning strikes — glowing yellow shards that hum faintly.
+
+* **Fauna:**
+
+  * *Storm Drakes* → serpentine, 5-block-long, with glowing yellow eyes and constant crackling lightning along their bodies. Drop **Storm Essence** → GT capacitor recipes.
+  * *Sand Shades* → humanoid silhouettes made of blowing sand. Appear/disappear in storm gusts. Drop **Shadowed Sand** → rare crafting reagent.
+
+* **Mini-Boss:** **Storm Titan**
+
+  * Colossal quadruped with rocky exoskeleton and glowing eyes, resembling a living statue. Sand constantly blows around it.
+  * Abilities: hurls lightning-charged boulders, ground slam creates sand shockwave.
+  * Drops: **Titan Core** → unlocks GT titanium alloy recipes.
+
+---
+
+## 🌟 Main Boss: **Sand Emperor**
+
+* **Arena:**
+  Found beneath the Great Dunes in a massive sunken pit. The ground constantly shifts like quicksand. Stone pillars collapse during the fight as the worm tunnels beneath.
+
+* **Appearance:**
+  A colossal dune worm, body 20+ blocks long, armored in ridged golden-red chitin. Head is circular with a three-ringed maw lined with crystalline teeth. Segments glow faintly red as it tunnels.
+
+* **Phases:**
+
+  1. **Burrow Phase:** Worm disappears under sand, erupts beneath players. Creates collapsing sinkholes.
+  2. **Surface Phase:** Emerges fully, smashing pillars and hurling sand geysers.
+  3. **Storm Phase:** Summons massive sandstorm → arena darkens, lightning strikes randomly. Worm charges through sand clouds in hit-and-run attacks.
+
+* **Drops:**
+
+  * **Emperor’s Core** → progression item unlocking **Tier 4 Rocket Engines** (Arrakis → Alpha Centauri A).
+  * **Sandpiercer** → spear weapon. Strong melee thrust, special ability: sandburst AoE (knockback).
+  * **Spice Crown** → rare headpiece, grants night vision + sandstorm resistance.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Golden-red sandstone.
+* **Sand:** Warm gold → orange tones.
+* **Frost/Ice:** Pale blue with cyan glow.
+* **Strongholds:** Red sandstone brick with orange spice crystals.
+* **Sky:** Muted orange, dark brown storm haze.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Arrakis = **Tier 4** (Titanium alloys, cryogenics, advanced chemicals).
+* **Ore Access:**
+
+  * Titanium (Stormlands), Cryolite (Ice Caps), Zinc/Tin/Copper (Strongholds), Sulfur/Lead (Mines).
+* **Key GT Unlocks:**
+
+  * **Emperor’s Core** → Tier 4 rocket engine progression.
+  * **Spice Extracts** → advanced plastics/polymers.
+  * **Cryo Core** → refrigeration & coolant chain.
+  * **Titan Core** → titanium alloy unlock.
+  * **Wyrm Core** → drill head/cutting tool progression.
+
+---
+
+# 🌞 Planet Design Document: **Alpha Centauri A**
+
+---
+
+## Planet Overview
+
+* **Tier:** 4 (first “stellar” world, accessed after Arrakis).
+* **Atmosphere:** None (space environment). Players require **full space suits + oxygen tanks** to survive. Radiation exposure slowly damages unshielded players.
+* **Gravity:** Low (0.4g) — jumps are higher, fall damage is reduced, but knockbacks are more dangerous.
+* **Hazards:**
+
+  * **Radiation Fields** in magnetosphere and corona → constant damage without radiation shielding.
+  * **Solar Flares** randomly occur → pulses of light and heat waves that deal AoE damage.
+  * **Zero Oxygen** → handled by existing life support mod.
+* **Base Stone:** **Solar Rock** → black, pitted basalt-like stone shot through with glowing golden cracks. Variants: smooth, cracked, tiled.
+* **GregTech Ore Map:**
+
+  * **Photosphere Platforms:** Gold, Silver (solar metals).
+  * **Corona Streams:** Helium-3 (GT fusion fuel gas pockets), Magnesium.
+  * **Magnetosphere Belt:** Rare Earth Elements, Uranium, Thorium.
+  * **Sunspot Fields:** Tungsten, Osmium, Iridium.
+  * **Solar Arrays:** Aluminium, Gallium, Silicon.
+
+---
+
+## Biomes
+
+---
+
+### 🔆 Photosphere Platforms
+
+* **Terrain/Palette:**
+  Floating islands of *Solar Rock*, glowing golden cracks on surfaces. Surrounded by an intense orange-yellow skybox, with plasma waves below. Platforms drift slowly as if buoyed on solar winds.
+
+* **Ground Blocks:**
+
+  * *Solar Rock* with glowing fissures.
+  * *Plasma Crystal Nodes* → glowing clusters that pulse orange-yellow light.
+
+* **Flora:**
+  Sparse — crystalline “Sunshards” sprouting from rock, refracting light beams.
+
+* **Fauna:**
+
+  * *Solar Sprites* → small glowing flame-like beings that hover. Drop **Solar Essences** → GT photovoltaic recipes.
+  * *Plasma Rays* → manta-shaped plasma creatures gliding across the void. Semi-transparent, glowing veins. Drop **Ion Membranes** → GT plasma conduits.
+
+* **Mini-Boss:** **Helios Warden**
+
+  * Tall humanoid figure of molten stone and plasma, \~4 blocks tall, wielding a glowing spear.
+  * Abilities: solar beam attacks, plasma spears that stick and explode.
+  * Drops: **Helios Core** → key for high-efficiency solar cells.
+
+---
+
+### 🌊 Corona Streams
+
+* **Terrain/Palette:**
+  Vast rivers of glowing plasma flowing across floating platforms. Ambient particle waves ripple above streams.
+
+* **Ground Blocks:**
+
+  * *Plasma Stream Blocks* → animated texture of glowing orange-yellow currents.
+  * *Solar Glass* → hardened plasma turned into glowing translucent glassy stone.
+
+* **Fauna:**
+
+  * *Corona Eels* → plasma-serpents swimming in streams, made of segmented glowing coils. Drop **Ionized Plasma** → GT fusion precursors.
+  * *Flarelings* → small hostile flame-elementals, dart out of streams.
+
+* **Mini-Boss:** **Flare Serpent**
+
+  * Gigantic plasma eel, body \~15 blocks long.
+  * Mechanics: swims in and out of streams, erupts plasma geysers.
+  * Drops: **Plasma Core** → GT fusion fuel unlock (Helium-3 chain).
+
+---
+
+### 🌀 Magnetosphere Belt
+
+* **Terrain/Palette:**
+  Floating asteroidal rock fields surrounded by aurora-like magnetic arcs. Darker void sky, with streaks of cyan/purple charged energy.
+
+* **Ground Blocks:**
+
+  * *Magnetite Rock* → black metallic stone with faint shimmering sheen.
+  * *Charged Crystal Clusters* → glowing blue-violet crystals that arc small sparks.
+
+* **Fauna:**
+
+  * *Magnet Wraiths* → humanoid silhouettes of crackling electricity. Hostile, pull players with magnetic tethers. Drop **Charged Essence** → GT superconductors.
+  * *Ore Drones* → small floating mineral constructs that “mine” asteroids, attack intruders. Drop raw ores (Uranium/Thorium dusts).
+
+* **Mini-Boss:** **Aurora Titan**
+
+  * Colossal humanoid made of pure magnetic energy with crystalline armor fragments orbiting its body.
+  * Mechanics: pulls metal items from player inventory, temporarily disables certain weapons.
+  * Drops: **Magnet Core** → required for GT advanced superconductors and fusion magnets.
+
+---
+
+### 🌑 Sunspot Fields
+
+* **Terrain/Palette:**
+  Dark volcanic plains broken by massive pits of black plasma-shadow. The air glows faintly red, but surface looks almost black.
+
+* **Ground Blocks:**
+
+  * *Sunspot Stone* → jet-black basalt with faint red glowing veins.
+  * *Shadow Plasma Pools* → liquid form, damaging like lava but black with red sparks.
+
+* **Fauna:**
+
+  * *Shadow Drakes* → dragon-like plasma beings, black bodies with glowing red fissures. Drop **Dark Plasma** → GT plasma torch fuel.
+  * *Ash Phantoms* → smoky floating creatures. Drop **Ash Residue** → chemical component.
+
+* **Mini-Boss:** **Osmium Colossus**
+
+  * Massive molten golem with dark reflective armor plates.
+  * Mechanics: ground smash → spawns waves of shadow plasma. Resistant to ranged attacks.
+  * Drops: **Osmium Core** → alloy unlock (Osmiridium).
+
+---
+
+### ⚡ Solar Arrays
+
+* **Terrain/Palette:**
+  Artificial biome: colossal ancient solar collectors floating in space, cracked and partly ruined. Surfaces are tiled with mirror-like reflective blocks, some shattered.
+
+* **Ground Blocks:**
+
+  * *Solar Panel Tiles* → reflective glassy panels.
+  * *Array Frames* → metallic blocks with exposed circuits.
+
+* **Fauna:**
+
+  * *Array Sentinels* → flying drone mobs shaped like golden scarabs. Drop **Circuit Fragments** → GT electronics.
+  * *Light Moths* → huge glowing moths attracted to reflective panels. Passive, ambient. Drop **Photon Scales** → optical fiber component.
+
+* **Mini-Boss:** **Array Overlord**
+
+  * Giant drone with a solar-dish head and multiple wings of broken panel shards.
+  * Mechanics: fires solar beams reflected through panel fragments.
+  * Drops: **Solar Matrix** → GT high-tier solar cells.
+
+---
+
+## 🌟 Main Boss: **Stellar Avatar**
+
+* **Arena:**
+  A colossal sun-platform surrounded by plasma rivers and magnetic auroras. Stage rotates slowly as if orbiting.
+
+* **Appearance:**
+  Humanoid figure made of molten plasma and golden solar armor. Crown of solar flares around its head, eyes glowing white-hot. Arms end in clawed gauntlets radiating light beams.
+
+* **Phases:**
+
+  1. **Solar Storm** → summons plasma meteors, arena floods with flarelings.
+  2. **Magnetic Collapse** → arena segments pulled inward, creating black hole–like hazards.
+  3. **Coronal Wrath** → Avatar erupts in constant light aura, screen whites out periodically, requiring players to hide behind debris.
+
+* **Drops:**
+
+  * **Solar Heart** → GT fusion reactor unlock (Tier 5).
+  * **Flareblade** → sword with solar beam ranged attack.
+  * **Helium Core** → fuels helium-3 chain for GT rockets.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Black rock with glowing gold cracks.
+* **Plasma:** Orange-yellow streams, red-black shadow pools.
+* **Magnetic Effects:** Cyan, violet auroras.
+* **Arrays:** Metallic silver with mirror panels.
+* **Skybox:** Sun’s surface, plasma ripples, auroras above.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Alpha Centauri A = **Tier 5 (Fusion + Advanced Alloys)**.
+* **Ore Access:**
+
+  * Helium-3 (fusion), Uranium/Thorium (nuclear), Osmium/Iridium (alloys).
+* **Key GT Unlocks:**
+
+  * **Solar Heart** → unlocks fusion reactor multiblock.
+  * **Magnet Core** → superconductors.
+  * **Osmium Core** → Osmiridium chain.
+  * **Helios/Array drops** → solar/fusion tech upgrades.
+
+---
+
+---
+
+# 🌍 Planet Design Document: **Kepler-452b**
+
+---
+
+## Planet Overview
+
+* **Tier:** 5 (first Earth-analog world — lush, fertile, “false sense of safety”).
+* **Atmosphere:** Breathable, heavy oxygen content. Sky is bright turquoise with long white clouds. Daylight feels more intense, casting high-contrast shadows. Nights are star-filled with faint auroras.
+* **Gravity:** Slightly higher than Earth (1.2g). Players jump lower, sprint drains hunger faster, and knockback is reduced.
+* **Hazards:**
+
+  * Higher oxygen = mobs and fires ignite easily.
+  * Certain predators in the **River Valleys** ambush from water.
+  * Sudden thunderstorms are common in **Meadowlands**.
+* **Base Stone:** **Keplerite** — grey-green rock with faint quartz streaks. Variants: cobble, brick, mossy, polished.
+* **GregTech Ore Map:**
+
+  * **Temperate Forest:** Tin, Zinc.
+  * **Highlands:** Copper, Bauxite (Aluminium).
+  * **River Valleys:** Lead, Silver.
+  * **Meadowlands:** Coal, Lignite, Graphite.
+  * **Rocky Scrub:** Iron, Nickel, Cobalt.
+
+---
+
+## Biomes
+
+---
+
+### 🌳 Temperate Forest
+
+* **Terrain/Palette:**
+  Dense forests with rolling hills, mossy ground, and glowing underbrush. Mist lingers in mornings, birdsong ambience.
+
+* **Ground Blocks:**
+
+  * *Keplerite Grass* → lush green with faint blue tint.
+  * *Forest Loam* → dark rich soil block variant.
+
+* **Trees/Flora:**
+
+  * *Giant Broadleaf Trees* → massive oaks with thick moss-covered trunks, canopies spreading 10–15 blocks.
+  * *Lumishrooms* → glowing mushrooms scattered under trees, casting cyan light.
+  * *Vine Curtains* → hanging vines that sparkle faintly at night.
+
+* **Fauna:**
+
+  * *Antlered Grazers* → elk-like creatures with crystalline antlers. Drop **Antler Shards** → GT catalyst in fertilizer chemistry.
+  * *Forest Hounds* → wolf-like predators with bark-textured fur. Aggressive in packs. Drop **Canine Fangs** → chemical reagent (fluorine).
+
+* **Mini-Boss:** **Grove Guardian**
+
+  * Tree-like golem made of moss and stone. Eyes glow green.
+  * Abilities: slams ground to summon root walls, throws boulders.
+  * Drops: **Verdant Core** → used in GT bio-chemistry chain (fertilizers, crop boosting).
+
+---
+
+### 🏔 Highlands
+
+* **Terrain/Palette:**
+  Jagged mountain ridges with sheer cliffs and snow at peaks. Wind whistles constantly.
+
+* **Ground Blocks:**
+
+  * *Highland Stone* → green-grey cracked Keplerite.
+  * *Alpine Snow* → bright white snow layer variant with faint blue sheen.
+
+* **Trees/Flora:**
+
+  * *Pine Giants* → tall coniferous trees, trunks made of dark resinous wood, needles with blue tint.
+  * *Quartz Blossoms* → crystalline plants sprouting between rocks, glow faintly at night.
+
+* **Fauna:**
+
+  * *Cliff Rams* → goat-like creatures with crystal horns. Drop **Crystal Horns** → GT grinding catalyst.
+  * *Sky Hawks* → raptor birds swooping on players. Drop **Feathered Talons** → lightweight alloys in GT.
+
+* **Mini-Boss:** **Highland Titan**
+
+  * Gigantic ram golem, stone armor and glowing horns.
+  * Charges down slopes, creating avalanches of falling rocks.
+  * Drops: **Highland Core** → unlocks advanced GT blast furnace temperature boosts.
+
+---
+
+### 🌊 River Valleys
+
+* **Terrain/Palette:**
+  Wide valleys carved by turquoise rivers. Riverbanks are lush and fertile, with patches of reeds and willow-like trees.
+
+* **Ground Blocks:**
+
+  * *River Clay* → teal-tinted clay block.
+  * *Reed Sand* → fine river sand with greenish hue.
+
+* **Trees/Flora:**
+
+  * *Willow Trees* → long drooping cyan-leaf trees lining rivers, leaves shimmer faintly in moonlight.
+  * *Reed Clusters* → tall glowing reeds in shallow water.
+
+* **Fauna:**
+
+  * *River Crocolisks* → 3-block-long crocodilian predators with crystalline back ridges. Ambush from water. Drop **Reptilian Scales** → GT polymer reinforcement.
+  * *Glowfish* → small fish, fins glowing yellow. Drop **Fish Oil Extract** → GT chemical base.
+
+* **Mini-Boss:** **River Leviathan**
+
+  * Gigantic armored crocodile with jagged crystalline plates.
+  * Pulls players into water, performs death-roll attacks.
+  * Drops: **Aquatic Core** → unlocks GT polymer chemistry branch.
+
+---
+
+### 🌾 Meadowlands
+
+* **Terrain/Palette:**
+  Vast flower-dotted plains with rolling grass hills. Frequent thunderstorms strike open areas.
+
+* **Ground Blocks:**
+
+  * *Meadow Grass* → brighter green grass.
+  * *Wildflower Soil* → soil block variant with embedded colorful flowers.
+
+* **Trees/Flora:**
+
+  * *Bloomtrees* → medium trees with pink and cyan blossoms, petals constantly drifting off.
+  * *Thunderblossoms* → rare plants that glow faintly yellow, attract lightning strikes.
+
+* **Fauna:**
+
+  * *Meadow Grazers* → fluffy quadrupeds with flower-like manes. Passive. Drop **Fiber Wool** → textile replacement.
+  * *Thunder Stags* → deer-like predators whose antlers crackle with lightning. Aggressive when storms are active. Drop **Storm Antlers** → GT capacitor upgrade.
+
+* **Mini-Boss:** **Thunder Herald**
+
+  * Stag-like creature with massive lightning-infused antlers.
+  * Summons lightning strikes and charges through fields.
+  * Drops: **Storm Core** → capacitor unlock for GT energy storage.
+
+---
+
+### ⛰ Rocky Scrub
+
+* **Terrain/Palette:**
+  Arid rocky plateaus with sparse vegetation. Dust storms occasionally occur.
+
+* **Ground Blocks:**
+
+  * *Scrubrock* → brown-grey cracked stone.
+  * *Dust Soil* → barren reddish dirt block.
+
+* **Trees/Flora:**
+
+  * *Scrubbrush Trees* → short twisted trees with dark wood and sparse leaves.
+  * *Cactus Shrubs* → spiny desert-like bushes.
+
+* **Fauna:**
+
+  * *Scrub Lizards* → fast reptilian mobs with armored scales. Drop **Scaled Hides** → GT heat insulation material.
+  * *Rock Tortoises* → heavily armored turtle-like mobs with stony shells. Drop **Tortoise Shells** → GT composite recipes.
+
+* **Mini-Boss:** **Stoneback Behemoth**
+
+  * Massive tortoise-like beast with rocky armor.
+  * Withdraws into shell to deflect projectiles, charges forward in rolling attack.
+  * Drops: **Stoneback Core** → GT high-durability machine casings.
+
+---
+
+## 🌟 Main Boss: **Verdant Colossus**
+
+* **Arena:**
+  Found in a central valley where all biomes converge. A colossal tree-being, half made of Keplerite stone, half of wood, stands rooted in the earth.
+
+* **Appearance:**
+  15-block tall humanoid treant with bark-stone body, crystalline veins running through limbs, glowing green eyes. Shoulders sprout living trees, glowing petals drifting from them.
+
+* **Phases:**
+
+  1. **Nature’s Wrath** → summons root walls, tangling vines, and grove guardians.
+  2. **River Surge** → floods arena temporarily, spawns crocolisks.
+  3. **Storm Bloom** → thunderstorm triggers, lightning strikes everywhere, Colossus hurls glowing boulders.
+
+* **Drops:**
+
+  * **Verdant Heart** → progression key unlocking **Tier 6 Biochemical & Polymer GT Chains**.
+  * **Bloomblade** → sword that occasionally sprouts thorn vines around struck mobs.
+  * **Gaian Core** → unlocks improved GT fertilizer chain.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Grey-green with quartz streaks.
+* **Grass:** Blue-green, lush and vibrant.
+* **Foliage:** Cyan-tinged, with blossoms of pink and teal.
+* **Water:** Bright turquoise.
+* **Sky:** Turquoise daylight, starry nights with auroras.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Kepler-452b = **Tier 6** (biochemical, polymer, fertilizer chains).
+* **Ore Access:**
+
+  * Bauxite (aluminium), Nickel, Cobalt, Graphite, etc.
+* **Key GT Unlocks:**
+
+  * **Verdant Heart** → polymer/biochem progression.
+  * **Storm Core** → energy capacitor upgrades.
+  * **Aquatic Core** → polymer fluids.
+  * **Stoneback Core** → durable machine casings.
+  * **Highland Core** → blast furnace boost.
+
+---
+
+---
+
+# 🌊 Planet Design Document: **Aqua Mundus**
+
+---
+
+## Planet Overview
+
+* **Tier:** 6 (post-Kepler, entry to advanced fluid processing).
+* **Atmosphere:** Breathable above the water’s surface, but 95% of the planet is ocean. The sky is pale cyan by day, deep navy with glowing auroras at night.
+* **Gravity:** Slightly lower than Earth (0.8g). Swimming is easier, jumps higher, falls slower.
+* **Hazards:**
+
+  * Players require **pressurized diving gear** in deeper zones (>32 blocks down).
+  * **Abyssal pressure damage** in trenches without advanced GT diving suits.
+  * **Hydrothermal Vents** emit scalding water clouds.
+* **Base Stone:** **Aqualite** — smooth blue-grey stone forming seafloor crusts. Variants: cobbled, polished, coral-encrusted.
+* **GregTech Ore Map:**
+
+  * **Shallow Seas:** Salt, Borax.
+  * **Kelp Forests:** Phosphorite, Barium.
+  * **Abyssal Trenches:** Manganese, Nickel, Cobalt.
+  * **Hydrothermal Vents:** Sulfur, Copper, Zinc.
+  * **Ice Shelves:** Cryolite, Lithium.
+
+---
+
+## Biomes
+
+---
+
+### 🌊 Shallow Seas
+
+* **Terrain/Palette:**
+  Crystal-clear turquoise waters, sandy seafloor of *Aqualite Sand*. Coral patches scatter across terrain. Sunlight penetrates fully, creating bright shifting patterns.
+
+* **Ground Blocks:**
+
+  * *Aqualite Sand* → pale cyan sand.
+  * *Coralstone* → colorful block with embedded coral fossils.
+
+* **Flora:**
+
+  * *Coral Fans* → large, flat coral sheets in pink, orange, and teal.
+  * *Sea Blossoms* → glowing aquatic flowers anchored to sand.
+
+* **Fauna:**
+
+  * *Reefbacks* → large turtle-like creatures with coral growing on shells. Passive. Drop **Coral Plates** → GT filtration membranes.
+  * *Stingtails* → fish with glowing tails, poisonous stingers. Drop **Venom Sacs** → GT chemical catalyst.
+
+* **Mini-Boss:** **Reef Guardian**
+
+  * Gigantic armored turtle, \~8 blocks long, coral-encrusted shell.
+  * Attacks by spinning, creating whirlpools.
+  * Drops: **Reef Core** → unlocks GT desalination/membrane tech.
+
+---
+
+### 🌿 Kelp Forests
+
+* **Terrain/Palette:**
+  Tall kelp strands rising 15–20 blocks high, forming green underwater jungles. Visibility is limited. Schools of glowing fish dart between fronds.
+
+* **Ground Blocks:**
+
+  * *Kelproot Soil* → dark greenish seabed soil.
+  * *Luminescent Pod Blocks* → kelp nodes that glow faint cyan.
+
+* **Flora:**
+
+  * *Giant Kelp* → vertical stalks with bioluminescent nodules.
+  * *Reed Coral* → coral resembling bamboo clusters.
+
+* **Fauna:**
+
+  * *Kelp Stalkers* → eel-like predators that weave between kelp, ambushing players. Drop **Elastic Tendons** → GT flexible polymers.
+  * *Glow Shoals* → passive glowing fish. Drop **Luminous Oil** → GT lubricant.
+
+* **Mini-Boss:** **Kelp Serpent**
+
+  * Snake-like aquatic creature, \~12 blocks long, body camouflages within kelp.
+  * Abilities: constricts players, spawns kelp entanglements.
+  * Drops: **Serpent Core** → unlocks GT synthetic polymer recipes.
+
+---
+
+### 🌌 Abyssal Trenches
+
+* **Terrain/Palette:**
+  Immense chasms plunging into black depths. Light vanishes below y=30. Seafloor littered with jagged Aqualite spikes and glowing deep-sea fauna.
+
+* **Ground Blocks:**
+
+  * *Abyssal Rock* → pitch-black Aqualite with faint blue cracks.
+  * *Pressure Crystal* → rare glowing block that dims under torchlight.
+
+* **Flora:**
+  Sparse — faintly glowing sponges, tiny light-emitting barnacles.
+
+* **Fauna:**
+
+  * *Abyss Horrors* → grotesque deep-sea fish with massive jaws and bioluminescent lures. Aggressive. Drop **Pressure Organs** → GT extreme-pressure chemistry.
+  * *Shadow Rays* → manta-like creatures, pitch-black with glowing eyes. Drop **Dark Membranes** → GT vacuum tube insulators.
+
+* **Mini-Boss:** **Leviathan Horror**
+
+  * Colossal anglerfish monster, body 15 blocks long. Lure glows blood-red.
+  * Mechanics: uses lure to draw players, then lunges.
+  * Drops: **Abyssal Core** → unlocks GT pressure reactors.
+
+---
+
+### 🌋 Hydrothermal Vents
+
+* **Terrain/Palette:**
+  Towering black chimneys vent superheated water clouds. Seafloor around vents glows faint red with mineral deposits.
+
+* **Ground Blocks:**
+
+  * *Ventstone* → black porous stone with glowing orange streaks.
+  * *Sulfur Nodules* → yellow lumps embedded around vents.
+
+* **Flora:**
+
+  * *Tubeworm Colonies* → glowing red-white clusters around vent bases.
+  * *Heat Corals* → coral structures glowing bright red.
+
+* **Fauna:**
+
+  * *Vent Crawlers* → crab-like creatures with mineral-encrusted shells. Drop **Sulfur Chitin** → GT sulfur chemistry.
+  * *Steam Wraiths* → spectral entities forming from vent steam. Drop **Condensed Essence** → GT chemical catalysts.
+
+* **Mini-Boss:** **Vent Titan**
+
+  * Gigantic crustacean with obsidian-black shell glowing red underneath.
+  * Attacks: smashes vents, releasing scalding bubbles.
+  * Drops: **Thermal Core** → unlocks GT geothermal energy chain.
+
+---
+
+### ❄ Ice Shelves
+
+* **Terrain/Palette:**
+  Massive floating ice sheets covering parts of the ocean surface. Light beneath is dim blue. Ice occasionally cracks with loud booms.
+
+* **Ground Blocks:**
+
+  * *Shelf Ice* → translucent blue-white ice, faint veins inside.
+  * *Frozen Salt Blocks* → embedded salt crystals glowing faintly.
+
+* **Flora:**
+
+  * *Cryo Moss* → faintly glowing moss that grows in cracks.
+  * *Ice Spires* → jagged translucent spikes rising under ice.
+
+* **Fauna:**
+
+  * *Frost Whales* → massive whale-like creatures with glowing blue patterns. Passive, song echoes in ocean. Drop **Whale Oil** → GT lubricant.
+  * *Icebiters* → wolf-fish predators, transparent bodies with sharp jaws. Drop **Cryo Glands** → GT coolant fluid.
+
+* **Mini-Boss:** **Glacier Colossus**
+
+  * Towering ice elemental humanoid (10 blocks tall).
+  * Creates ice walls, summons blizzards underwater.
+  * Drops: **Cryo Core** → refrigeration/cryogenics unlock in GT.
+
+---
+
+## 🌟 Main Boss: **Ocean Sovereign**
+
+* **Arena:**
+  A colossal whirlpool in the deepest trench, spiraling into darkness. At the center is a glowing throne-like coral structure.
+
+* **Appearance:**
+  Enormous kraken-like creature with a crystalline shell. Eight glowing tentacles, each ending in spiked crystalline tips. Central body has one massive golden eye.
+
+* **Phases:**
+
+  1. **Tentacle Phase** → tentacles lash out, grab players, slam them into ground.
+  2. **Whirlpool Phase** → Sovereign dives, whirlpool forms, pulling players down, spawning abyssal horrors.
+  3. **Eye of the Deep** → Sovereign surfaces, eye glows blindingly, firing energy beams while tentacles thrash wildly.
+
+* **Drops:**
+
+  * **Sovereign’s Eye** → progression key unlocking **Tier 7 GT Fluid Reactors**.
+  * **Tentacleblade** → weapon, attacks spawn water shockwave AoE.
+  * **Sovereign’s Core** → component for advanced fluid-handling multiblocks.
+
+---
+
+## 🎨 Color Palette
+
+* **Seafloor:** Cyan-blue with glowing corals.
+* **Water:** Turquoise shallows → indigo deep ocean.
+* **Flora:** Bright green kelp, glowing red tubeworms, cyan cryo moss.
+* **Sky:** Pale cyan day, navy with auroras at night.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Aqua Mundus = **Tier 7 (Advanced Fluid/Pressure Systems)**.
+* **Ore Access:**
+
+  * Manganese, Nickel, Cobalt, Lithium, Cryolite.
+* **Key GT Unlocks:**
+
+  * **Sovereign’s Eye** → unlocks fluid reactor multiblock.
+  * **Reef Core** → desalination unlock.
+  * **Serpent Core** → synthetic polymers.
+  * **Abyssal Core** → pressure reactor unlock.
+  * **Thermal Core** → geothermal chain.
+  * **Cryo Core** → cryogenic systems.
+
+---
+
+---
+
+# 🌋 Planet Design Document: **Inferno Prime**
+
+---
+
+## Planet Overview
+
+* **Tier:** 7 (post–Aqua Mundus, entering refractory alloy stage).
+* **Atmosphere:** Thin, sulfurous atmosphere. Breathable with filters, but prolonged exposure causes **heat exhaustion debuff** without proper GT cooling gear. The sky is dark crimson with glowing ash clouds.
+* **Gravity:** Normal (1.0).
+* **Hazards:**
+
+  * Ambient **heat aura** damages unprotected players.
+  * *Magma Caverns* emit **toxic sulfur gas clouds**.
+  * Frequent **volcanic eruptions**: lava geysers, ashfall reducing visibility.
+* **Base Stone:** **Basaltine** — black volcanic stone with red/orange glowing cracks. Variants: cracked, cobbled, polished, and magma-encrusted.
+* **GregTech Ore Map:**
+
+  * **Lava Seas:** Sulfur, Pyrite (Iron-Sulfur).
+  * **Basalt Flats:** Nickel, Chromium.
+  * **Obsidian Isles:** Tungsten, Iridium.
+  * **Ash Wastes:** Bauxite (Aluminium), Vanadium.
+  * **Magma Caverns:** Platinum, Palladium.
+
+---
+
+## Biomes
+
+---
+
+### 🌋 Lava Seas
+
+* **Terrain/Palette:**
+  Endless expanses of molten lava with rare basalt plateaus rising above. The horizon glows orange-red with heat shimmer effects.
+
+* **Ground Blocks:**
+
+  * *Molten Basalt* → black stone that radiates heat particles.
+  * *Lava Crust* → thin, brittle crust that breaks if stood on too long.
+
+* **Flora:**
+  Almost none. Sparse glowing *Fire Ferns* growing along basalt ridges, glowing ember-red.
+
+* **Fauna:**
+
+  * *Lava Serpents* → enormous eel-like creatures swimming through lava, bodies glowing with inner magma veins. Drop **Molten Scales** → GT refractory material.
+  * *Ember Flies* → swarms of glowing orange insects hovering above lava. Drop **Ignis Dust** → used in GT plasma torch fuels.
+
+* **Mini-Boss:** **Pyrohydra**
+
+  * Multi-headed serpent erupting from lava pools.
+  * Each head spews lava projectiles. When one head is destroyed, others grow stronger.
+  * Drops: **Hydra Core** → GT lava pump upgrade.
+
+---
+
+### 🪨 Basalt Flats
+
+* **Terrain/Palette:**
+  Endless black basalt plains, cracked with glowing red fissures. Ash particles drift constantly.
+
+* **Ground Blocks:**
+
+  * *Cracked Basalt* → fractured basalt emitting smoke.
+  * *Basalt Brimstone Nodes* → basalt blocks with yellow sulfur crystals.
+
+* **Flora:**
+  Sparse — *Cinder Shrubs*, ember-like bushes glowing faintly, resistant to fire.
+
+* **Fauna:**
+
+  * *Ash Hounds* → blackened wolf-like predators with glowing ember eyes. Drop **Cinder Pelts** → GT heat-resistant padding.
+  * *Rock Golems* → humanoid basalt constructs with molten cracks. Drop **Basalt Shards** → GT high-temp composites.
+
+* **Mini-Boss:** **Basalt Colossus**
+
+  * Towering basalt golem with molten core visible through cracks.
+  * Abilities: smashes ground → fissures radiate outward, erupting lava.
+  * Drops: **Basalt Core** → GT blast furnace heat capacity unlock.
+
+---
+
+### 🪨 Obsidian Isles
+
+* **Terrain/Palette:**
+  Floating islands of obsidian rising above lava lakes. Lightning arcs occasionally across the sky, striking islands.
+
+* **Ground Blocks:**
+
+  * *Obsidianstone* → smoother, darker obsidian variant.
+  * *Charged Obsidian* → obsidian block with glowing blue cracks (struck by lightning).
+
+* **Flora:**
+
+  * *Crystal Spikes* → jagged obsidian spires with faint purple glow.
+
+* **Fauna:**
+
+  * *Obsidian Crawlers* → spider-like mobs with black crystal legs. Drop **Shard Legs** → GT cutting tools.
+  * *Void Bats* → large winged creatures with obsidian hides, glowing purple eyes. Drop **Void Membranes** → GT vacuum-resistant materials.
+
+* **Mini-Boss:** **Obsidian Revenant**
+
+  * Tall humanoid formed from obsidian shards, glowing with purple inner light.
+  * Abilities: summons obsidian spikes, teleports short distances.
+  * Drops: **Revenant Core** → unlocks GT iridium/palladium processing.
+
+---
+
+### 🌫 Ash Wastes
+
+* **Terrain/Palette:**
+  Vast grey-black deserts of volcanic ash dunes. The sky here is dim with constant ashfall, visibility reduced.
+
+* **Ground Blocks:**
+
+  * *Ash Sand* → grey sand variant, leaves dust particles when walked on.
+  * *Buried Ore Nodules* → small boulder blocks containing GT ores.
+
+* **Flora:**
+
+  * *Ash Bloomers* → blackened flowers that erupt ash particles when touched.
+
+* **Fauna:**
+
+  * *Ash Wyrmlings* → small dragon-like mobs that burrow under ash. Drop **Ash Bones** → GT phosphorus.
+  * *Cinder Spirits* → ghostly ash humanoids. Drop **Spirit Dust** → chemical reagent.
+
+* **Mini-Boss:** **Ash Titan**
+
+  * Gigantic quadruped creature with ash armor.
+  * Abilities: stomps → ashstorm blinds players, strong knockback.
+  * Drops: **Ash Core** → GT vanadium steel alloy unlock.
+
+---
+
+### 🌑 Magma Caverns
+
+* **Terrain/Palette:**
+  Underground cave systems glowing red-orange. Magma falls from ceilings into bubbling pools. Sulfurous gas vents spurt out clouds.
+
+* **Ground Blocks:**
+
+  * *Magma Rock* → porous red-black stone with bubbling texture.
+  * *Sulfur Deposits* → yellow crusts forming around vents.
+
+* **Flora:**
+
+  * *Flamecaps* → glowing mushrooms, flicker between orange and red.
+
+* **Fauna:**
+
+  * *Magma Crawlers* → crustacean-like creatures with glowing underbellies. Drop **Molten Chitin** → GT refractory composites.
+  * *Infernal Shades* → shadowy entities wreathed in flame. Drop **Infernal Residue** → GT catalyst.
+
+* **Mini-Boss:** **Sulfur Behemoth**
+
+  * Massive lava-crust beast with sulfur nodules embedded in armor.
+  * Attacks: sprays molten sulfur clouds (blindness/poison).
+  * Drops: **Sulfur Core** → GT platinum group metals unlock.
+
+---
+
+## 🌟 Main Boss: **Infernal Sovereign**
+
+* **Arena:**
+  Central volcanic caldera with flowing lava falls. Arena shifts as lava floods and drains.
+
+* **Appearance:**
+  15-block tall humanoid demon-like figure made of basalt armor and molten cracks. Crown of flame constantly burning, wielding a molten greatsword.
+
+* **Phases:**
+
+  1. **Molten Phase** → sword slams create lava geysers, summons ember flies.
+  2. **Obsidian Phase** → Sovereign encases self in obsidian armor, resistant to damage, summons revenants.
+  3. **Ash Phase** → arena fills with ashstorm, visibility nearly gone, Sovereign attacks with flame dashes.
+
+* **Drops:**
+
+  * **Infernal Heart** → unlocks **Tier 8 GT Refractory Alloys** (tungstensteel, vanadium steel).
+  * **Flamesplitter** → greatsword with fire-slam AoE.
+  * **Molten Core** → used for GT crucible upgrades and high-heat reactors.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Black basalt, red cracks.
+* **Lava:** Deep orange-red, glowing bright at edges.
+* **Ash:** Grey-black sands, swirling dust particles.
+* **Obsidian:** Jet-black with faint purple cracks.
+* **Sky:** Crimson with drifting ash clouds.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Inferno Prime = **Tier 8 (Refractory Alloys, Extreme Heat Handling)**.
+* **Ore Access:**
+
+  * Tungsten, Iridium, Vanadium, Platinum group metals.
+* **Key GT Unlocks:**
+
+  * **Infernal Heart** → refractory alloy unlock.
+  * **Hydra Core** → lava pump upgrades.
+  * **Basalt Core** → blast furnace heat upgrade.
+  * **Revenant Core** → iridium/palladium unlock.
+  * **Ash Core** → vanadium steel unlock.
+  * **Sulfur Core** → PGM catalyst unlock.
+
+---
+
+---
+
+# ❄💎 Planet Design Document: **Crystalis**
+
+---
+
+## Planet Overview
+
+* **Tier:** 8 (post–Inferno Prime, progression into superconductors & cryogenics).
+* **Atmosphere:** Breathable but extremely thin, giving a constant “ice mist” visual. The sky is pale blue by day, shimmering with aurora bands at night.
+* **Gravity:** 0.9g (slightly less than Earth). Jumps are higher, but icy terrain causes reduced traction.
+* **Hazards:**
+
+  * Constant **Frostbite debuff** in open air without insulated GT suits.
+  * *Cryo Geysers* periodically erupt, freezing nearby players solid (immobilization effect).
+  * Deep **Pressure Depths** cause damage without advanced diving gear.
+* **Base Stone:** **Cryostone** — pale blue stone veined with frosty white streaks. Variants: cracked, mossy (icy), crystal-encrusted.
+* **GregTech Ore Map:**
+
+  * **Diamond Fields:** Diamond, Graphite.
+  * **Frosted Plains:** Tin, Zinc.
+  * **Cryo Geysers:** Cryolite, Lithium.
+  * **Ice Cliffs:** Bauxite, Aluminium.
+  * **Pressure Depths:** Nickel, Rare Earths.
+
+---
+
+## Biomes
+
+---
+
+### 💎 Diamond Fields
+
+* **Terrain/Palette:**
+  Vast icy plains scattered with exposed crystal outcroppings. Light refracts in dazzling rainbow beams across the horizon.
+
+* **Ground Blocks:**
+
+  * *Cryostone* with embedded diamond clusters.
+  * *Glacial Glass* → translucent ice blocks with shimmering inner facets.
+
+* **Flora:**
+
+  * *Crystal Bloom* → flower-like crystal structures that open and close with day/night cycle, scattering light particles.
+
+* **Fauna:**
+
+  * *Crystal Grazers* → quadrupeds with translucent crystalline hides. Passive. Drop **Crystal Shards** → GT semiconductor material.
+  * *Shardlings* → small aggressive mobs resembling living crystal shards. Drop **Shard Dust** → GT abrasives.
+
+* **Mini-Boss:** **Crystal Colossus**
+
+  * Massive golem made entirely of diamond-encrusted ice.
+  * Abilities: reflects light beams, causing blindness; slams ground to shatter terrain.
+  * Drops: **Crystal Core** → unlocks GT diamond lattice superconductors.
+
+---
+
+### ❄ Frosted Plains
+
+* **Terrain/Palette:**
+  Wide expanses of snow-dusted flatlands. Snowfall is near constant, piling deep.
+
+* **Ground Blocks:**
+
+  * *Snow-Capped Cryostone* → stone with frost overlay.
+  * *Permafrost Soil* → frozen soil variant.
+
+* **Flora:**
+  Sparse, mainly *Frost Moss* glowing faintly cyan in cracks.
+
+* **Fauna:**
+
+  * *Frost Hares* → fast-moving rabbit-like creatures with icy pelts. Drop **Frost Fur** → GT insulator.
+  * *Ice Stalkers* → wolf-like predators with frozen spines. Drop **Frozen Fangs** → chemical cryogenic catalyst.
+
+* **Mini-Boss:** **Frost Titan**
+
+  * Giant humanoid beast covered in ice plates.
+  * Abilities: stomps → freezes ground; roar summons blizzard.
+  * Drops: **Frost Core** → GT refrigeration chain unlock.
+
+---
+
+### 🌬 Cryo Geysers
+
+* **Terrain/Palette:**
+  Fields of icy stone perforated by geysers erupting jets of freezing mist every few minutes.
+
+* **Ground Blocks:**
+
+  * *Geyser Stone* → porous Cryostone with white crusts.
+  * *Frozen Vent Ice* → semi-transparent block, cracks when geyser erupts.
+
+* **Flora:**
+
+  * *Frostcaps* → mushroom-like crystalline fungi that glow faint blue, freeze when broken.
+
+* **Fauna:**
+
+  * *Mist Wraiths* → ghostly humanoids forming from vent gas. Drop **Condensed Vapor** → GT coolant fluid.
+  * *Vent Crawlers* → insectoid mobs with icy carapace, drop **Vent Chitin** → GT composite for cold-resistant casings.
+
+* **Mini-Boss:** **Cryovore**
+
+  * Gigantic insectoid with spiny frozen carapace.
+  * Abilities: breathes freezing mist, burrows into vents to ambush.
+  * Drops: **Cryo Core** → unlocks GT liquid helium production.
+
+---
+
+### 🧊 Ice Cliffs
+
+* **Terrain/Palette:**
+  Towering glacial cliffs and frozen ravines. Constant icy winds blow snow particles sideways.
+
+* **Ground Blocks:**
+
+  * *Cliff Ice* → layered translucent ice with faint fractures.
+  * *Alpine Cryostone* → pale-blue stone with snow crust.
+
+* **Flora:**
+
+  * *Icicle Spires* → tall spiked ice structures glowing faintly at night.
+
+* **Fauna:**
+
+  * *Cliff Raptors* → bird-like predators adapted to ice, with hooked claws. Drop **Icy Talons** → GT grinding catalyst.
+  * *Snow Gargoyles* → winged ice constructs that perch on cliffs. Drop **Frozen Wings** → GT light alloys.
+
+* **Mini-Boss:** **Glacier Sentinel**
+
+  * Towering humanoid carved from glacier ice, wings of frozen snow.
+  * Abilities: charges with icy claws, summons avalanches from cliffs.
+  * Drops: **Glacier Core** → GT bauxite/aluminium unlock.
+
+---
+
+### 🌊 Pressure Depths
+
+* **Terrain/Palette:**
+  Submerged under thick ice sheets, extreme pressure zones with pitch-black water. Glowing organisms faintly illuminate trenches.
+
+* **Ground Blocks:**
+
+  * *Deep Cryostone* → dark blue stone with glowing veins.
+  * *Pressure Crystals* → glowing blocks that pulse faintly.
+
+* **Flora:**
+  Sparse — glowing pressure sponges and thin light filaments.
+
+* **Fauna:**
+
+  * *Pressure Leviathans* → gigantic armored fish-like predators. Drop **Pressure Organs** → GT pressure chemistry.
+  * *Abyss Drifters* → translucent jellyfish, glowing red. Drop **Gelatinous Sacs** → GT polymers.
+
+* **Mini-Boss:** **Abyssal Colossus**
+
+  * Gigantic eel-like monster, armored with crystalline plates.
+  * Abilities: charges with immense speed, summons shockwaves in water.
+  * Drops: **Abyss Core** → GT extreme-pressure reactor unlock.
+
+---
+
+## 🌟 Main Boss: **Cryo Monarch**
+
+* **Arena:**
+  A frozen cathedral inside the largest ice cliff, glowing with refracted light. Frozen statues line the walls, half-buried in ice.
+
+* **Appearance:**
+  A towering humanoid figure (\~14 blocks tall) made of crystalline ice, crowned with a halo of floating frozen shards. Its body is translucent, veins glowing faint cyan.
+
+* **Phases:**
+
+  1. **Shard Storm** → hurls volleys of razor-sharp ice shards.
+  2. **Frozen Domain** → arena floor freezes solid, players slowed, Monarch teleports short distances.
+  3. **Glacial Collapse** → arena begins collapsing, icicles fall, Monarch smashes ground to create expanding frost shockwave.
+
+* **Drops:**
+
+  * **Frozen Heart** → progression unlock for **Tier 9 GT Cryogenic/Superconducting Systems**.
+  * **Shardblade** → sword with ice AoE, slows enemies.
+  * **Monarch Core** → superconducting coil unlock for GT fusion tech.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Pale blue-white with frosty cracks.
+* **Ice:** Translucent cyan, glowing facets.
+* **Flora:** Crystal blues, faint glowing moss.
+* **Sky:** Pale blue day, shimmering aurora night.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Crystalis = **Tier 9 (Cryogenics, Superconductors, Pressure Reactors)**.
+* **Ore Access:**
+
+  * Diamond, Cryolite, Nickel, Rare Earths.
+* **Key GT Unlocks:**
+
+  * **Frozen Heart** → superconductors.
+  * **Crystal Core** → diamond lattices.
+  * **Cryo Core** → helium/coolant chain.
+  * **Glacier Core** → aluminium unlock.
+  * **Abyss Core** → pressure reactors.
+
+---
+
+---
+
+# ⚡ Planet Design Document: **Stormworld**
+
+---
+
+## Planet Overview
+
+* **Tier:** 9 (post–Crystalis, first “gas giant” environment).
+* **Atmosphere:** Not directly breathable. Requires full GT life support & pressure gear. The sky is layered with storm bands, lightning constantly flashing in the distance.
+* **Gravity:** Heavy (1.5g). Players move slower, jump lower, and fall damage is doubled.
+* **Hazards:**
+
+  * Constant **electrical storms**: lightning strikes randomly, even indoors without shielding.
+  * High gravity → faster hunger drain, slower mining.
+  * **Metallic Hydrogen Depths** apply crushing pressure without advanced GT pressure suits.
+* **Base Stone/Blocks:**
+
+  * *Stormstone* → dark-blue-grey rock forming floating platforms in the upper atmosphere.
+  * *Charged Crystal* → glowing yellow-orange crystalline nodes, crackle with sparks.
+* **GregTech Ore Map:**
+
+  * **Upper Atmosphere:** Helium-3 gas pockets.
+  * **Storm Bands:** Nickel, Cobalt, Manganese.
+  * **Lightning Fields:** Niobium, Tantalum.
+  * **Eye of the Storm:** Tungsten, Iridium.
+  * **Metallic Hydrogen Depths:** Rare Earths, Exotic Hydrogen (GT fusion fuel).
+
+---
+
+## Biomes
+
+---
+
+### ☁ Upper Atmosphere
+
+* **Terrain/Palette:**
+  Floating platforms of stormstone suspended in thick golden-white cloud layers. Constant wind particles swirl, pushing players slightly.
+
+* **Ground Blocks:**
+
+  * *Stormstone* with faint blue cracks.
+  * *Cloud Blocks* → semi-solid white blocks that dissipate if broken, reform over time.
+
+* **Flora:**
+
+  * *Sky Vines* → translucent vines drifting in the wind, glowing faintly cyan.
+
+* **Fauna:**
+
+  * *Sky Whales* → massive flying leviathans, bodies patterned with glowing veins. Passive. Drop **Whale Blubber** → GT lubricants.
+  * *Cloud Rays* → manta-like flyers, wings sparking with static electricity. Drop **Static Membranes** → GT capacitor components.
+
+* **Mini-Boss:** **Aerial Behemoth**
+
+  * A colossal sky whale corrupted with lightning veins.
+  * Abilities: unleashes sonic shockwaves, summons cloud rays.
+  * Drops: **Aerial Core** → unlocks GT helium-3 capture systems.
+
+---
+
+### 🌪 Storm Bands
+
+* **Terrain/Palette:**
+  Endless swirling cloud belts in shades of brown, red, and gold. Visibility is low, with strong winds pushing players sideways.
+
+* **Ground Blocks:**
+
+  * *Condensed Stormstone* → denser block, dark brown with faint motion texture.
+  * *Ion Spires* → vertical crystalline spires that constantly spark.
+
+* **Fauna:**
+
+  * *Storm Drakes* → serpentine lightning dragons flying through the bands. Drop **Storm Essence** → GT capacitor recipes.
+  * *Gust Wraiths* → humanoid figures of pure wind and static. Drop **Compressed Air Essence** → GT pneumatic systems.
+
+* **Mini-Boss:** **Tempest Serpent**
+
+  * Gigantic storm drake with crackling golden scales.
+  * Abilities: creates tornadoes that lift players into the air.
+  * Drops: **Tempest Core** → GT high-voltage capacitor unlock.
+
+---
+
+### ⚡ Lightning Fields
+
+* **Terrain/Palette:**
+  Plains of stormstone fractured by massive lightning strikes. Lightning bolts hit every 15–20 seconds, leaving glass-like fused patches.
+
+* **Ground Blocks:**
+
+  * *Fulgurite Blocks* → glassy fused sand-like material, glowing faintly yellow.
+  * *Charged Crystals* → jagged clusters emitting sparks.
+
+* **Fauna:**
+
+  * *Fulminators* → quadrupeds with crystalline horns that discharge lightning. Drop **Charged Horns** → GT superconductors.
+  * *Spark Beetles* → insect mobs glowing with static, explode when killed. Drop **Electro Residue** → GT capacitor material.
+
+* **Mini-Boss:** **Storm Titan**
+
+  * Humanoid giant armored with fulgurite plating.
+  * Abilities: summons lightning strikes to targeted blocks, ground slam electrifies nearby terrain.
+  * Drops: **Lightning Core** → GT niobium-tantalum superconductors.
+
+---
+
+### 👁 Eye of the Storm
+
+* **Terrain/Palette:**
+  A massive calm vortex, sky clear above with sunlight shining down. The ground is smooth stormstone, marked by deep fissures glowing faint blue.
+
+* **Ground Blocks:**
+
+  * *Calmstone* → pale-blue polished stone.
+  * *Storm Rift Blocks* → fissures filled with glowing light.
+
+* **Fauna:**
+
+  * *Eye Serpents* → serpents with luminous white scales. Drop **Serpent Scales** → GT light alloys.
+  * *Calm Spirits* → rare neutral mobs resembling glowing humanoids. Drop **Pure Essence** → GT catalytic chemistry.
+
+* **Mini-Boss:** **Cyclone Guardian**
+
+  * Floating armored construct with a glowing orb core.
+  * Abilities: summons mini-cyclones that trap players, reflects ranged attacks.
+  * Drops: **Cyclone Core** → GT turbine upgrade.
+
+---
+
+### 💠 Metallic Hydrogen Depths
+
+* **Terrain/Palette:**
+  Crushing pressure zone deep in the gas giant. The ground glows silver-blue with constant shimmering effects. Movement is slowed by 50% without GT exo-suits.
+
+* **Ground Blocks:**
+
+  * *Metallic Hydrogen Blocks* → shimmering animated-texture block.
+  * *Deep Cryo Crystal* → glowing cyan-white crystal.
+
+* **Fauna:**
+
+  * *Hydrogen Beasts* → massive quadrupeds with translucent bodies filled with glowing liquid. Drop **Hydrogen Hearts** → GT fusion fuel precursors.
+  * *Pressure Horrors* → twisted creatures with glowing eyes, immune to knockback. Drop **Dense Membranes** → GT high-pressure casings.
+
+* **Mini-Boss:** **Depth Leviathan**
+
+  * Titanic beast, 20 blocks long, shimmering with metallic hydrogen glow.
+  * Abilities: crushes terrain with body rolls, releases high-pressure shockwaves.
+  * Drops: **Hydrogen Core** → GT exotic fuel unlock.
+
+---
+
+## 🌟 Main Boss: **Stormlord Colossus**
+
+* **Arena:**
+  Floating platform within the deepest storm vortex, lightning bolts constantly striking around it.
+
+* **Appearance:**
+  A 20-block tall humanoid made of stormstone, covered in glowing crackling lightning veins. Head crowned with a halo of lightning arcs.
+
+* **Phases:**
+
+  1. **Thunder Phase** → hurls lightning bolts, summons fulminators and spark beetles.
+  2. **Tempest Phase** → summons tornadoes across arena, creates knockback shockwaves.
+  3. **Cataclysm Phase** → entire arena struck by chain lightning every 5 seconds, forcing players to move constantly.
+
+* **Drops:**
+
+  * **Stormheart** → progression unlock for **Tier 10 GT Exotic Superconductors & High-Energy Fuels**.
+  * **Thundermaul** → warhammer weapon, slams ground to spawn chain lightning.
+  * **Colossus Core** → required for GT high-voltage transformer upgrades.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Dark stormstone with glowing veins.
+* **Lightning:** Bright white-yellow, occasionally violet arcs.
+* **Clouds:** Golden-brown, deep red, and pale white belts.
+* **Skybox:** Constant swirling bands with flashes of lightning.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Stormworld = **Tier 10 (Exotic Superconductors, High-Energy Fuels)**.
+* **Ore Access:**
+
+  * Niobium, Tantalum, Iridium, Exotic Hydrogen.
+* **Key GT Unlocks:**
+
+  * **Stormheart** → exotic superconductors + HV transformers.
+  * **Aerial Core** → helium-3 systems.
+  * **Tempest Core** → high-voltage capacitors.
+  * **Lightning Core** → niobium-tantalum superconductors.
+  * **Hydrogen Core** → exotic fuels.
+
+---
+
+---
+
+# 🌐 Planet Design Document: **Ringworld Megastructure**
+
+*(Combines Ringworld Prime + Aurelia Ringworld concepts into one cohesive Halo-inspired artificial habitat with urbanized sectors.)*
+
+---
+
+## Planet Overview
+
+* **Tier:** 11 (late megastructure tier, post–Stormworld).
+* **Atmosphere:** Fully engineered — breathable, maintained by atmosphere processors. Weather patterns are **artificially regulated**: cloud bands form and dissipate unnaturally fast. The sky curves upward into the visible arc of the ring. Occasionally, giant “orbital mirrors” sweep shadows across entire biomes.
+* **Gravity:** 1.0g simulated by centrifugal spin. Edge zones near the rim have altered gravity (0.5–1.5g).
+* **Hazards:**
+
+  * **Shadow Strips** cast into semi-permanent night → spawn shadow mobs.
+  * Collapsed urban arcologies → falling debris and hostile security constructs.
+  * Maintenance tunnels → tight, hostile, machine-filled corridors.
+* **Base Stone/Blocks:**
+
+  * *Ring Alloy* → silver-white structural alloy (foundation block).
+  * *Plasteel Paneling* → smooth white panels for arcology interiors.
+  * *Circuit Flooring* → glowing cyan lines in maintenance zones.
+* **GregTech Ore Map:**
+
+  * **Ring Ice Fields:** Deuterium/Ice → hydrogen chain.
+  * **Dust Belts:** Titanium, Aluminium.
+  * **Mining Platforms:** Uranium, Thorium.
+  * **Habitation Plains:** Copper, Tin, Phosphates.
+  * **Arcology Districts:** Rare Earths, Platinum.
+  * **Maintenance Tunnels:** Exotic Alloys, Circuits.
+  * **Shadowed Rims / Edge Trenches:** Niobium, Tungsten.
+
+---
+
+## Biome Groups
+
+---
+
+### 🌱 Natural Zones (Halo-style)
+
+* **Ring Ice Fields**
+  Frozen expanses, reflecting the far arc of the ring above.
+
+  * Blocks: Cryo-Alloy Ice, Frozen Ringstone.
+  * Fauna: Glacial Grazers, Polar Drakes.
+  * Mini-Boss: **Ice Warden** → unlocks GT deuterium/coolants.
+
+* **Dust Belts**
+  Semi-arid stretches of engineered desert, dunes overlaying exposed alloy panels.
+
+  * Blocks: Ring Dust, Exposed Alloy Plates.
+  * Fauna: Sand Striders, Dust Phantoms.
+  * Mini-Boss: **Dust Colossus** → titanium-aluminium alloys.
+
+* **Low-Gravity Meadows**
+  Curved grasslands where structural flaws reduce gravity.
+
+  * Blocks: Ring Grass, Soil Alloy Mix.
+  * Fauna: Float Beasts, Sky Flitters.
+  * Mini-Boss: **Meadow Leviathan** → aerogels & buoyant composites.
+
+* **Shadowed Rims**
+  Permanent night zones under orbital mirrors.
+
+  * Blocks: Shadow Alloy, Mycoglow mats.
+  * Fauna: Shadow Hunters, Fungal Shamblers.
+  * Mini-Boss: **Shadow Revenant** → rare earth unlock.
+
+---
+
+### 🏙 Urban/Artificial Zones (Aurelia-style)
+
+* **Habitation Plains**
+  Arcology-style districts, half-collapsed, overrun by flora. Towers rise like forests of alloy.
+
+  * Blocks: Plasteel Panels, Alloyed Brickwork.
+  * Fauna: Scavenger mobs (hybrid humanoids), Hover Beetles.
+  * Mini-Boss: **Arcology Warlord** → unlocks GT advanced urban salvage.
+
+* **Arcology Districts**
+  Towering city-like biome, neon glow visible even in day cycle. Ruins crawl with drones.
+
+  * Blocks: Circuit Flooring, Neon Glass.
+  * Fauna: Security Drones, Alloy Guardians.
+  * Mini-Boss: **Neon Sentinel** → GT nanocircuits unlock.
+
+* **Sunline Boulevard**
+  A colossal reflective strip running the length of the ring, focusing sunlight. Constantly bright.
+
+  * Blocks: Solar Mirrors, Reflective Alloy.
+  * Fauna: Light Moths, Solar Drones.
+  * Mini-Boss: **Heliolith** → photonic GT unlocks.
+
+* **Maintenance Tunnels**
+  Interior ring infrastructure — endless alloy corridors, machinery humming.
+
+  * Blocks: Maintenance Alloy, Live Conduits.
+  * Fauna: Worker Drones, Repair Spiders.
+  * Mini-Boss: **Tunnel Overseer** → unlocks GT exotic alloy recipes.
+
+* **Edge Trenches**
+  Collapse zones at rim edges, exposing the ring’s structural spine.
+
+  * Blocks: Collapsed Alloy, Fractured Supports.
+  * Fauna: Alloy Serpents, Edge Beasts.
+  * Mini-Boss: **Trench Horror** → tungsten alloy unlock.
+
+---
+
+## 🌟 Main Boss: **Guardian Prime**
+
+* **Arena:**
+  Central control hub deep in the spine of the ring. A massive chamber with spinning gyroscopes, glowing conduits, and collapsing platforms as battle escalates.
+
+* **Appearance:**
+  20-block tall humanoid mech, forged from ring alloys. Head resembles a knight’s helm, body segmented with glowing cyan joints. Wields a massive alloy greatsword and energy shield.
+
+* **Phases:**
+
+  1. **Defense Protocol** → summons swarms of drones, activates rotating shield barriers.
+  2. **Siege Mode** → Guardian leaps, smashes ground to destabilize platforms, fires plasma beams.
+  3. **Fail-safe Override** → arena begins self-destruct sequence, collapsing terrain while Guardian goes berserk.
+
+* **Drops:**
+
+  * **Prime Core** → progression unlock for **Tier 11–12 GT Nanomaterials, Structural Alloys, Robotics**.
+  * **Guardian’s Blade** → energy greatsword, charged beam attack.
+  * **Nano Circuit Core** → required for GT nanocircuit recipes.
+
+---
+
+## 🎨 Color Palette
+
+* **Natural Zones:** Blue-green grass, white ice, brown dust, purple fungal glow.
+* **Urban Zones:** Silver-white alloys, neon cyan/purple highlights, reflective solar strips.
+* **Skybox:** Curved horizon visible → day cycle shows opposite arc glowing with reflected sunlight; night cycle reveals neon cities glittering across the sky.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Ringworld Megastructure = **Tier 11–12 (Nanomaterials, Structural Alloys, Robotics, Photonics)**.
+* **Ore Access:**
+
+  * Deuterium/Ice, Rare Earths, Titanium, Uranium, Exotic Alloys.
+* **Key GT Unlocks:**
+
+  * **Prime Core** → nanomaterials/robotics.
+  * **Dust Core** → titanium-aluminium alloys.
+  * **Shadow Core** → rare earths.
+  * **Overseer/Tunnel Cores** → exotic alloys.
+  * **Heliolith Core** → photonics.
+  * **Meadow Core** → aerogels.
+
+---
+
+---
+
+# 🌈 Planet Design Document: **Exotica**
+
+---
+
+## Planet Overview
+
+* **Tier:** 11 (post–Ringworld Prime, first reality-bending environment).
+* **Atmosphere:** Breathable, but filled with chromatic haze. The air refracts light unnaturally, producing rainbow shimmers. Occasionally, space and terrain seem to “fracture” — visual distortions affect player vision.
+* **Gravity:** Variable — averages \~1.0g, but *Fractal Forests* randomly shift between low (0.5g) and high (1.5g).
+* **Hazards:**
+
+  * Random **spatial distortions** teleport players short distances.
+  * *Quantum Glades* inflict nausea-like effects from light refraction.
+  * Ambient mobs phase in and out of visibility.
+* **Base Stone/Blocks:**
+
+  * *Exotite* → prismatic stone that shimmers in rainbow colors when moving.
+  * *Quantum Crystal* → glowing crystal block that shifts colors every few seconds.
+* **GregTech Ore Map:**
+
+  * **Chroma Steppes:** Niobium, Vanadium.
+  * **Resonant Dunes:** Tungsten, Molybdenum.
+  * **Quantum Glades:** Rare Earths, Indium.
+  * **Fractal Forest:** Exotic Catalysts (GT byproducts).
+  * **Prism Canyons:** Gallium, Tellurium.
+
+---
+
+## Biomes
+
+---
+
+### 🌈 Chroma Steppes
+
+* **Terrain/Palette:**
+  Rolling plains of color-shifting grass, glowing in bands of cyan, pink, and gold. The horizon flickers with rainbow mirages.
+
+* **Ground Blocks:**
+
+  * *Chromatic Grass* → changes color in cycles.
+  * *Prismatic Soil* → faintly glowing dirt variant.
+
+* **Flora:**
+
+  * *Prism Trees* → trunks of shifting metallic bark, leaves constantly cycle colors like stained glass.
+  * *Color Reeds* → tall, glowing reeds with bands of light.
+
+* **Fauna:**
+
+  * *Chroma Grazers* → deer-like mobs with kaleidoscopic hides. Drop **Prism Hides** → GT optical fiber components.
+  * *Spectral Hares* → rabbit-like, flicker in and out of visibility. Drop **Spectral Fur** → GT insulators.
+
+* **Mini-Boss:** **Prism Colossus**
+
+  * Giant crystalline humanoid reflecting beams of rainbow light.
+  * Abilities: refracts sunlight into laser beams, blinds players.
+  * Drops: **Prism Core** → GT photonic materials.
+
+---
+
+### 🎶 Resonant Dunes
+
+* **Terrain/Palette:**
+  Sand dunes of golden-orange that hum when stepped on. Wind causes the sands to vibrate, producing ambient resonant tones.
+
+* **Ground Blocks:**
+
+  * *Resonant Sand* → emits low hum when entities move across it.
+  * *Harmonic Stone* → patterned stone blocks that glow faintly with vibrations.
+
+* **Flora:**
+
+  * *Echo Cacti* → tall, hollow cactus-like plants that whistle in wind.
+
+* **Fauna:**
+
+  * *Tone Beasts* → quadrupeds whose rib-like exoskeletons resonate, producing eerie sounds. Drop **Resonant Bones** → GT acoustic catalysts.
+  * *Sonic Drifters* → floating jellyfish-like creatures that emit disruptive sound waves. Drop **Sonic Membranes** → GT vibration-dampening materials.
+
+* **Mini-Boss:** **Dune Siren**
+
+  * Humanoid made of resonating sand and stone, voice creates shockwave attacks.
+  * Drops: **Resonant Core** → GT piezoelectric unlock.
+
+---
+
+### 🌀 Quantum Glades
+
+* **Terrain/Palette:**
+  Glowing grasslands with distortions that warp light. Walking forward occasionally shifts terrain, visually “phasing” biomes around players.
+
+* **Ground Blocks:**
+
+  * *Quantum Grass* → glows faint blue, flickers in/out of existence.
+  * *Phase Blocks* → semi-transparent blocks that become solid when stepped on.
+
+* **Flora:**
+
+  * *Quantum Saplings* → trees that split into multiple semi-transparent copies.
+  * *Glade Blossoms* → flowers with petals orbiting around stems.
+
+* **Fauna:**
+
+  * *Phase Stalkers* → feline-like predators that blink between positions. Drop **Phase Claws** → GT quantum circuits.
+  * *Echo Wisps* → floating balls of refracted light. Drop **Light Essence** → GT lasers.
+
+* **Mini-Boss:** **Quantum Beast**
+
+  * Wolf-like predator constantly phasing, splitting into copies.
+  * Abilities: creates illusory doubles, teleports short distances.
+  * Drops: **Quantum Core** → GT quantum circuitry unlock.
+
+---
+
+### 🌳 Fractal Forest
+
+* **Terrain/Palette:**
+  A dense, alien forest where trees repeat recursively into fractal patterns. Branches split at impossible angles, leaves glow with shifting colors. Gravity fluctuates randomly here.
+
+* **Ground Blocks:**
+
+  * *Fractal Bark* → bark block with recursive patterns.
+  * *Recursive Leaves* → leaves that appear mirrored or duplicated.
+
+* **Flora:**
+
+  * *Fractal Trees* → bizarre trees, each branch splitting smaller at identical ratios.
+  * *Kaleidograss* → glowing grass that forms tessellated patterns.
+
+* **Fauna:**
+
+  * *Fractal Crawlers* → insect mobs with repeating segmented bodies. Drop **Fractal Dust** → GT catalysts.
+  * *Pattern Serpents* → snakes with fractal skin patterns that glow. Drop **Serpent Fractals** → GT fractal catalysts.
+
+* **Mini-Boss:** **Fractal Horror**
+
+  * Eldritch entity resembling a mirrored predator, limbs bending recursively.
+  * Abilities: confuses player vision, splits into fractal illusions.
+  * Drops: **Fractal Core** → GT exotic catalysts.
+
+---
+
+### 🌈 Prism Canyons
+
+* **Terrain/Palette:**
+  Canyon landscapes carved from shimmering prism rock. Walls glow faintly, creating rainbows in the sky.
+
+* **Ground Blocks:**
+
+  * *Prism Rock* → translucent rainbow stone.
+  * *Crystal Lattices* → embedded glowing crystals.
+
+* **Flora:**
+
+  * *Light Vines* → vines that glow and refract rainbow beams.
+
+* **Fauna:**
+
+  * *Prism Serpents* → crystalline snakes that refract light beams. Drop **Prism Scales** → GT optical composites.
+  * *Rainbow Mantises* → insect mobs with shimmering wings. Drop **Prismatic Wings** → GT photonic catalysts.
+
+* **Mini-Boss:** **Prism Seraph**
+
+  * Angelic crystalline entity with rainbow wings.
+  * Abilities: hurls rainbow spears, blinds with radiant aura.
+  * Drops: **Seraph Core** → GT photonic unlocks.
+
+---
+
+## 🌟 Main Boss: **Reality Breaker**
+
+* **Arena:**
+  Found in the center of the largest fractal forest, inside a glowing prism dome that bends light constantly. Terrain flickers as though phasing.
+
+* **Appearance:**
+  An enormous shifting figure (\~18 blocks tall), body fractalized into recursive layers, face constantly shifting between humanoid, beast, and crystal patterns.
+
+* **Phases:**
+
+  1. **Fractal Division** → splits into 3 smaller copies, each dealing reduced damage.
+  2. **Quantum Distortion** → arena shifts, players teleported randomly within.
+  3. **Prismatic Collapse** → massive rainbow energy beam sweeps the arena, requiring players to hide behind terrain.
+
+* **Drops:**
+
+  * **Exotic Heart** → progression unlock for **Tier 12 GT Quantum Circuits & Photonics**.
+  * **Fractablade** → weapon that creates illusory clones on strike.
+  * **Breaker Core** → quantum nanomaterial unlock.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Prismatic rainbow Exotite.
+* **Grass:** Shimmering cyan/pink.
+* **Flora:** Glowing rainbow fractals, shifting hues.
+* **Skybox:** Chromatic haze, constantly refracting light.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Exotica = **Tier 12 (Quantum Circuits, Photonics, Exotic Catalysts)**.
+* **Ore Access:**
+
+  * Gallium, Tellurium, Vanadium, Indium.
+* **Key GT Unlocks:**
+
+  * **Exotic Heart** → quantum nanomaterials.
+  * **Prism Core** → photonic unlock.
+  * **Resonant Core** → piezoelectric unlock.
+  * **Quantum Core** → quantum circuits.
+  * **Fractal Core** → exotic catalysts.
+  * **Seraph Core** → photonic GT optics.
+
+---
+
+---
+
+# 🔄 Planet Design Document: **Torus World**
+
+---
+
+## Planet Overview
+
+* **Tier:** 12 (post–Ringworld Megastructure, advanced gravitic/nano progression).
+* **Atmosphere:** Breathable but heavily engineered — faint shimmer in the air from nanocloud regulation. Skies appear curved inward in all directions, with the torus band and inner spine always visible.
+* **Gravity:** Variable — centrifugal gravity on inner rim (\~1.0g), lower near outer rim (\~0.7g), near-zero in central **Null-G Hubs**.
+* **Hazards:**
+
+  * **Gravity shifts** between regions → sudden movement changes, fall damage risk.
+  * Structural **collapse hazards** in the Spine — moving platforms, debris.
+  * **Radiant Fields** expose players to periodic radiation pulses.
+* **Base Stone/Blocks:**
+
+  * *Torium Alloy Blocks* → reinforced silvery-grey alloy, foundation of torus.
+  * *Radiant Panels* → glowing floor blocks in luminous zones.
+  * *Structural Lattice* → decorative mechanical struts, used in tunnels & hubs.
+* **GregTech Ore Map:**
+
+  * **Inner Rim Forest:** Copper, Nickel.
+  * **Outer Rim Desert:** Aluminium, Magnesium.
+  * **Structural Spine:** Tungsten, Osmium.
+  * **Radiant Fields:** Rare Earths, Iridium.
+  * **Null-G Hubs:** Exotic Matter (GT late-tier catalyst).
+
+---
+
+## Biomes
+
+---
+
+### 🌳 Inner Rim Forest
+
+* **Terrain/Palette:**
+  Lush engineered woodlands along the torus’ inner surface, curving visibly upwards. Light refracts unnaturally due to atmospheric mirrors.
+
+* **Ground Blocks:**
+
+  * *Torium Grass* → blue-green grass with faint metallic shine.
+  * *Forest Alloy Soil* → hybrid soil infused with metal particles.
+
+* **Flora:**
+
+  * *Spiral Trees* → engineered trees with trunks twisting like corkscrews, leaves a glowing cyan-green.
+  * *Light Moss* → faintly glowing moss covering trunks.
+
+* **Fauna:**
+
+  * *Rim Grazers* → quadrupeds with metallic horns. Drop **Alloy Horns** → GT bio-metallic composites.
+  * *Light Owls* → luminous avians circling in flocks. Drop **Featherlight Scales** → GT lightweight optics.
+
+* **Mini-Boss:** **Forest Guardian**
+
+  * Golem-like construct with wooden outer shell hiding alloy frame.
+  * Abilities: summons tree roots to entangle players, fires moss projectiles.
+  * Drops: **Forest Core** → GT bio-metal integration unlock.
+
+---
+
+### 🏜 Outer Rim Desert
+
+* **Terrain/Palette:**
+  Arid engineered desert, ground covered in orange-tan synthetic sands. Heat shimmer is visible due to solar reflectors above.
+
+* **Ground Blocks:**
+
+  * *Desert Alloy Sand* → granular metallic sand.
+  * *Reflective Stone* → silvery rock glinting in sunlight.
+
+* **Flora:**
+
+  * *Spine Palms* → twisted trees with reflective alloy leaves.
+  * *Glow Cacti* → glowing, liquid-filled cactus constructs.
+
+* **Fauna:**
+
+  * *Sand Striders* → insectoid grazers with metallic carapaces. Drop **Carapace Plates** → GT heat-resistant alloys.
+  * *Solar Stalkers* → predator reptiles with reflective hides. Drop **Solar Scales** → GT photovoltaic catalysts.
+
+* **Mini-Boss:** **Desert Colossus**
+
+  * Gigantic alloy-armored insect construct.
+  * Abilities: hurls sandstorms, reflective armor redirects beams.
+  * Drops: **Desert Core** → GT high-temp alloy unlock.
+
+---
+
+### 🛠 Structural Spine
+
+* **Terrain/Palette:**
+  The inner torus “backbone” — vast metallic struts, hollow conduits, and rotating gyroscopic hubs. Constant low hum of machinery echoes.
+
+* **Ground Blocks:**
+
+  * *Spine Alloy* → dark grey structural strut blocks.
+  * *Rotary Plates* → animated texture blocks simulating moving machinery.
+
+* **Flora:**
+  None (industrial biome).
+
+* **Fauna:**
+
+  * *Maintenance Drones* → worker bots turned hostile. Drop **Circuit Fragments** → GT robotics.
+  * *Alloy Serpents* → mechanical serpents slithering through conduits. Drop **Alloy Scales** → GT exotic alloys.
+
+* **Mini-Boss:** **Spine Overseer**
+
+  * Massive quadrupedal machine with glowing red optics.
+  * Abilities: summons drone swarms, destabilizes platforms.
+  * Drops: **Spine Core** → GT structural alloy unlock.
+
+---
+
+### 🌞 Radiant Fields
+
+* **Terrain/Palette:**
+  Bright glowing plains where solar panels and radiation collectors cover the ground. Constant luminous glow pulses across the horizon.
+
+* **Ground Blocks:**
+
+  * *Radiant Panels* → glowing blocks of silver-white alloy.
+  * *Pulse Nodes* → crystal blocks emitting periodic radiation bursts.
+
+* **Flora:**
+
+  * *Lumina Flowers* → glowing blossoms with petals that scatter sparks.
+
+* **Fauna:**
+
+  * *Radiant Beasts* → quadrupeds glowing with inner light. Drop **Radiant Organs** → GT photonic catalysts.
+  * *Pulse Wraiths* → energy-based mobs that flicker between visible/invisible. Drop **Pulse Essence** → GT reactor fuels.
+
+* **Mini-Boss:** **Luminal Titan**
+
+  * Towering construct of light and alloy.
+  * Abilities: fires radiant beams, floods arena with blinding light.
+  * Drops: **Radiant Core** → GT iridium/fusion light alloys.
+
+---
+
+### 🌀 Null-G Hubs
+
+* **Terrain/Palette:**
+  Central torus chambers where gravity drops to near-zero. Floating debris and glowing spheres of exotic matter drift. Players float and maneuver slowly.
+
+* **Ground Blocks:**
+
+  * *Exotic Alloy Blocks* → shimmering silver-black alloy.
+  * *Null Nodes* → glowing spheres embedded in lattice.
+
+* **Flora:**
+
+  * *Gravity Vines* → float in zero-G, curling endlessly.
+
+* **Fauna:**
+
+  * *Void Eels* → elongated serpentine mobs swimming through low-gravity air. Drop **Void Organs** → GT exotic catalysts.
+  * *Null Phantoms* → humanoid silhouettes phasing through walls. Drop **Null Essence** → GT gravity field materials.
+
+* **Mini-Boss:** **Exotic Horror**
+
+  * Shifting creature of fractal alloys, \~10 blocks long.
+  * Abilities: creates micro black holes, teleports erratically.
+  * Drops: **Exotic Core** → GT exotic matter unlock.
+
+---
+
+## 🌟 Main Boss: **Torus Warden**
+
+* **Arena:**
+  The central gyroscopic hub of the torus. Platforms rotate in multiple axes, gravity shifts constantly. Pulses of light mark structural instability.
+
+* **Appearance:**
+  Colossal mechanoid humanoid (\~22 blocks tall), forged of torium alloy. Its body glows faint cyan, limbs reinforced by rotating gyros. Head bears a ring-shaped crown.
+
+* **Phases:**
+
+  1. **Structural Defense** → summons drones, locks platforms into rotations.
+  2. **Gravity Collapse** → flips arena gravity between low (float) and high (slam).
+  3. **Singularity Protocol** → Warden generates micro black hole that pulls projectiles and players inward while it unleashes beam attacks.
+
+* **Drops:**
+
+  * **Torus Core** → unlock for **Tier 13 GT Exotic Matter & Gravity Tech**.
+  * **Warden’s Ringblade** → melee weapon that can be thrown, returns like a boomerang.
+  * **Null Circuit Core** → GT gravitic nanocircuit unlock.
+
+---
+
+## 🎨 Color Palette
+
+* **Natural Zones:** Blue-green grass, orange deserts, glowing moss.
+* **Industrial Zones:** Silver-grey alloys, cyan machinery, black exotic alloys.
+* **Skybox:** Curved torus band visible above, glowing inner spine across the horizon.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Torus World = **Tier 13 (Exotic Matter, Gravity Tech, Field Manipulation)**.
+* **Ore Access:**
+
+  * Exotic Matter, Osmium, Iridium, Rare Earths.
+* **Key GT Unlocks:**
+
+  * **Torus Core** → gravity tech unlock.
+  * **Forest Core** → bio-metallic composites.
+  * **Desert Core** → high-temp alloys.
+  * **Spine Core** → structural alloys.
+  * **Radiant Core** → iridium/fusion unlock.
+  * **Exotic Core** → exotic catalysts.
+
+---
+
+---
+
+# ⚫ Planet Design Document: **Hollow World**
+
+---
+
+## Planet Overview
+
+* **Tier:** 13 (post–Torus World, entry to void/inner-space tech).
+* **Atmosphere:** Breathable, but with constant spore-rich air. The “sky” is the glowing inner surface of the planet — vast stalactite forests hang downward, rivers flow along cavern ceilings.
+* **Gravity:** Inverted simulation — players walk on inner shell (1.0g inward). Looking up reveals other biomes on the opposite curve.
+* **Hazards:**
+
+  * Constant **darkness patches** where bioluminescence fails.
+  * *Void Chasms* → infinite pit-like rifts (void exposure = instant death).
+  * *Crystal Groves* occasionally release radiation bursts.
+* **Base Stone/Blocks:**
+
+  * *Hollowstone* → dark-grey stone with faint glowing veins.
+  * *Biolume Moss* → glowing moss blocks emitting cyan-green light.
+  * *Crystalized Stone* → stone laced with glowing crystals.
+* **GregTech Ore Map:**
+
+  * **Bioluminescent Caverns:** Phosphates, Bismuth.
+  * **Void Chasms:** Rare Earths, Uranium.
+  * **Crystal Groves:** Quartz, Gallium, Indium.
+  * **Stalactite Forest:** Nickel, Zinc.
+  * **Subterranean Rivers:** Lithium, Sodium, Magnesium.
+
+---
+
+## Biomes
+
+---
+
+### 🌌 Bioluminescent Caverns
+
+* **Terrain/Palette:**
+  Vast cave chambers illuminated by glowing fungi and moss carpets. Cyan, purple, and teal tones light up cavern walls.
+
+* **Ground Blocks:**
+
+  * *Biolume Moss Blocks* → faint cyan glow.
+  * *Fungal Stone* → stone with fungal patches.
+
+* **Flora:**
+
+  * *Glowshrooms* → giant mushrooms with translucent caps that shimmer like jellyfish.
+  * *Spore Reeds* → tall glowing reeds that emit drifting particles.
+
+* **Fauna:**
+
+  * *Spore Beasts* → quadrupeds with glowing fungal growths. Drop **Spore Glands** → GT chemical precursors.
+  * *Lume Bats* → glowing bat-like creatures, passive until swarmed. Drop **Bat Oil** → GT organic lubricant.
+
+* **Mini-Boss:** **Mycelium Horror**
+
+  * Colossal fungal mass with dozens of glowing tendrils.
+  * Abilities: sprays blinding spore clouds, summons fungal minions.
+  * Drops: **Fungal Core** → GT biochemical unlock.
+
+---
+
+### ⚫ Void Chasms
+
+* **Terrain/Palette:**
+  Immense rifts cutting through the hollow sphere, descending into infinite blackness. Platforms of stone float precariously.
+
+* **Ground Blocks:**
+
+  * *Voidstone* → pitch-black stone.
+  * *Void Crystals* → glowing purple shards.
+
+* **Flora:**
+  Sparse — *Shadow Vines* that grow downward into chasms.
+
+* **Fauna:**
+
+  * *Void Phantoms* → humanoid shades with glowing purple eyes. Drop **Void Essence** → GT catalyst.
+  * *Chasm Serpents* → long black serpents slithering along cliff walls. Drop **Chasm Scales** → GT armor composites.
+
+* **Mini-Boss:** **Abyss Wyrm**
+
+  * Serpent \~20 blocks long, emerging from void fog.
+  * Abilities: knocks players into chasm, releases void shockwaves.
+  * Drops: **Void Core** → GT rare earth unlock.
+
+---
+
+### 💎 Crystal Groves
+
+* **Terrain/Palette:**
+  Caverns filled with crystalline trees and jagged spires glowing in rainbow hues. Light refracts in dazzling beams.
+
+* **Ground Blocks:**
+
+  * *Crystal Bark* → trunk-like crystal block.
+  * *Prism Stone* → stone infused with quartz clusters.
+
+* **Flora:**
+
+  * *Crystal Trees* → trees with solid quartz trunks and glowing crystal leaves.
+  * *Shard Flowers* → flower-like crystals that hum faintly.
+
+* **Fauna:**
+
+  * *Shardlings* → small crystal creatures with jagged bodies. Drop **Crystal Dust** → GT abrasives.
+  * *Prism Stalkers* → feline-like predators with refracting skin. Drop **Prism Pelts** → GT photonics.
+
+* **Mini-Boss:** **Crystal Titan**
+
+  * Giant crystalline humanoid, 12 blocks tall.
+  * Abilities: refracts beams of light, summons shardling swarms.
+  * Drops: **Crystal Core** → GT gallium/indium unlock.
+
+---
+
+### 🌲 Stalactite Forest
+
+* **Terrain/Palette:**
+  Forest of massive hanging stalactites with trees growing sideways and downward, glowing moss draped over them.
+
+* **Ground Blocks:**
+
+  * *Stalactite Stone* → pointed stone blocks.
+  * *Mossy Hollowstone* → stone covered in glowing moss.
+
+* **Flora:**
+
+  * *Inverted Trees* → trees with roots exposed upward, branches downward.
+  * *Glow Moss Curtains* → moss hanging like vines.
+
+* **Fauna:**
+
+  * *Root Spiders* → large arachnids nesting in stalactites. Drop **Root Silk** → GT fibrous composites.
+  * *Hollow Stalkers* → reptilian predators climbing stalactites. Drop **Stalker Fangs** → GT catalysts.
+
+* **Mini-Boss:** **Stalactite Horror**
+
+  * Gigantic spider-beast fused with stone.
+  * Abilities: drops stalactites from ceilings, webs immobilize players.
+  * Drops: **Stalactite Core** → GT structural alloy unlock.
+
+---
+
+### 🌊 Subterranean Rivers
+
+* **Terrain/Palette:**
+  Vast glowing rivers flowing across the inner surface. Water glows faint cyan from mineral content.
+
+* **Ground Blocks:**
+
+  * *Riverstone* → smooth stone worn by water.
+  * *Glowing Algae Blocks* → cyan light-emitting plants along banks.
+
+* **Flora:**
+
+  * *River Vines* → trailing glowing vines.
+  * *Aquatic Moss* → floating glowing mats.
+
+* **Fauna:**
+
+  * *River Serpents* → eel-like creatures with glowing fins. Drop **Serpent Oil** → GT lubricants.
+  * *Lume Fish* → glowing fish. Drop **Biolume Extract** → GT chemistry.
+
+* **Mini-Boss:** **River Leviathan**
+
+  * Colossal eel with armored scales.
+  * Abilities: creates whirlpools, lunges from water.
+  * Drops: **River Core** → GT lithium/sodium unlock.
+
+---
+
+## 🌟 Main Boss: **Hollow Tyrant**
+
+* **Arena:**
+  A massive central chamber with glowing crystal roots dangling from the ceiling. The arena is spherical, with players fighting along inverted surfaces.
+
+* **Appearance:**
+  A towering (\~20 blocks) beast combining fungal, crystalline, and void features. Body of dark stone, crystalline horns, glowing moss veining its chest.
+
+* **Phases:**
+
+  1. **Fungal Wrath** → summons spore beasts and creates blinding spore clouds.
+  2. **Crystal Dominion** → grows crystal spikes around arena, firing refracted beams.
+  3. **Void Phase** → sections of arena collapse into void, forcing players onto shrinking platforms.
+
+* **Drops:**
+
+  * **Hollow Heart** → progression unlock for **Tier 14 GT Void Catalysts & High-Pressure Reactors**.
+  * **Tyrant Fangblade** → sword dealing extra damage in darkness.
+  * **Tyrant Core** → rare catalyst for GT nanomaterial reactors.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Grey/black with cyan/purple veins.
+* **Biolume Flora:** Cyan, teal, purple glows.
+* **Crystal:** Rainbow refracting prisms.
+* **Skybox:** Inverted interior glowing with moss and crystal bands.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Hollow World = **Tier 14 (Void Catalysts, Pressure Reactors, Exotic Crystals)**.
+* **Ore Access:**
+
+  * Uranium, Gallium, Indium, Lithium, Rare Earths.
+* **Key GT Unlocks:**
+
+  * **Hollow Heart** → void catalyst unlock.
+  * **Fungal Core** → biochemistry expansion.
+  * **Void Core** → rare earth unlock.
+  * **Crystal Core** → gallium/indium unlock.
+  * **Stalactite Core** → structural alloys.
+  * **River Core** → lithium/sodium chain.
+
+---
+
+---
+
+# 🌞 Planet Design Document: **Shattered Dyson Swarm**
+
+---
+
+## Planet Overview
+
+* **Tier:** 14 (post–Hollow World, entering ultra-high-energy GregTech stage).
+* **Atmosphere:** None. This is space — players require **full vacuum-rated suits**. Oxygen, radiation shielding, and inertia dampeners are essential.
+* **Gravity:** None (0.0g). Players float in zero-G and must rely on GT thrusters or maneuvering gear.
+* **Hazards:**
+
+  * **Solar Radiation Bursts** every few minutes, dealing massive damage without shielding.
+  * Constant **debris hazards** — falling/breaking panels.
+  * **Vacuum exposure** if unprepared.
+* **Base Blocks:**
+
+  * *Dyson Alloy Panels* → silver-white reflective panels.
+  * *Scaffold Struts* → dark metallic lattice blocks.
+  * *Broken Node Cores* → glowing fragments of reactors and circuits.
+* **GregTech Ore Map:**
+
+  * **Panel Fields:** Aluminium, Gallium, Silicon.
+  * **Broken Node Clusters:** Platinum, Iridium.
+  * **Scaffold Rings:** Titanium, Niobium.
+  * **Shadow Wedges:** Tungsten, Uranium.
+  * **Relay Lattices:** Exotic Alloys, Rare Earths.
+
+---
+
+## Biomes
+
+---
+
+### 📡 Panel Fields
+
+* **Terrain/Palette:**
+  Vast stretches of floating reflective panels drifting in orbit. Panels crack and shift under weight. Blinding sunlight reflects constantly.
+
+* **Ground Blocks:**
+
+  * *Dyson Panels* → reflective, mirror-like blocks.
+  * *Damaged Panels* → cracked, broken versions.
+
+* **Flora:**
+  None — but some panels contain growths of **photonic fungi** (light-feeding organisms).
+
+* **Fauna:**
+
+  * *Solar Moths* → massive moth-like creatures feeding on sunlight. Drop **Photon Scales** → GT photonic materials.
+  * *Panel Crawlers* → insectoid constructs scavenging panels. Drop **Panel Shards** → GT alloys.
+
+* **Mini-Boss:** **Solar Warden**
+
+  * Colossal moth-like guardian with radiant wings.
+  * Abilities: blinding flash, dives into players.
+  * Drops: **Solar Core** → GT high-efficiency solar unlock.
+
+---
+
+### ⚡ Broken Node Clusters
+
+* **Terrain/Palette:**
+  Floating clumps of shattered energy nodes. Wires spark constantly, floating fragments hum with residual power.
+
+* **Ground Blocks:**
+
+  * *Node Fragments* → glowing fractured blocks.
+  * *Circuit Blocks* → semi-functional glowing circuit boards.
+
+* **Fauna:**
+
+  * *Node Wraiths* → energy phantoms flickering in/out. Drop **Node Essence** → GT superconductors.
+  * *Repair Drones* → malfunctioning constructs. Drop **Circuit Parts** → GT electronics.
+
+* **Mini-Boss:** **Node Horror**
+
+  * Twisted fusion of machinery and energy.
+  * Abilities: overload pulses that disable equipment briefly.
+  * Drops: **Node Core** → GT superconducting unlock.
+
+---
+
+### 🛠 Scaffold Rings
+
+* **Terrain/Palette:**
+  Vast lattice scaffolding arcs, half-collapsed, circling the swarm. Platforms float and rotate slowly.
+
+* **Ground Blocks:**
+
+  * *Scaffold Struts* → dark-grey alloy lattice.
+  * *Rotary Nodes* → moving structural parts.
+
+* **Fauna:**
+
+  * *Scaffold Serpents* → mechanical serpents slithering through struts. Drop **Scaffold Scales** → GT composites.
+  * *Orb Drones* → spherical bots orbiting nodes. Drop **Drone Alloys** → GT robotics.
+
+* **Mini-Boss:** **Scaffold Titan**
+
+  * Gigantic construct built from lattice segments, humanoid in shape.
+  * Abilities: swings scaffold limbs, collapses sections of arena.
+  * Drops: **Scaffold Core** → GT titanium-niobium alloys.
+
+---
+
+### 🌑 Shadow Wedges
+
+* **Terrain/Palette:**
+  Dark regions hidden behind massive broken fragments. Always dim, with radiation pockets.
+
+* **Ground Blocks:**
+
+  * *Shadow Panels* → reflective panels turned black.
+  * *Irradiated Stone* → blocks glowing faint green.
+
+* **Fauna:**
+
+  * *Radiation Wraiths* → glowing skeletal phantoms. Drop **Rad Essence** → GT radiation shielding.
+  * *Shadow Hounds* → mechanical canines with glowing eyes. Drop **Hound Fangs** → GT catalysts.
+
+* **Mini-Boss:** **Radiant Abomination**
+
+  * Massive beast mutated by radiation, body twisted metal and glowing organs.
+  * Abilities: emits radiation bursts, charges violently.
+  * Drops: **Radiant Core** → GT uranium/plutonium unlock.
+
+---
+
+### 🔗 Relay Lattices
+
+* **Terrain/Palette:**
+  Massive floating communication and relay towers, half-shattered, beams of light still flickering.
+
+* **Ground Blocks:**
+
+  * *Relay Nodes* → glowing pulsing blocks.
+  * *Signal Struts* → thin metallic antenna blocks.
+
+* **Fauna:**
+
+  * *Signal Phantoms* → mobs resembling distorted radio waves. Drop **Signal Dust** → GT data chips.
+  * *Relay Constructs* → humanoid drone-like guardians. Drop **Relay Shards** → GT optical circuits.
+
+* **Mini-Boss:** **Signal Overlord**
+
+  * Gigantic antenna-creature, body covered in pulsating nodes.
+  * Abilities: overloads player HUD with static, blinds players.
+  * Drops: **Relay Core** → GT quantum communication unlock.
+
+---
+
+## 🌟 Main Boss: **Dyson Apex**
+
+* **Arena:**
+  The remains of the central Dyson node, a massive shattered sphere with plasma arcs across its surface. Players must fight in true zero-G.
+
+* **Appearance:**
+  A massive (\~25 block tall) humanoid construct fused with broken panels, glowing reactor core in chest. Limbs constantly arc with plasma energy.
+
+* **Phases:**
+
+  1. **Solar Flare** → Apex hurls plasma bolts, panels collapse around players.
+  2. **Overload** → arena darkens, Apex glows bright white, unleashes EMP disabling ranged weapons briefly.
+  3. **Collapse** → Apex destabilizes arena, panels fragment, combat occurs while platforms disintegrate.
+
+* **Drops:**
+
+  * **Apex Core** → progression unlock for **Tier 15 GT Stellar Power Systems**.
+  * **Dyson Spear** → polearm weapon with plasma-arc attack.
+  * **Quantum Lens** → GT ultimate solar cell unlock.
+
+---
+
+## 🎨 Color Palette
+
+* **Panels:** Silver-white reflective, cracked.
+* **Scaffolds:** Dark-grey alloys.
+* **Nodes:** Bright glowing cyan, orange, and purple.
+* **Skybox:** Bright sun with massive orbital fragments glowing in light.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Shattered Dyson Swarm = **Tier 15 (Stellar Energy, Exotic Photonics, Endgame Power)**.
+* **Ore Access:**
+
+  * Platinum, Iridium, Gallium, Uranium, Exotic Alloys.
+* **Key GT Unlocks:**
+
+  * **Apex Core** → stellar power unlock.
+  * **Solar Core** → solar overdrive unlock.
+  * **Node Core** → superconductors.
+  * **Scaffold Core** → titanium-niobium.
+  * **Radiant Core** → uranium/plutonium.
+  * **Relay Core** → quantum communications.
+
+---
+
+---
+
+# 🌌 Planet Design Document: **Neutron Star Forge**
+
+---
+
+## Planet Overview
+
+* **Tier:** 16 (endgame — post–Dyson Swarm, final forge of exotic elements).
+* **Atmosphere:** None — exposed vacuum, requiring **max-level GT space suits**. Even with shielding, players experience constant **radiation ticks** unless using late-tier gear.
+* **Gravity:** Extreme (2.5g at surface). Movement is sluggish, jumps are tiny, fall damage is amplified.
+* **Hazards:**
+
+  * **Magnetic Storms** → disable certain machines/tools.
+  * **Radiation Bursts** → pulses from star core, instantly lethal without protection.
+  * **Gravity Wells** → pull mobs and players into localized collapse zones.
+* **Base Blocks:**
+
+  * *Forge Alloy* → indestructible, dark metallic block infused with glowing veins.
+  * *Dense Neutron Stone* → nearly black stone with faint neutron-glow sparks.
+* **GregTech Ore Map:**
+
+  * **Accretion Rim:** Uranium, Thorium.
+  * **Magnetar Belts:** Cobalt, Nickel, Rare Earths.
+  * **Forge Platforms:** Iridium, Osmium, Tungsten.
+  * **Gravity Wells:** Exotic Matter, Strangelets.
+  * **Radiation Shelters:** Platinum, Endgame Catalysts.
+
+---
+
+## Biomes
+
+---
+
+### 🌑 Accretion Rim
+
+* **Terrain/Palette:**
+  Blinding disk of swirling matter, glowing red-orange with streaks of blue-white light. Platforms float on hardened alloy fragments.
+
+* **Ground Blocks:**
+
+  * *Accretion Rock* → glowing red stone.
+  * *Plasma Glass* → glowing translucent block, flickers under light.
+
+* **Fauna:**
+
+  * *Plasma Eels* → serpentine energy creatures in the rim’s plasma flows. Drop **Plasma Organs** → GT stellar fuel catalysts.
+  * *Accretion Beasts* → hulking quadrupeds, bodies half-rock half-plasma. Drop **Accreted Cores** → GT reactor unlocks.
+
+* **Mini-Boss:** **Accretion Leviathan**
+
+  * Gigantic beast formed from molten alloy and plasma.
+  * Abilities: hurls plasma waves, creates collapse zones.
+  * Drops: **Accretion Core** → GT stellar plasma unlock.
+
+---
+
+### 🧲 Magnetar Belts
+
+* **Terrain/Palette:**
+  Radiant belts of magnetic storms circling the forge. The ground is littered with charged ores, constantly sparking.
+
+* **Ground Blocks:**
+
+  * *Magnetite Alloy Blocks* → silvery stone, magnetic particles.
+  * *Charge Crystals* → constantly sparking blue blocks.
+
+* **Fauna:**
+
+  * *Magnetar Serpents* → long metallic snakes levitating with magnetic fields. Drop **Magnetar Scales** → GT magnetic components.
+  * *Storm Constructs* → humanoids made of charged alloys. Drop **Storm Fragments** → GT superconductors.
+
+* **Mini-Boss:** **Magnetar Colossus**
+
+  * Giant armored golem magnetized, attracting weapons from player hands.
+  * Abilities: disarms players, launches magnetic shockwaves.
+  * Drops: **Magnetar Core** → GT magnet systems.
+
+---
+
+### ⚙ Forge Platforms
+
+* **Terrain/Palette:**
+  Massive alloy platforms orbiting the star, remnants of star forges. Some intact, others cracked and glowing from heat.
+
+* **Ground Blocks:**
+
+  * *Forge Alloy Blocks* → dark steel-like blocks glowing red veins.
+  * *Furnace Nodes* → blocks that pulse like smoldering coals.
+
+* **Fauna:**
+
+  * *Forge Drones* → humanoid mining bots, aggressive. Drop **Alloy Chips** → GT alloys.
+  * *Smelter Horrors* → molten humanoid beasts dripping lava. Drop **Molten Organs** → GT high-temp catalysts.
+
+* **Mini-Boss:** **Forge Overseer**
+
+  * Massive quadrupedal machine controlling forge platforms.
+  * Abilities: launches plasma barrages, summons drones.
+  * Drops: **Forge Core** → GT iridium/tungsten unlock.
+
+---
+
+### 🌀 Gravity Wells
+
+* **Terrain/Palette:**
+  Spherical depressions in terrain where gravity crushes inward. Terrain curves unnaturally toward a central singularity.
+
+* **Ground Blocks:**
+
+  * *Neutron Stone* → pitch black, sparks occasionally.
+  * *Strangelet Blocks* → rare glowing exotic blocks.
+
+* **Fauna:**
+
+  * *Gravity Horrors* → twisted multi-limbed creatures constantly pulled inward. Drop **Gravity Organs** → GT exotic matter.
+  * *Void Leeches* → small mobs clinging to surfaces, latch onto players. Drop **Leech Extracts** → GT strangelet materials.
+
+* **Mini-Boss:** **Graviton Horror**
+
+  * Colossal beast shifting between forms, bending light around itself.
+  * Abilities: creates miniature black holes, pulls terrain inward.
+  * Drops: **Graviton Core** → GT gravity systems.
+
+---
+
+### ☢ Radiation Shelters
+
+* **Terrain/Palette:**
+  Artificial shelters built from dark alloys, glowing green shielding walls. Only zones safe from radiation storms.
+
+* **Ground Blocks:**
+
+  * *Radiation Alloy* → glowing green-black alloy.
+  * *Shield Panels* → blocks emitting faint green shields.
+
+* **Fauna:**
+
+  * *Shelter Guardians* → robotic constructs patrolling interior. Drop **Shield Circuits** → GT shielding.
+  * *Radiant Wraiths* → ghostly mobs flickering in/out. Drop **Radiant Essence** → GT catalysis.
+
+* **Mini-Boss:** **Shelter Sentinel**
+
+  * Massive armored construct.
+  * Abilities: summons shield domes, releases radiation bursts when destroyed.
+  * Drops: **Shelter Core** → GT radiation shielding.
+
+---
+
+## 🌟 Main Boss: **Forge Star Sovereign**
+
+* **Arena:**
+  A colossal floating forge platform closest to the neutron star’s core. Surroundings glow with plasma arcs and collapsing panels.
+
+* **Appearance:**
+  A titanic (\~28 blocks tall) humanoid forged of neutron stone and glowing plasma veins. Its head resembles a burning forge helm, body a mix of molten alloy and crystallized neutronium.
+
+* **Phases:**
+
+  1. **Magnetic Phase** → Sovereign manipulates player weapons, disarms randomly.
+  2. **Plasma Phase** → hurls massive plasma beams, arena floor partially melts.
+  3. **Collapse Phase** → arena destabilizes into gravitational collapse, Sovereign unleashes black-hole pulls.
+
+* **Drops:**
+
+  * **Sovereign Heart** → progression unlock for **Tier 17 GT Stellar Forging & Exotic Matter Reactors**.
+  * **Neutron Edge** → massive plasma greatsword, creates shockwaves on swing.
+  * **Forge Matrix Core** → required for GT neutronium crafting.
+
+---
+
+## 🎨 Color Palette
+
+* **Stone:** Black with glowing red/blue sparks.
+* **Platforms:** Dark metallic with molten veins.
+* **Magnetar Zones:** Electric blue sparks.
+* **Radiation Shelters:** Green-black glow.
+* **Skybox:** Blinding neutron star core glowing blue-white, with plasma arcs.
+
+---
+
+## ⚙️ Progression Hooks
+
+* **Tier Unlock:** Neutron Star Forge = **Tier 16–17 (Neutronium, Exotic Matter Reactors, Stellar Forging)**.
+* **Ore Access:**
+
+  * Tungsten, Osmium, Iridium, Exotic Matter, Strangelets.
+* **Key GT Unlocks:**
+
+  * **Sovereign Heart** → neutronium unlock.
+  * **Accretion Core** → stellar plasma unlock.
+  * **Magnetar Core** → magnet systems.
+  * **Forge Core** → iridium/tungsten unlock.
+  * **Graviton Core** → gravity systems.
+  * **Shelter Core** → radiation shielding.
+
+---
+
+---
+
+# 🌌 Additional Context for Cosmic Horizons x GregTech Addon
+
+## 🎯 Design Goals
+
+* **Integration-first:** Every planet, mob, and boss ties directly into GregTech CEu’s tech tree — no “decorative” content without progression relevance.
+* **Planetary Identity:** Each planet feels distinct in color palette, flora, fauna, hazards, and progression step. Players should be able to tell *at a glance* where they are.
+* **Challenge Scaling:** Planets progress from lush/hostile natural worlds → engineered megastructures → stellar phenomena → neutron/exotic-matter realms. Each stage increases both survival difficulty and complexity of GT systems unlocked.
+* **Alien Authenticity:** Default Minecraft mobs never appear. Every fauna is designed to fulfill an ecological and mechanical role (e.g., grazers = food/organic resources, predators = catalysts, drones = alloys).
+* **Boss-Gated Progression:** Each planet has **3 mini-bosses + 1 main boss**. Mini-bosses drop *Cores* that are required for GregTech crafting chains; main bosses drop the *planetary unlock* for the next tier.
+
+---
+
+## 🛠️ Common Planetary Systems
+
+### Block Foundations
+
+* **Planetary Stone Base:** Each planet uses a unique “stone” type (Cryostone, Stormstone, Hollowstone, etc.) with texture variants (cracked, mossy, crystal-encrusted, etc.).
+* **Soils:** Most planets use custom “metallic” or “hybrid” soils that tie to their biome logic.
+* **Glowing Flora Blocks:** A consistent system of faint light-emitting plants/moss/fungi across all biomes keeps readability in dark alien spaces.
+
+### Fauna & Resource Logic
+
+* **Grazers/Passive mobs** → drop hides/fibers/organs → feed into **polymers, textiles, organics** in GT.
+* **Predators** → drop fangs, scales, or energy organs → feed into **catalysts, circuits, rare materials**.
+* **Construct/Drones** → drop alloy shards, circuits, fragments → feed into **robotics, nanomaterials, exo-suits**.
+* **Exotic Creatures** → drop unique essences → feed into **quantum/photonics progression**.
+
+### Boss Core System
+
+* Every boss (mini or main) drops a **Core Item**.
+* Cores serve 2 functions:
+
+  * **Gatekeeping** → needed to craft or assemble new GT machines/tiers.
+  * **Weapons/Tools** → sometimes double as unique equipment (e.g., ice blade, thunder hammer, fractal sword).
+
+---
+
+## ⚡ Progression Context
+
+Here’s the broad order of planets + GT unlocks:
+
+1. **Pandora** → bio-organics, starter alien chemistry.
+2. **Arrakis** → desert chemistry, hydrocarbons (spice → GT fuel chain).
+3. **Alpha Centauri A** → solar harnessing, corona/energy plasma unlocks.
+4. **Kepler-452b** → early alloys (iron, copper-like chains, agriculture upgrade).
+5. **Aqua Mundus** → water chemistry, hydrothermal vents, lithium unlock.
+6. **Inferno Prime** → magma smelting, basalt → high-temp alloys.
+7. **Crystalis** → cryogenics, superconductors, diamond lattices.
+8. **Stormworld** → exotic superconductors, HV power, exotic fuels.
+9. **Ringworld Megastructure** → nanomaterials, structural alloys, robotics.
+10. **Exotica** → photonics, quantum circuits, exotic catalysts.
+11. **Torus World** → exotic matter, gravity manipulation.
+12. **Hollow World** → void catalysts, pressure reactors.
+13. **Shattered Dyson Swarm** → stellar energy systems, solar overdrives.
+14. **Neutron Star Forge** → neutronium, exotic matter reactors, stellar forging.
+
+---
+
+## 🎨 Visual Style Notes
+
+* **Lighting Philosophy:** Each planet should have a *primary color signature* — Pandora = cyan/green glow, Arrakis = gold/orange, Crystalis = pale blue, Exotica = rainbow fractal, Stormworld = lightning yellow/white, Hollow World = cyan/purple/black, Dyson Swarm = reflective silver, Neutron Forge = red/blue-white plasma.
+* **UI Consistency:** Biomes could use **color-coded fog tints** (via Terrablender biome settings) to sell immersion — purple haze in void zones, gold haze in desert planets, blue frost mist in Crystalis.
+* **Mob Design:** Each mob should feel *alien but functional* — textures should avoid looking like reskinned vanilla mobs. Use exaggerated geometries (floating sacs, fractal horns, plasma veins, crystal hides).
+
+---
+
+## 🔑 Implementation Notes
+
+* **Terrablender** is used for biome layering → each planet needs its own dimension with a custom noise generator (terrain control).
+* **Oxygen Mod Hook:** Planets are flagged as breathable or not. Players must manage **suit upgrades** (crafted from boss cores + GT parts).
+* **Hazard System:** Tie status effects (radiation, frostbite, plasma burn, void collapse) to **dimension effect handlers**, not mobs. This way, survival depends on gear, not just mob killing.
+* **Drops → GT Recipes:** Every mob/boss drop should already map into a recipe slot. Example:
+
+  * *Prism Hide* → used in GT optical fiber recipe.
+  * *Cryo Core* → used to unlock GT liquid helium chain.
+  * *Void Essence* → used as void catalyst in late-tier reactors.
+
+---
+
+## 📖 Narrative/Flavor
+
+* Each planet can have **hidden terminals/lore tablets** scattered in structures → reveal story fragments about the collapse of megastructures, failed colonists, ancient alien ecologies.
+* The **bosses** aren’t random monsters — they’re guardians or apex predators of their environment, each themed to planet’s logic.
+* The **progression loop** feels like humanity gradually reclaiming alien/stellar technology through sheer engineering.
+
+---
+
+---
+
+# 🧬 Mob Role Index for Cosmic Horizons x GregTech
+
+---
+
+## 🟢 Passive/Grazer Mobs
+
+*(Food/organic sources, hides, furs → GT biochem + textiles)*
+
+* **Crystal Grazers** (Crystalis) → crystal shards → semiconductors.
+* **Frost Hares** (Crystalis) → frost fur → cryo insulators.
+* **Chroma Grazers** (Exotica) → prism hides → optical fibers.
+* **Spectral Hares** (Exotica) → spectral fur → high-voltage insulators.
+* **Float Beasts** (Ringworld/Torus) → buoyant membranes → aerogels.
+* **Rim Grazers** (Torus World) → alloy horns → bio-metallic composites.
+* **Glacial Grazers** (Ringworld Ice Fields) → frost antlers → cryo catalysts.
+* **Sand Striders** (Arrakis / Torus Desert) → chitin plates → heat-resistant alloys.
+* **River Serpents / Lume Fish** (Hollow World rivers) → oils + extracts → lubricants/chemistry.
+
+🛠 **Role:** Baseline passive mobs = **hides, fibers, oils, organics** → used in chemical, insulator, lubricant chains.
+
+---
+
+## 🔴 Predator/Hostile Mobs
+
+*(Hunters, apex creatures → drop catalysts, scales, fangs → GT chemistry + alloys)*
+
+* **Ice Stalkers** (Crystalis) → frozen fangs → cryo catalysts.
+* **Cliff Raptors** (Crystalis) → icy talons → grinding catalysts.
+* **Storm Drakes** (Stormworld) → storm essence → capacitor materials.
+* **Fulminators** (Stormworld) → charged horns → superconductors.
+* **Prism Stalkers** (Hollow World crystal groves) → prism pelts → photonics.
+* **Hollow Stalkers** (Stalactite Forest) → stalker fangs → catalysts.
+* **Solar Stalkers** (Torus Desert) → solar scales → photovoltaic catalysts.
+* **Shadow Hunters** (Ringworld) → claws → rare-earth catalysts.
+* **Sand Worms** (Arrakis) → chitin/teeth → fuel cracking catalysts.
+
+🛠 **Role:** Predators = **catalysts, special chemistry drops, alloy precursors**.
+
+---
+
+## ⚙️ Constructs/Drones
+
+*(Artificial guardians, drones, machines → drop circuits, alloys, robotics parts)*
+
+* **Security Drones / Ore Guardians** (Ringworld Mining Platforms).
+* **Repair/Worker Drones** (Ringworld Maintenance Tunnels / Torus Spine).
+* **Relay Constructs** (Dyson Swarm relays).
+* **Forge Drones** (Neutron Star Forge).
+* **Panel Crawlers** (Dyson Swarm panels).
+* **Orb Drones** (Dyson Swarm scaffolds).
+* **Shelter Guardians** (Neutron Forge radiation zones).
+
+Drops → **circuit shards, alloy fragments, relay shards, exotic circuits**.
+
+🛠 **Role:** Constructs = **robotics progression, alloys, circuits, exo-suits**.
+
+---
+
+## 🌌 Exotic/Weird Mobs
+
+*(Non-standard physics, photonic/quantum/void-based drops)*
+
+* **Mist Wraiths** (Cryo Geysers) → condensed vapor → coolant fluids.
+* **Echo Wisps** (Exotica quantum glades) → light essence → lasers.
+* **Null Phantoms** (Torus World) → null essence → gravitic catalysts.
+* **Void Phantoms** (Hollow World chasms) → void essence → void catalysts.
+* **Radiant Wraiths** (Dyson Swarm shadows / Neutron shelters) → radiant essence → shielding catalysts.
+* **Signal Phantoms** (Dyson Swarm relay zones) → signal dust → data chips.
+
+🛠 **Role:** Exotic mobs = **late-game catalysts, photonic/quantum materials**.
+
+---
+
+## 👹 Mini-Bosses
+
+*(3 per planet → biome guardians, drop **Cores** for GT recipes)*
+
+Examples:
+
+* **Crystal Colossus, Frost Titan, Cryovore, Glacier Sentinel, Abyssal Colossus** (Crystalis).
+* **Tempest Serpent, Storm Titan, Cyclone Guardian, Depth Leviathan** (Stormworld).
+* **Ice Warden, Dust Colossus, Platform Overseer, Meadow Leviathan, Shadow Revenant** (Ringworld).
+* **Fractal Horror, Dune Siren, Quantum Beast, Prism Seraph** (Exotica).
+* **Forest Guardian, Desert Colossus, Spine Overseer, Luminal Titan, Exotic Horror** (Torus).
+* **Mycelium Horror, Abyss Wyrm, Crystal Titan, Stalactite Horror, River Leviathan** (Hollow).
+* **Solar Warden, Node Horror, Scaffold Titan, Radiant Abomination, Signal Overlord** (Dyson).
+* **Accretion Leviathan, Magnetar Colossus, Forge Overseer, Graviton Horror, Shelter Sentinel** (Neutron).
+
+🛠 **Role:** Mini-bosses = **planet-specific gatekeepers**, each tied to one GregTech unlock (coolants, superconductors, rare alloys, etc.).
+
+---
+
+## 👑 Main Bosses
+
+*(Planetary apex fights → final progression unlock of each tier)*
+
+* **Cryo Monarch** (Crystalis).
+* **Stormlord Colossus** (Stormworld).
+* **Guardian Prime** (Ringworld).
+* **Reality Breaker** (Exotica).
+* **Torus Warden** (Torus).
+* **Hollow Tyrant** (Hollow World).
+* **Dyson Apex** (Shattered Dyson Swarm).
+* **Forge Star Sovereign** (Neutron Star Forge).
+
+🛠 **Role:** Main bosses = **tier progression gates**, always dropping:
+
+1. **Planetary Heart/Core** (unlock next GT tier).
+2. **Unique weapon/tool** (epic fight reward).
+3. **Matrix/Core item** (machine recipe unlock).
+
+---
+
+## 🧩 Balance Context
+
+* **Every planet has:**
+
+  * 2+ passive mobs (organics).
+  * 2+ predators (catalysts).
+  * 1–2 exotic/constructs (circuits/alloys).
+  * 3 mini-bosses (cores).
+  * 1 main boss (tier progression).
+
+* **Mob Design Philosophy:**
+
+  * No “vanilla replacements” → even food mobs must feel alien.
+  * Drops → never just food; always **tie into GT materials**.
+  * Biomes → fauna *fit environment* (drakes in storm belts, serpents in voids, drones in ruins, etc.).
+
+---
+
+---
+
+# ⚙️ Boss Core → GT Unlock Matrix
+
+---
+
+## ❄ Crystalis (Tier 9 → Cryogenics / Superconductors)
+
+* **Crystal Colossus** → *Crystal Core* → Diamond lattice semiconductors.
+* **Frost Titan** → *Frost Core* → Refrigeration/refrigerant chain.
+* **Cryovore** → *Cryo Core* → Liquid helium production.
+* **Glacier Sentinel** → *Glacier Core* → Bauxite/aluminium unlock.
+* **Abyssal Colossus** → *Abyss Core* → Extreme-pressure reactor chain.
+* **Cryo Monarch** (Main) → *Frozen Heart* → Tier 9 unlock → Cryogenics + superconductors.
+
+---
+
+## ⚡ Stormworld (Tier 10 → Exotic Superconductors / HV Power)
+
+* **Aerial Behemoth** → *Aerial Core* → Helium-3 capture systems.
+* **Tempest Serpent** → *Tempest Core* → High-voltage capacitor unlock.
+* **Storm Titan** → *Lightning Core* → Niobium-tantalum superconductors.
+* **Cyclone Guardian** → *Cyclone Core* → Turbine upgrades.
+* **Depth Leviathan** → *Hydrogen Core* → Exotic fuels (fusion).
+* **Stormlord Colossus** (Main) → *Stormheart* → Tier 10 unlock → Exotic superconductors + HV transformers.
+
+---
+
+## 🌐 Ringworld Megastructure (Tier 11 → Nanomaterials / Robotics)
+
+* **Ice Warden** → *Ice Core* → Deuterium/coolant systems.
+* **Dust Colossus** → *Dust Core* → Titanium–aluminium alloys.
+* **Platform Overseer** → *Overseer Core* → Uranium/thorium unlock.
+* **Meadow Leviathan** → *Meadow Core* → Aerogels/light composites.
+* **Shadow Revenant** → *Shadow Core* → Rare earth processing.
+* **Guardian Prime** (Main) → *Prime Core* → Tier 11 unlock → Nanomaterials/structural alloys/robotics.
+
+---
+
+## 🌈 Exotica (Tier 12 → Quantum / Photonics / Exotic Catalysts)
+
+* **Prism Colossus** → *Prism Core* → Photonic composites.
+* **Dune Siren** → *Resonant Core* → Piezoelectric unlock.
+* **Quantum Beast** → *Quantum Core* → Quantum circuits.
+* **Fractal Horror** → *Fractal Core* → Exotic catalysts.
+* **Prism Seraph** → *Seraph Core* → Advanced photonic optics.
+* **Reality Breaker** (Main) → *Exotic Heart* → Tier 12 unlock → Quantum circuits + photonics.
+
+---
+
+## 🔄 Torus World (Tier 13 → Exotic Matter / Gravity Tech)
+
+* **Forest Guardian** → *Forest Core* → Bio-metal composites.
+* **Desert Colossus** → *Desert Core* → High-temp alloys.
+* **Spine Overseer** → *Spine Core* → Structural alloys.
+* **Luminal Titan** → *Radiant Core* → Iridium/fusion alloys.
+* **Exotic Horror** → *Exotic Core* → Exotic matter catalysts.
+* **Torus Warden** (Main) → *Torus Core* → Tier 13 unlock → Gravity tech + exotic matter.
+
+---
+
+## ⚫ Hollow World (Tier 14 → Void Catalysts / Pressure Reactors)
+
+* **Mycelium Horror** → *Fungal Core* → Biochemical expansion.
+* **Abyss Wyrm** → *Void Core* → Rare earth unlock.
+* **Crystal Titan** → *Crystal Core* → Gallium/indium unlock.
+* **Stalactite Horror** → *Stalactite Core* → Structural alloys.
+* **River Leviathan** → *River Core* → Lithium/sodium unlock.
+* **Hollow Tyrant** (Main) → *Hollow Heart* → Tier 14 unlock → Void catalysts + pressure reactors.
+
+---
+
+## ☀️ Shattered Dyson Swarm (Tier 15 → Stellar Energy / Photonics)
+
+* **Solar Warden** → *Solar Core* → Advanced solar overdrive unlock.
+* **Node Horror** → *Node Core* → Superconductors.
+* **Scaffold Titan** → *Scaffold Core* → Titanium-niobium alloys.
+* **Radiant Abomination** → *Radiant Core* → Uranium/plutonium unlock.
+* **Signal Overlord** → *Relay Core* → Quantum communication/data.
+* **Dyson Apex** (Main) → *Apex Core* → Tier 15 unlock → Stellar power systems + quantum lens tech.
+
+---
+
+## 🌌 Neutron Star Forge (Tier 16–17 → Neutronium / Exotic Reactors)
+
+* **Accretion Leviathan** → *Accretion Core* → Stellar plasma unlock.
+* **Magnetar Colossus** → *Magnetar Core* → Magnet systems.
+* **Forge Overseer** → *Forge Core* → Iridium/tungsten unlock.
+* **Graviton Horror** → *Graviton Core* → Gravity systems.
+* **Shelter Sentinel** → *Shelter Core* → Radiation shielding.
+* **Forge Star Sovereign** (Main) → *Sovereign Heart* → Tier 17 unlock → Neutronium + exotic matter reactors.
+
+---
+
+# 📊 Summary
+
+* **Mini-Boss Cores** = specific **material unlocks** (ores, chemistry, alloys).
+* **Main Boss Hearts** = **tier unlocks** (major tech jump).
+* **Every planet = 3–5 cores + 1 heart**.
+* **Flow:** Early game → simple organics → alloys → cryogenics → superconductors → quantum → gravity → void → stellar → neutronium.
+
+---

@@ -1,0 +1,142 @@
+==============================================
+                Cosmic Horizons
+==============================================
+
+Mod Name: Cosmic Horizons  
+Author / Creator: dea___th (also manya_DEA__TH) :contentReference[oaicite:0]{index=0}  
+Mod Stage: Very Alpha — *can only be played in Creative Mode* :contentReference[oaicite:1]{index=1}  
+Minecraft Version: Java Edition 1.20.1 (Forge) :contentReference[oaicite:2]{index=2}  
+
+---
+
+Features & Core Concepts:
+
+- Adds many new planets, moons, even entire solar systems. :contentReference[oaicite:3]{index=3}  
+- Has its own render system: space is rendered even if planets are outside of the player's normal render distance. :contentReference[oaicite:4]{index=4}  
+- Introduces planetary exploration: each planet/moon has its own dimension, each with environmental conditions, gravity, atmosphere, etc. :contentReference[oaicite:5]{index=5}  
+- Technical / technological progression: new blocks with interactive GUIs; an electricity / power system; metal progressions (i.e. new metals, tools/blocks dependent on them) :contentReference[oaicite:6]{index=6}  
+- Travel to space via spacecraft “space nodules” (or “nodules”) which can be upgraded for speed, environmental survivability, etc. :contentReference[oaicite:7]{index=7}  
+- Datapack support: users can make their own solar systems, planets, dimensions, skyboxes etc. :contentReference[oaicite:8]{index=8}  
+- Multiplayer compatible. :contentReference[oaicite:9]{index=9}  
+
+---
+
+Progress / Version History / Changelog Highlights:
+
+Listed below are some important updates showing how the mod has developed. This gives insight into how progression / features have been added over time.
+
+| Version         | Key Changes / Additions                                                                 |
+|------------------|-----------------------------------------------------------------------------------------|
+| **0.0.1**        | Minor texture update; fixed gravity calculation issues (huge FPS drops); added sky objects; realistic planet rotations; initial shader support. :contentReference[oaicite:10]{index=10} |
+| **0.0.2** / 0.0.2.5 | Added new blocks (Landing Pad, Redstone Receiver, Projector); improved render system; faster spaceship travel; custom weather, sunlight, fog effects. :contentReference[oaicite:11]{index=11} |
+| **0.0.3**        | Datapack support added; ability to override original mod data; fixed spaceship behaviour; bug fixes. :contentReference[oaicite:12]{index=12} |
+| **0.0.4**        | Bug fixes (ships / player gravity, collisions etc.); better performance; “place block in space” ability (press “N” in some versions); ability to reload datapacks without restarting. :contentReference[oaicite:13]{index=13} |
+| **0.0.5**        | Added higher build heights for space; improved data systems; performance improvements. :contentReference[oaicite:14]{index=14} |
+| **0.0.6 / 0.0.6.8 / 0.0.6.9** | Major rendering improvements: atmosphere effects, lighting, occlusion, ring occlusion, better textures; added basic rover; improved performance; resolved planet teleportation bugs etc. :contentReference[oaicite:15]{index=15} |
+| **0.0.7** / 0.0.7.1 / 0.0.7.2 / 0.0.7.3** | More bug fixes; shader fixes; lighting fixes; improvements to world generation / rendering; general stability and polish. :contentReference[oaicite:16]{index=16} |
+
+---
+
+Limitations / What’s Missing / Known Issues:
+
+- Not yet playable in Survival mode (without addons). Creative is the main supported mode. :contentReference[oaicite:17]{index=17}  
+- Some features are in early or incomplete stages (e.g. balancing, environment harshness, survival gear).  
+- Rendering / performance has been improved but still may have issues depending on hardware.  
+- Some bugs still present, as shown in changelogs.  
+
+---
+
+Datapack / Modding:
+
+- The mod supports datapacks for creating custom solar systems, planets, skyboxes, dimensions etc. :contentReference[oaicite:18]{index=18}  
+- There is documentation (“Addon Support Wiki”) to help modders / users contribute. :contentReference[oaicite:19]{index=19}  
+
+---
+
+==============================================
+         Cosmic Horizons Unbound (Cosmos Unbound)
+==============================================
+
+Mod / Addon Name: Cosmic Unbound (also “Cosmos Unbound”) :contentReference[oaicite:20]{index=20}  
+Author: bogienin :contentReference[oaicite:21]{index=21}  
+Created: February 15, 2025 :contentReference[oaicite:22]{index=22}  
+Version Status: Beta (as of given info) for Minecraft versions ~1.20.1-1.20.6 :contentReference[oaicite:23]{index=23}  
+
+---
+
+Purpose / What It Adds:
+
+- Enables *survival progression* for Cosmic Horizons: makes space travel items craftable/discoverable in Survival Mode. :contentReference[oaicite:24]{index=24}  
+- Removes need for other mods to access space / travel; aims for “self-sufficient” space travel using purely in-game mechanics. :contentReference[oaicite:25]{index=25}  
+- Ensures compatibility: designed to work directly with Cosmic Horizons without modifying its core code. :contentReference[oaicite:26]{index=26}  
+
+---
+
+Features / Planned Additions:
+
+- Survival Progression of items related to space travel (crafting, obtaining) :contentReference[oaicite:27]{index=27}  
+- New items / content introduced to enhance the experience around space travel / survival in space. :contentReference[oaicite:28]{index=28}  
+- Plans for **space suits** and different tiers of spacecraft to give meaning to upgrades etc. :contentReference[oaicite:29]{index=29}  
+
+---
+
+Dependencies / Requirements / Limitations:
+
+- Must be installed both on the client and the server to guarantee the survival item progression works properly. :contentReference[oaicite:30]{index=30}  
+- As of the existing version, some of the planned features (suits, varied spaceship tiers) may not yet be fully implemented. :contentReference[oaicite:31]{index=31}  
+
+---
+
+==============================================
+          How Progression Works / Expected Game Flow
+==============================================
+
+Below is an outline of how you can expect the progression or journey in Minecraft with these mods (as of current state and with Unbound). Some of this is speculative based on planned features or observed behaviour in changelogs.
+
+1. **Starting / Early Game**  
+   - Play as usual: gathering basic resources, crafting standard Minecraft tools.  
+   - Begin exploring local land; gather new blocks introduced by the mod (if accessible in your game mode).  
+   - With *Unbound*, early items for space travel become craftable / obtainable; without Unbound, you might be limited.
+
+2. **Unlocking Space Travel**  
+   - Build or obtain a “space nodule” / spaceship-type craft. Might need certain components or new metals.  
+   - Upgrade the spacecraft / nodule to survive hazards of space or speed travel. Environmental conditions may demand upgrades or certain gear.
+
+3. **Travel & Exploration**  
+   - Travel into space, to planets / moons. Each is a unique dimension with its own gravity, atmosphere, possibly weather / lighting, etc.  
+   - Explore worlds: find new minerals, blocks, perhaps build bases. Use the environmental differences to your advantage or as challenges.
+
+4. **Technology & Upgrades**  
+   - As you explore more and collect more resources from planets, unlock higher tiers of parts (if Unbound supports these) for ships, maybe survival gear (space suits).  
+   - Use the electricity / power systems; make advanced machines / tech blocks.
+
+5. **Endgame / Optional Ongoing Play**  
+   - Fully upgraded spacecraft; possibly fully explore all solar systems / custom systems via datapacks.  
+   - Use datapacks or mod-added content to expand the universe: new planets, new challenges.  
+   - Multiplayer exploration / colonies / building in space.
+
+---
+
+==============================================
+                       Useful Links
+==============================================
+
+- Cosmic Horizons Wiki (official) — has documentation on render system, gameplay, datapack support, etc. :contentReference[oaicite:32]{index=32}  
+- Changelog and Versions (Modrinth) — to see what’s been added & fixed in which version. :contentReference[oaicite:33]{index=33}  
+- Cosmic Unbound page on CurseForge — to see current version, features, download etc. :contentReference[oaicite:34]{index=34}  
+
+---
+
+==============================================
+                       Summary
+==============================================
+
+Cosmic Horizons is a highly ambitious space mod for Minecraft that aims to bring *true* planetary systems, realistic space travel, environments, etc., but it is early in development (alpha). Many features exist, especially around rendering, exploration, dimension generation, and tech blocks, but survival mode progression isn’t fully supported out of the box.  
+
+Cosmic Unbound is an addon / complementary mod that bridges that gap: making survival mode viable by unlocking crafting / obtaining of space travel gear, adding content like planned space suits, etc.  
+
+Together, they promise a path from early Minecraft survival through to full interplanetary exploration and technological progression.
+
+---
+
+End of Document

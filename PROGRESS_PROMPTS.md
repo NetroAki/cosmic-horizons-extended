@@ -97,6 +97,8 @@
 
 - Outcome: Successfully tested complete Pandora systems in-game. Server runs without critical errors, CHEX mod loads correctly with all systems initialized, and GTCEu integration follows proper 3x3 chunk section philosophy. All major Pandora systems (dimension, biomes, blocks, flora, fauna, bosses, hazards) are functional and ready for gameplay. Minor cosmetic issues with missing item models identified but don't affect functionality.
 - Reference: progress/step20_pandora_testing.md; CHEX_DETAILED_TASKS.md Section 2.1.
+
 14. Prompt: How can remote agents ramp quickly without the local notes?
-   - Outcome: Synced refs via git fetch and added agents.md summarizing the mandatory setup/formatting workflow for Codex cloud runs.
-   - Reference: progress/step15_remote_agent.md; agents.md.
+
+- Outcome: Synced refs via git fetch and added agents.md summarizing the mandatory setup/formatting workflow for Codex cloud runs.
+- Reference: progress/step15_remote_agent.md; agents.md.
