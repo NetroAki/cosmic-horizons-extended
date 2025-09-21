@@ -1,26 +1,58 @@
-# CHEX Remote Agent Quickstart
+# CHEX Cloud Agent Contract
 
-This repo already carries a detailed workflow in `CHEX_PROMPT_GUIDE.md`, the task matrix, and the progress logs. The bullet points below condense the essentials so a cloud-hosted Codex agent can come up to speed quickly and avoid trampling local context.
+You acknowledge that every edit follows this checklist exactly. Deviating causes hand-off gaps and broken builds.
 
-## Required Boot Sequence
-- Read `PROJECT_CONTEXT.md`, `CHEX_DETAILED_TASKS.md`, and the latest entries in `PROGRESS_PROMPTS.md` before editing code.
-- Mirror transient reasoning into `notes/` files and record milestones in `progress/stepX_<slug>.md`; never delete prior logs.
-- Run `git fetch` at session start so remote state is current (do **not** auto-merge).
-- Use the provided tooling: `./gradlew check` (Spotless + build), `./gradlew :common:spotlessApply :forge:spotlessApply` to repair formatting, and `scripts/setup_dev_env.ps1` when a new workspace spins up.
+## Setup (run in order)
+1. `java -version` — must report Temurin/OpenJDK 17.x
+2. `git fetch --all --prune`
+3. Linux/macOS: `bash scripts/cloud_bootstrap.sh`
+4. Windows: `powershell -ExecutionPolicy Bypass -File scripts/setup_dev_env.ps1 -InstallHooks`
+5. `git switch -c feature/<task-id>` — branch per task; never rewrite shared history
 
-## Coding & Formatting Guardrails
-- Java formatting is enforced via Spotless (Google Java Format) and Prettier for JSON/JSON5/Markdown. Always run the appropriate `spotlessApply` target after touching sources or resources.
-- Resource JSONs now validate cleanly; keep them valid by running the repo-wide JSON sanity script if you add data assets (see `notes/dev_env_setup_notes.md`).
-- Register new features/biomes via the TerraBlender-compatible registries. Mineral generation now routes through `MineralBiomeModifier` (BiomeModifier); inject additions there instead of the removed `BiomeLoadingEvent` hook.
+## Build (Architectury Loom 1.5.x)
+- `./gradlew assemble` — fast smoke compile via Loom
+- `./gradlew check` — full compile + Spotless; must pass before hand-off
 
-## Task Flow Expectations
-- Advance items top-to-bottom through `CHEX_DETAILED_TASKS.md`, splitting work into substeps logged under `progress/stepX_*.md` and referenced from `PROGRESS_PROMPTS.md`.
-- Keep GTCEu compatibility and fallback behaviors in mind (fluids/ores). When introducing tiers, update both the config parsers in `common/` and the Forge registries.
-- After completing a milestone: update `notes/` (if needed), append a numbered prompt entry to `PROGRESS_PROMPTS.md`, and mark the checkbox in the task matrix.
+## Format
+- After touching Java: `./gradlew :common:spotlessApply :forge:spotlessApply`
+- Data-only changes: `./gradlew spotlessApply`
 
-## Validation Checklist
-- `./gradlew check` must pass before handing off (includes Spotless + compile).
-- Run targeted gradle tasks (e.g., `:forge:runData`) when datagen changes occur; do not commit generated output without formatting.
-- Always mention unresolved build warnings or failing tasks in the final summary so the next agent sees the outstanding work.
+## Validate
+- JSON sanity: `python scripts/validate_json.py` (restore if missing)
+- Extra suites as needed: `./gradlew :forge:test`
 
-Following these points keeps the cloud agent in sync with the established workflow and ensures later sessions can pick up with minimal friction.
+## Datagen
+- Regenerate resources with `./gradlew :forge:runData`
+- Review generated files, re-run Spotless, stage minimal diff
+
+## Logging & Notes
+- Capture reasoning in `notes/<topic>.md`
+- Record milestones in `progress/stepX_<slug>.md`
+- Append numbered summary to `PROGRESS_PROMPTS.md`
+- Update `CHEX_DETAILED_TASKS.md` checkboxes when tasks advance
+
+## PR / Handoff
+1. `git status -sb`
+2. `git add <files>`
+3. `git commit -m "feat: <short description>"`
+4. `git push --set-upstream origin feature/<task-id>`
+5. Final summary references: task, notes, progress log, `./gradlew check`
+
+## Do / Don’t
+- **Do** run Spotless and `./gradlew check` before finishing
+- **Do** protect GTCEu fallback behaviour
+- **Do** mention unresolved warnings in the final summary
+- **Don’t** edit `progress/` history in place — append only
+- **Don’t** merge `master` locally; leave integration to maintainers
+
+## File Map (quick reference)
+- `PROJECT_CONTEXT.md` — architecture & scope
+- `CHEX_PROMPT_GUIDE.md` — full working instructions
+- `CHEX_DETAILED_TASKS.md` — task matrix (top-to-bottom)
+- `notes/` — detailed design & intermediate reasoning
+- `progress/` — chronological milestone snapshots
+- `scripts/setup_dev_env.ps1` — Windows bootstrap (installs hooks)
+- `scripts/cloud_bootstrap.sh` — Linux/macOS bootstrap
+- `common/` — shared logic/config parsers
+- `forge/` — Forge-side implementation + resources (Architectury Loom target)
+- `AGENTS.md` — this contract (keep in sync)
