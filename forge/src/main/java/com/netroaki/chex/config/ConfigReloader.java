@@ -2,6 +2,7 @@ package com.netroaki.chex.config;
 
 import com.netroaki.chex.CHEX;
 import com.netroaki.chex.travel.TravelGraph;
+import com.netroaki.chex.worldgen.MineralGenerationRegistry;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.nio.file.Path;
@@ -36,3 +37,4 @@ public final class ConfigReloader {
                 overrides.map(java.util.Map::size).orElse(0));
     }
 }
+

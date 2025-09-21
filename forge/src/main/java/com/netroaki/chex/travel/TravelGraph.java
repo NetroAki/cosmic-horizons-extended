@@ -1,16 +1,22 @@
-package com.netroaki.chex.travel;
+﻿package com.netroaki.chex.travel;
 
 import com.netroaki.chex.CHEX;
+import com.netroaki.chex.config.TravelConfigLoader;
 import com.netroaki.chex.core.TravelGraphCore;
+import com.netroaki.chex.registry.PlanetDef;
+import com.netroaki.chex.registry.PlanetRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import com.netroaki.chex.config.TravelConfigLoader;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -32,61 +38,32 @@ public class TravelGraph implements ResourceManagerReloadListener {
     }
 
     /**
-     * Initialize the default travel graph based on the checklist progression
+     * Initialize the default travel graph using the current PlanetRegistry snapshot.
      */
     public static void initializeDefaultGraph() {
-        TravelGraphCore.initializeDefaultGraph();
-        // Extend defaults with CHEX extras, then sync
-        TravelGraphCore.add(1, "cosmos:earth_moon", "cosmos");
-        TravelGraphCore.add(1, "cosmos:mercury", "cosmos");
-        TravelGraphCore.add(2, "cosmos:earth_moon", "cosmos");
-        TravelGraphCore.add(2, "cosmos:mercury", "cosmos");
-        TravelGraphCore.add(2, "cosmos:venus", "cosmos");
-        TravelGraphCore.add(3, "cosmos:mars", "cosmos");
-        TravelGraphCore.add(3, "cosmic_horizons_extended:pandora", "chex");
-        TravelGraphCore.add(4, "cosmos:mars", "cosmos");
-        TravelGraphCore.add(4, "cosmic_horizons_extended:arrakis", "chex");
-        TravelGraphCore.add(4, "cosmos:jupiter", "cosmos");
-        TravelGraphCore.add(5, "cosmos:jupiter", "cosmos");
-        TravelGraphCore.add(5, "cosmos:europa", "cosmos");
-        TravelGraphCore.add(5, "cosmic_horizons_extended:aqua_mundus", "chex");
-        TravelGraphCore.add(6, "cosmos:saturn", "cosmos");
-        TravelGraphCore.add(6, "cosmos:uranus", "cosmos");
-        TravelGraphCore.add(6, "cosmic_horizons_extended:inferno_prime", "chex");
-        TravelGraphCore.add(7, "cosmos:neptune", "cosmos");
-        TravelGraphCore.add(7, "cosmos:pluto", "cosmos");
-        TravelGraphCore.add(7, "cosmic_horizons_extended:kepler_452b", "chex");
-        TravelGraphCore.add(7, "cosmic_horizons_extended:crystalis", "chex");
-        TravelGraphCore.add(8, "cosmos:alpha_system", "cosmos");
-        TravelGraphCore.add(8, "cosmos:b_1400_centauri", "cosmos");
-        TravelGraphCore.add(8, "cosmos:j_1407b", "cosmos");
-        TravelGraphCore.add(8, "cosmic_horizons_extended:exotica", "chex");
-        TravelGraphCore.add(9, "cosmos:j_1900", "cosmos");
-        TravelGraphCore.add(9, "cosmos:glacio", "cosmos");
-        TravelGraphCore.add(9, "cosmic_horizons_extended:aurelia_ringworld", "chex");
-        TravelGraphCore.add(9, "cosmic_horizons_extended:shattered_dyson_swarm", "chex");
-        TravelGraphCore.add(10, "cosmos:gaia_bh_1", "cosmos");
-        TravelGraphCore.add(10, "cosmos:solar_system", "cosmos");
-        TravelGraphCore.add(10, "cosmic_horizons_extended:torus_world", "chex");
-        TravelGraphCore.add(10, "cosmic_horizons_extended:hollow_world", "chex");
-        TravelGraphCore.add(10, "cosmic_horizons_extended:neutron_star_forge", "chex");
+        TravelGraphCore.clear();
+
+        PlanetRegistry.getAllPlanets().forEach((id, def) -> addPlanetToCore(id, def));
+
         syncFromCore();
 
         CHEX.LOGGER.info("Default travel graph loaded: {} planets across {} tiers",
                 TravelGraphCore.getAllPlanets().size(), TIER_TO_PLANETS.size());
     }
 
+    /**
+     * Load the travel graph from config overrides or regenerate defaults when absent.
+     */
     public static void loadFromConfigOrDefaults() {
-        // Try config first
         boolean loaded = false;
         var mapOpt = TravelConfigLoader.load();
         if (mapOpt.isPresent() && !mapOpt.get().isEmpty()) {
-            // Convert RL mapping to string mapping for core
             Map<Integer, Set<String>> asStrings = new HashMap<>();
             mapOpt.get().forEach((tier, set) -> {
                 Set<String> ids = new HashSet<>();
-                for (ResourceLocation rl : set)
+                for (ResourceLocation rl : set) {
                     ids.add(rl.toString());
+                }
                 asStrings.put(tier, ids);
             });
             TravelGraphCore.loadFromMapping(asStrings);
@@ -100,6 +77,12 @@ public class TravelGraph implements ResourceManagerReloadListener {
         }
     }
 
+    private static void addPlanetToCore(ResourceLocation id, PlanetDef def) {
+        int tier = def.requiredRocketTier() != null ? def.requiredRocketTier().getTier() : 1;
+        tier = Math.max(1, Math.min(tier, 10));
+        TravelGraphCore.add(tier, id.toString(), id.getNamespace());
+    }
+
     private static void syncFromCore() {
         TIER_TO_PLANETS.clear();
         for (int i = 1; i <= 10; i++) {
@@ -107,8 +90,9 @@ public class TravelGraph implements ResourceManagerReloadListener {
             for (String id : TravelGraphCore.getPlanetsForTier(i)) {
                 planets.add(ResourceLocation.parse(id));
             }
-            if (!planets.isEmpty())
+            if (!planets.isEmpty()) {
                 TIER_TO_PLANETS.put(i, planets);
+            }
         }
     }
 
@@ -145,8 +129,9 @@ public class TravelGraph implements ResourceManagerReloadListener {
      */
     public static Set<ResourceLocation> getAllPlanets() {
         Set<ResourceLocation> r = new HashSet<>();
-        for (String id : TravelGraphCore.getAllPlanets())
+        for (String id : TravelGraphCore.getAllPlanets()) {
             r.add(ResourceLocation.parse(id));
+        }
         return r;
     }
 

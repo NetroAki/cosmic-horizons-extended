@@ -22,6 +22,7 @@ public final class MineralsConfig {
 
     public static final class Distribution {
         public String tag;
+        public String block;
         public String vein;
         public int count;
         public int minY;
@@ -156,3 +157,4 @@ public final class MineralsConfig {
         return byPlanet;
     }
 }
+

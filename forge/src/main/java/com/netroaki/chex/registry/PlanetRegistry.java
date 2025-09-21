@@ -31,6 +31,12 @@ public class PlanetRegistry {
         }
 
         private static void registerExistingCHPlanets() {
+                if (registerDiscoveredPlanets()) {
+                        return;
+                }
+
+                CHEX.LOGGER.info("[CHEX] Falling back to static Cosmic Horizons planet definitions.");
+
                 // Earth Moon
                 registerPlanet(ResourceLocation.fromNamespaceAndPath("cosmos", "earth_moon"),
                                 new PlanetDef(
@@ -69,6 +75,96 @@ public class PlanetRegistry {
                                                 2, true, false,
                                                 Set.of("iron", "silicon", "aluminum", "water"),
                                                 "desert", false));
+        }
+                int registered = 0;
+                try (BufferedReader reader = Files.newBufferedReader(discoveryFile)) {
+                        JsonObject root = GSON.fromJson(reader, JsonObject.class);
+                        if (root == null || !root.has("planets") || !root.get("planets").isJsonArray()) {
+                                CHEX.LOGGER.warn("[CHEX] Discovery file {} is missing a 'planets' array.", discoveryFile);
+                                return false;
+                        }
+
+                        JsonArray planets = root.getAsJsonArray("planets");
+                        for (JsonElement element : planets) {
+                                if (!element.isJsonObject()) {
+                                        continue;
+                                }
+                                PlanetDef definition = buildPlanetFromDiscovery(element.getAsJsonObject());
+                                if (definition == null) {
+                                        continue;
+                                }
+                                if (PLANETS.containsKey(definition.id())) {
+                                        continue;
+                                }
+                                registerPlanet(definition.id(), definition);
+                                registered++;
+                        }
+                } catch (IOException ex) {
+                        CHEX.LOGGER.warn("[CHEX] Failed to read discovered planets from {}: {}", discoveryFile,
+                                        ex.toString());
+                        return false;
+                }
+
+                if (registered > 0) {
+                        CHEX.LOGGER.info("[CHEX] Registered {} Cosmic Horizons planets from {}.", registered,
+                                        discoveryFile);
+                        return true;
+                }
+
+                CHEX.LOGGER.warn("[CHEX] Discovery file {} contained no usable planet entries.", discoveryFile);
+                return false;
+        }
+
+        private static PlanetDef buildPlanetFromDiscovery(JsonObject obj) {
+                if (!obj.has("id")) {
+                        return null;
+                }
+                String idString = obj.get("id").getAsString();
+                ResourceLocation id = ResourceLocation.tryParse(idString);
+                if (id == null) {
+                        CHEX.LOGGER.warn("[CHEX] Skipping discovered planet with invalid id '{}'.", idString);
+                        return null;
+                }
+
+                String name = obj.has("name") ? obj.get("name").getAsString() : id.getPath();
+                String description = obj.has("description")
+                                ? obj.get("description").getAsString()
+                                : String.format("Discovered planet %s", name);
+
+                int tierValue = obj.has("requiredNoduleTier") ? obj.get("requiredNoduleTier").getAsInt() : 1;
+                NoduleTiers tier = NoduleTiers.getByTier(tierValue);
+                if (tier == null) {
+                        tier = NoduleTiers.T1;
+                }
+
+                String suitTag = obj.has("requiredSuitTag") ? obj.get("requiredSuitTag").getAsString()
+                                : tier.getRequiredSuitTagString();
+                String fuel = CHEXConfig.getFuelForTier(tier);
+
+                int gravityLevel = obj.has("gravityLevel") ? obj.get("gravityLevel").getAsInt() : 1;
+                boolean hasAtmosphere = obj.has("hasAtmosphere") ? obj.get("hasAtmosphere").getAsBoolean() : true;
+                boolean requiresOxygen = obj.has("requiresOxygen") ? obj.get("requiresOxygen").getAsBoolean() : true;
+                boolean isOrbit = obj.has("isOrbit") ? obj.get("isOrbit").getAsBoolean() : false;
+                String biomeType = obj.has("source") ? obj.get("source").getAsString() : "cosmos";
+
+                Set<String> minerals = Collections.emptySet();
+                if (obj.has("availableMinerals") && obj.get("availableMinerals").isJsonArray()) {
+                        HashSet<String> mineralSet = new HashSet<>();
+                        for (JsonElement mineralElement : obj.getAsJsonArray("availableMinerals")) {
+                                if (mineralElement.isJsonPrimitive()) {
+                                        String mineralId = mineralElement.getAsString();
+                                        if (!mineralId.isEmpty()) {
+                                                mineralSet.add(mineralId);
+                                        }
+                                }
+                        }
+                        if (!mineralSet.isEmpty()) {
+                                minerals = Set.copyOf(mineralSet);
+                        }
+                }
+
+                return new PlanetDef(id, name, description, tier, suitTag, fuel, gravityLevel, hasAtmosphere,
+                                requiresOxygen, minerals, biomeType, isOrbit);
         }
 
         private static void registerCHEXPlanets() {

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.netroaki.chex.commands.ChexCommands;
 import com.netroaki.chex.network.CHEXNetwork;
 import com.netroaki.chex.registry.CHEXChunkGenerators;
+import com.netroaki.chex.worldgen.MineralGenerationRegistry;
 import com.netroaki.chex.registry.CHEXRegistries;
 import com.netroaki.chex.registry.CHEXEffects;
 // import com.netroaki.chex.registry.CHEXDensityFunctions; // Temporarily disabled
@@ -129,6 +130,10 @@ public class CHEX {
         FuelRegistry.initialize();
         LOGGER.info("Fuel registry initialized");
 
+        // Initialize planet registry
+        LOGGER.info("Initializing planet registry...");
+        PlanetRegistry.initialize();
+
         // Initialize travel graph
         LOGGER.info("Initializing travel graph...");
         TravelGraph.loadFromConfigOrDefaults();
@@ -138,9 +143,8 @@ public class CHEX {
         LOGGER.info("Initializing nodule material themes...");
         NoduleDesigns.initializeDefaults();
 
-        // Initialize planet registry
-        LOGGER.info("Initializing planet registry...");
-        PlanetRegistry.initialize();
+        // Load mineral distributions from configuration
+        event.enqueueWork(MineralGenerationRegistry::reload);
 
         // Initialize networking
         LOGGER.info("Initializing networking...");

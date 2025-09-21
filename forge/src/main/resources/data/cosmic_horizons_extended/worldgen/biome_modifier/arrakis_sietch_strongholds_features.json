@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "cosmic_horizons_extended:arrakis_sietch_strongholds",
+  "features": [
+    "cosmic_horizons_extended:arrakis_sietch_rock_plate_placed"
+  ],
+  "step": "vegetation_decoration"
+}

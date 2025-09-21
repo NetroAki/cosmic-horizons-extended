@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "cosmic_horizons_extended:arrakis_spice_mines",
+  "features": [
+    "cosmic_horizons_extended:arrakis_spice_brick_cluster_placed",
+    "cosmic_horizons_extended:arrakis_spice_caps_red_placed"
+  ],
+  "step": "vegetation_decoration"
+}

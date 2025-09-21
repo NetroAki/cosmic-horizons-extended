@@ -70,6 +70,7 @@ public final class MineralsConfigCore {
                                 continue;
                             JsonObject dist = de.getAsJsonObject();
                             String id = dist.has("tag") ? dist.get("tag").getAsString()
+                                    : dist.has("block") ? dist.get("block").getAsString()
                                     : dist.has("id") ? dist.get("id").getAsString() : null;
                             if (id == null)
                                 continue;
