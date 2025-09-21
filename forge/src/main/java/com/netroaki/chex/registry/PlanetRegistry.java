@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -165,6 +166,22 @@ public class PlanetRegistry {
     boolean isOrbit = obj.has("isOrbit") ? obj.get("isOrbit").getAsBoolean() : false;
     String biomeType = obj.has("source") ? obj.get("source").getAsString() : "cosmos";
 
+    Set<String> hazards = Collections.emptySet();
+    if (obj.has("hazards") && obj.get("hazards").isJsonArray()) {
+      LinkedHashSet<String> hazardSet = new LinkedHashSet<>();
+      for (JsonElement hazardElement : obj.getAsJsonArray("hazards")) {
+        if (hazardElement.isJsonPrimitive()) {
+          String hazardId = hazardElement.getAsString().trim();
+          if (!hazardId.isEmpty()) {
+            hazardSet.add(hazardId);
+          }
+        }
+      }
+      if (!hazardSet.isEmpty()) {
+        hazards = Set.copyOf(hazardSet);
+      }
+    }
+
     Set<String> minerals = Collections.emptySet();
     if (obj.has("availableMinerals") && obj.get("availableMinerals").isJsonArray()) {
       HashSet<String> mineralSet = new HashSet<>();
@@ -191,7 +208,7 @@ public class PlanetRegistry {
         gravityLevel,
         hasAtmosphere,
         requiresOxygen,
-        Set.of(),
+        hazards,
         minerals,
         biomeType,
         isOrbit);
