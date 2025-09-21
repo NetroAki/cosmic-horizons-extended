@@ -1,52 +1,68 @@
 ﻿{
-    "carvers":  {
-
-                },
-    "downfall":  0.4,
-    "effects":  {
-                    "fog_color":  9027553,
-                    "mood_sound":  {
-                                       "block_search_extent":  8,
-                                       "offset":  2,
-                                       "sound":  "minecraft:ambient.cave",
-                                       "tick_delay":  6000
-                                   },
-                    "sky_color":  11461887,
-                    "water_color":  4159204,
-                    "water_fog_color":  329011
-                },
-    "features":  [
-
-                 ],
-    "has_precipitation":  true,
-    "spawn_costs":  {
-
-                    },
-    "spawners":  {
-                     "ambient":  [
-
-                                 ],
-                     "axolotls":  [
-
-                                  ],
-                     "creature":  [
-
-                                  ],
-                     "misc":  [
-
-                              ],
-                     "monster":  [
-
-                                 ],
-                     "underground_water_creature":  [
-
-                                                    ],
-                     "water_ambient":  [
-
-                                       ],
-                     "water_creature":  [
-
-                                        ]
-                 },
-    "temperature":  0.7
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "downfall": 0.4,
+  "effects": {
+    "fog_color": 9027553,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "sky_color": 11461887,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "foliage_color": 16711680,
+    "grass_color": 16711680
+  },
+  "features": [
+    "cosmic_horizons_extended:pandora_skybark_trees_placed",
+    "cosmic_horizons_extended:pandora_crystal_cluster_placed",
+    "cosmic_horizons_extended:pandora_sky_polished_plate_placed",
+    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {
+    "cliff_hunter": {
+      "energy_budget": 0.15,
+      "charge": 1.0
+    }
+  },
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "cosmic_horizons_extended:sky_grazer",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "cosmic_horizons_extended:cliff_hunter",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "cosmic_horizons_extended:cliff_hunter_alpha",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.7
 }

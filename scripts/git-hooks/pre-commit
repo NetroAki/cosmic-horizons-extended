@@ -1,0 +1,13 @@
+#!/bin/sh
+set -euo pipefail
+
+# Ensure we operate from the repository root so Gradle wrapper resolves correctly.
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+if [ "${SKIP_SPOTLESS:-0}" = "1" ]; then
+  echo "[spotless] SKIP_SPOTLESS=1 detected; skipping spotlessApply." >&2
+  exit 0
+fi
+
+./gradlew spotlessApply

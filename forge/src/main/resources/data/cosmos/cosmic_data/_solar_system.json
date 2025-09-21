@@ -14,23 +14,119 @@
       "background": "solar_bg",
       "order": 0,
       "travel_dimension": "cosmic_horizons_extended:torus_world",
-      "origin_x": 0, "origin_y": 120, "origin_z": 0,
+      "origin_x": 0,
+      "origin_y": 120,
+      "origin_z": 0,
       "object_data": {
-        "arrakis_desert":       { "texture_id": "planet_01", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "aqua_mundus":          { "texture_id": "planet_02", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "inferno_prime":        { "texture_id": "planet_03", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "crystalis":            { "texture_id": "planet_04", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "pandora_forest":       { "texture_id": "planet_05", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "exotica":              { "texture_id": "planet_06", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "hollow_world":         { "texture_id": "planet_07", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "kepler_452b":          { "texture_id": "planet_08", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "neutron_star_forge":   { "texture_id": "planet_09", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "shattered_dyson_swarm":{ "texture_id": "planet_10", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "aurelia_ringworld":    { "texture_id": "planet_11", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" },
-        "torus_world":          { "texture_id": "planet_12", "scale": 15, "ponder_scale": 60, "travel_x": 0, "travel_y": 120, "travel_z": 0, "unlocking_dimension": "none" }
+        "arrakis_desert": {
+          "texture_id": "planet_01",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "aqua_mundus": {
+          "texture_id": "planet_02",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "inferno_prime": {
+          "texture_id": "planet_03",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "crystalis": {
+          "texture_id": "planet_04",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "pandora_forest": {
+          "texture_id": "planet_05",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "exotica": {
+          "texture_id": "planet_06",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "hollow_world": {
+          "texture_id": "planet_07",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "kepler_452b": {
+          "texture_id": "planet_08",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "neutron_star_forge": {
+          "texture_id": "planet_09",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "shattered_dyson_swarm": {
+          "texture_id": "planet_10",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "aurelia_ringworld": {
+          "texture_id": "planet_11",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        },
+        "torus_world": {
+          "texture_id": "planet_12",
+          "scale": 15,
+          "ponder_scale": 60,
+          "travel_x": 0,
+          "travel_y": 120,
+          "travel_z": 0,
+          "unlocking_dimension": "none"
+        }
       }
     }
   }
 }
-
-

@@ -3,6 +3,7 @@
 Last updated: 2025-09-20
 
 ## Project Snapshot
+
 - **Platform**: Forge 1.20.1, Java 17. Multi-module layout with `common` (loader-neutral core logic/config) and `forge` loader entry point.
 - **Mod Goals**: Provide CHEX-exclusive planets, progression gate around rocket/suit tiers, integrate with Cosmic Horizons dimensions, and hook GTCEu mineral ladders.
 - **Core Systems**: Travel graph + configs (`common/core/TravelGraphCore`, `forge/travel/TravelGraph`) map rocket tiers to planet IDs; capability + commands manage player tier state; configs expose fuel mapping, TerraBlender overlay flag, and suit enforcement knobs.
@@ -15,6 +16,7 @@ Last updated: 2025-09-20
 - **Docs & References**: `PROJECT_CONTEXT.md`, `Checklist`, `MISSING_FEATURES.md`, and `TB_STRATEGY.md` outline broader plan; this file tracks current snapshot for day-to-day execution.
 
 ## High-Level Observations
+
 - Worldgen pipeline is mostly scaffolding; mineral distributions now load from config (biome ids/tags or explicit block IDs) but still need advanced density functions and bespoke features per planet.
 - Planet registry now pulls from the discovery dump (fallbacks remain); future work can refine metadata beyond the defaults.
 - TerraBlender overlay now only injects Pandora/Arrakis; other CHEX worlds stay gated until their datapacks mature.
@@ -22,15 +24,12 @@ Last updated: 2025-09-20
 - GTCEu mineral integration needs actual data path from configs to worldgen bootstrapping.
 
 ## Working To-Do (see dedicated section below)
+
 - Populate prioritized tasks derived from these observations and execute sequentially.
+
 ## To-Do Board (2025-09-20)
+
 - [x] **Attach Pandora & Arrakis features**: Hook all existing placed features into their target biomes via Forge biome modifiers and ensure the biomes reference the correct generation steps.
 - [x] **Tighten TerraBlender overlay scope**: Update `CHEXRegion` so the overlay only injects the biomes we currently support (Pandora + Arrakis) and leaves future placeholders behind a TODO to avoid polluting vanilla climates.
 - [x] **Add default loot tables for CHEX blocks**: ensure each custom block drops itself to make survival playable.
 - [x] **Wire mineral config to runtime features**: load `chex-minerals.json5` into runtime ore features with GTCEu + fallback handling (supports biome ids/tags and explicit blocks).
-
-
-
-
-
-

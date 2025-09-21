@@ -1,3 +1,5 @@
 {
-  "variants": { "": { "model": "cosmic_horizons_extended:block/biolume_moss" } }
+  "variants": {
+    "": { "model": "cosmic_horizons_extended:block/biolume_moss" }
+  }
 }

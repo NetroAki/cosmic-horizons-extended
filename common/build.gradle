@@ -22,6 +22,9 @@ dependencies {
     compileOnly "com.lowdragmc.ldlib:ldlib-common-${rootProject.ext.mc_version}:+"
     implementation 'com.google.code.gson:gson:2.10.1'
     compileOnly files("${rootProject.projectDir}/libs/architectury-9.2.9999.jar")
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
 }
 
 sourceSets {
@@ -33,6 +36,6 @@ sourceSets {
     }
 }
 
-
-
-
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}

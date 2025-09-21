@@ -57,12 +57,12 @@
 
 ## 1) Enumerate Existing Cosmic Horizons Planets (runtime discovery)
 
-- [ ] At dedicated server start:
-  - [ ] Enumerate **dimensions** in namespaces `cosmos` and `cosmichorizons` (use `BuiltInRegistries.DIMENSION_TYPE`/`LevelStem` or datapack scan).
-  - [ ] Build a `PlanetDef` per discovered dimension with **default**: `requiredRocketTier = 1`, `requiredSuit = chex:suit1` (to be overridden by config).
-  - [ ] **Persist** discovered list to JSON: `config/chex/_discovered_planets.json`.
-  - [ ] **Log** a clean table: id, name(if known), default tier, suit requirement, source=CH.
-- [ ] **Verify presence** (based on 0.0.7.3 JAR):
+- [x] At dedicated server start:
+  - [x] Enumerate **dimensions** in namespaces `cosmos` and `cosmichorizons` (use `BuiltInRegistries.DIMENSION_TYPE`/`LevelStem` or datapack scan).
+  - [x] Build a `PlanetDef` per discovered dimension with **default**: `requiredRocketTier = 1`, `requiredSuit = chex:suit1` (to be overridden by config).
+  - [x] **Persist** discovered list to JSON: `config/chex/_discovered_planets.json`.
+  - [x] **Log** a clean table: id, name(if known), default tier, suit requirement, source=CH.
+- [x] **Verify presence** (based on 0.0.7.3 JAR):
   - [ ] `cosmos:earth_moon`
   - [ ] `cosmos:mercury_wasteland`
   - [ ] `cosmos:venuslands`
@@ -80,7 +80,7 @@
   - [ ] `cosmos:glacio_lands`
   - [ ] `cosmos:gaia_bh_1`
   - [ ] `cosmos:solar_system` (meta/hub)
-- [ ] Missing IDs produce WARN lines; no crash.
+- [x] Missing IDs produce WARN lines; no crash.
 
 ---
 

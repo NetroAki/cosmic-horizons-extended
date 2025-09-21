@@ -18,58 +18,78 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 
 public class ArcSceneryRenderer implements BlockEntityRenderer<ArcSceneryBlockEntity> {
-    private static final ResourceLocation DEFAULT_TEX = new ResourceLocation("cosmic_horizons_extended","textures/ring/arc_segment.png");
+  private static final ResourceLocation DEFAULT_TEX =
+      new ResourceLocation("cosmic_horizons_extended", "textures/ring/arc_segment.png");
 
-    public ArcSceneryRenderer(BlockEntityRendererProvider.Context ctx) {}
+  public ArcSceneryRenderer(BlockEntityRendererProvider.Context ctx) {}
 
-    @Override
-    public void render(ArcSceneryBlockEntity be, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        Level level = be.getLevel();
-        if (level == null) return;
+  @Override
+  public void render(
+      ArcSceneryBlockEntity be,
+      float partialTicks,
+      PoseStack poseStack,
+      MultiBufferSource buffer,
+      int packedLight,
+      int packedOverlay) {
+    Level level = be.getLevel();
+    if (level == null) return;
 
-        Minecraft mc = Minecraft.getInstance();
-        Camera cam = mc.gameRenderer.getMainCamera();
-        Vec3 camPos = cam.getPosition();
-        Vec3 world = Vec3.atCenterOf(be.getBlockPos());
-        double d = camPos.distanceTo(world);
+    Minecraft mc = Minecraft.getInstance();
+    Camera cam = mc.gameRenderer.getMainCamera();
+    Vec3 camPos = cam.getPosition();
+    Vec3 world = Vec3.atCenterOf(be.getBlockPos());
+    double d = camPos.distanceTo(world);
 
-        double start = be.fadeStart;
-        double end = be.fadeEnd;
-        if (d <= start) return;
-        float t = (float) Mth.clamp((d - start) / (end - start), 0.0, 1.0);
-        float alpha = t;
+    double start = be.fadeStart;
+    double end = be.fadeEnd;
+    if (d <= start) return;
+    float t = (float) Mth.clamp((d - start) / (end - start), 0.0, 1.0);
+    float alpha = t;
 
-        int argb = be.colorARGB;
-        float a = ((argb >>> 24) & 0xFF) / 255f * alpha;
-        if (a <= 0.01f) return;
-        float r = ((argb >>> 16) & 0xFF) / 255f;
-        float g = ((argb >>> 8) & 0xFF) / 255f;
-        float b = (argb & 0xFF) / 255f;
+    int argb = be.colorARGB;
+    float a = ((argb >>> 24) & 0xFF) / 255f * alpha;
+    if (a <= 0.01f) return;
+    float r = ((argb >>> 16) & 0xFF) / 255f;
+    float g = ((argb >>> 8) & 0xFF) / 255f;
+    float b = (argb & 0xFF) / 255f;
 
-        poseStack.pushPose();
-        poseStack.translate(world.x - camPos.x, world.y - camPos.y, world.z - camPos.z);
-        // Apply yaw (Y axis) then tilt (X axis)
-        poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(be.yawDeg));
-        poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(be.tiltDeg));
+    poseStack.pushPose();
+    poseStack.translate(world.x - camPos.x, world.y - camPos.y, world.z - camPos.z);
+    // Apply yaw (Y axis) then tilt (X axis)
+    poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(be.yawDeg));
+    poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(be.tiltDeg));
 
-        var tex = be.texture != null ? be.texture : DEFAULT_TEX;
-        RenderType type = RenderType.entityTranslucent(tex);
-        RenderSystem.enableBlend();
-        RenderSystem.depthMask(false);
+    var tex = be.texture != null ? be.texture : DEFAULT_TEX;
+    RenderType type = RenderType.entityTranslucent(tex);
+    RenderSystem.enableBlend();
+    RenderSystem.depthMask(false);
 
-        VertexConsumer vc = buffer.getBuffer(type);
-        Matrix4f mat = poseStack.last().pose();
-        ArcTessellation.buildArc(mat, vc, be.radius, be.thickness, be.arcAngleDeg, Math.max(12, (int) (be.arcAngleDeg / 2)), r, g, b, a);
+    VertexConsumer vc = buffer.getBuffer(type);
+    Matrix4f mat = poseStack.last().pose();
+    ArcTessellation.buildArc(
+        mat,
+        vc,
+        be.radius,
+        be.thickness,
+        be.arcAngleDeg,
+        Math.max(12, (int) (be.arcAngleDeg / 2)),
+        r,
+        g,
+        b,
+        a);
 
-        RenderSystem.depthMask(true);
-        RenderSystem.disableBlend();
-        poseStack.popPose();
-    }
+    RenderSystem.depthMask(true);
+    RenderSystem.disableBlend();
+    poseStack.popPose();
+  }
 
-    @Override
-    public boolean shouldRenderOffScreen(ArcSceneryBlockEntity be) { return true; }
-    @Override
-    public int getViewDistance() { return 512; }
+  @Override
+  public boolean shouldRenderOffScreen(ArcSceneryBlockEntity be) {
+    return true;
+  }
+
+  @Override
+  public int getViewDistance() {
+    return 512;
+  }
 }
-
-

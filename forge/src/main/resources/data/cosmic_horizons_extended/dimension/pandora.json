@@ -1,11 +1,29 @@
 {
-  "type": "minecraft:overworld",
+  "type": "cosmic_horizons_extended:pandora",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "minecraft:overworld",
+    "settings": "cosmic_horizons_extended:pandora",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "cosmic_horizons_extended:pandora_bioluminescent_forest"
+      "type": "cosmic_horizons_extended:pandora",
+      "seed": 0
     }
+  },
+  "effects": {
+    "sky_color": 5118101,
+    "fog_color": 1772851,
+    "water_color": 3831536,
+    "water_fog_color": 526879,
+    "ambient_light": 0.1,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "ultrawarm": false,
+    "natural": true,
+    "coordinate_scale": 1.0,
+    "piglin_safe": false,
+    "respawn_anchor_works": false,
+    "bed_works": true,
+    "has_raids": true,
+    "logical_height": 256,
+    "infiniburn": "minecraft:infiniburn_overworld"
   }
 }

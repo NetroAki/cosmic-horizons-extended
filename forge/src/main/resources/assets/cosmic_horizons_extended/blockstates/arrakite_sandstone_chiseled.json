@@ -1,7 +1,7 @@
 {
   "variants": {
-    "": { "model": "cosmic_horizons_extended:block/arrakite_sandstone_chiseled" }
+    "": {
+      "model": "cosmic_horizons_extended:block/arrakite_sandstone_chiseled"
+    }
   }
 }
-
-

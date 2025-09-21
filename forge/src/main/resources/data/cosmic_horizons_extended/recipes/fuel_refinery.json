@@ -1,10 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "IBI",
-    "BFB",
-    "IBI"
-  ],
+  "pattern": ["IBI", "BFB", "IBI"],
   "key": {
     "I": {
       "item": "minecraft:iron_ingot"

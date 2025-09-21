@@ -1,10 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "cosmic_horizons_extended:pandora_floating_mountains",
-  "features": [
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
-  ],
+  "features": ["cosmic_horizons_extended:pandora_pandorite_outcrop_placed"],
   "step": "vegetal_decoration"
 }
-
-

@@ -11,9 +11,7 @@
     "MixinParameterList",
     "MixinPrimaryLevelData"
   ],
-  "client": [
-    "MixinWorldOpenFlows"
-  ],
+  "client": ["MixinWorldOpenFlows"],
   "injectors": {
     "defaultRequire": 1
   },

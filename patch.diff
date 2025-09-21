@@ -1,0 +1,13 @@
+diff --git a/forge/src/main/java/com/netroaki/chex/registry/PlanetRegistry.java b/forge/src/main/java/com/netroaki/chex/registry/PlanetRegistry.java
+--- a/forge/src/main/java/com/netroaki/chex/registry/PlanetRegistry.java
++++ b/forge/src/main/java/com/netroaki/chex/registry/PlanetRegistry.java
+@@
+-import com.netroaki.chex.config.CHEXConfig;
+-import com.netroaki.chex.integration.CosmicHorizonsIntegration;
+-import net.minecraft.resources.ResourceLocation;
++import com.netroaki.chex.config.CHEXConfig;
++import com.netroaki.chex.config.PlanetOverrideMerger;
++import com.netroaki.chex.config.PlanetOverridesCore;
++import com.netroaki.chex.integration.CosmicHorizonsIntegration;
++import com.netroaki.chex.suits.SuitTiers;
++import net.minecraft.resources.ResourceLocation;

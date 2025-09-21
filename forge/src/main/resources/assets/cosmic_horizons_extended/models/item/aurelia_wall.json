@@ -1,9 +1,3 @@
 {
   "parent": "cosmic_horizons_extended:block/aurelia_wall"
 }
-
-{
-  "parent": "cosmic_horizons_extended:block/chex_wall_placeholder"
-}
-
-

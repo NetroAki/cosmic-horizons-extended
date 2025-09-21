@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "cosmic_horizons_extended:fallback_bauxite_ore",
+    "cosmic_horizons_extended:fallback_ilmenite_ore",
+    "cosmic_horizons_extended:fallback_lead_ore",
+    "cosmic_horizons_extended:fallback_silver_ore",
+    "cosmic_horizons_extended:fallback_lithium_ore",
+    "cosmic_horizons_extended:fallback_titanium_ore",
+    "cosmic_horizons_extended:fallback_vanadium_ore",
+    "cosmic_horizons_extended:fallback_tungsten_ore",
+    "cosmic_horizons_extended:fallback_molybdenum_ore",
+    "cosmic_horizons_extended:fallback_chromium_ore",
+    "cosmic_horizons_extended:fallback_magnesium_ore",
+    "cosmic_horizons_extended:fallback_platinum_ore",
+    "cosmic_horizons_extended:fallback_iridium_ore",
+    "cosmic_horizons_extended:fallback_palladium_ore",
+    "cosmic_horizons_extended:fallback_niobium_ore",
+    "cosmic_horizons_extended:fallback_tantalum_ore",
+    "cosmic_horizons_extended:fallback_uranium_ore",
+    "cosmic_horizons_extended:fallback_osmium_ore",
+    "cosmic_horizons_extended:fallback_beryllium_ore",
+    "cosmic_horizons_extended:fallback_fluorite_ore",
+    "cosmic_horizons_extended:fallback_ruby_ore",
+    "cosmic_horizons_extended:fallback_sapphire_ore",
+    "cosmic_horizons_extended:fallback_draconium_ore",
+    "cosmic_horizons_extended:fallback_awakened_draconium_ore"
+  ]
+}

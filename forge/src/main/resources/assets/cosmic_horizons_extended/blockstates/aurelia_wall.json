@@ -3,11 +3,3 @@
     "": { "model": "cosmic_horizons_extended:block/aurelia_wall" }
   }
 }
-
-{
-  "variants": {
-    "": { "model": "cosmic_horizons_extended:block/chex_wall_placeholder" }
-  }
-}
-
-

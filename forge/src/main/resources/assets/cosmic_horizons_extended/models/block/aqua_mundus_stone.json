@@ -2,5 +2,3 @@
   "parent": "block/cube_all",
   "textures": { "all": "minecraft:block/prismarine_bricks" }
 }
-
-

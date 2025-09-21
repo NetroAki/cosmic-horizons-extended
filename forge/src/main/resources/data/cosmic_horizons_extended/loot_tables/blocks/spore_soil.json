@@ -1,17 +1,17 @@
 {
-  ""type"": ""minecraft:block"",
-  ""pools"": [
+  "type": "minecraft:block",
+  "pools": [
     {
-      ""rolls"": 1,
-      ""entries"": [
+      "rolls": 1,
+      "entries": [
         {
-          ""type"": ""minecraft:item"",
-          ""name"": ""cosmic_horizons_extended:spore_soil""
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:spore_soil"
         }
       ],
-      ""conditions"": [
+      "conditions": [
         {
-          ""condition"": ""minecraft:survives_explosion""
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

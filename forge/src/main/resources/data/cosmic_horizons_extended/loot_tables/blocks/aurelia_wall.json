@@ -1,17 +1,17 @@
 {
-  ""type"": ""minecraft:block"",
-  ""pools"": [
+  "type": "minecraft:block",
+  "pools": [
     {
-      ""rolls"": 1,
-      ""entries"": [
+      "rolls": 1,
+      "entries": [
         {
-          ""type"": ""minecraft:item"",
-          ""name"": ""cosmic_horizons_extended:aurelia_wall""
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:aurelia_wall"
         }
       ],
-      ""conditions"": [
+      "conditions": [
         {
-          ""condition"": ""minecraft:survives_explosion""
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

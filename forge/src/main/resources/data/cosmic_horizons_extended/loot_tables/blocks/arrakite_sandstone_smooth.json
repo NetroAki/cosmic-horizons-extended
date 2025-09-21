@@ -1,17 +1,17 @@
 {
-  ""type"": ""minecraft:block"",
-  ""pools"": [
+  "type": "minecraft:block",
+  "pools": [
     {
-      ""rolls"": 1,
-      ""entries"": [
+      "rolls": 1,
+      "entries": [
         {
-          ""type"": ""minecraft:item"",
-          ""name"": ""cosmic_horizons_extended:arrakite_sandstone_smooth""
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:arrakite_sandstone_smooth"
         }
       ],
-      ""conditions"": [
+      "conditions": [
         {
-          ""condition"": ""minecraft:survives_explosion""
+          "condition": "minecraft:survives_explosion"
         }
       ]
     }

@@ -1,6 +1,6 @@
 # Cosmic Horizons — Addon Support (Consolidated Guide)
 
-> A single, consolidated reference for datapack authors targeting **Cosmic Horizons**.  
+> A single, consolidated reference for datapack authors targeting **Cosmic Horizons**.
 
 - Source sections:
   - Getting started
@@ -86,21 +86,21 @@ data/
 
 All of these are **cosmic dimension data files** used in two common ways:
 
-1) **Solar System files** — define systems, GUI, the space-dimension container, and list planets + their target dimensions.  
-2) **Planet/Dimension files** — configure a single dimension (gravity, air resistance, custom sky, optional “space” transfer, fog/weather overrides, etc.).
+1. **Solar System files** — define systems, GUI, the space-dimension container, and list planets + their target dimensions.
+2. **Planet/Dimension files** — configure a single dimension (gravity, air resistance, custom sky, optional “space” transfer, fog/weather overrides, etc.).
 
 Each file **must include** `"attached_dimention_id"` (typo preserved from the game’s key), pointing to the Minecraft **dimension id** it controls.
 
 **What can each file type include?**
 
-| Feature / Section      | Solar systems | Planets | Dimensions |
-|------------------------|:-------------:|:-------:|:----------:|
-| `attached_dimention_id`|      ☑        |   ☑     |     ☑      |
-| `planet_data`          |      ☑        |   ☐     |     ☐      |
-| `gui_data`             |      ☑        |   ☐     |     ☐      |
-| `skybox_data`          |      ☐        |   ☑     |     ☑      |
-| `dimensional_data`     |      ☑        |   ☑     |     ☑      |
-| `sky_data`             |      ☐        |   ☑     |     ☑      |
+| Feature / Section       | Solar systems | Planets | Dimensions |
+| ----------------------- | :-----------: | :-----: | :--------: |
+| `attached_dimention_id` |       ☑       |    ☑    |     ☑      |
+| `planet_data`           |       ☑       |    ☐    |     ☐      |
+| `gui_data`              |       ☑       |    ☐    |     ☐      |
+| `skybox_data`           |       ☐       |    ☑    |     ☑      |
+| `dimensional_data`      |       ☑       |    ☑    |     ☑      |
+| `sky_data`              |       ☐       |    ☑    |     ☑      |
 
 **Example – minimal Solar System file:**
 
@@ -145,7 +145,9 @@ Each file **must include** `"attached_dimention_id"` (typo preserved from the ga
 ```json
 {
   "attached_dimention_id": "cosmos:marslands",
-  "skybox_data": { /* optional skybox */ },
+  "skybox_data": {
+    /* optional skybox */
+  },
   "dimensional_data": {
     "dimension_type": "planet",
     "weather": false,
@@ -178,10 +180,10 @@ Each file **must include** `"attached_dimention_id"` (typo preserved from the ga
 
 ### Top-level attributes
 
-- `"planet_data"` — JSON object with **planets** (see [Planets](#planets)).  
-- `"attached_dimention_id"` — `namespace:dimension` id for the **space** dimension representing this system.  
-- `"skybox_data"` — skybox settings (see [Skyboxes](#skyboxes)).  
-- `"dimensional_data"` — dimension settings for the **space** dimension (see [Dimensions](#dimensions)).  
+- `"planet_data"` — JSON object with **planets** (see [Planets](#planets)).
+- `"attached_dimention_id"` — `namespace:dimension` id for the **space** dimension representing this system.
+- `"skybox_data"` — skybox settings (see [Skyboxes](#skyboxes)).
+- `"dimensional_data"` — dimension settings for the **space** dimension (see [Dimensions](#dimensions)).
 - `"gui_data"` — config for the **space GUI** tabs and objects (below).
 
 ### `gui_data`
@@ -255,6 +257,7 @@ Each file **must include** `"attached_dimention_id"` (typo preserved from the ga
 ```
 
 > **Notes**
+>
 > - `radius`: distance from planet center (used in distance calcs).
 > - `scale_radius`: ring size scalar (individual, not `planetRadius + scale`).
 > - `flip_x/y/z`: choose the axis(es) that match the ring’s tilt. Multiple flips allowed.
@@ -385,6 +388,7 @@ Some UI fields use a **simple** (non‑vanilla) JSON text object with exactly **
   `red, orange, yellow, green, lime, cyan, light blue, blue, magenta, purple, pink, brown, gray, light gray, black, white`
 
 **Invalid (multi-part list)**
+
 ```json
 "name": [
   {"text": "red ", "color": "red"},
@@ -393,6 +397,7 @@ Some UI fields use a **simple** (non‑vanilla) JSON text object with exactly **
 ```
 
 **Valid (single object)**
+
 ```json
 "name": { "text": "Only red", "color": "red" }
 ```
@@ -402,30 +407,53 @@ Some UI fields use a **simple** (non‑vanilla) JSON text object with exactly **
 ## Appendix: Minimal templates
 
 **Solar system (safest starting point)**
+
 ```json
 {
   "attached_dimention_id": "cosmos:my_space_dim",
-  "dimensional_data": { "dimension_type": "space", "gravity": 0, "air_resistance": 1, "weather": false, "clouds": false, "sky_objects": false },
-  "skybox_data": { "attached_skybox_texture_id": "stars_01", "alpha": 255, "yaw": 0, "pitch": 0, "roll": 0 },
+  "dimensional_data": {
+    "dimension_type": "space",
+    "gravity": 0,
+    "air_resistance": 1,
+    "weather": false,
+    "clouds": false,
+    "sky_objects": false
+  },
+  "skybox_data": {
+    "attached_skybox_texture_id": "stars_01",
+    "alpha": 255,
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0
+  },
   "gui_data": {
     "main": {
       "title": "My System",
       "background": "solar_bg",
       "order": 0,
       "travel_dimension": "cosmos:my_space_dim",
-      "origin_x": 0, "origin_y": 100, "origin_z": 0,
-      "object_data": { }
+      "origin_x": 0,
+      "origin_y": 100,
+      "origin_z": 0,
+      "object_data": {}
     }
   },
-  "planet_data": { }
+  "planet_data": {}
 }
 ```
 
 **Planet (single dimension)**
+
 ```json
 {
   "attached_dimention_id": "my_pack:my_planet_dim",
-  "skybox_data": { "attached_skybox_texture_id": "my_sky", "alpha": 255, "yaw": 0, "pitch": 0, "roll": 0 },
+  "skybox_data": {
+    "attached_skybox_texture_id": "my_sky",
+    "alpha": 255,
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0
+  },
   "dimensional_data": {
     "dimension_type": "planet",
     "gravity": 80,
@@ -434,25 +462,34 @@ Some UI fields use a **simple** (non‑vanilla) JSON text object with exactly **
     "atmospheric_data": {
       "atmosphere_y": 512,
       "travel_to": "cosmos:my_space_dim",
-      "origin_x": 0, "origin_y": 128, "origin_z": 0,
+      "origin_x": 0,
+      "origin_y": 128,
+      "origin_z": 0,
       "overlay_texture_id": "my_bar",
       "shipbit_y": 24,
       "ship_min_y": 120
     }
   },
-  "sky_data": { }
+  "sky_data": {}
 }
 ```
 
 **GUI Planet object (for `gui_data.object_data`)**
+
 ```json
 {
   "texture_id": "p_tex",
   "scale": 15,
   "ponder_scale": 60,
-  "yaw": 0, "pitch": 0, "roll": 0,
-  "yaw_speed": 0.25, "pitch_speed": 0, "roll_speed": 0,
-  "travel_x": 0, "travel_y": 256, "travel_z": 0,
+  "yaw": 0,
+  "pitch": 0,
+  "roll": 0,
+  "yaw_speed": 0.25,
+  "pitch_speed": 0,
+  "roll_speed": 0,
+  "travel_x": 0,
+  "travel_y": 256,
+  "travel_z": 0,
   "unlocking_dimension": "my_pack:my_planet_dim",
   "name": { "text": "Planet X", "color": "cyan" },
   "type": { "text": "Rocky", "color": "brown" },

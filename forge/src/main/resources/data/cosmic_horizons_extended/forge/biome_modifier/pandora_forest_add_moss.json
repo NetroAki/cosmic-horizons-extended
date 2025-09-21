@@ -1,10 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "cosmic_horizons_extended:pandora_bioluminescent_forest",
-  "features": [
-    "cosmic_horizons_extended:pandora_biolume_moss_patch_placed"
-  ],
+  "features": ["cosmic_horizons_extended:pandora_biolume_moss_patch_placed"],
   "step": "vegetal_decoration"
 }
-
-

@@ -1,10 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "cosmic_horizons_extended:pandora_volcanic_wasteland",
-  "features": [
-    "cosmic_horizons_extended:pandora_magma_spire_placed"
-  ],
+  "features": ["cosmic_horizons_extended:pandora_magma_spire_placed"],
   "step": "vegetal_decoration"
 }
-
-
