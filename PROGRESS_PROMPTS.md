@@ -118,3 +118,8 @@
    - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
    - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
 
+
+20. Prompt: Have we enabled configuration overrides for discovered planets?
+
+   - Outcome: Updated the planet registry to apply `chex-planets.json5` overrides (fuel, suits, hazards, descriptions) to discovered planets, enhanced logging, and added comprehensive unit tests for override parsing/merging.
+   - Reference: progress/step21_planet_registry_overrides.md; notes/planet_registry_overrides.md.

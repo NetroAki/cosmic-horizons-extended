@@ -498,12 +498,14 @@ public class PlanetRegistry {
   /** Apply overrides to a planet definition */
   private static PlanetDef applyOverrides(
       PlanetDef base, Map<ResourceLocation, PlanetOverridesCore.Entry> overrides) {
-    PlanetOverridesCore.Entry override = overrides.get(base.id());
+    return applyOverrides(base, overrides.get(base.id()));
+  }
+
+  private static PlanetDef applyOverrides(PlanetDef base, PlanetOverridesCore.Entry override) {
     if (override == null) {
       return base;
     }
 
-    // Create PlanetInfo for merging
     PlanetOverrideMerger.PlanetInfo baseInfo =
         new PlanetOverrideMerger.PlanetInfo(
             base.name(),
@@ -513,10 +515,8 @@ public class PlanetRegistry {
             base.description(),
             base.hazards());
 
-    // Merge with overrides
     PlanetOverrideMerger.PlanetInfo merged = PlanetOverrideMerger.merge(baseInfo, override);
 
-    // Convert back to PlanetDef
     NoduleTiers tier = NoduleTiers.getByTier(merged.requiredRocketTier());
     if (tier == null) {
       tier = base.requiredRocketTier();
@@ -553,6 +553,7 @@ public class PlanetRegistry {
     clearDiscoveredPlanets();
 
     int registered = 0;
+    int overridesApplied = 0;
     List<String> rows = new ArrayList<>();
     try (BufferedReader reader = Files.newBufferedReader(discoveryFile)) {
       JsonObject root = GSON.fromJson(reader, JsonObject.class);
@@ -572,9 +573,14 @@ public class PlanetRegistry {
         }
 
         // Apply overrides to discovered planet
-        PlanetDef overriddenDefinition = applyOverrides(definition, overrides);
+        PlanetOverridesCore.Entry overrideEntry = overrides.get(definition.id());
+        PlanetDef overriddenDefinition =
+            overrideEntry == null ? definition : applyOverrides(definition, overrideEntry);
         registerDiscoveredPlanet(overriddenDefinition);
         registered++;
+        if (overrideEntry != null) {
+          overridesApplied++;
+        }
 
         String row =
             String.format(
@@ -601,6 +607,10 @@ public class PlanetRegistry {
           "[CHEX] Registered {} Cosmic Horizons planets from {} (with overrides applied).",
           registered,
           discoveryFile);
+      if (overridesApplied > 0) {
+        CHEX.LOGGER.info(
+            "[CHEX] Applied {} configuration overrides from chex-planets.json5.", overridesApplied);
+      }
       CHEX.LOGGER.info("[CHEX] {}", header);
       CHEX.LOGGER.info("[CHEX] {}", separator);
       for (String row : rows) {
