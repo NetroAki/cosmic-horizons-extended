@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public final class PlanetOverrides {
   public static final String FILE_NAME = "chex/chex-planets.json5";
@@ -24,6 +25,9 @@ public final class PlanetOverrides {
     public int requiredRocketTier = 1;
     public String requiredSuitTag = "chex:suit1";
     public String name = null;
+    public String description = "";
+    public String fuel = "";
+    public Set<String> hazards = Set.of();
   }
 
   private final Map<String, Entry> overridesById = new HashMap<>();
@@ -47,9 +51,27 @@ public final class PlanetOverrides {
               map.forEach(
                   (id, e) -> {
                     Entry en = new Entry();
-                    en.requiredRocketTier = e.requiredRocketTier;
-                    en.requiredSuitTag = e.requiredSuitTag;
-                    en.name = e.name;
+                    if (e.requiredRocketTier() != null) {
+                      en.requiredRocketTier = e.requiredRocketTier();
+                    }
+                    if (e.requiredSuitTag() != null) {
+                      en.requiredSuitTag = e.requiredSuitTag();
+                    } else if (e.requiredSuitTier() != null) {
+                      en.requiredSuitTag =
+                          String.format("chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
+                    }
+                    if (e.name() != null) {
+                      en.name = e.name();
+                    }
+                    if (e.description() != null) {
+                      en.description = e.description();
+                    }
+                    if (e.fuel() != null) {
+                      en.fuel = e.fuel();
+                    }
+                    if (e.hazards() != null && !e.hazards().isEmpty()) {
+                      en.hazards = Set.copyOf(e.hazards());
+                    }
                     data.overridesById.put(id, en);
                   }));
     } catch (Exception ex) {

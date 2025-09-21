@@ -102,3 +102,19 @@
 
 - Outcome: Synced refs via git fetch and added agents.md summarizing the mandatory setup/formatting workflow for Codex cloud runs.
 - Reference: progress/step15_remote_agent.md; agents.md.
+15. Prompt: How is parallel cloud scaffolding configured?
+   - Outcome: Added tasks/2025-09-21 work menu (T-001..T-004), claims/ records, coordination notes, and helper scripts for spawning branches.
+   - Reference: progress/step16_parallel_setup.md; scripts/spawn_task_branches.sh; tasks/2025-09-21/.
+
+16. Prompt: Is the CHEX task backlog available for multi-agent work?
+   - Outcome: Populated tasks/2025-09-21 with detailed specs T-005..T-103 mirroring CHEX_DETAILED_TASKS; helper scripts and coordination files in place.
+   - Reference: progress/step17_tasks_expanded.md; tasks/2025-09-21/; scripts/spawn_task_branches.sh.
+
+17. Prompt: Are tasks for sections 3-7 available?
+   - Outcome: Added T-200..T-242 task specs for mineral systems, boss progression, client UX, docs, QA; backlog now mirrors entire CHEX_DETAILED_TASKS list.
+   - Reference: progress/step18_task_matrix_complete.md; tasks/2025-09-21/.
+
+18. Prompt: Can branch creation be automated for all tasks?
+   - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
+   - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
+

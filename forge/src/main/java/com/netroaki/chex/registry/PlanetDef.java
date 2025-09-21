@@ -16,15 +16,27 @@ public record PlanetDef(
     int gravityLevel,
     boolean hasAtmosphere,
     boolean requiresOxygen,
+    Set<String> hazards,
     Set<String> availableMinerals,
     String biomeType,
     boolean isOrbit) {
 
   public PlanetDef {
+    hazards = hazards == null ? Set.of() : unmodifiableLowercaseSet(hazards);
     availableMinerals =
         availableMinerals == null
             ? Set.of()
             : Collections.unmodifiableSet(new LinkedHashSet<>(availableMinerals));
+  }
+
+  private static Set<String> unmodifiableLowercaseSet(Set<String> source) {
+    LinkedHashSet<String> lowered = new LinkedHashSet<>();
+    for (String value : source) {
+      if (value != null && !value.isBlank()) {
+        lowered.add(value.toLowerCase());
+      }
+    }
+    return Collections.unmodifiableSet(lowered);
   }
 
   /** Check if this planet is accessible with the given nodule tier */
@@ -47,5 +59,13 @@ public record PlanetDef(
     return String.format(
         "Requires: %s nodule, %s suit, %s fuel",
         requiredRocketTier.getId(), requiredSuitTag, fuelType);
+  }
+
+  /** Check if the planet lists a hazard by id (case-insensitive). */
+  public boolean hasHazard(String hazardId) {
+    if (hazardId == null || hazardId.isBlank()) {
+      return false;
+    }
+    return hazards.contains(hazardId.toLowerCase());
   }
 }
