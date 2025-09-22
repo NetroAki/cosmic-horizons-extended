@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "type": "chex:shai_hulud"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chex:sand_core",
+          "weight": 1,
+          "quality": 0,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1,
+              "add": false
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'\"{\\\"text\\\":\\\"Sand Core\\\",\\\"color\\\":\\\"gold\\\",\\\"italic\\\":false}'}}"
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                {"text":"The crystallized essence of the Sand Emperor","color":"gray","italic":true}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "chex:gameplay/rare_drops",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "chex:gameplay/common_drops",
+          "weight": 2
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
