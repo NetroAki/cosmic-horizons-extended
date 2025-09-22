@@ -1,0 +1,16 @@
+{
+  "fluid.chex.kerosene": "Kerosene",
+  "item.chex.kerosene_bucket": "Kerosene Bucket",
+  "fluid.chex.rp1": "RP-1 Rocket Fuel",
+  "item.chex.rp1_bucket": "RP-1 Bucket",
+  "fluid.chex.lox": "Liquid Oxygen (LOX)",
+  "item.chex.lox_bucket": "LOX Bucket",
+  "fluid.chex.lh2": "Liquid Hydrogen (LH2)",
+  "item.chex.lh2_bucket": "LH2 Bucket",
+  "fluid.chex.dt_mix": "Deuterium-Tritium Mix",
+  "item.chex.dt_mix_bucket": "D-T Mix Bucket",
+  "fluid.chex.he3_blend": "Helium-3 Blend",
+  "item.chex.he3_blend_bucket": "He-3 Blend Bucket",
+  "fluid.chex.exotic_mix": "Exotic Matter Mix",
+  "item.chex.exotic_mix_bucket": "Exotic Matter Bucket"
+}

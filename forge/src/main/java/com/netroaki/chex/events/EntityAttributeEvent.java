@@ -11,6 +11,9 @@ import com.netroaki.chex.entities.boss.MoltenBehemothEntity;
 import com.netroaki.chex.entities.boss.SkySovereignEntity;
 import com.netroaki.chex.entities.boss.SporeTyrantEntity;
 import com.netroaki.chex.entities.boss.WorldheartAvatarEntity;
+import com.netroaki.chex.entity.Sandworm;
+import com.netroaki.chex.entity.FremenVillager;
+import com.netroaki.chex.entity.StormHawk;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -46,8 +49,26 @@ public class EntityAttributeEvent {
     event.put(
         com.netroaki.chex.registry.entities.CHEXEntities.MOLTEN_BEHEMOTH.get(),
         MoltenBehemothEntity.createAttributes().build());
+    // Arrakis Fauna
     event.put(
         com.netroaki.chex.registry.entities.CHEXEntities.SKY_SOVEREIGN.get(),
+        SkySovereignEntity.createAttributes().build());
+    
+    // Arrakis Fauna
+    event.put(
+        ModEntities.SANDWORM.get(),
+        Sandworm.createAttributes().build());
+    event.put(
+        ModEntities.FREMEN_VILLAGER.get(),
+        FremenVillager.createAttributes().build());
+    event.put(
+        ModEntities.STORM_HAWK.get(),
+        StormHawk.createAttributes().build());
+        
+    // Boss Entities
+    event.put(
+        ModEntities.SHAI_HULUD.get(),
+        ShaiHuludBoss.createAttributes().build());
         SkySovereignEntity.createAttributes().build());
     event.put(
         com.netroaki.chex.registry.entities.CHEXEntities.WORLDHEART_AVATAR.get(),

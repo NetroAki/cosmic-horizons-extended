@@ -1,0 +1,81 @@
+{
+  "type": "minecraft:geode",
+  "config": {
+    "blocks": {
+      "filling_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:blackstone"
+        }
+      },
+      "inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:gilded_blackstone"
+        }
+      },
+      "alternate_inner_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:blackstone"
+        }
+      },
+      "middle_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:shroomlight"
+        }
+      },
+      "outer_layer_provider": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "minecraft:blackstone"
+        }
+      },
+      "inner_placements": [
+        {
+          "Name": "minecraft:glow_lichen"
+        },
+        {
+          "Name": "minecraft:sea_lantern"
+        },
+        {
+          "Name": "minecraft:glowstone"
+        }
+      ]
+    },
+    "layers": {
+      "filling": 1.7,
+      "inner_layer": 2.2,
+      "middle_layer": 3.2,
+      "outer_layer": 4.8
+    },
+    "crack": {
+      "generate_crack_chance": 0.7,
+      "base_crack_size": 2,
+      "crack_point_offset": 2
+    },
+    "noise_multiplier": 0.025,
+    "use_potential_placements_chance": 0.35,
+    "use_alternate_layer0_chance": 0.083,
+    "placements_require_layer0_alternate": true,
+    "outer_wall_distance": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 7
+      }
+    },
+    "distribution_points": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 3,
+        "max_inclusive": 5
+      }
+    },
+    "point_offset": 0.55,
+    "min_gen_offset": -24,
+    "max_gen_offset": 24,
+    "invalid_blocks_threshold": 1
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:ice"
+              }
+            }
+          }
+        },
+        "chance": 0.4
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:packed_ice"
+              }
+            }
+          }
+        },
+        "chance": 0.3
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:blue_ice"
+              }
+            }
+          }
+        },
+        "chance": 0.2
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:snow_block"
+              }
+            }
+          }
+        },
+        "chance": 0.1
+      }
+    ],
+    "default": "minecraft:ice_patch"
+  }
+}

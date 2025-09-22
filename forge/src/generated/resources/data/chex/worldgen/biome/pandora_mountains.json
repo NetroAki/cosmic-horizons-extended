@@ -1,0 +1,47 @@
+{
+  "temperature": 0.5,
+  "downfall": 0.3,
+  "precipitation": "snow",
+  "effects": {
+    "sky_color": 8233727,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 0x7a9c6a,
+    "foliage_color": 0x6a8c5a
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "chex:pandora_magma_fields"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "chex:pandora_trees"
+    ],
+    [
+      "chex:pandora_floating_islands"
+    ]
+  ]
+}

@@ -1,4 +1,4 @@
-﻿{
+{
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -7,40 +7,122 @@
     ],
     "liquid": ["minecraft:underwater_cave"]
   },
-  "downfall": 1,
+  "downfall": 1.0,
   "effects": {
-    "fog_color": 861248,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
+    "fog_color": 10518688,
+    "sky_color": 8103167,
+    "water_color": 4020182,
+    "water_fog_color": 329011,
+    "foliage_color": 0x1A5E1A,
+    "grass_color": 0x2E8B57,
+    "grass_color_modifier": "swamp",
+    "particle": {
+      "probability": 0.05,
+      "options": {
+        "type": "minecraft:glow",
+        "color": [0, 100, 200, 30]
+      }
     },
-    "sky_color": 2248312,
-    "water_color": 2251407,
-    "water_fog_color": 399916,
-    "foliage_color": 16711935,
-    "grass_color": 16711935
+    "mood_sound": {
+      "sound": "minecraft:ambient.underwater.loop",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.underwater.additions",
+      "tick_chance": 0.01
+    },
+    "music": {
+      "sound": "minecraft:music.under_water",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    },
+    "ambient_sound": "minecraft:ambient.underwater.loop"
   },
   "features": [
-    "cosmic_horizons_extended:pandora_lumicoral_cluster_placed",
-    "cosmic_horizons_extended:pandora_kelp_forests_placed",
-    "cosmic_horizons_extended:pandora_ocean_kelp_patch_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "cosmic_horizons_extended:pandora_thermal_vents_placed",
+      "cosmic_horizons_extended:pandora_glowing_corals_placed"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_tuff",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_redstone",
+      "minecraft:ore_redstone_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "minecraft:ore_lapis",
+      "minecraft:ore_lapis_buried",
+      "minecraft:ore_copper",
+      "minecraft:underwater_magma",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:glow_lichen"
+    ]
   ],
   "has_precipitation": true,
+  "precipitation": "rain",
+  "temperature": 0.5,
   "spawn_costs": {
+    "abyssal_lurker": {
+      "energy_budget": 0.18,
+      "charge": 1.2
+    },
+    "cosmic_horizons_extended:bioluminescent_jelly": {
+      "energy_budget": 0.1,
+      "charge": 0.8
+    },
     "deep_sea_siren": {
       "energy_budget": 0.2,
       "charge": 1.0
     }
   },
   "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
     "monster": [
+      {
+        "type": "minecraft:guardian",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "cosmic_horizons_extended:abyssal_lurker",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
       {
         "type": "cosmic_horizons_extended:deep_sea_siren",
         "weight": 1,
@@ -48,8 +130,46 @@
         "maxCount": 1
       }
     ],
-    "underground_water_creature": [],
+    "creature": [],
+    "water_creature": [
+      {
+        "type": "cosmic_horizons_extended:bioluminescent_jelly",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 5
+      },
+      {
+        "type": "minecraft:squid",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "cosmic_horizons_extended:abyss_leviathan",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "weight": 25,
+        "minCount": 3,
+        "maxCount": 8
+      },
+      {
+        "type": "minecraft:cod",
+        "weight": 15,
+        "minCount": 2,
+        "maxCount": 6
+      },
       {
         "type": "cosmic_horizons_extended:luminfish",
         "weight": 15,
@@ -57,14 +177,47 @@
         "maxCount": 8
       }
     ],
-    "water_creature": [
-      {
-        "type": "cosmic_horizons_extended:abyss_leviathan",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ]
+    "ambient": [],
+    "misc": []
   },
+  "special_effects": {
+    "underwater_effects": {
+      "fog_density": 1.5,
+      "fog_start": 0.1,
+      "fog_end": 0.4,
+      "darkness_threshold": 0.7,
+      "particle_density": 0.02,
+      "particle_type": "minecraft:glow",
+      "particle_color": [0, 150, 200, 50]
+    },
+    "currents": {
+      "enabled": true,
+      "strength": 0.1,
+      "vortex_chance": 0.01,
+      "vortex_strength": 0.5,
+      "particle_effect": "minecraft:bubble"
+    },
+    "pressure_damage": {
+      "enabled": true,
+      "damage_per_second": 2.0,
+      "depth_threshold": 30,
+      "protection_items": [
+        "cosmic_horizons_extended:pressure_suit_helmet",
+        "cosmic_horizons_extended:pressure_suit_chestplate"
+      ]
+    }
+  },
+  "generation_settings": {
+    "sea_level": 63,
+    "disable_mob_generation": false,
+    "aquifers_enabled": true,
+    "ore_veins_enabled": true,
+    "default_block": {
+      "Name": "minecraft:water"
+    },
+    "default_fluid": {
+      "Name": "minecraft:water"
+    }
+  }
   "temperature": 0.3
 }

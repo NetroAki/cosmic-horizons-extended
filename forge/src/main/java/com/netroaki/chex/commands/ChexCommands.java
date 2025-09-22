@@ -15,11 +15,13 @@ import com.netroaki.chex.hooks.LaunchHooks;
 import com.netroaki.chex.registry.FuelRegistry;
 import com.netroaki.chex.registry.PlanetRegistry;
 import com.netroaki.chex.travel.TravelGraph;
+import com.netroaki.chex.core.TravelGraphCore;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
+import net.minecraft.commands.arguments.StringArgumentType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -27,6 +29,12 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import com.netroaki.chex.core.TravelGraphCore;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ChexCommands {
 
@@ -49,10 +57,306 @@ public class ChexCommands {
             PlanetRegistry.getAllPlanets().keySet(), builder);
       };
 
+  /**
+   * Dumps all registered planets to chat and optionally to a file.
+   * @param context The command context.
+   * @param reload Whether to reload the planet registry before dumping.
+   * @param outputFile If not null, the path to write the JSON output to.
+   * @return The number of planets dumped.
+   */
+  private static int dumpPlanets(CommandContext<CommandSourceStack> context, boolean reload, String outputFile) {
+    var source = context.getSource();
+    
+    // Reload planet registry if requested
+    if (reload) {
+      try {
+        // Reload discovered planets
+        PlanetRegistry.reloadDiscoveredPlanets();
+        source.sendSuccess(
+            () -> Component.literal("✓ Reloaded planet registry").withStyle(style -> style.withColor(0x55FF55)),
+            false);
+      } catch (Exception e) {
+        source.sendFailure(Component.literal("Failed to reload planet registry: " + e.getMessage()));
+        CHEX.LOGGER.error("Failed to reload planet registry", e);
+        return 0;
+      }
+    }
+    
+    // Get all planets
+    var planets = PlanetRegistry.getAllPlanets();
+    
+    // Prepare JSON output
+    JsonObject jsonOutput = new JsonObject();
+    jsonOutput.addProperty("timestamp", System.currentTimeMillis());
+    jsonOutput.addProperty("planetCount", planets.size());
+    
+    JsonObject planetsJson = new JsonObject();
+    jsonOutput.add("planets", planetsJson);
+    
+    // Build console output and JSON
+    var consoleOutput = new StringBuilder();
+    consoleOutput.append("=== Registered Planets (").append(planets.size()).append(") ===\n");
+    
+    planets.forEach((id, planet) -> {
+      // Add to console output
+      consoleOutput.append("\n")
+          .append(planet.name())
+          .append(" (").append(id).append(")\n")
+          .append("  Tier: ").append(planet.requiredRocketTier())
+          .append(" | Suit: ").append(planet.requiredSuitTag())
+          .append(" | Fuel: ").append(planet.fuelType())
+          .append("\n  Gravity: ").append(planet.gravityLevel())
+          .append(" | Temp: ").append(String.format("%.1fK", planet.temperature()))
+          .append(" | Rad: ").append(planet.radiationLevel())
+          .append(" | O2: ").append(String.format("%.2f", planet.baseOxygen() * 100)).append("%")
+          .append("\n  Biome: ").append(planet.biomeType())
+          .append(" | Orbit: ").append(planet.isOrbit())
+          .append(" | Atmo: ").append(planet.hasAtmosphere())
+          .append(" | Req O2: ").append(planet.requiresOxygen())
+          .append("\n  Hazards: ").append(String.join(", ", planet.hazards()))
+          .append("\n  Minerals: ").append(String.join(", ", planet.availableMinerals()))
+          .append("\n");
+      
+      // Add to JSON
+      JsonObject planetJson = new JsonObject();
+      planetJson.addProperty("name", planet.name());
+      planetJson.addProperty("id", id.toString());
+      planetJson.addProperty("requiredRocketTier", planet.requiredRocketTier().name());
+      planetJson.addProperty("requiredSuitTag", planet.requiredSuitTag());
+      planetJson.addProperty("fuelType", planet.fuelType());
+      planetJson.addProperty("description", planet.description());
+      planetJson.addProperty("gravityLevel", planet.gravityLevel());
+      planetJson.addProperty("hasAtmosphere", planet.hasAtmosphere());
+      planetJson.addProperty("requiresOxygen", planet.requiresOxygen());
+      planetJson.addProperty("biomeType", planet.biomeType());
+      planetJson.addProperty("isOrbit", planet.isOrbit());
+      planetJson.addProperty("temperature", planet.temperature());
+      planetJson.addProperty("radiationLevel", planet.radiationLevel());
+      planetJson.addProperty("baseOxygen", planet.baseOxygen());
+      
+      JsonArray hazardsArray = new JsonArray();
+      planet.hazards().forEach(hazardsArray::add);
+      planetJson.add("hazards", hazardsArray);
+      
+      JsonArray mineralsArray = new JsonArray();
+      planet.availableMinerals().forEach(mineralsArray::add);
+      planetJson.add("availableMinerals", mineralsArray);
+      
+      planetsJson.add(id.toString(), planetJson);
+    });
+    
+    // Output to console
+    source.sendSuccess(
+        () -> Component.literal(consoleOutput.toString()).withStyle(style -> style.withColor(0x55FF55)),
+        false);
+    
+    // Write to file if requested
+    if (outputFile != null) {
+      try {
+        Path outputPath = Paths.get(outputFile);
+        Files.write(outputPath, List.of(new GsonBuilder().setPrettyPrinting().create().toJson(jsonOutput)));
+        source.sendSuccess(
+            () -> Component.literal("✓ Saved planet data to: " + outputPath.toAbsolutePath())
+                .withStyle(style -> style.withColor(0x55FF55)),
+            false);
+      } catch (IOException e) {
+        source.sendFailure(Component.literal("Failed to write to file: " + e.getMessage()));
+        CHEX.LOGGER.error("Failed to write planet data to file: " + outputFile, e);
+      }
+    }
+    
+    return planets.size();
+  }
+  
+  /**
+   * Handles the dump_planets command.
+   */
+  private static int dumpPlanets(CommandContext<CommandSourceStack> context) {
+    // Default implementation without any flags
+    return dumpPlanets(context, false, null);
+  }
+
+  /**
+   * Handles the dump_planets command with optional --reload flag and output file.
+   */
+  private static int dumpPlanets(CommandContext<CommandSourceStack> context, boolean reload, String outputFile) {
+    var source = context.getSource();
+    
+    // Reload planet registry if requested
+    if (reload) {
+      try {
+        // Reload discovered planets
+        PlanetRegistry.reloadDiscoveredPlanets();
+        source.sendSuccess(
+            () -> Component.literal("✓ Reloaded planet registry").withStyle(style -> style.withColor(0x55FF55)),
+            false);
+      } catch (Exception e) {
+        source.sendFailure(Component.literal("Failed to reload planet registry: " + e.getMessage()));
+        CHEX.LOGGER.error("Failed to reload planet registry", e);
+        return 0;
+      }
+    }
+    
+    // Get all planets
+    var planets = PlanetRegistry.getAllPlanets();
+    
+    // Prepare JSON output
+    JsonObject jsonOutput = new JsonObject();
+    jsonOutput.addProperty("timestamp", System.currentTimeMillis());
+    jsonOutput.addProperty("planetCount", planets.size());
+    
+    JsonObject planetsJson = new JsonObject();
+    jsonOutput.add("planets", planetsJson);
+    
+    // Build console output and JSON
+    var consoleOutput = new StringBuilder();
+    consoleOutput.append("=== Registered Planets (").append(planets.size()).append(") ===\n");
+    
+    planets.forEach((id, planet) -> {
+      // Add to console output
+      consoleOutput.append("\n")
+          .append(planet.name())
+          .append(" (").append(id).append(")\n")
+          .append("  Tier: ").append(planet.requiredRocketTier())
+          .append(" | Suit: ").append(planet.requiredSuitTag())
+          .append(" | Fuel: ").append(planet.fuelType())
+          .append("\n  Gravity: ").append(planet.gravityLevel())
+          .append(" | Temp: ").append(String.format("%.1fK", planet.temperature()))
+          .append(" | Rad: ").append(planet.radiationLevel())
+          .append(" | O2: ").append(String.format("%.2f", planet.baseOxygen() * 100)).append("%")
+          .append("\n  Biome: ").append(planet.biomeType())
+          .append(" | Orbit: ").append(planet.isOrbit())
+          .append(" | Atmo: ").append(planet.hasAtmosphere())
+          .append(" | Req O2: ").append(planet.requiresOxygen())
+          .append("\n  Hazards: ").append(String.join(", ", planet.hazards()))
+          .append("\n  Minerals: ").append(String.join(", ", planet.availableMinerals()))
+          .append("\n");
+      
+      // Add to JSON
+      JsonObject planetJson = new JsonObject();
+      planetJson.addProperty("name", planet.name());
+      planetJson.addProperty("id", id.toString());
+      planetJson.addProperty("requiredRocketTier", planet.requiredRocketTier().name());
+      planetJson.addProperty("requiredSuitTag", planet.requiredSuitTag());
+      planetJson.addProperty("fuelType", planet.fuelType());
+      planetJson.addProperty("description", planet.description());
+      planetJson.addProperty("gravityLevel", planet.gravityLevel());
+      planetJson.addProperty("hasAtmosphere", planet.hasAtmosphere());
+      planetJson.addProperty("requiresOxygen", planet.requiresOxygen());
+      planetJson.addProperty("biomeType", planet.biomeType());
+      planetJson.addProperty("isOrbit", planet.isOrbit());
+      planetJson.addProperty("temperature", planet.temperature());
+      planetJson.addProperty("radiationLevel", planet.radiationLevel());
+      planetJson.addProperty("baseOxygen", planet.baseOxygen());
+      
+      JsonArray hazardsArray = new JsonArray();
+      planet.hazards().forEach(hazardsArray::add);
+      planetJson.add("hazards", hazardsArray);
+      
+      JsonArray mineralsArray = new JsonArray();
+      planet.availableMinerals().forEach(mineralsArray::add);
+      planetJson.add("availableMinerals", mineralsArray);
+      
+      planetsJson.add(id.toString(), planetJson);
+    });
+    
+    // Output to console
+    source.sendSuccess(
+        () -> Component.literal(consoleOutput.toString()).withStyle(style -> style.withColor(0x55FF55)),
+        false);
+    
+    // Write to file if requested
+    if (outputFile != null) {
+      try {
+        Path outputPath = Paths.get(outputFile);
+        Files.createDirectories(outputPath.getParent());
+        try (BufferedWriter writer = Files.newBufferedWriter(outputPath)) {
+          new GsonBuilder().setPrettyPrinting().create().toJson(jsonOutput, writer);
+        }
+        source.sendSuccess(
+            () -> Component.literal("✓ Saved planet data to: " + outputPath.toAbsolutePath())
+                .withStyle(style -> style.withColor(0x55FF55)),
+            false);
+      } catch (Exception e) {
+        source.sendFailure(Component.literal("Failed to write to file: " + e.getMessage()));
+        CHEX.LOGGER.error("Failed to write planet data to file: " + outputFile, e);
+      }
+    }
+    
+    return planets.size();
+  }
+  
+  /**
+   * Handles the dump_planets command.
+   */
+  private static int dumpPlanets(CommandContext<CommandSourceStack> context) {
+    // Default implementation without any flags
+    return dumpPlanets(context, false, null);
+  }
+  
   public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
+    // Register the travelgraph validate command
+    dispatcher.register(Commands.literal("chex")
+        .then(Commands.literal("travelgraph")
+            .requires(source -> source.hasPermission(2))
+            .then(Commands.literal("validate")
+                .executes(ChexCommands::validateTravelGraph)
+            )
+        )
+    );
+    
+    // Register other commands
     dispatcher.register(
         Commands.literal("chex")
+            .then(Commands.literal("travelgraph")
+                .requires(source -> source.hasPermission(2))
+                .then(Commands.literal("validate")
+                    .executes(ctx -> validateTravelGraph(ctx, null))
+                    .then(Commands.argument("output", StringArgumentType.greedyString())
+                        .suggests((ctx, builder) -> 
+                            SharedSuggestionProvider.suggest(
+                                List.of("chex_travelgraph_validation_"), builder))
+                        .executes(ctx -> validateTravelGraph(
+                            ctx, 
+                            StringArgumentType.getString(ctx, "output")
+                        )
+                    )
+                )
+            )
+        )
+        .then(Commands.literal("dump_planets").executes(ChexCommands::dumpPlanets)
+            .then(Commands.argument("outputFile", StringArgumentType.greedyString())
+                .suggests((context, builder) -> {
+                  // Suggest common output directories
+                  builder.suggest("config/chex/planet_dump.json");
+                  builder.suggest("planet_dump.json");
+                  return builder.buildFuture();
+                })
+                .executes(ChexCommands::dumpPlanetsToFile))
+            .then(Commands.literal("--reload")
+                .executes(ChexCommands::reloadAndDumpPlanets)
+                .then(Commands.argument("outputFile", StringArgumentType.greedyString())
+                    .suggests((context, builder) -> {
+                      builder.suggest("config/chex/planet_dump.json");
+                      builder.suggest("planet_dump.json");
+                      return builder.buildFuture();
+                    })
+                    .executes(ChexCommands::dumpPlanetsToFile))
+                .then(Commands.literal("--reload")
+                    .executes(ChexCommands::reloadAndDumpPlanets)
+                    .then(Commands.argument("outputFile", StringArgumentType.greedyString())
+                        .suggests((context, builder) -> {
+                          builder.suggest("config/chex/planet_dump.json");
+                          builder.suggest("planet_dump.json");
+                          return builder.buildFuture();
+                          String defaultFile = "config/chex/planet_dump_" + System.currentTimeMillis() + ".json";
+                          return SharedSuggestionProvider.suggest(new String[]{defaultFile}, builder);
+                        })
+                        .executes(ctx -> dumpPlanets(ctx, false, StringArgumentType.getString(ctx, "outputFile"))))))
             .then(Commands.literal("test").executes(ChexCommands::testCommand))
+            .then(Commands.literal("travelGraph")
+                .then(Commands.literal("validate")
+                    .executes(ChexCommands::validateTravelGraph)))
             .then(
                 Commands.literal("teleport")
                     .then(
@@ -282,14 +586,89 @@ public class ChexCommands {
   }
 
   private static int testCommand(CommandContext<CommandSourceStack> context) {
-    CommandSourceStack source = context.getSource();
-    source.sendSuccess(() -> Component.literal("CHEX mod is working!"), false);
+    context.getSource().sendSuccess(() -> Component.literal("Test command executed!"), false);
     return 1;
+  }
+  
+  /**
+   * Validates the travel graph and reports any issues.
+   * @param context The command context
+   * @return 1 if successful, 0 otherwise
+   */
+  private static int validateTravelGraph(CommandContext<CommandSourceStack> context) {
+    CommandSourceStack source = context.getSource();
+    
+    try {
+      // Run the validation
+      List<String> issues = TravelGraphCore.validate();
+      
+      // Send the results to the command sender
+      if (issues.isEmpty()) {
+        source.sendSuccess(() -> Component.literal("✅ Travel graph validation passed with no issues!"), false);
+      } else {
+        source.sendSuccess(() -> Component.literal("\n=== Travel Graph Validation Report ===\n"), false);
+        
+        // Group issues by type for better organization
+        Map<String, List<String>> issueGroups = new LinkedHashMap<>();
+        String currentGroup = "General";
+        issueGroups.put(currentGroup, new ArrayList<>());
+        
+        for (String issue : issues) {
+          if (issue.startsWith("\n")) {
+            currentGroup = issue.trim().replace(":", "");
+            issueGroups.putIfAbsent(currentGroup, new ArrayList<>());
+          } else if (!issue.trim().isEmpty()) {
+            issueGroups.get(currentGroup).add(issue);
+          }
+        }
+        
+        // Send each group with appropriate formatting
+        for (Map.Entry<String, List<String>> entry : issueGroups.entrySet()) {
+          if (entry.getValue().isEmpty()) continue;
+          
+          // Skip the summary for now, we'll show it at the end
+          if (entry.getKey().equals("Summary")) continue;
+          
+          source.sendSuccess(() -> Component.literal("\n" + entry.getKey() + ":"), false);
+          for (String issue : entry.getValue()) {
+            // Color code based on issue severity
+            Component message;
+            if (issue.contains("❌")) {
+              message = Component.literal("  " + issue).withStyle(style -> style.withColor(0xFF5555));
+            } else if (issue.contains("⚠️")) {
+              message = Component.literal("  " + issue).withStyle(style -> style.withColor(0xFFAA00));
+            } else if (issue.contains("ℹ️")) {
+              message = Component.literal("  " + issue).withStyle(style -> style.withColor(0x55AAFF));
+            } else if (issue.contains("✅")) {
+              message = Component.literal("  " + issue).withStyle(style -> style.withColor(0x55FF55));
+            } else {
+              message = Component.literal("  " + issue);
+            }
+            source.sendSuccess(() -> message, false);
+          }
+        }
+        
+        // Show summary at the end
+        if (issueGroups.containsKey("Summary")) {
+          source.sendSuccess(() -> Component.literal("\n=== Summary ==="), false);
+          for (String summaryLine : issueGroups.get("Summary")) {
+            source.sendSuccess(() -> Component.literal(summaryLine), false);
+          }
+        }
+      }
+      
+      return 1;
+    } catch (Exception e) {
+      CHEX.LOGGER.error("Error validating travel graph", e);
+      source.sendFailure(Component.literal("Error validating travel graph: " + e.getMessage()));
+      return 0;
+    }
   }
 
   private static int unlockRocketTier(CommandContext<CommandSourceStack> context)
       throws CommandSyntaxException {
     CommandSourceStack source = context.getSource();
+    // ... (rest of the code remains the same)
     int tier = IntegerArgumentType.getInteger(context, "tier");
     ServerPlayer player = EntityArgument.getPlayer(context, "player");
 
@@ -936,6 +1315,51 @@ public class ChexCommands {
       return 1;
     } catch (Exception e) {
       source.sendFailure(Component.literal("Failed to write snapshot: " + e.getMessage()));
+      return 0;
+    }
+  }
+
+  private static int validateTravelGraph(CommandContext<CommandSourceStack> context) {
+    CommandSourceStack source = context.getSource();
+    
+    try {
+      List<String> issues = TravelGraphCore.validate();
+      
+      if (issues.isEmpty()) {
+        source.sendSuccess(() -> Component.literal("✅ Travel graph validation passed with no issues!"), false);
+        return 1;
+      }
+      
+      // Send the header
+      source.sendSuccess(() -> Component.literal("=== Travel Graph Validation Report ==="), false);
+      
+      // Send issues in chunks to avoid packet size limits
+      StringBuilder currentChunk = new StringBuilder();
+      for (String issue : issues) {
+        if (currentChunk.length() + issue.length() > 1000) {
+          String chunk = currentChunk.toString();
+          source.sendSuccess(() -> Component.literal(chunk), false);
+          currentChunk = new StringBuilder(issue).append("\n");
+        } else {
+          currentChunk.append(issue).append("\n");
+        }
+      }
+      
+      // Send any remaining content
+      if (currentChunk.length() > 0) {
+        String chunk = currentChunk.toString();
+        source.sendSuccess(() -> Component.literal(chunk), false);
+      }
+      
+      // Add summary
+      long errorCount = issues.stream().filter(issue -> issue.startsWith("❌")).count();
+      long warningCount = issues.stream().filter(issue -> issue.startsWith("⚠️")).count();
+      source.sendSuccess(() -> Component.literal("\nValidation complete: " + errorCount + " errors, " + warningCount + " warnings"), false);
+      
+      return 1;
+    } catch (Exception e) {
+      source.sendFailure(Component.literal("Failed to validate travel graph: " + e.getMessage()));
+      CHEX.LOGGER.error("Failed to validate travel graph", e);
       return 0;
     }
   }

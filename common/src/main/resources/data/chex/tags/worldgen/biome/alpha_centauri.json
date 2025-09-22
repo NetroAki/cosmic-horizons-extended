@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "chex:photosphere_platforms",
+    "chex:corona_streams",
+    "chex:magnetosphere_belt",
+    "chex:sunspot_fields"
+  ]
+}

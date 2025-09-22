@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "chex:block/kerosene_fluid_block"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "chex:aqua_mundus",
+  "generator": {
+    "type": "chex:aqua_mundus",
+    "biome_source": {
+      "type": "chex:aqua_mundus_biome_source",
+      "biomes": [
+        "chex:shallow_seas",
+        "chex:kelp_forest",
+        "chex:abyssal_trench",
+        "chex:hydrothermal_vents",
+        "chex:ice_shelves"
+      ]
+    }
+  }
+}

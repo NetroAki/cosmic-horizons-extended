@@ -1,0 +1,27 @@
+{
+  "item.chex.kerosene_bucket": "Kerosene Bucket",
+  "item.chex.rp1_bucket": "RP-1 Bucket",
+  "item.chex.lox_bucket": "Liquid Oxygen Bucket",
+  "item.chex.lh2_bucket": "Liquid Hydrogen Bucket",
+  "item.chex.dt_mix_bucket": "Deuterium-Tritium Mix Bucket",
+  "item.chex.he3_blend_bucket": "Helium-3 Blend Bucket",
+  "item.chex.exotic_mix_bucket": "Exotic Matter Mix Bucket",
+  
+  "block.chex.kerosene_fluid_block": "Kerosene",
+  "block.chex.rp1_fluid_block": "RP-1",
+  "block.chex.lox_fluid_block": "Liquid Oxygen",
+  "block.chex.lh2_fluid_block": "Liquid Hydrogen",
+  "block.chex.dt_mix_fluid_block": "Deuterium-Tritium Mix",
+  "block.chex.he3_blend_fluid_block": "Helium-3 Blend",
+  "block.chex.exotic_mix_fluid_block": "Exotic Matter Mix",
+  
+  "fluid_type.chex.kerosene": "Kerosene",
+  "fluid_type.chex.rp1": "RP-1",
+  "fluid_type.chex.lox": "Liquid Oxygen",
+  "fluid_type.chex.lh2": "Liquid Hydrogen",
+  "fluid_type.chex.dt_mix": "Deuterium-Tritium Mix",
+  "fluid_type.chex.he3_blend": "Helium-3 Blend",
+  "fluid_type.chex.exotic_mix": "Exotic Matter Mix",
+  
+  "itemGroup.chex.chex_tab": "Cosmic Horizons Extended"
+}

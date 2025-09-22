@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#chex:is_arrakis",
+  "features": [
+    "chex:arrakis_great_dunes",
+    "chex:arrakis_spice_mines",
+    "chex:arrakis_polar_ice_caps",
+    "chex:arrakis_sietch_stronghold",
+    "chex:arrakis_stormlands"
+  ],
+  "step": "raw_generation"
+}

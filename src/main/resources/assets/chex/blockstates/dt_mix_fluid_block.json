@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "chex:block/dt_mix_fluid_block"
+    }
+  }
+}

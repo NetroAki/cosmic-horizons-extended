@@ -1,0 +1,46 @@
+{
+  "temperature": 0.7,
+  "downfall": 0.8,
+  "precipitation": "rain",
+  "effects": {
+    "sky_color": 8103167,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "foliage_color": 0x4c7f3c,
+    "grass_color": 0x5a9e4f
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "chex:pandora_fungi"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "chex:pandora_trees",
+      "chex:pandora_trees"
+    ],
+    []
+  ]
+}

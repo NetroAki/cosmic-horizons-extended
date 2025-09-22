@@ -1,0 +1,7 @@
+﻿{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "chex:block/pandoran_crystal_cluster"
+  },
+  "render_type": "cutout"
+}

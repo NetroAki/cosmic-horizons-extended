@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#chex:is_arrakis",
+  "features": [
+    "chex:ore_spice",
+    "chex:ore_crystalline_salt",
+    "chex:spice_geode"
+  ],
+  "step": "underground_ores"
+}

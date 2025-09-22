@@ -1,0 +1,83 @@
+{
+  "temperature": 0.5,
+  "downfall": 1.0,
+  "precipitation": "rain",
+  "temperature_modifier": "frozen",
+  "effects": {
+    "sky_color": 3158064,
+    "fog_color": 2105920,
+    "water_color": 3158064,
+    "water_fog_color": 267827,
+    "grass_color": 2039583,
+    "foliage_color": 2039583,
+    "mood_sound": {
+      "sound": "minecraft:ambient.underwater.loop.additions.rare",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:elder_guardian",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "ambient": [],
+    "water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 5,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 15,
+        "minCount": 3,
+        "maxCount": 6
+      }
+    ]
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground"
+    ],
+    "liquid": [
+      "minecraft:underwater_canyon"
+    ]
+  },
+  "features": [
+    [
+      "chex:aqua_mundus/abyssal_trench_vegetation",
+      "chex:aqua_mundus/ore_abyssal_crystal"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "chex:aqua_mundus/abyssal_geode"
+    ],
+    [],
+    [
+      "minecraft:spring_lava"
+    ]
+  ]
+}

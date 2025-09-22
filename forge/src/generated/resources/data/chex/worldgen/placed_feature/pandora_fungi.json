@@ -1,0 +1,25 @@
+{
+  "feature": "chex:fungal_tower",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 24
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:surface_relative_threshold",
+      "heightmap": "WORLD_SURFACE_WG",
+      "min_inclusive": -4,
+      "max_inclusive": 4
+    }
+  ]
+}

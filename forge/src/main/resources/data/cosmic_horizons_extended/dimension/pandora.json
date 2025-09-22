@@ -13,7 +13,8 @@
     "fog_color": 1772851,
     "water_color": 3831536,
     "water_fog_color": 526879,
-    "ambient_light": 0.1,
+    "ambient_light": 0.5,
+    "fixed_time": 18000,
     "has_skylight": true,
     "has_ceiling": false,
     "ultrawarm": false,
@@ -24,6 +25,59 @@
     "bed_works": true,
     "has_raids": true,
     "logical_height": 256,
-    "infiniburn": "minecraft:infiniburn_overworld"
+    "infiniburn": "minecraft:infiniburn_overworld",
+    "ambient_sound": "minecraft:ambient.cave",
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.basalt_deltas.additions",
+      "tick_chance": 0.01
+    },
+    "music": {
+      "sound": "minecraft:music.overworld.lush_caves",
+      "min_delay": 6000,
+      "max_delay": 16000,
+      "replace_current_music": false
+    },
+    "particle": {
+      "probability": 0.01,
+      "options": {
+        "type": "minecraft:glow",
+        "color": [100, 200, 255],
+        "scale": 0.5
+      }
+    }
+  },
+  "special_effects": {
+    "twilight_gradient": {
+      "start_color": [79, 112, 142],
+      "end_color": [20, 30, 40],
+      "gradient_height": 0.8,
+      "blend_radius": 0.2
+    },
+    "levitation_pockets": {
+      "enabled": true,
+      "frequency": 0.01,
+      "min_radius": 3,
+      "max_radius": 8,
+      "min_strength": 0.5,
+      "max_strength": 1.5,
+      "particle_effect": "minecraft:glow",
+      "particle_color": [100, 200, 255]
+    },
+    "dense_atmosphere": {
+      "fog_density": 1.2,
+      "fog_start": 0.1,
+      "fog_end": 0.9,
+      "underwater_fog_density": 1.5,
+      "underwater_fog_start": 0.1,
+      "underwater_fog_end": 0.7,
+      "air_slowness": 0.3,
+      "air_resistance": 0.7
+    }
   }
 }

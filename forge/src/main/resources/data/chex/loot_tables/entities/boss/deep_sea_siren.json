@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chex:sirens_pearl",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:abyssal_scale",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3.0,
+                "max": 7.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:sirens_lament",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'\"{\\\"text\\\":\\\"Siren's Lament\\\",\\\"italic\\\":false,\\\"color\\\":\\\"aqua\\\"}\"',Lore:['\"{\\\"text\\\":\\\"The mournful song of the Deep-Sea Siren\\\",\\\"color\\\":\\\"gray\\\",\\\"italic\\\":true}'"]},Enchantments:[{id:\"minecraft:loyalty\",lvl:3s}],HideFlags:32}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

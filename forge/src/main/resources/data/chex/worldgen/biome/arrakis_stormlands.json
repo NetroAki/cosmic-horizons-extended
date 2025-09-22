@@ -1,0 +1,87 @@
+{
+  "temperature": 2.2,
+  "downfall": 0.0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 0,
+    "fog_color": 0,
+    "water_color": 0,
+    "water_fog_color": 0,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "chex:storm_dust"
+      },
+      "probability": 0.1
+    },
+    "ambient_sound": "chex:ambient.stormlands.loop",
+    "additions_sound": {
+      "sound": "chex:ambient.stormlands.additions",
+      "tick_chance": 0.01
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "chex:storm_demon",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:phantom",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {
+    "chex:storm_demon": {
+      "energy_budget": 0.25,
+      "charge": 1.0
+    },
+    "minecraft:phantom": {
+      "energy_budget": 0.18,
+      "charge": 1.0
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "chex:storm_ravine"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "chex:storm_crystal_formation"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:lightning_rod",
+      "chex:storm_altar"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:storm_remnant"
+    ]
+  ]
+}

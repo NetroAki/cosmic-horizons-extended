@@ -4,6 +4,7 @@ import com.netroaki.chex.CHEX;
 import com.netroaki.chex.registry.NoduleTiers;
 import com.netroaki.chex.registry.PlanetDef;
 import com.netroaki.chex.registry.PlanetRegistry;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.core.Registry;
@@ -108,6 +109,22 @@ public class CosmicHorizonsIntegration {
     String suitTag = getSuitTagFromDimensionId(dimensionId);
     Set<String> minerals = getMineralsFromDimensionId(dimensionId);
     String biomeType = getBiomeTypeFromDimensionId(dimensionId);
+    
+    // Get default hazards based on biome type
+    Set<String> defaultHazards = getDefaultHazardsForBiome(biomeType);
+    
+    // Determine planet properties based on biome type
+    boolean hasAtmosphere = !biomeType.equals("airless");
+    boolean requiresOxygen = !biomeType.equals("vacuum") && !biomeType.equals("airless");
+    int gravityLevel = calculateGravityLevel(biomeType);
+    float temperature = calculateTemperature(biomeType);
+    int radiationLevel = calculateRadiationLevel(biomeType);
+    float baseOxygen = calculateBaseOxygen(biomeType);
+    
+    // Determine if this is an orbit dimension
+    boolean isOrbit = dimensionId.getPath().contains("orbit") || 
+                     dimensionId.getPath().contains("station") ||
+                     dimensionId.getPath().contains("satellite");
 
     return new PlanetDef(
         dimensionId,
@@ -115,14 +132,132 @@ public class CosmicHorizonsIntegration {
         description,
         requiredTier,
         suitTag,
-        "minecraft:lava", // Default fuel
-        1, // Default gravity
-        true, // Default atmosphere
-        true, // Default oxygen
+        determineDefaultFuel(biomeType),
+        gravityLevel,
+        hasAtmosphere,
+        requiresOxygen,
+        defaultHazards,
         minerals,
         biomeType,
-        false // Default orbit status
-        );
+        isOrbit,
+        temperature,
+        radiationLevel,
+        baseOxygen
+    );
+  }
+  
+  /**
+   * Calculate the base temperature for a planet based on its biome type
+   * @param biomeType The biome type of the planet
+   * @return Temperature in Kelvin (200-600K)
+   */
+  private static float calculateTemperature(String biomeType) {
+    return switch (biomeType.toLowerCase()) {
+      case "volcanic", "lava" -> 500 + (float)(Math.random() * 200); // 500-700K
+      case "desert", "arid" -> 320 + (float)(Math.random() * 80);    // 320-400K
+      case "jungle", "swamp" -> 300 + (float)(Math.random() * 40);    // 300-340K
+      case "temperate", "plains" -> 280 + (float)(Math.random() * 40); // 280-320K
+      case "taiga", "tundra" -> 250 + (float)(Math.random() * 40);    // 250-290K
+      case "snow", "ice" -> 200 + (float)(Math.random() * 50);        // 200-250K
+      case "ocean", "water" -> 275 + (float)(Math.random() * 30);     // 275-305K
+      case "airless", "vacuum" -> 100 + (float)(Math.random() * 100); // 100-200K
+      default -> 250 + (float)(Math.random() * 100);                   // 250-350K
+    };
+  }
+  
+  /**
+   * Calculate the radiation level for a planet based on its biome type
+   * @param biomeType The biome type of the planet
+   * @return Radiation level (0-10)
+   */
+  private static int calculateRadiationLevel(String biomeType) {
+    return switch (biomeType.toLowerCase()) {
+      case "volcanic", "radioactive" -> 7 + (int)(Math.random() * 4); // 7-10
+      case "desert", "arid" -> 4 + (int)(Math.random() * 4);          // 4-7
+      case "jungle", "swamp" -> 2 + (int)(Math.random() * 3);         // 2-4
+      case "temperate", "plains", "ocean" -> 1 + (int)(Math.random() * 2); // 1-2
+      case "taiga", "tundra", "snow", "ice" -> 1;                    // 1
+      case "airless", "vacuum" -> 8 + (int)(Math.random() * 3);       // 8-10
+      default -> 3;                                                    // 3
+    };
+  }
+  
+  /**
+   * Calculate the base oxygen level for a planet based on its biome type
+   * @param biomeType The biome type of the planet
+   * @return Base oxygen level (0.0-1.0)
+   */
+  private static float calculateBaseOxygen(String biomeType) {
+    return switch (biomeType.toLowerCase()) {
+      case "jungle", "swamp" -> 0.25f + (float)(Math.random() * 0.15f);  // 0.25-0.4
+      case "temperate", "plains" -> 0.2f + (float)(Math.random() * 0.1f); // 0.2-0.3
+      case "taiga", "tundra" -> 0.18f + (float)(Math.random() * 0.1f);    // 0.18-0.28
+      case "ocean" -> 0.15f + (float)(Math.random() * 0.1f);              // 0.15-0.25
+      case "desert", "arid" -> 0.1f + (float)(Math.random() * 0.1f);      // 0.1-0.2
+      case "volcanic", "lava" -> 0.05f + (float)(Math.random() * 0.1f);   // 0.05-0.15
+      case "airless", "vacuum" -> 0f;                                    // 0
+      default -> 0.1f;                                                     // Default 0.1
+    };
+  }
+  }
+  
+  /** Get default hazards based on biome type */
+  private static Set<String> getDefaultHazardsForBiome(String biomeType) {
+    // Add common hazards based on biome type
+    Set<String> hazards = new HashSet<>();
+    
+    switch (biomeType.toLowerCase()) {
+      case "volcanic":
+        hazards.add("heat");
+        hazards.add("toxic_gas");
+        break;
+      case "frozen":
+        hazards.add("cold");
+        hazards.add("low_gravity");
+        break;
+      case "toxic":
+        hazards.add("toxic_gas");
+        hazards.add("acid_rain");
+        break;
+      case "vacuum":
+      case "airless":
+        hazards.add("vacuum");
+        hazards.add("radiation");
+        break;
+      case "stormy":
+        hazards.add("electric_storms");
+        hazards.add("high_winds");
+        break;
+      default:
+        // No default hazards for standard planets
+        break;
+    }
+    
+    return hazards;
+  }
+  
+  /** Calculate gravity level based on biome/planet type */
+  private static int calculateGravityLevel(String biomeType) {
+    // Return gravity level (1-10 scale where 1 is lowest, 10 is highest)
+    return switch (biomeType.toLowerCase()) {
+      case "volcanic" -> 8;  // Dense planets have higher gravity
+      case "gas_giant" -> 10; // Very high gravity
+      case "frozen" -> 4;    // Icy planets often have lower gravity
+      case "airless" -> 2;   // Small airless bodies have very low gravity
+      case "moon" -> 3;      // Moons have lower gravity
+      default -> 6;          // Standard gravity for terrestrial planets
+    };
+  }
+  
+  /** Determine default fuel type based on biome */
+  private static String determineDefaultFuel(String biomeType) {
+    return switch (biomeType.toLowerCase()) {
+      case "volcanic" -> "minecraft:lava";
+      case "gas_giant" -> "minecraft:blaze_powder";
+      case "frozen" -> "minecraft:ice";
+      case "ocean" -> "minecraft:water_bucket";
+      default -> "minecraft:coal";
+    };
   }
 
   /** Get planet name from dimension ID */

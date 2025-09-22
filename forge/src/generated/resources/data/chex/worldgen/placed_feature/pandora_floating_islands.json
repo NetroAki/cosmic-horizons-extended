@@ -1,0 +1,42 @@
+{
+  "feature": "chex:cloudstone_island",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 50
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "above_bottom": 100
+        },
+        "max_inclusive": {
+          "absolute": 220
+        }
+      }
+    },
+    {
+      "type": "minecraft:count_extra",
+      "count": 1,
+      "extra_count": 1,
+      "extra_chance": 0.25
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 80,
+      "noise_factor": 0.3,
+      "noise_offset": 0.0
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

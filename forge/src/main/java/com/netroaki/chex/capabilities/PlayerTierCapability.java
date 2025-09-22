@@ -31,6 +31,16 @@ public class PlayerTierCapability implements INBTSerializable<CompoundTag> {
   private int suitTier = 1; // Start with T1 suit
   private final Set<String> unlockedPlanets = new HashSet<>();
   private final Set<String> discoveredMinerals = new HashSet<>();
+  private final BitSet milestones = new BitSet(); // Tracks various player achievements
+  
+  // Milestone flags - use these as bit indices
+  public static final int MILESTONE_FIRST_LAUNCH = 0;
+  public static final int MILESTONE_FIRST_PLANET = 1;
+  public static final int MILESTONE_TIER_5_ROCKET = 2;
+  public static final int MILESTONE_TIER_10_ROCKET = 3;
+  public static final int MILESTONE_TIER_5_SUIT = 4;
+  public static final int MILESTONE_ALL_PLANETS = 5;
+  public static final int MILESTONE_ALL_MINERALS = 6;
 
   // Default constructor
   public PlayerTierCapability() {
@@ -166,12 +176,49 @@ public class PlayerTierCapability implements INBTSerializable<CompoundTag> {
     CHEX.LOGGER.info("Player progression reset to defaults");
   }
 
+  // Milestone management
+  public boolean hasMilestone(int milestone) {
+    return milestones.get(milestone);
+  }
+  
+  public void setMilestone(int milestone) {
+    if (!milestones.get(milestone)) {
+      milestones.set(milestone);
+      CHEX.LOGGER.info("Player achieved milestone: {}", milestone);
+    }
+  }
+  
+  public void clearMilestone(int milestone) {
+    if (milestones.get(milestone)) {
+      milestones.clear(milestone);
+      CHEX.LOGGER.info("Player lost milestone: {}", milestone);
+    }
+  }
+  
+  // Dimension validation
+  public boolean canEnterDimension(ResourceLocation dimensionId) {
+    // Check if player has unlocked this planet
+    if (!unlockedPlanets.contains(dimensionId.toString())) {
+      return false;
+    }
+    
+    // Check if player has the required suit tier for the planet's hazards
+    // TODO: Implement hazard check based on planet properties
+    return true;
+  }
+  
+  // Launch validation
+  public boolean canLaunchTo(ResourceLocation targetDimension, int requiredRocketTier) {
+    return rocketTier >= requiredRocketTier && unlockedPlanets.contains(targetDimension.toString());
+  }
+
   // NBT Serialization
   @Override
   public CompoundTag serializeNBT() {
     CompoundTag tag = new CompoundTag();
     tag.putInt("rocketTier", rocketTier);
     tag.putInt("suitTier", suitTier);
+    tag.putByteArray("milestones", milestones.toByteArray());
 
     // Serialize unlocked planets
     CompoundTag planetsTag = new CompoundTag();
@@ -198,6 +245,15 @@ public class PlayerTierCapability implements INBTSerializable<CompoundTag> {
   public void deserializeNBT(CompoundTag tag) {
     rocketTier = tag.getInt("rocketTier");
     suitTier = tag.getInt("suitTier");
+    
+    // Load milestones
+    if (tag.contains("milestones")) {
+      byte[] milestoneBytes = tag.getByteArray("milestones");
+      if (milestoneBytes.length > 0) {
+        milestones.clear();
+        milestones.or(BitSet.valueOf(milestoneBytes));
+      }
+    }
 
     // Deserialize unlocked planets
     unlockedPlanets.clear();

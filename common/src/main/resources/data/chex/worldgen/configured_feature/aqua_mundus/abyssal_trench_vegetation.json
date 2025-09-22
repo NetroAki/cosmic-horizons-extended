@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:glow_lichen",
+          "config": {
+            "search_range": 20,
+            "chance_of_spreading": 0.5,
+            "can_place_on_floor": true,
+            "can_place_on_ceiling": true,
+            "can_place_on_wall": true,
+            "can_be_placed_on": [
+              "minecraft:stone",
+              "minecraft:deepslate",
+              "minecraft:basalt"
+            ]
+          }
+        },
+        "chance": 0.2
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:sea_pickle",
+                "Properties": {
+                  "pickles": "1-4",
+                  "waterlogged": "true"
+                }
+              }
+            }
+          }
+        },
+        "chance": 0.1
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "textures": {
+    "particle": "chex:entity/solar_engineer_drone"
+  },
+  "elements": [
+    {
+      "from": [4.0, 4.0, 4.0],
+      "to": [12.0, 12.0, 12.0],
+      "faces": {
+        "north": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"},
+        "east": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"},
+        "south": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"},
+        "west": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"},
+        "up": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"},
+        "down": {"uv": [0.0, 0.0, 8.0, 8.0], "texture": "#particle"}
+      }
+    },
+    {
+      "from": [6.0, 6.0, 0.0],
+      "to": [10.0, 10.0, 16.0],
+      "rotation": {"angle": 45, "axis": "y", "origin": [8.0, 8.0, 8.0]},
+      "faces": {
+        "north": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "east": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "south": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "west": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "up": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "down": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"}
+      }
+    },
+    {
+      "from": [0.0, 6.0, 6.0],
+      "to": [16.0, 10.0, 10.0],
+      "rotation": {"angle": 45, "axis": "x", "origin": [8.0, 8.0, 8.0]},
+      "faces": {
+        "north": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "east": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "south": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "west": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "up": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "down": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"}
+      }
+    },
+    {
+      "from": [6.0, 0.0, 6.0],
+      "to": [10.0, 16.0, 10.0],
+      "rotation": {"angle": 45, "axis": "z", "origin": [8.0, 8.0, 8.0]},
+      "faces": {
+        "north": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "east": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "south": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "west": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "up": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"},
+        "down": {"uv": [0.0, 0.0, 4.0, 4.0], "texture": "#particle"}
+      }
+    }
+  ]
+}

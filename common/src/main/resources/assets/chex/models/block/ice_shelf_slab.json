@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "chex:block/ice_shelf",
+    "top": "chex:block/ice_shelf",
+    "side": "chex:block/ice_shelf"
+  }
+}

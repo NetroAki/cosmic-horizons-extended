@@ -1,0 +1,26 @@
+{
+  "type": "chex:alpha_centauri_structure",
+  "biomes": "#chex:alpha_centauri/magnetosphere",
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "chex:plasma_wraith",
+          "weight": 50,
+          "minCount": 1,
+          "maxCount": 2
+        }
+      ]
+    }
+  },
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "start_pool": "chex:structures/magnetic_pylon/start_pool",
+  "size": 5,
+  "start_height": {
+    "absolute": 150
+  },
+  "use_expansion_hack": false,
+  "max_distance_from_center": 60
+}

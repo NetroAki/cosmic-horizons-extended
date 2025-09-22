@@ -1,0 +1,48 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:glowstone",
+            "probability": 0.1
+          },
+          "output_state": {
+            "Name": "minecraft:sea_lantern"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:quartz_block",
+            "probability": 0.3
+          },
+          "output_state": {
+            "Name": "minecraft:smooth_quartz"
+          }
+        }
+      ]
+    },
+    {
+      "processor_type": "minecraft:block_rot"
+    },
+    {
+      "processor_type": "minecraft:gravity"
+    },
+    {
+      "processor_type": "minecraft:block_ignore",
+      "blocks": [
+        "minecraft:air",
+        "minecraft:structure_void"
+      ]
+    }
+  ]
+}

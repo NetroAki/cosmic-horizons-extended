@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:patch_dead_bush_2",
+        "chance": 0.7
+      },
+      {
+        "feature": "minecraft:patch_grass_plain",
+        "chance": 0.5
+      },
+      {
+        "feature": "minecraft:patch_grass_savanna",
+        "chance": 0.6
+      },
+      {
+        "feature": "minecraft:patch_cactus_desert",
+        "chance": 0.3
+      },
+      {
+        "feature": "minecraft:patch_dead_bush",
+        "chance": 0.4
+      },
+      {
+        "feature": "minecraft:patch_grass_badlands",
+        "chance": 0.5
+      },
+      {
+        "feature": "minecraft:patch_tall_grass_2",
+        "chance": 0.3
+      }
+    ],
+    "default": "minecraft:patch_dead_bush_2"
+  }
+}

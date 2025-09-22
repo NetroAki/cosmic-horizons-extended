@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:structure_pool",
+  "name": "chex:leo_platform",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:leo_platform",
+        "projection": "rigid",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

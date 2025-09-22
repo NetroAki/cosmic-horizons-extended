@@ -80,6 +80,24 @@ public final class LaunchHooks {
         target.location(),
         rocketTierLevel);
 
+    // Record first launch milestone if this is the first time
+    player.getCapability(PlayerTierCapability.INSTANCE).ifPresent(capability -> {
+      capability.setMilestone(PlayerTierCapability.MILESTONE_FIRST_LAUNCH);
+      
+      // Record tier milestones
+      if (rocketTierLevel >= 5) {
+        capability.setMilestone(PlayerTierCapability.MILESTONE_TIER_5_ROCKET);
+      }
+      if (rocketTierLevel >= 10) {
+        capability.setMilestone(PlayerTierCapability.MILESTONE_TIER_10_ROCKET);
+      }
+      
+      // Sync capability to client
+      if (!player.level().isClientSide) {
+        CHEXNetwork.sendPlayerTierToClient((net.minecraft.server.level.ServerPlayer) player);
+      }
+    });
+
     return true;
   }
 

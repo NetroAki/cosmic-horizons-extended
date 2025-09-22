@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:magma_block"
+              }
+            }
+          }
+        },
+        "chance": 0.3
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:basalt"
+              }
+            }
+          }
+        },
+        "chance": 0.4
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:blackstone"
+              }
+            }
+          }
+        },
+        "chance": 0.3
+      }
+    ],
+    "default": "minecraft:basalt_blob"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "has_skylight": true,
+  "has_ceiling": false,
+  "fixed_time": 18000,  // Perpetual twilight
+  "ambient_light": 0.2,
+  "infiniburn": "minecraft:infiniburn_overworld",
+  "respawn_anchor_works": false,
+  "has_raids": true,
+  "min_y": -64,
+  "height": 384,
+  "logical_height": 256,
+  "natural": true,
+  "coordinate_scale": 1.0,
+  "piglin_safe": false,
+  "bed_works": true,
+  "effects": "cosmic_horizons_extended:pandora",
+  
+  "sky_properties": {
+    "fog_sun_multiplier": 0.5,
+    "fog_moon_multiplier": 1.0,
+    "fog_sky_scale": 0.8,
+    "fog_sky_altitude": 120,
+    "fog_sky_speed": 0.5
+  },
+  
+  "particle": {
+    "probability": 0.1,
+    "options": [
+      {
+        "type": "minecraft:falling_dust",
+        "dust": {
+          "color": [0.2, 0.4, 0.8],
+          "scale": 0.8
+        }
+      }
+    ]
+  },
+  
+  "fog_color": [20, 30, 40],
+  "water_color": [40, 80, 100],
+  "water_fog_color": [10, 20, 35],
+  "sky_color": [79, 112, 142],
+  "foliage_color": [40, 150, 60],
+  "grass_color": [50, 180, 70],
+  
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.basalt_deltas.additions",
+      "tick_chance": 0.01
+    },
+    "music": {
+      "sound": "minecraft:music.overworld.lush_caves",
+      "min_delay": 6000,
+      "max_delay": 16000,
+      "replace_current_music": false
+    },
+    "particle": {
+      "probability": 0.0005,
+      "options": {
+        "type": "minecraft:glow",
+        "color": [100, 200, 255],
+        "scale": 0.5
+      }
+    },
+    "ambient_sound": "minecraft:ambient.cave",
+    "sound": "minecraft:ambient.soul_sand_valley.loop",
+    "particles": {
+      "probability": 0.02,
+      "options": {
+        "type": "minecraft:glow",
+        "color": [100, 200, 255, 0.5],
+        "scale": 0.8
+      }
+    },
+    "fog_color": [20, 30, 40],
+    "water_color": [40, 80, 100],
+    "water_fog_color": [10, 20, 35],
+    "sky_color": [79, 112, 142],
+    "foliage_color": [40, 150, 60],
+    "grass_color": [50, 180, 70]
+  },
+  
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 4
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 5
+      },
+      {
+        "type": "minecraft:salmon",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 5
+      }
+    ]
+  },
+  
+  "spawn_costs": {
+    "minecraft:enderman": {
+      "energy_budget": 0.2,
+      "charge": 1.0
+    },
+    "minecraft:bat": {
+      "energy_budget": 0.1,
+      "charge": 0.5
+    },
+    "minecraft:glow_squid": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    },
+    "minecraft:squid": {
+      "energy_budget": 0.15,
+      "charge": 0.7
+    },
+    "minecraft:cod": {
+      "energy_budget": 0.05,
+      "charge": 0.3
+    },
+    "minecraft:salmon": {
+      "energy_budget": 0.05,
+      "charge": 0.3
+    }
+  }
+}

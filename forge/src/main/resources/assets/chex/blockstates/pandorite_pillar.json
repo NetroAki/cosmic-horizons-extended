@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "chex:block/pandorite_pillar_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "chex:block/pandorite_pillar"
+    },
+    "axis=z": {
+      "model": "chex:block/pandorite_pillar_horizontal",
+      "x": 90
+    }
+  }
+}

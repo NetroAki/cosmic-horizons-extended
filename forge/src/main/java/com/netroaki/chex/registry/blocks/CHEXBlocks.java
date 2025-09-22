@@ -96,6 +96,37 @@ public class CHEXBlocks {
       BLOCKS.register(
           "pandora_bloom",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).strength(0.5f)));
+
+  // Pandora Blocks
+  public static final RegistryObject<Block> PANDORITE_STONE = BLOCKS.register("pandorite_stone",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f, 6.0f)));
+
+  public static final RegistryObject<Block> POLISHED_PANDORITE = BLOCKS.register("polished_pandorite",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE).strength(1.5f, 6.0f)));
+
+  public static final RegistryObject<Block> PANDORITE_BRICKS = BLOCKS.register("pandorite_bricks",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).strength(1.5f, 6.0f)));
+
+  public static final RegistryObject<Block> CHISELED_PANDORITE = BLOCKS.register("chiseled_pandorite",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS).strength(1.5f, 6.0f)));
+
+  public static final RegistryObject<Block> PANDORITE_PILLAR = BLOCKS.register("pandorite_pillar",
+      () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.QUARTZ_PILLAR).strength(1.5f, 6.0f)));
+
+  public static final RegistryObject<Block> SPORE_SOIL = BLOCKS.register("spore_soil",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT).strength(0.5f).lightLevel(state -> 3)));
+
+  public static final RegistryObject<Block> BIOLUME_MOSS = BLOCKS.register("biolume_moss",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).strength(0.2f).lightLevel(state -> 5)));
+
+  public static final RegistryObject<Block> CRYSTAL_CLAD_PANDORITE = BLOCKS.register("crystal_clad_pandorite",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).strength(1.8f, 7.0f).lightLevel(state -> 4)));
+
+  public static final RegistryObject<Block> LUMICORAL = BLOCKS.register("lumicoral",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRAIN_CORAL_BLOCK).strength(0.7f).lightLevel(state -> 7)));
+
+  public static final RegistryObject<Block> PANDORAN_CRYSTAL_CLUSTER = BLOCKS.register("pandoran_crystal_cluster",
+      () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).strength(1.5f).lightLevel(state -> 10).noOcclusion()));
   public static final RegistryObject<Block> NEUTRON_STAR_PLATE =
       BLOCKS.register(
           "neutron_star_plate",
@@ -248,6 +279,28 @@ public class CHEXBlocks {
               new LiquidBlock(
                   () -> CHEXFluids.LH2.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
 
+  // Advanced Fuel Fluid Blocks
+  public static final RegistryObject<LiquidBlock> DT_MIX_FLUID_BLOCK =
+      BLOCKS.register(
+          "dt_mix_fluid_block",
+          () ->
+              new LiquidBlock(
+                  () -> CHEXFluids.DT_MIX.get(), BlockBehaviour.Properties.copy(Blocks.WATER).lightLevel(state -> 2)));
+
+  public static final RegistryObject<LiquidBlock> HE3_BLEND_FLUID_BLOCK =
+      BLOCKS.register(
+          "he3_blend_fluid_block",
+          () ->
+              new LiquidBlock(
+                  () -> CHEXFluids.HE3_BLEND.get(), BlockBehaviour.Properties.copy(Blocks.WATER).lightLevel(state -> 3)));
+
+  public static final RegistryObject<LiquidBlock> EXOTIC_MIX_FLUID_BLOCK =
+      BLOCKS.register(
+          "exotic_mix_fluid_block",
+          () ->
+              new LiquidBlock(
+                  () -> CHEXFluids.EXOTIC_MIX.get(), BlockBehaviour.Properties.copy(Blocks.WATER).lightLevel(state -> 15)));
+
   // Aurelia ringworld wall - unbreakable, black
   public static final RegistryObject<Block> AURELIA_WALL =
       BLOCKS.register(
@@ -288,6 +341,15 @@ public class CHEXBlocks {
     registerBlockItem(FUEL_REFINERY);
     registerBlockItem(AURELIA_WALL);
     registerBlockItem(ARC_SCENERY);
+    
+    // Register fluid block items
+    registerBlockItem(KEROSENE_FLUID_BLOCK);
+    registerBlockItem(RP1_FLUID_BLOCK);
+    registerBlockItem(LOX_FLUID_BLOCK);
+    registerBlockItem(LH2_FLUID_BLOCK);
+    registerBlockItem(DT_MIX_FLUID_BLOCK);
+    registerBlockItem(HE3_BLEND_FLUID_BLOCK);
+    registerBlockItem(EXOTIC_MIX_FLUID_BLOCK);
     registerBlockItem(ARRAKIS_SAND);
     registerBlockItem(INFERNO_STONE);
     registerBlockItem(CRYSTALIS_CRYSTAL);
@@ -299,6 +361,18 @@ public class CHEXBlocks {
     registerBlockItem(CRYSTALIS_CLEAR);
     registerBlockItem(AQUA_DARK_PRISM);
     registerBlockItem(PANDORA_BLOOM);
+    
+    // Register Pandora block items
+    registerBlockItem(PANDORITE_STONE);
+    registerBlockItem(POLISHED_PANDORITE);
+    registerBlockItem(PANDORITE_BRICKS);
+    registerBlockItem(CHISELED_PANDORITE);
+    registerBlockItem(PANDORITE_PILLAR);
+    registerBlockItem(SPORE_SOIL);
+    registerBlockItem(BIOLUME_MOSS);
+    registerBlockItem(CRYSTAL_CLAD_PANDORITE);
+    registerBlockItem(LUMICORAL);
+    registerBlockItem(PANDORAN_CRYSTAL_CLUSTER);
     registerBlockItem(NEUTRON_STAR_PLATE);
     registerBlockItem(ARRAKITE_SANDSTONE);
     registerBlockItem(ARRAKITE_SANDSTONE_CUT);

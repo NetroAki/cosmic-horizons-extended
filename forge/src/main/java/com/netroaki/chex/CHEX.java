@@ -2,6 +2,8 @@ package com.netroaki.chex;
 
 import com.mojang.logging.LogUtils;
 import com.netroaki.chex.commands.ChexCommands;
+import com.netroaki.chex.commands.TierCommand;
+import com.netroaki.chex.events.PlayerEvents;
 import com.netroaki.chex.crafting.RecipeConditionTier;
 import com.netroaki.chex.debug.LagProfiler;
 import com.netroaki.chex.discovery.PlanetDiscovery;
@@ -11,8 +13,13 @@ import com.netroaki.chex.hooks.DimensionHooks;
 import com.netroaki.chex.integration.CosmicHorizonsIntegration;
 import com.netroaki.chex.integration.KubeJSIntegration;
 import com.netroaki.chex.network.CHEXNetwork;
+import com.netroaki.chex.config.FuelConfig;
 import com.netroaki.chex.registry.CHEXChunkGenerators;
 import com.netroaki.chex.registry.CHEXEffects;
+import com.netroaki.chex.registry.ArrakisEntities;
+import com.netroaki.chex.registry.ArrakisFeatures;
+import com.netroaki.chex.registry.ArrakisItems;
+import com.netroaki.chex.registry.ArrakisPlacements;
 import com.netroaki.chex.registry.CHEXRegistries;
 import com.netroaki.chex.registry.FuelRegistry;
 import com.netroaki.chex.registry.NoduleDesigns;
@@ -25,6 +32,7 @@ import com.netroaki.chex.suits.SuitTiers;
 import com.netroaki.chex.travel.TravelGraph;
 import com.netroaki.chex.worldgen.CHEXBiomeModifiers;
 import com.netroaki.chex.worldgen.MineralGenerationRegistry;
+import com.netroaki.chex.worldgen.PandoraSpawns;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -51,10 +59,17 @@ public class CHEX {
     // Register our mod's event bus
     modEventBus.addListener(this::commonSetup);
 
+    // Register configurations
+    com.netroaki.chex.config.CHEXConfig.register();
+    FuelConfig.register();
+    
     // Register registries
     CHEXRegistries.register(modEventBus);
     CHEXEffects.EFFECTS.register(modEventBus);
-    com.netroaki.chex.config.CHEXConfig.register();
+    ArrakisEntities.ENTITIES.register(modEventBus);
+    ArrakisFeatures.FEATURES.register(modEventBus);
+    ArrakisItems.ITEMS.register(modEventBus);
+    ArrakisPlacements.PLACEMENTS.register(modEventBus);
     // Register biomes
     CHEXBiomes.BIOMES.register(modEventBus);
     // Ensure block items are registered so recipes for those blocks resolve
@@ -79,6 +94,9 @@ public class CHEX {
     // Disable runtime band/wall hooks; handled in custom generator
     // com.netroaki.chex.hooks.RingworldBandHooks.register();
 
+    // Register event handlers
+    MinecraftForge.EVENT_BUS.register(PlayerEvents.class);
+    
     // Register commands
     MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
     MinecraftForge.EVENT_BUS.addListener(this::onServerAboutToStart);
@@ -93,8 +111,11 @@ public class CHEX {
           "GTCEu integration enabled - full mineral generation and progression features available");
     } else {
       LOGGER.info(
-          "GTCEu not detected - using fallback systems for mineral generation and progression");
+          "GTCEu not found - using fallback systems. Some features may be limited.");
     }
+
+    // Initialize fuel registry after configs are loaded
+    FuelRegistry.initialize();
 
     // Check Cosmic Horizons availability
     if (CosmicHorizonsIntegration.isCosmicHorizonsLoaded()) {
@@ -156,20 +177,56 @@ public class CHEX {
     // Initialize KubeJS integration
     LOGGER.info("Initializing KubeJS integration...");
     KubeJSIntegration.register();
+    
+    // Initialize GTCEu integration
+    LOGGER.info("Initializing GTCEu integration...");
+    com.netroaki.chex.integration.gtceu.GTCEuIntegrationHandler.init();
+    
+    // Register Arrakis content
+    LOGGER.info("Registering Arrakis content...");
+    com.netroaki.chex.registry.blocks.ArrakisBlocks.register(eventBus);
+    com.netroaki.chex.registry.blocks.ArrakisFloraBlocks.register(eventBus);
+    com.netroaki.chex.registry.entities.ArrakisEntities.ENTITIES.register(eventBus);
 
     // Initialize TerraBlender regions
     LOGGER.info("Initializing TerraBlender regions...");
-    event.enqueueWork(
-        () -> {
-          CHEXBiomes.registerRegions();
-        });
-    LOGGER.info("TerraBlender regions initialized");
+    event.enqueueWork(() -> {
+        CHEXBiomes.registerRegions();
+        
+        // Register Arrakis entity spawns
+        SpawnPlacements.register(ArrakisEntities.SPICE_GATHERER.get(), 
+            SpawnPlacements.Type.ON_GROUND, 
+            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, 
+            (entityType, level, spawnType, pos, random) -> 
+                level.getBlockState(pos.below()).isSolid() && 
+                level.getRawBrightness(pos, 0) > 8
+        );
+        
+        SpawnPlacements.register(ArrakisEntities.JUVENILE_SANDWORM.get(), 
+            SpawnPlacements.Type.ON_GROUND, 
+            Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, 
+            JuvenileSandwormEntity::checkSandwormSpawnRules
+        );
+        
+        SpawnPlacements.register(ArrakisEntities.STORM_HAWK.get(), 
+            SpawnPlacements.Type.ON_GROUND, 
+            Heightmap.Types.MOTION_BLOCKING, 
+            StormHawkEntity::checkStormHawkSpawnRules
+        );
+    });
+    LOGGER.info("TerraBlender regions and entity spawns initialized");
+    
+    // Register spawn placements for Pandora fauna
+    LOGGER.info("Registering Pandora fauna spawn placements...");
+    event.enqueueWork(PandoraSpawns::registerSpawnPlacements);
+    LOGGER.info("Pandora fauna spawn placements registered");
 
     LOGGER.info("CHEX common setup complete!");
   }
 
   private void registerCommands(RegisterCommandsEvent event) {
     ChexCommands.register(event.getDispatcher());
+    TierCommand.register(event.getDispatcher());
     LOGGER.info("CHEX commands registered");
   }
 

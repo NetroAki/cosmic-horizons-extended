@@ -1,0 +1,8 @@
+{
+  "entity.chex.solar_engineer_drone": "Solar Engineer Drone",
+  "subtitles.entity.chex.solar_engineer_drone.ambient": "Solar Engineer Drone hums",
+  "subtitles.entity.chex.solar_engineer_drone.hurt": "Solar Engineer Drone sparks",
+  "subtitles.entity.chex.solar_engineer_drone.death": "Solar Engineer Drone shuts down",
+  "subtitles.entity.chex.solar_engineer_drone.repair": "Solar Engineer Drone repairs",
+  "subtitles.entity.chex.solar_engineer_drone.shock": "Solar Engineer Drone zaps"
+}

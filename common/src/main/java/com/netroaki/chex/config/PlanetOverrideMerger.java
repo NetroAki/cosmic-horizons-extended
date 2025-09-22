@@ -12,14 +12,28 @@ public final class PlanetOverrideMerger {
       String requiredSuitTag,
       String fuel,
       String description,
-      Set<String> hazards) {
+      Set<String> hazards,
+      Set<String> minerals,
+      String biomeType,
+      int gravity,
+      boolean hasAtmosphere,
+      boolean requiresOxygen,
+      boolean isOrbit,
+      float temperature,
+      int radiationLevel,
+      float baseOxygen) {
     public PlanetInfo {
       name = sanitize(name, "");
       requiredSuitTag = sanitize(requiredSuitTag, "chex:suits/suit1");
-      fuel = sanitize(fuel, "");
+      fuel = sanitize(fuel, "minecraft:coal");
       description = description == null ? "" : description;
-      hazards =
-          hazards == null ? Set.of() : Collections.unmodifiableSet(new LinkedHashSet<>(hazards));
+      hazards = hazards == null ? Set.of() : Collections.unmodifiableSet(new LinkedHashSet<>(hazards));
+      minerals = minerals == null ? Set.of() : Collections.unmodifiableSet(new LinkedHashSet<>(minerals));
+      biomeType = sanitize(biomeType, "");
+      gravity = Math.max(1, Math.min(gravity, 10)); // Clamp gravity between 1-10
+      temperature = Math.max(0, Math.min(temperature, 1000)); // Clamp temperature between 0-1000K
+      radiationLevel = Math.max(0, Math.min(radiationLevel, 10)); // Clamp radiation between 0-10
+      baseOxygen = Math.max(0, Math.min(baseOxygen, 1.0f)); // Clamp oxygen between 0.0-1.0
     }
 
     private static String sanitize(String value, String fallback) {
@@ -36,39 +50,62 @@ public final class PlanetOverrideMerger {
       return base;
     }
 
-    int tier = base.requiredRocketTier();
-    if (override.requiredRocketTier() != null) {
-      tier = clamp(override.requiredRocketTier(), 1, 10);
-    }
+    // Handle basic fields with overrides
+    int tier = override.requiredRocketTier > 0 ? override.requiredRocketTier : base.requiredRocketTier();
+    String suitTag = !override.requiredSuitTag.isEmpty() ? override.requiredSuitTag : base.requiredSuitTag();
+    String name = !override.name.isEmpty() ? override.name : base.name();
+    
+    // Handle fuel type override
+    String fuel = !override.fuelType.isEmpty() ? override.fuelType : base.fuel();
+    
+    // Handle description override
+    String description = !override.description.isEmpty() ? override.description : base.description();
+    
+    // Handle hazards override - if override has hazards, replace completely, otherwise keep base
+    Set<String> hazards = override.hazards != null && !override.hazards.isEmpty() 
+        ? new LinkedHashSet<>(override.hazards) 
+        : new LinkedHashSet<>(base.hazards());
+    
+    // Handle available minerals override - if override has minerals, replace completely
+    Set<String> minerals = override.availableMinerals != null && !override.availableMinerals.isEmpty() 
+        ? new LinkedHashSet<>(override.availableMinerals) 
+        : new LinkedHashSet<>(base.minerals());
+    
+    // Handle biome and environment overrides
+    String biomeType = !override.biomeType.isEmpty() ? override.biomeType : base.biomeType();
+    int gravity = override.gravity != null ? override.gravity : base.gravity();
+    boolean hasAtmosphere = override.hasAtmosphere != null ? override.hasAtmosphere : base.hasAtmosphere();
+    boolean requiresOxygen = override.requiresOxygen != null ? override.requiresOxygen : base.requiresOxygen();
+    boolean isOrbit = override.isOrbit != null ? override.isOrbit : base.isOrbit();
+    
+    // Handle environmental conditions
+    float temperature = override.temperature != null ? override.temperature : base.temperature();
+    int radiationLevel = override.radiationLevel != null ? override.radiationLevel : base.radiationLevel();
+    float baseOxygen = override.baseOxygen != null ? override.baseOxygen : base.baseOxygen();
 
-    String suitTag = base.requiredSuitTag();
-    if (override.requiredSuitTag() != null) {
-      suitTag = override.requiredSuitTag();
-    } else if (override.requiredSuitTier() != null) {
-      suitTag = buildSuitTag(override.requiredSuitTier());
-    }
+    // Ensure values are within valid ranges
+    gravity = Math.max(1, Math.min(gravity, 10));
+    temperature = Math.max(0, Math.min(temperature, 1000));
+    radiationLevel = Math.max(0, Math.min(radiationLevel, 10));
+    baseOxygen = Math.max(0, Math.min(baseOxygen, 1.0f));
 
-    String fuel = base.fuel();
-    if (override.fuel() != null) {
-      fuel = override.fuel();
-    }
-
-    String description = base.description();
-    if (override.description() != null) {
-      description = override.description();
-    }
-
-    String name = base.name();
-    if (override.name() != null) {
-      name = override.name();
-    }
-
-    Set<String> hazards = base.hazards();
-    if (override.hazards() != null) {
-      hazards = Collections.unmodifiableSet(new LinkedHashSet<>(override.hazards()));
-    }
-
-    return new PlanetInfo(name, tier, suitTag, fuel, description, hazards);
+    return new PlanetInfo(
+        name,
+        tier,
+        suitTag,
+        fuel,
+        description,
+        hazards,
+        minerals,
+        biomeType,
+        gravity,
+        hasAtmosphere,
+        requiresOxygen,
+        isOrbit,
+        temperature,
+        radiationLevel,
+        baseOxygen
+    );
   }
 
   private static int clamp(int value, int min, int max) {

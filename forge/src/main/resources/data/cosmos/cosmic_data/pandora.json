@@ -1,0 +1,45 @@
+{
+  "attached_dimention_id": "cosmic_horizons_extended:pandora",
+  "dimensional_data": {
+    "dimension_type": "planet",
+    "weather": true,
+    "clouds": true,
+    "sky_objects": true,
+    "gravity": 85,
+    "air_resistance": 0.92,
+    "atmospheric_data": {
+      "atmosphere_y": 500,
+      "travel_to": "cosmic_horizons_extended:torus_world",
+      "origin_x": 0,
+      "origin_y": 128,
+      "origin_z": 0,
+      "overlay_texture_id": "pandora_sky",
+      "shipbit_y": 24,
+      "ship_min_y": 120
+    }
+  },
+  "skybox_data": {
+    "attached_skybox_texture_id": "pandora_sky",
+    "alpha": 255,
+    "yaw": 0,
+    "pitch": 0,
+    "roll": 0
+  },
+  "sky_data": {
+    "twilight_gradient": {
+      "top_color": "#4B0082",
+      "bottom_color": "#1E90FF",
+      "gradient_height": 0.7,
+      "blend_strength": 0.5
+    },
+    "levitation_pockets": {
+      "density": 0.1,
+      "min_radius": 3,
+      "max_radius": 8,
+      "min_y": 60,
+      "max_y": 100,
+      "strength": 0.8
+    },
+    "atmosphere_density": 1.2
+  }
+}

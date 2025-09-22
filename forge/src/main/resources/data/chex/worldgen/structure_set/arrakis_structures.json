@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:structure_set",
+  "structures": [
+    {
+      "structure": "chex:shai_hulud_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 16,
+    "salt": 123456789
+  }
+}

@@ -1,0 +1,8 @@
+﻿{
+    "ingredient":  {
+                       "item":  "chex:polished_pandorite"
+                   },
+    "result":  "chex:pandorite_pillar",
+    "count":  1,
+    "type":  "minecraft:stonecutting"
+}

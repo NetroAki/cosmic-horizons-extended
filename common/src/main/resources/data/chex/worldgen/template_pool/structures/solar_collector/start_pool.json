@@ -1,0 +1,15 @@
+{
+  "name": "chex:structures/solar_collector/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/solar_collector/main",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    }
+  ]
+}

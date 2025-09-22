@@ -1,0 +1,22 @@
+{
+  "size": {
+    "x": 16,
+    "y": 1,
+    "z": 16
+  },
+  "entities": [],
+  "palette": [
+    {
+      "Name": "minecraft:iron_block"
+    },
+    {
+      "Name": "minecraft:glass"
+    }
+  ],
+  "blocks": [
+    {
+      "pos": [0, 0, 0],
+      "state": 0
+    }
+  ]
+}

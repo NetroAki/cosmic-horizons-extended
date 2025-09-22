@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:flower_meadow",
+        "chance": 0.5
+      },
+      {
+        "feature": "minecraft:patch_grass_taiga",
+        "chance": 0.7
+      },
+      {
+        "feature": "minecraft:patch_tall_grass_2",
+        "chance": 0.4
+      }
+    ],
+    "default": "minecraft:patch_grass_taiga"
+  }
+}

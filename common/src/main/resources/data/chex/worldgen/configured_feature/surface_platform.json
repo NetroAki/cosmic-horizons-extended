@@ -1,0 +1,39 @@
+{
+  "type": "chex:platform",
+  "config": {
+    "platform_material": {
+      "Name": "minecraft:glowstone"
+    },
+    "pillar_material": {
+      "Name": "minecraft:end_stone_bricks"
+    },
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 6,
+        "max_inclusive": 12
+      }
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 5
+      }
+    },
+    "pillar_count": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 5
+      }
+    },
+    "pillar_radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      }
+    }
+  }
+}

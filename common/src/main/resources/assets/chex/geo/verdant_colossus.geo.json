@@ -1,0 +1,114 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "chex:verdant_colossus",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 5,
+        "visible_bounds_height": 6,
+        "visible_bounds_offset": [0, 2.5, 0]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [0, 0, 0]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "pivot": [0, 24, 0],
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [16, 32, 16],
+              "uv": [0, 0],
+              "inflate": 0.5
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [0, 32, 0],
+          "cubes": [
+            {
+              "origin": [-6, 32, -6],
+              "size": [12, 12, 12],
+              "uv": [0, 50],
+              "inflate": 0.3
+            }
+          ]
+        },
+        {
+          "name": "left_arm",
+          "parent": "body",
+          "pivot": [8, 28, 0],
+          "cubes": [
+            {
+              "origin": [8, 12, -4],
+              "size": [4, 16, 8],
+              "uv": [48, 0],
+              "inflate": 0.2
+            }
+          ]
+        },
+        {
+          "name": "right_arm",
+          "parent": "body",
+          "pivot": [-8, 28, 0],
+          "mirror": true,
+          "cubes": [
+            {
+              "origin": [-12, 12, -4],
+              "size": [4, 16, 8],
+              "uv": [48, 0],
+              "inflate": 0.2
+            }
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parent": "body",
+          "pivot": [4, 0, 0],
+          "cubes": [
+            {
+              "origin": [0, -12, -4],
+              "size": [4, 12, 8],
+              "uv": [0, 80],
+              "inflate": 0.3
+            }
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parent": "body",
+          "pivot": [-4, 0, 0],
+          "mirror": true,
+          "cubes": [
+            {
+              "origin": [-4, -12, -4],
+              "size": [4, 12, 8],
+              "uv": [0, 80],
+              "inflate": 0.3
+            }
+          ]
+        },
+        {
+          "name": "vines",
+          "parent": "body",
+          "pivot": [0, 24, 0],
+          "cubes": [
+            {
+              "origin": [-10, 8, -10],
+              "size": [20, 40, 20],
+              "uv": [64, 64],
+              "inflate": 0.8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

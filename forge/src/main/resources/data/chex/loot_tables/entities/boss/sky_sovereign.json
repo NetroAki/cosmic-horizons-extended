@@ -1,0 +1,62 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chex:storm_essence",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 3.0,
+                "type": "minecraft:uniform"
+              }
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:sky_crystal",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2.0,
+                "max": 5.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:sovereigns_crest",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'\"{\\\"text\\\":\\\"Sovereign's Crest\\\",\\\"italic\\\":false,\\\"color\\\":\\\"light_purple\\\"}\"',Lore:['\"{\\\"text\\\":\\\"A symbol of dominance over the skies\\\",\\\"color\\\":\\\"gray\\\",\\\"italic\\\":true}'"]},Enchantments:[{id:\"minecraft:binding_curse\",lvl:1s}],HideFlags:32}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

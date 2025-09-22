@@ -1,0 +1,92 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 7254527,
+    "fog_color": 0,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "music": {
+      "sound": "chex:music.arrakis.sietch_ambient",
+      "min_delay": 1200,
+      "max_delay": 2400,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:husk",
+        "weight": 70,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "chex:fremen_warrior",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [
+      {
+        "type": "chex:desert_mouse",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {
+    "minecraft:husk": {
+      "energy_budget": 0.12,
+      "charge": 1.0
+    },
+    "chex:fremen_warrior": {
+      "energy_budget": 0.2,
+      "charge": 1.0
+    },
+    "chex:desert_mouse": {
+      "energy_budget": 0.08,
+      "charge": 1.0
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "chex:sietch_stronghold"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:spice_cache",
+      "chex:water_reserve"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:ancient_artifacts"
+    ]
+  ]
+}

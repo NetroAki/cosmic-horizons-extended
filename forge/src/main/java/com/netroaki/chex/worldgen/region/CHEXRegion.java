@@ -39,6 +39,7 @@ public class CHEXRegion extends Region {
 
     // Arrakis - distribute sub-biomes across hot/arid slices without touching vanilla temperate
     // bands
+    // Arrakis Great Dunes - hot, arid inland areas
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
@@ -52,6 +53,7 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_GREAT_DUNES));
 
+    // Arrakis Spice Mines - hot, arid inland areas with more erosion
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
         .humidity(Humidity.span(Humidity.ARID, Humidity.NEUTRAL))
@@ -64,6 +66,7 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_SPICE_MINES));
 
+    // Arrakis Polar Ice Caps - cooler, drier areas near coasts
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.NEUTRAL, Temperature.COOL))
         .humidity(Humidity.span(Humidity.DRY, Humidity.NEUTRAL))
@@ -76,6 +79,7 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_POLAR_ICE_CAPS));
 
+    // Arrakis Sietch Strongholds - hot, arid inland areas with high erosion
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
@@ -88,6 +92,7 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_SIETCH_STRONGHOLDS));
 
+    // Arrakis Stormlands - hot, arid inland areas with extreme erosion
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
@@ -102,6 +107,8 @@ public class CHEXRegion extends Region {
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_STORMLANDS));
 
     // Pandora - tie each sub-biome to distinct humidity/height slices for vertical variety
+    
+    // Pandora Bioluminescent Forest - warm, wet inland areas
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.NEUTRAL, Temperature.WARM))
         .humidity(Humidity.span(Humidity.NEUTRAL, Humidity.WET))
@@ -115,6 +122,7 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_BIOLUMINESCENT_FOREST));
 
+    // Pandora Floating Mountains - warm, wet coastal areas with high elevation
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.NEUTRAL, Temperature.WARM))
         .humidity(Humidity.span(Humidity.NEUTRAL, Humidity.WET))
@@ -127,16 +135,18 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_FLOATING_MOUNTAINS));
 
+    // Pandora Ocean Depths - cool, wet ocean areas with full depth range
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.COOL, Temperature.NEUTRAL))
         .humidity(Humidity.span(Humidity.WET, Humidity.HUMID))
         .continentalness(Continentalness.span(Continentalness.COAST, Continentalness.NEAR_INLAND))
         .erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1))
         .depth(Depth.FULL_RANGE)
-        .weirdness(Weirdness.span(Weirdness.DEEP_OCEAN, Weirdness.MID_SLICE_VARIANT_DESCENDING))
+        .weirdness(Weirdness.span(Weirdness.LOW_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING))
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_OCEAN_DEPTHS));
 
+    // Pandora Volcanic Wasteland - hot, dry inland areas with variant terrain
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
@@ -150,13 +160,14 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_VOLCANIC_WASTELAND));
 
+    // Pandora Sky Islands - cool, dry high-altitude floating islands
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.COOL, Temperature.NEUTRAL))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
         .continentalness(
-            Continentalness.span(Continentalness.HALF_INLAND, Continentalness.FAR_INLAND))
+            Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
         .erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1))
-        .depth(Depth.HIGH_OFFSET, Depth.PEAK)
+        .depth(Depth.SURFACE)  // Using SURFACE instead of FLOOR for 1.20.1 compatibility
         .weirdness(
             Weirdness.span(
                 Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING))

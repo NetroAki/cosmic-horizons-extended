@@ -1,4 +1,4 @@
-﻿{
+{
   "carvers": {
     "air": [
       "minecraft:cave",
@@ -6,55 +6,123 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.4,
+  "downfall": 0.3,
   "effects": {
-    "fog_color": 9027553,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 11461887,
+    "fog_color": 13158600,
+    "sky_color": 7972607,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "foliage_color": 16711680,
-    "grass_color": 16711680
+    "foliage_color": 0x47AB0F,
+    "grass_color": 0x5AB020,
+    "grass_color_modifier": "swamp",
+    "particle": {
+      "probability": 0.01,
+      "options": {
+        "type": "minecraft:cloud",
+        "color": [200, 230, 255, 50]
+      }
+    },
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.crimson_forest.additions",
+      "tick_chance": 0.01
+    },
+    "music": {
+      "sound": "minecraft:music.overworld.grove",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    },
+    "ambient_sound": "minecraft:ambient.crimson_forest.loop"
   },
   "features": [
-    "cosmic_horizons_extended:pandora_skybark_trees_placed",
-    "cosmic_horizons_extended:pandora_crystal_cluster_placed",
-    "cosmic_horizons_extended:pandora_sky_polished_plate_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "cosmic_horizons_extended:pandora_floating_rocks_placed",
+      "cosmic_horizons_extended:pandora_gravity_anomalies_placed"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_tuff",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_redstone",
+      "minecraft:ore_redstone_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "minecraft:ore_lapis",
+      "minecraft:ore_lapis_buried",
+      "minecraft:ore_copper",
+      "minecraft:underwater_magma",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
+    ],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:glow_lichen"
+    ]
   ],
-  "has_precipitation": true,
+  "has_precipitation": false,
+  "precipitation": "none",
+  "temperature": 0.7,
   "spawn_costs": {
-    "cliff_hunter": {
+    "sky_ray": {
       "energy_budget": 0.15,
       "charge": 1.0
+    },
+    "cosmic_horizons_extended:floating_creature": {
+      "energy_budget": 0.08,
+      "charge": 1.2
     }
   },
   "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "cosmic_horizons_extended:sky_grazer",
-        "weight": 6,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
-    "misc": [],
     "monster": [
       {
-        "type": "cosmic_horizons_extended:cliff_hunter",
-        "weight": 3,
+        "type": "minecraft:phantom",
+        "weight": 2,
         "minCount": 1,
         "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "cosmic_horizons_extended:sky_ray",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
       },
       {
-        "type": "cosmic_horizons_extended:cliff_hunter_alpha",
+        "type": "cosmic_horizons_extended:floating_creature",
+        "weight": 8,
         "weight": 1,
         "minCount": 1,
         "maxCount": 1

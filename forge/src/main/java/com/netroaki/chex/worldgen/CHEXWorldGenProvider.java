@@ -3,7 +3,10 @@ package com.netroaki.chex.worldgen;
 import com.netroaki.chex.CHEX;
 import com.netroaki.chex.registry.PlanetDef;
 import com.netroaki.chex.registry.PlanetRegistry;
+import com.netroaki.chex.worldgen.features.PandoraFeatures;
+
 import java.util.Map;
+
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -28,10 +31,14 @@ public class CHEXWorldGenProvider {
       PlanetDef planet = entry.getValue();
       ResourceLocation planetId = entry.getKey();
 
-      // Create mineral generation features for each planet based on its available
-      // minerals
+      // Create mineral generation features for each planet based on its available minerals
       for (String mineral : planet.availableMinerals()) {
         createMineralFeature(context, planetId, mineral, planet);
+      }
+      
+      // Register Pandora-specific features if this is Pandora
+      if ("pandora".equals(planetId.getPath())) {
+        PandoraFeatures.bootstrapConfiguredFeatures(context);
       }
     }
 
@@ -55,6 +62,11 @@ public class CHEXWorldGenProvider {
       // Create placed features for each mineral on the planet
       for (String mineral : planet.availableMinerals()) {
         createPlacedMineralFeature(context, configuredFeatures, planetId, mineral, planet);
+      }
+      
+      // Register Pandora-specific placed features if this is Pandora
+      if ("pandora".equals(planetId.getPath())) {
+        PandoraFeatures.bootstrapPlacedFeatures(context);
       }
     }
 

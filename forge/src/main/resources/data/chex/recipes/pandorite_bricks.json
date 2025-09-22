@@ -1,0 +1,16 @@
+﻿{
+    "key":  {
+                "#":  {
+                          "item":  "chex:polished_pandorite"
+                      }
+            },
+    "pattern":  [
+                    "##",
+                    "##"
+                ],
+    "result":  {
+                   "count":  4,
+                   "item":  "chex:pandorite_bricks"
+               },
+    "type":  "minecraft:crafting_shaped"
+}

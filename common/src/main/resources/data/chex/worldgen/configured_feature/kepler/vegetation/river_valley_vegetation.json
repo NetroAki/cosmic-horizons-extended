@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:patch_grass_plain",
+        "chance": 0.8
+      },
+      {
+        "feature": "minecraft:patch_tall_grass_2",
+        "chance": 0.6
+      },
+      {
+        "feature": "minecraft:patch_waterlily",
+        "chance": 0.7
+      },
+      {
+        "feature": "minecraft:seagrass_river",
+        "chance": 0.8
+      },
+      {
+        "feature": "minecraft:patch_sugar_cane",
+        "chance": 0.5
+      },
+      {
+        "feature": "minecraft:patch_sugar_cane_swamp",
+        "chance": 0.3
+      },
+      {
+        "feature": "minecraft:patch_grass_jungle",
+        "chance": 0.4
+      },
+      {
+        "feature": "minecraft:patch_grass_taiga",
+        "chance": 0.5
+      },
+      {
+        "feature": "minecraft:patch_large_fern",
+        "chance": 0.4
+      }
+    ],
+    "default": "minecraft:patch_grass_plain"
+  }
+}

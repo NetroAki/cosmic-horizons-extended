@@ -1,0 +1,31 @@
+{
+  "type": "chex:arrakis",
+  "generator": {
+    "type": "chex:arrakis",
+    "biome_source": {
+      "type": "chex:arrakis_biome",
+      "seed": 0,
+      "large_biomes": false
+    },
+    "settings": {
+      "bedrock_roof_position": -10,
+      "bedrock_floor_position": 0,
+      "sea_level": 0,
+      "disable_mob_generation": false,
+      "aquifers_enabled": false,
+      "ore_veins_enabled": false,
+      "default_block": {
+        "Name": "minecraft:sand"
+      },
+      "default_fluid": {
+        "Name": "minecraft:air"
+      },
+      "noise": {
+        "min_y": -64,
+        "height": 384,
+        "size_horizontal": 1,
+        "size_vertical": 2
+      }
+    }
+  }
+}

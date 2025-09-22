@@ -55,6 +55,35 @@ public final class DimensionHooks {
 
     // Check if this is a CHEX or Cosmic Horizons planet
     if (isCHEXOrCosmicPlanet(to)) {
+      // First check if player has the capability
+      player.getCapability(com.netroaki.chex.capabilities.PlayerTierCapability.INSTANCE).ifPresent(capability -> {
+        // Check if player can enter this dimension
+        if (!capability.canEnterDimension(to.location())) {
+          // Prevent entry and teleport back to spawn if not allowed
+          if (!player.level().isClientSide) {
+            player.teleportTo(
+                player.getServer().overworld(),
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                player.getYRot(),
+                player.getXRot()
+            );
+            player.displayClientMessage(
+                net.minecraft.network.chat.Component.literal("§cYou don't have permission to enter this dimension!"),
+                true
+            );
+          }
+          return;
+        }
+
+        // Record first planet visit milestone
+        if (!to.location().getPath().equals("overworld")) {
+          capability.setMilestone(com.netroaki.chex.capabilities.PlayerTierCapability.MILESTONE_FIRST_PLANET);
+        }
+      });
+
+      // Existing suit check logic
       SuitTiers requiredSuit = getRequiredSuitForPlanet(to);
       SuitTiers playerSuit = getPlayerSuitTier(player);
 

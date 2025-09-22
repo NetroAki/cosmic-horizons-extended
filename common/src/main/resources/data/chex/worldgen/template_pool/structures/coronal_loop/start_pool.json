@@ -1,0 +1,33 @@
+{
+  "name": "chex:structures/coronal_loop/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/coronal_loop/main",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/coronal_loop/large",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/coronal_loop/small",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    }
+  ]
+}

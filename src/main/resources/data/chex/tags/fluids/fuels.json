@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "chex:kerosene",
+    "chex:flowing_kerosene",
+    "chex:rp1",
+    "chex:flowing_rp1",
+    "chex:lox",
+    "chex:flowing_lox",
+    "chex:lh2",
+    "chex:flowing_lh2",
+    "chex:dt_mix",
+    "chex:flowing_dt_mix",
+    "chex:he3_blend",
+    "chex:flowing_he3_blend",
+    "chex:exotic_mix",
+    "chex:flowing_exotic_mix"
+  ]
+}

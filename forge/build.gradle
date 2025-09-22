@@ -41,22 +41,34 @@ repositories {
 }
 
 dependencies {
+    // Minecraft and Forge
     minecraft "com.mojang:minecraft:${rootProject.ext.mc_version}"
     mappings loom.officialMojangMappings()
-    forge 'net.minecraftforge:forge:1.20.1-47.4.1'
+    forge "net.minecraftforge:forge:1.20.1-47.4.1"
 
-    implementation project(':common')
+    // Project dependencies
+    implementation project(path: ':common')
+    
+    // Local JARs
     modImplementation files("${rootProject.projectDir}/libs/architectury-9.2.9999-forge.jar")
-    modImplementation 'maven.modrinth:terrablender:3.0.1.10'
-    modImplementation 'io.github.llamalad7:mixinextras-forge:0.3.5'
-    modImplementation 'maven.modrinth:ldlib:mc1.20.1-1.0.45-forge'
     modImplementation files("${rootProject.projectDir}/libs/configuration-forge-1.20.1-3.1.0.jar")
-    modCompileOnly "com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}"
-    modRuntimeOnly "com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}"
-    modCompileOnly 'maven.modrinth:cosmic-horizons-cosmos:0.0.7.3'
-    modRuntimeOnly 'maven.modrinth:cosmic-horizons-cosmos:0.0.7.3'
-    modCompileOnly 'curse.maven:cosmos-unbound-1200939:6195968'
-    modRuntimeOnly 'curse.maven:cosmos-unbound-1200939:6195968'
+    
+    // Mod dependencies
+    modImplementation("maven.modrinth:terrablender:3.0.1.10")
+    modImplementation("io.github.llamalad7:mixinextras-forge:0.3.5")
+    modImplementation("maven.modrinth:ldlib:mc1.20.1-1.0.45-forge")
+    
+    // GTCEu dependencies
+    modCompileOnly("com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}")
+    modRuntimeOnly("com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}")
+    
+    // Optional dependencies
+    modCompileOnly("maven.modrinth:cosmic-horizons-cosmos:0.0.7.3")
+    modRuntimeOnly("maven.modrinth:cosmic-horizons-cosmos:0.0.7.3")
+    
+    // CurseForge dependencies
+    modCompileOnly("curse.maven:cosmos-unbound-1200939:6195968")
+    modRuntimeOnly("curse.maven:cosmos-unbound-1200939:6195968")
 }
  
 loom {

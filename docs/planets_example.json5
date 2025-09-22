@@ -1,0 +1,54 @@
+// Example planet configuration for Cosmic Horizons Extended
+// Place this file in config/chex/chex-planets.json5
+
+{
+  // Override for existing CH planets
+  "cosmichorizons:mercury": {
+    "name": "Mercury",
+    "description": "A scorched world with extreme temperature variations",
+    "requiredRocketTier": 1,
+    "requiredSuitTag": "chex:suits/suit1",
+    "temperature": 450.0,  // Surface temperature in Kelvin
+    "radiationLevel": 3,   // 0-10 scale
+    "baseOxygen": 0.0,     // 0.0 to 1.0 (fraction of Earth's oxygen level)
+    "hazards": ["heat", "solar_radiation"],
+    "availableMinerals": ["minecraft:iron_ore", "minecraft:gold_ore"]
+  },
+  
+  // Example of a custom CHEX planet
+  "chex:kepler_186f": {
+    "name": "Kepler-186f",
+    "description": "An Earth-like exoplanet in the habitable zone",
+    "requiredRocketTier": 5,
+    "requiredSuitTag": "chex:suits/suit3",
+    "temperature": 290.0,
+    "radiationLevel": 1,
+    "baseOxygen": 0.9,
+    "hazards": ["high_gravity"],
+    "availableMinerals": [
+      "minecraft:iron_ore",
+      "minecraft:copper_ore",
+      "chex:exotic_mineral_ore"
+    ]
+  },
+  
+  // Example of a high-tier planet with multiple hazards
+  "chex:volcanic_world": {
+    "name": "Volcanic World",
+    "description": "A dangerous world of fire and ash",
+    "requiredRocketTier": 8,
+    "requiredSuitTag": "chex:suits/suit5",
+    "temperature": 800.0,
+    "radiationLevel": 5,
+    "baseOxygen": 0.1,
+    "hazards": [
+      "extreme_heat",
+      "toxic_atmosphere",
+      "acid_rain"
+    ],
+    "availableMinerals": [
+      "minecraft:ancient_debris",
+      "chex:volcanic_crystal_ore"
+    ]
+  }
+}

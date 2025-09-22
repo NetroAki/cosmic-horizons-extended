@@ -20,6 +20,10 @@ public final class PlanetOverridesCore {
     private final String description;
     private final String fuel;
     private final Set<String> hazards;
+    private final Float temperature;
+    private final Integer radiationLevel;
+    private final Float baseOxygen;
+    private final Set<String> availableMinerals;
 
     public Entry(
         Integer requiredRocketTier,
@@ -28,7 +32,11 @@ public final class PlanetOverridesCore {
         String name,
         String description,
         String fuel,
-        Set<String> hazards) {
+        Set<String> hazards,
+        Float temperature,
+        Integer radiationLevel,
+        Float baseOxygen,
+        Set<String> availableMinerals) {
       this.requiredRocketTier = requiredRocketTier;
       this.requiredSuitTier = requiredSuitTier;
       this.requiredSuitTag = requiredSuitTag;
@@ -36,6 +44,10 @@ public final class PlanetOverridesCore {
       this.description = description;
       this.fuel = fuel;
       this.hazards = hazards;
+      this.temperature = temperature;
+      this.radiationLevel = radiationLevel;
+      this.baseOxygen = baseOxygen;
+      this.availableMinerals = availableMinerals;
     }
 
     public Integer requiredRocketTier() {
@@ -64,6 +76,22 @@ public final class PlanetOverridesCore {
 
     public Set<String> hazards() {
       return hazards;
+    }
+
+    public Optional<Float> temperature() {
+      return Optional.ofNullable(temperature);
+    }
+
+    public Optional<Integer> radiationLevel() {
+      return Optional.ofNullable(radiationLevel);
+    }
+
+    public Optional<Float> baseOxygen() {
+      return Optional.ofNullable(baseOxygen);
+    }
+
+    public Set<String> availableMinerals() {
+      return availableMinerals;
     }
   }
 
@@ -107,21 +135,39 @@ public final class PlanetOverridesCore {
     String description = getString(obj, "description");
     String fuel = getString(obj, "fuel");
 
-    Set<String> hazards = null;
-    if (obj.has("hazards") && obj.get("hazards").isJsonArray()) {
-      hazards = new LinkedHashSet<>();
-      JsonArray arr = obj.getAsJsonArray("hazards");
+    Set<String> hazards = parseStringSet(obj, "hazards");
+    Set<String> availableMinerals = parseStringSet(obj, "availableMinerals");
+
+    Float temperature = obj.has("temperature") && !obj.get("temperature").isJsonNull() 
+        ? obj.get("temperature").getAsFloat() 
+        : null;
+        
+    Integer radiationLevel = obj.has("radiationLevel") && !obj.get("radiationLevel").isJsonNull()
+        ? obj.get("radiationLevel").getAsInt()
+        : null;
+        
+    Float baseOxygen = obj.has("baseOxygen") && !obj.get("baseOxygen").isJsonNull()
+        ? obj.get("baseOxygen").getAsFloat()
+        : null;
+
+    return new Entry(tier, suitTier, suitTag, name, description, fuel, hazards, temperature, radiationLevel, baseOxygen, availableMinerals);
+  }
+
+  private static Set<String> parseStringSet(JsonObject obj, String key) {
+    if (obj.has(key) && obj.get(key).isJsonArray()) {
+      Set<String> set = new LinkedHashSet<>();
+      JsonArray arr = obj.getAsJsonArray(key);
       for (JsonElement el : arr) {
         if (el.isJsonPrimitive()) {
           String value = el.getAsString().trim();
           if (!value.isEmpty()) {
-            hazards.add(value.toLowerCase());
+            set.add(value.toLowerCase());
           }
         }
       }
+      return set.isEmpty() ? null : set;
     }
-
-    return new Entry(tier, suitTier, suitTag, name, description, fuel, hazards);
+    return null;
   }
 
   private static Integer getInteger(JsonObject obj, String key, int min, int max) {

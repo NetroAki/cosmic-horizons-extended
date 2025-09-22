@@ -1,0 +1,18 @@
+﻿{
+    "ingredients":  [
+                        {
+                            "item":  "minecraft:kelp"
+                        },
+                        {
+                            "item":  "chex:biolume_moss"
+                        },
+                        {
+                            "item":  "minecraft:glow_ink_sac"
+                        }
+                    ],
+    "result":  {
+                   "count":  2,
+                   "item":  "chex:lumicoral"
+               },
+    "type":  "minecraft:crafting_shapeless"
+}

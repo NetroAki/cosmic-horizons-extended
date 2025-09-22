@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "chex:solar_collector",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 123456789,
+    "spacing": 24,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

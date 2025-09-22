@@ -1,0 +1,82 @@
+{
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 8103167,
+    "fog_color": 12638463,
+    "water_color": 4566514,
+    "water_fog_color": 267827,
+    "grass_color": 5474955,
+    "foliage_color": 5474955,
+    "mood_sound": {
+      "sound": "minecraft:ambient.underwater.loop.additions",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:bubble"
+      },
+      "probability": 0.014
+    }
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:squid",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ]
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground"
+    ],
+    "liquid": [
+      "minecraft:underwater_canyon"
+    ]
+  },
+  "features": [
+    [
+      "chex:aqua_mundus/hydrothermal_vents",
+      "chex:aqua_mundus/ore_sulfur"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "chex:aqua_mundus/underwater_geode"
+    ],
+    [],
+    [
+      "minecraft:spring_lava"
+    ]
+  ]
+}

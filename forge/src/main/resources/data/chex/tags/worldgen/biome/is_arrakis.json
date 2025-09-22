@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "chex:arrakis_desert",
+    "chex:arrakis_mountains",
+    "chex:arrakis_canyons"
+  ]
+}

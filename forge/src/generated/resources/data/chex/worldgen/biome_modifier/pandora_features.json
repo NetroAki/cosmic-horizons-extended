@@ -1,0 +1,32 @@
+[
+  {
+    "type": "forge:add_features",
+    "biomes": ["chex:pandora_plains", "chex:pandora_forest"],
+    "features": ["chex:pandora_fungi"],
+    "step": "vegetal_decoration"
+  },
+  {
+    "type": "forge:add_features",
+    "biomes": ["chex:pandora_plains", "chex:pandora_forest", "chex:pandora_mountains"],
+    "features": ["chex:pandora_trees"],
+    "step": "vegetal_decoration"
+  },
+  {
+    "type": "forge:add_features",
+    "biomes": ["chex:pandora_ocean"],
+    "features": ["chex:pandora_underwater_kelp"],
+    "step": "vegetal_decoration"
+  },
+  {
+    "type": "forge:add_features",
+    "biomes": ["chex:pandora_mountains", "chex:pandora_highlands"],
+    "features": ["chex:pandora_magma_fields"],
+    "step": "underground_decoration"
+  },
+  {
+    "type": "forge:add_features",
+    "biomes": ["chex:pandora_mountains"],
+    "features": ["chex:pandora_floating_islands"],
+    "step": "aerial_decoration"
+  }
+]

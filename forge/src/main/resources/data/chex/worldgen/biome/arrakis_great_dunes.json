@@ -1,0 +1,73 @@
+{
+  "temperature": 2.5,
+  "downfall": 0.0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 16763904,
+    "fog_color": 16763904,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "chex:arrakis_dust"
+      },
+      "probability": 0.01
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:husk",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {
+    "minecraft:husk": {
+      "energy_budget": 0.12,
+      "charge": 1.0
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "chex:arrakis_canyon"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:arrakis_spice_vein"
+    ],
+    [],
+    [
+      "minecraft:spring_lava"
+    ],
+    [],
+    [
+      "chex:arrakis_sand_ripples"
+    ]
+  ]
+}

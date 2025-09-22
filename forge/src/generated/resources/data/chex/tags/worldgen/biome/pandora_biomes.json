@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "chex:pandora_plains",
+    "chex:pandora_forest",
+    "chex:pandora_mountains",
+    "chex:pandora_ocean",
+    "chex:pandora_highlands",
+    "chex:pandora_lowlands"
+  ]
+}

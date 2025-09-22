@@ -41,6 +41,22 @@ public class CHEXItems {
           "lh2_bucket",
           () -> new BucketItem(() -> CHEXFluids.LH2.get(), new Item.Properties().stacksTo(1)));
 
+  // Advanced Fuel Buckets
+  public static final RegistryObject<Item> DT_MIX_BUCKET =
+      ITEMS.register(
+          "dt_mix_bucket",
+          () -> new BucketItem(() -> CHEXFluids.DT_MIX.get(), new Item.Properties().stacksTo(1)));
+
+  public static final RegistryObject<Item> HE3_BLEND_BUCKET =
+      ITEMS.register(
+          "he3_blend_bucket",
+          () -> new BucketItem(() -> CHEXFluids.HE3_BLEND.get(), new Item.Properties().stacksTo(1)));
+
+  public static final RegistryObject<Item> EXOTIC_MIX_BUCKET =
+      ITEMS.register(
+          "exotic_mix_bucket",
+          () -> new BucketItem(() -> CHEXFluids.EXOTIC_MIX.get(), new Item.Properties().stacksTo(1)));
+
   // Space Suits - Tier 1
   public static final RegistryObject<Item> SPACE_SUIT_HELMET_T1 =
       ITEMS.register(

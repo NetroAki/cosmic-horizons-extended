@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "chex:block/spice_node"
+    },
+    "lit=true": {
+      "model": "chex:block/spice_node_lit"
+    }
+  }
+}

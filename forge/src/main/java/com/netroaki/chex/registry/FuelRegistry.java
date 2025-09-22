@@ -1,9 +1,8 @@
 package com.netroaki.chex.registry;
 
 import com.netroaki.chex.CHEX;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,33 +16,77 @@ public class FuelRegistry {
   public static void initialize() {
     CHEX.LOGGER.info("Initializing fuel registry...");
 
+    // Check if GTCEu is present
+    boolean gtceuPresent = net.minecraftforge.fml.ModList.get().isLoaded("gtceu");
+    String modId = gtceuPresent ? "gtceu" : "chex";
+    
+    CHEX.LOGGER.info("Using {} as the primary fluid source", modId);
+
     // T1: Basic Nodule - Kerosene
-    registerFuel(1, "cosmic_horizons_extended:kerosene", 1000);
+    registerFuel(1, 
+        "gtceu:kerosene", 1000,
+        "chex:kerosene"
+    );
 
     // T2: Advanced Nodule - RP-1
-    registerFuel(2, "cosmic_horizons_extended:rp1", 1500);
+    registerFuel(2, 
+        "gtceu:rocket_fuel", 1500,
+        "chex:rp1"
+    );
 
     // T3: Improved Nodule - LOX
-    registerFuel(3, "cosmic_horizons_extended:lox", 2000);
+    registerFuel(3, 
+        "gtceu:liquid_oxygen", 2000,
+        "chex:lox"
+    );
 
     // T4: Enhanced Nodule - LH2
-    registerFuel(4, "cosmic_horizons_extended:lh2", 2500);
+    registerFuel(4, 
+        "gtceu:hydrogen", 2500,
+        "chex:lh2"
+    );
 
     // T5: Superior Nodule - DT Mix
-    registerFuel(5, "cosmic_horizons_extended:dt_mix", 3000);
+    registerFuel(5, 
+        "gtceu:deuterium", 3000,
+        "chex:dt_mix"
+    );
 
     // T6: Elite Nodule - He3 Blend
-    registerFuel(6, "cosmic_horizons_extended:he3_blend", 3500);
+    registerFuel(6, 
+        "gtceu:helium_3", 3500,
+        "chex:he3_blend"
+    );
 
     // T7: Master Nodule - Exotic Mix
-    registerFuel(7, "cosmic_horizons_extended:exotic_mix", 4000);
+    registerFuel(7, 
+        "gtceu:naquadria", 4000,
+        "chex:exotic_mix"
+    );
 
-    // T8-T10: Use exotic mix for highest tiers
-    registerFuel(8, "cosmic_horizons_extended:exotic_mix", 4500);
-    registerFuel(9, "cosmic_horizons_extended:exotic_mix", 5000);
-    registerFuel(10, "cosmic_horizons_extended:exotic_mix", 6000);
+    // T8-T10: Use exotic mix for highest tiers with increasing efficiency
+    registerFuel(8, 
+        "gtceu:naquadria", 4500,
+        "chex:exotic_mix"
+    );
+    registerFuel(9, 
+        "gtceu:naquadria", 5000,
+        "chex:exotic_mix"
+    );
+    registerFuel(10, 
+        "gtceu:naquadria", 6000,
+        "chex:exotic_mix"
+    );
 
     CHEX.LOGGER.info("Fuel registry initialized with {} fuel types", TIER_FUEL_REQUIREMENTS.size());
+    
+    // Log registered fuels for debugging
+    for (Map.Entry<Integer, FuelRequirement> entry : TIER_FUEL_REQUIREMENTS.entrySet()) {
+      CHEX.LOGGER.debug("Tier {}: {} ({} mB)", 
+          entry.getKey(), 
+          entry.getValue().getFluidId(),
+          TIER_FUEL_VOLUMES.get(entry.getKey()));
+    }
   }
 
   public static void registerFuel(int tier, String fluidId, int volumeMb) {
@@ -67,23 +110,89 @@ public class FuelRegistry {
     return TIER_FUEL_VOLUMES.getOrDefault(tier, 0);
   }
 
-  public static boolean isFuelSufficientForTier(
-      int tier, ResourceLocation fluidId, int availableMb) {
+  /**
+   * Checks if the given fluid and amount is sufficient for the specified tier.
+   * 
+   * @param tier The tier of the fuel being checked
+   * @param fluidId The ID of the fluid to check
+   * @param availableMb The amount of fluid available in millibuckets
+   * @return true if the fluid and amount are sufficient, false otherwise
+   */
+  public static boolean isFuelSufficientForTier(int tier, ResourceLocation fluidId, int availableMb) {
+    // If no requirement for this tier, allow any fuel
     var reqOpt = getFuelRequirement(tier);
-    if (reqOpt.isEmpty()) return true;
+    if (reqOpt.isEmpty()) {
+      return true;
+    }
+    
+    // Check if we have enough of the exact fluid
     var req = reqOpt.get();
     int required = getFuelVolume(tier);
-    if (availableMb < required) return false;
-    // Exact match or acceptHigherTierFuel allows any registered higher tier fluid
-    if (req.getFluidId().equals(fluidId)) return true;
-    if (com.netroaki.chex.config.CHEXConfig.acceptHigherTierFuel()) {
-      // simple heuristic: allow any of our known fluids
-      String ns = fluidId.getNamespace();
-      return ns.equals(com.netroaki.chex.CHEX.MOD_ID);
+    
+    if (availableMb < required) {
+      return false;
     }
+    
+    // Exact match always works
+    if (req.getFluidId().equals(fluidId)) {
+      return true;
+    }
+    
+    // Check if we accept higher tier fuels
+    if (FuelConfig.SERVER.acceptHigherTierFuel.get()) {
+      // Check if this is one of our known fuel types
+      String ns = fluidId.getNamespace();
+      if (ns.equals("gtceu") || ns.equals(com.netroaki.chex.CHEX.MOD_ID)) {
+        // Get the tier of the provided fluid
+        Optional<Integer> fluidTier = getTierForFluid(fluidId);
+        
+        // If we can't determine the tier, only allow exact matches
+        if (fluidTier.isEmpty()) {
+          return false;
+        }
+        
+        // Allow higher or equal tier fuels
+        return fluidTier.get() >= tier;
+      }
+    }
+    
     return false;
   }
 
+  /**
+   * Gets the tier for a given fluid ID, if it's registered as a fuel.
+   * 
+   * @param fluidId The ID of the fluid to check
+   * @return An Optional containing the tier if found, or empty if not a registered fuel
+   */
+  public static Optional<Integer> getTierForFluid(ResourceLocation fluidId) {
+    // Create a reverse mapping of fluid IDs to tiers
+    Map<ResourceLocation, Integer> fluidToTier = new HashMap<>();
+    for (Map.Entry<Integer, FuelRequirement> entry : TIER_FUEL_REQUIREMENTS.entrySet()) {
+      fluidToTier.put(entry.getValue().getFluidId(), entry.getKey());
+    }
+    
+    return Optional.ofNullable(fluidToTier.get(fluidId));
+  }
+  
+  /**
+   * Gets all registered fuel tiers and their requirements.
+   * 
+   * @return An unmodifiable map of tier to fuel requirement
+   */
+  public static Map<Integer, FuelRequirement> getAllFuelRequirements() {
+    return Collections.unmodifiableMap(TIER_FUEL_REQUIREMENTS);
+  }
+  
+  /**
+   * Gets all registered fuel volumes.
+   * 
+   * @return An unmodifiable map of tier to fuel volume in millibuckets
+   */
+  public static Map<Integer, Integer> getAllFuelVolumes() {
+    return Collections.unmodifiableMap(TIER_FUEL_VOLUMES);
+  }
+  
   public static boolean isValidFuel(int tier, Fluid fluid) {
     return getFuelRequirement(tier).map(req -> req.getFluid() == fluid).orElse(false);
   }

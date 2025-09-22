@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_kelp",
+  "textures": {
+    "particle": "chex:block/luminous_kelp",
+    "0": "chex:block/luminous_kelp"
+  }
+}

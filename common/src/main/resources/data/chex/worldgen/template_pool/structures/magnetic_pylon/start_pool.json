@@ -1,0 +1,24 @@
+{
+  "name": "chex:structures/magnetic_pylon/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/magnetic_pylon/main",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "chex:structures/magnetic_pylon/variant_1",
+        "projection": "rigid",
+        "processors": "chex:alpha_centauri_structure_processor"
+      }
+    }
+  ]
+}

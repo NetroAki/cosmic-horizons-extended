@@ -1,0 +1,13 @@
+{
+  "type": "chex:cloudstone_island",
+  "config": {
+    "radius": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 5,
+        "max_inclusive": 12
+      }
+    },
+    "height_variation": 3
+  }
+}

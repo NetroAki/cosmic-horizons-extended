@@ -1,0 +1,90 @@
+{
+  "type": "minecraft:multi_noise",
+  "biomes": [
+    {
+      "biome": "chex:kepler_temperate_forest",
+      "parameters": {
+        "temperature": 0.2,
+        "humidity": 0.8,
+        "continentalness": 0.3,
+        "erosion": 0.2,
+        "weirdness": 0.0,
+        "depth": 0.1,
+        "offset": 0.0
+      }
+    },
+    {
+      "biome": "chex:kepler_highlands",
+      "parameters": {
+        "temperature": 0.0,
+        "humidity": 0.5,
+        "continentalness": 0.8,
+        "erosion": 0.5,
+        "weirdness": 0.0,
+        "depth": 0.3,
+        "offset": 0.0
+      }
+    },
+    {
+      "biome": "chex:kepler_river_valleys",
+      "parameters": {
+        "temperature": 0.5,
+        "humidity": 1.0,
+        "continentalness": 0.1,
+        "erosion": 0.0,
+        "weirdness": 0.0,
+        "depth": 0.0,
+        "offset": 0.0
+      }
+    },
+    {
+      "biome": "chex:kepler_meadowlands",
+      "parameters": {
+        "temperature": 0.3,
+        "humidity": 0.7,
+        "continentalness": 0.2,
+        "erosion": 0.1,
+        "weirdness": 0.0,
+        "depth": 0.1,
+        "offset": 0.0
+      }
+    },
+    {
+      "biome": "chex:kepler_rocky_scrub",
+      "parameters": {
+        "temperature": 0.8,
+        "humidity": 0.1,
+        "continentalness": 0.4,
+        "erosion": 0.9,
+        "weirdness": 0.0,
+        "depth": 0.2,
+        "offset": 0.0
+      }
+    }
+  ],
+  "altitude_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "temperature_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "humidity_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "weirdness_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "erosion_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "depth_noise": {
+    "firstOctave": -7,
+    "amplitudes": [1.0, 1.0]
+  },
+  "offset": 0.0
+}

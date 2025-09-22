@@ -1,0 +1,59 @@
+{
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "has_precipitation": false,
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 16763904,
+    "fog_color": 16756736,
+    "water_color": 16756736,
+    "water_fog_color": 16740864,
+    "particle": {
+      "options": {
+        "type": "minecraft:dust",
+        "r": 1.0,
+        "g": 0.6,
+        "b": 0.1,
+        "scale": 1.0
+      },
+      "probability": 0.01
+    }
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [
+      "minecraft:monster_room"
+    ],
+    [],
+    [],
+    [
+      "chex:alpha_centauri/surface_platforms"
+    ],
+    [],
+    [],
+    [],
+    []
+  ]
+}

@@ -1,0 +1,35 @@
+﻿{
+    "pools":  [
+                  {
+                      "entries":  [
+                                      {
+                                          "conditions":  [
+                                                             {
+                                                                 "condition":  "minecraft:survives_explosion"
+                                                             },
+                                                             {
+                                                                 "condition":  "minecraft:match_tool",
+                                                                 "predicate":  {
+                                                                                   "enchantments":  [
+                                                                                                        {
+                                                                                                            "levels":  {
+                                                                                                                           "min":  1
+                                                                                                                       },
+                                                                                                            "enchantment":  "minecraft:silk_touch"
+                                                                                                        }
+                                                                                                    ]
+                                                                               }
+                                                             }
+                                                         ],
+                                          "name":  "chex:biolume_moss",
+                                          "type":  "minecraft:item"
+                                      }
+                                  ],
+                      "rolls":  1,
+                      "conditions":  [
+
+                                     ]
+                  }
+              ],
+    "type":  "minecraft:block"
+}

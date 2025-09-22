@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": "minecraft:patch_grass_plain",
+        "chance": 0.9
+      },
+      {
+        "feature": "minecraft:patch_tall_grass_2",
+        "chance": 0.7
+      },
+      {
+        "feature": "minecraft:patch_grass_taiga",
+        "chance": 0.6
+      },
+      {
+        "feature": "minecraft:patch_berry_bush",
+        "chance": 0.3
+      },
+      {
+        "feature": "minecraft:patch_large_fern",
+        "chance": 0.4
+      },
+      {
+        "feature": "minecraft:brown_mushroom_normal",
+        "chance": 0.2
+      },
+      {
+        "feature": "minecraft:red_mushroom_normal",
+        "chance": 0.2
+      }
+    ],
+    "default": "minecraft:patch_grass_plain"
+  }
+}

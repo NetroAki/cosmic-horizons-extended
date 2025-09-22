@@ -1,0 +1,20 @@
+﻿{
+    "key":  {
+                "#":  {
+                          "item":  "chex:polished_pandorite"
+                      },
+                "X":  {
+                          "item":  "chex:pandoran_crystal_cluster"
+                      }
+            },
+    "pattern":  [
+                    "###",
+                    "#X#",
+                    "###"
+                ],
+    "result":  {
+                   "count":  8,
+                   "item":  "chex:crystal_clad_pandorite"
+               },
+    "type":  "minecraft:crafting_shaped"
+}

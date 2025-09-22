@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chex:alpha_gland",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "function": "minecraft:looting_enchant",
+              "count": {
+                "min": 0.0,
+                "max": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:razor_quills",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3.0,
+                "max": 6.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "chex:cliff_hunter_trophy",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'\"{\\\"text\\\":\\\"Cliff Hunter Alpha Trophy\\\",\\\"italic\\\":false,\\\"color\\\":\\\"dark_red\\\"}\"',Lore:['\"{\\\"text\\\":\\\"Defeated the Cliff Hunter Alpha\\\",\\\"color\\\":\\\"gray\\\",\\\"italic\\\":true}'"]}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

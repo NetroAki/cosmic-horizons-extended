@@ -1,0 +1,27 @@
+{
+  "type": "chex:alpha_centauri_a",
+  "generator": {
+    "type": "chex:alpha_centauri",
+    "biome_source": {
+      "type": "chex:alpha_centauri_biome",
+      "biomes": [
+        {
+          "biome": "chex:photosphere_platforms",
+          "weight": 60
+        },
+        {
+          "biome": "chex:corona_streams",
+          "weight": 20
+        },
+        {
+          "biome": "chex:magnetosphere_belt",
+          "weight": 15
+        },
+        {
+          "biome": "chex:sunspot_fields",
+          "weight": 5
+        }
+      ]
+    }
+  }
+}

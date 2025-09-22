@@ -1,0 +1,160 @@
+{
+  "animations": {
+    "animation.verdant_colossus.idle": {
+      "loop": true,
+      "animation_length": 5.0,
+      "bones": {
+        "body": {
+          "rotation": [
+            {
+              "rotation": ["-5deg", "0deg", "0deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["5deg", "0deg", "0deg"],
+              "keyframe": 2.5
+            },
+            {
+              "rotation": ["-5deg", "0deg", "0deg"],
+              "keyframe": 5.0
+            }
+          ]
+        },
+        "arms": {
+          "rotation": [
+            {
+              "rotation": ["0deg", "0deg", "-5deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["0deg", "0deg", "5deg"],
+              "keyframe": 2.5
+            },
+            {
+              "rotation": ["0deg", "0deg", "-5deg"],
+              "keyframe": 5.0
+            }
+          ]
+        }
+      }
+    },
+    "animation.verdant_colossus.walk": {
+      "loop": true,
+      "animation_length": 1.0,
+      "bones": {
+        "body": {
+          "position": [
+            {
+              "position": [0, 0, 0],
+              "keyframe": 0.0
+            },
+            {
+              "position": [0, 0.2, 0],
+              "keyframe": 0.5
+            },
+            {
+              "position": [0, 0, 0],
+              "keyframe": 1.0
+            }
+          ]
+        },
+        "left_arm": {
+          "rotation": [
+            {
+              "rotation": ["0deg", "0deg", "-45deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["0deg", "0deg", "45deg"],
+              "keyframe": 0.5
+            },
+            {
+              "rotation": ["0deg", "0deg", "-45deg"],
+              "keyframe": 1.0
+            }
+          ]
+        },
+        "right_arm": {
+          "rotation": [
+            {
+              "rotation": ["0deg", "0deg", "45deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["0deg", "0deg", "-45deg"],
+              "keyframe": 0.5
+            },
+            {
+              "rotation": ["0deg", "0deg", "45deg"],
+              "keyframe": 1.0
+            }
+          ]
+        }
+      }
+    },
+    "animation.verdant_colossus.attack": {
+      "loop": false,
+      "animation_length": 1.0,
+      "bones": {
+        "right_arm": {
+          "rotation": [
+            {
+              "rotation": ["0deg", "0deg", "0deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["-90deg", "0deg", "0deg"],
+              "keyframe": 0.2
+            },
+            {
+              "rotation": ["0deg", "0deg", "0deg"],
+              "keyframe": 1.0
+            }
+          ]
+        }
+      }
+    },
+    "animation.verdant_colossus.roar": {
+      "loop": false,
+      "animation_length": 2.0,
+      "bones": {
+        "head": {
+          "rotation": [
+            {
+              "rotation": ["0deg", "0deg", "0deg"],
+              "keyframe": 0.0
+            },
+            {
+              "rotation": ["-30deg", "0deg", "0deg"],
+              "keyframe": 0.2
+            },
+            {
+              "rotation": ["-30deg", "0deg", "0deg"],
+              "keyframe": 1.5
+            },
+            {
+              "rotation": ["0deg", "0deg", "0deg"],
+              "keyframe": 2.0
+            }
+          ]
+        },
+        "body": {
+          "scale": [
+            {
+              "scale": [1.0, 1.0, 1.0],
+              "keyframe": 0.0
+            },
+            {
+              "scale": [1.1, 1.1, 1.1],
+              "keyframe": 0.5
+            },
+            {
+              "scale": [1.0, 1.0, 1.0],
+              "keyframe": 2.0
+            }
+          ]
+        }
+      }
+    }
+  }
+}

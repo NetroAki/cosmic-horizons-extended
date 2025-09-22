@@ -1,0 +1,77 @@
+{
+  "temperature": 0.0,
+  "downfall": 0.5,
+  "precipitation": "snow",
+  "temperature_modifier": "frozen",
+  "effects": {
+    "sky_color": 10526975,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:snowflake"
+      },
+      "probability": 0.1
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:stray",
+        "weight": 80,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {
+    "minecraft:stray": {
+      "energy_budget": 0.15,
+      "charge": 1.0
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave"
+    ],
+    "liquid": [
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+      "chex:arctic_ice_spikes"
+    ],
+    [],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:frost_bloom_patch"
+    ],
+    [],
+    [
+      "minecraft:spring_water"
+    ],
+    [],
+    [
+      "chex:ice_crystal_formation"
+    ]
+  ]
+}

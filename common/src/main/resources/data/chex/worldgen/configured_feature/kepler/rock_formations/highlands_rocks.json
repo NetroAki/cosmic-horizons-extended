@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:simple_random_selector",
+          "config": {
+            "features": [
+              "minecraft:ore_granite_upper",
+              "minecraft:ore_andesite_upper",
+              "minecraft:ore_diorite_upper"
+            ]
+          }
+        },
+        "chance": 0.7
+      },
+      {
+        "feature": "minecraft:ore_dirt",
+        "chance": 0.3
+      },
+      {
+        "feature": "minecraft:ore_gravel",
+        "chance": 0.2
+      }
+    ],
+    "default": "minecraft:ore_stone_upper"
+  }
+}

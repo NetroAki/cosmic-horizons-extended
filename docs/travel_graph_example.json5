@@ -1,0 +1,59 @@
+// Example travel graph configuration for Cosmic Horizons Extended
+// Place this file in config/chex/chex-travel-graph.json5
+
+{
+  // Define connections between planets
+  "connections": [
+    // Simple one-way connection from Earth to Moon
+    {
+      "from": "cosmichorizons:earth",
+      "to": "cosmichorizons:moon",
+      "requiredTier": 1,
+      "fuelCost": 100
+    },
+    
+    // Two-way connection between Earth and Mars
+    {
+      "from": "cosmichorizons:earth",
+      "to": "cosmichorizons:mars",
+      "bidirectional": true,
+      "requiredTier": 2,
+      "fuelCost": 500
+    },
+    
+    // High-tier connection with special requirements
+    {
+      "from": "cosmichorizons:jupiter",
+      "to": "chex:kepler_186f",
+      "bidirectional": true,
+      "requiredTier": 5,
+      "fuelCost": 2000,
+      "requiredItem": "chex:jump_drive",
+      "requiredResearch": "chex:ftl_travel"
+    }
+  ],
+  
+  // Define travel restrictions based on game progress
+  "restrictions": [
+    // Early game restriction - requires research
+    {
+      "type": "research",
+      "researchId": "chex:basic_spaceflight",
+      "message": "You need to research Basic Spaceflight before leaving Earth"
+    },
+    
+    // Mid-game restriction - requires item
+    {
+      "type": "item",
+      "item": "chex:radiation_shielding",
+      "message": "You need radiation shielding to travel to high-radiation planets"
+    },
+    
+    // Late game restriction - requires dimension discovery
+    {
+      "type": "discovery",
+      "dimension": "chex:kepler_186f",
+      "message": "You need to discover this planet's coordinates first"
+    }
+  ]
+}

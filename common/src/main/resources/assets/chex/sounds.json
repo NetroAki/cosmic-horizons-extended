@@ -1,0 +1,185 @@
+{
+  // Pandora Ambient Sounds
+  "ambient.pandora.forest_loop": {
+    "sounds": [
+      {
+        "name": "chex:ambient/pandora/forest_loop",
+        "stream": true,
+        "volume": 0.5,
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.chex.ambient.pandora.forest_loop"
+  },
+  "ambient.pandora.wind_howl": {
+    "sounds": [
+      {
+        "name": "chex:ambient/pandora/wind_howl",
+        "stream": true,
+        "volume": 0.6,
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.chex.ambient.pandora.wind_howl"
+  },
+  "ambient.pandora.crystal_hum": {
+    "sounds": [
+      {
+        "name": "chex:ambient/pandora/crystal_hum",
+        "stream": true,
+        "volume": 0.4,
+        "pitch": 1.0
+      }
+    ],
+    "subtitle": "subtitles.chex.ambient.pandora.crystal_hum"
+  },
+  "ambient.pandora.volcanic_rumble": {
+    "sounds": [
+      {
+        "name": "chex:ambient/pandora/volcanic_rumble",
+        "stream": true,
+        "volume": 0.5,
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.chex.ambient.pandora.volcanic_rumble"
+  },
+  
+  // Pandora Hazard Sounds
+  "hazard.pandora.levitation": {
+    "sounds": [
+      {
+        "name": "chex:hazards/pandora/levitation",
+        "volume": 0.7,
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.chex.hazard.pandora.levitation"
+  },
+  "hazard.pandora.spore_cloud": {
+    "sounds": [
+      {
+        "name": "chex:hazards/pandora/spore_cloud",
+        "volume": 0.6,
+        "pitch": 1.0
+      }
+    ],
+    "subtitle": "subtitles.chex.hazard.pandora.spore_cloud"
+  },
+  "hazard.pandora.heat_wave": {
+    "sounds": [
+      {
+        "name": "chex:hazards/pandora/heat_wave",
+        "volume": 0.8,
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.chex.hazard.pandora.heat_wave"
+  },
+  
+  // Pandora Weather Sounds
+  "weather.pandora.acid_rain": {
+    "sounds": [
+      {
+        "name": "chex:weather/pandora/acid_rain",
+        "stream": true,
+        "volume": 0.7,
+        "pitch": 1.0
+      }
+    ],
+    "subtitle": "subtitles.chex.weather.pandora.acid_rain"
+  },
+  "weather.pandora.electric_storm": {
+    "sounds": [
+      {
+        "name": "chex:weather/pandora/electric_storm",
+        "stream": true,
+        "volume": 0.9,
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.chex.weather.pandora.electric_storm"
+  },
+  
+  // Existing sounds
+  "entity.solar_engineer_drone.ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:mob/endermen/idle1",
+        "volume": 0.5,
+        "pitch": 1.8
+      },
+      {
+        "name": "minecraft:mob/endermen/idle2",
+        "volume": 0.5,
+        "pitch": 1.8
+      },
+      {
+        "name": "minecraft:mob/endermen/idle3",
+        "volume": 0.5,
+        "pitch": 1.8
+      },
+      {
+        "name": "minecraft:mob/endermen/idle4",
+        "volume": 0.5,
+        "pitch": 1.8
+      },
+      {
+        "name": "minecraft:mob/endermen/idle5",
+        "volume": 0.5,
+        "pitch": 1.8
+      }
+    ],
+    "subtitle": "subtitles.entity.chex.solar_engineer_drone.ambient"
+  },
+  "entity.solar_engineer_drone.hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:random/fizz",
+        "volume": 0.7,
+        "pitch": 2.0
+      }
+    ],
+    "subtitle": "subtitles.entity.chex.solar_engineer_drone.hurt"
+  },
+  "entity.solar_engineer_drone.death": {
+    "sounds": [
+      {
+        "name": "minecraft:random/fizz",
+        "volume": 1.0,
+        "pitch": 0.5
+      }
+    ],
+    "subtitle": "subtitles.entity.chex.solar_engineer_drone.death"
+  },
+  "entity.solar_engineer_drone.repair": {
+    "sounds": [
+      {
+        "name": "minecraft:random/click",
+        "volume": 0.5,
+        "pitch": 2.0
+      },
+      {
+        "name": "minecraft:random/click",
+        "volume": 0.5,
+        "pitch": 1.5
+      }
+    ],
+    "subtitle": "subtitles.entity.chex.solar_engineer_drone.repair"
+  },
+  "entity.solar_engineer_drone.shock": {
+    "sounds": [
+      {
+        "name": "minecraft:random/fizz",
+        "volume": 0.7,
+        "pitch": 0.8
+      },
+      {
+        "name": "minecraft:random/fizz",
+        "volume": 0.7,
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.entity.chex.solar_engineer_drone.shock"
+  }
+}

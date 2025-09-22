@@ -45,6 +45,64 @@ public class PlanetRegistry {
     registerPlanet(planet.id(), planet);
     DISCOVERED_PLANET_IDS.add(planet.id());
   }
+  
+  /**
+   * Reloads all discovered planets from the configuration files.
+   * This will clear all previously discovered planets and re-register them.
+   * 
+   * @throws IOException If an error occurs while reading the configuration files
+   */
+  public static void reloadDiscoveredPlanets() throws IOException {
+    CHEX.LOGGER.info("Reloading discovered planets...");
+    
+    // Clear existing discovered planets
+    clearDiscoveredPlanets();
+    
+    // Load discovered planets from the discovery file
+    Path discoveryFile = FMLPaths.CONFIGDIR.get().resolve("chex/_discovered_planets.json");
+    if (Files.exists(discoveryFile)) {
+      try (BufferedReader reader = Files.newBufferedReader(discoveryFile)) {
+        JsonObject json = GSON.fromJson(reader, JsonObject.class);
+        if (json != null && json.has("planets")) {
+          JsonArray planetsArray = json.getAsJsonArray("planets");
+          for (JsonElement element : planetsArray) {
+            if (element.isJsonPrimitive()) {
+              ResourceLocation planetId = new ResourceLocation(element.getAsString());
+              // Re-register the planet from the main registry if it exists
+              PlanetDef planet = PLANETS.get(planetId);
+              if (planet != null) {
+                registerDiscoveredPlanet(planet);
+              } else {
+                CHEX.LOGGER.warn("Discovered planet {} not found in registry", planetId);
+              }
+            }
+          }
+        }
+      } catch (Exception e) {
+        CHEX.LOGGER.error("Failed to load discovered planets", e);
+        throw new IOException("Failed to load discovered planets", e);
+      }
+    }
+    
+    // Apply any overrides from the chex-planets.json5 file
+    Map<ResourceLocation, PlanetOverridesCore.Entry> overrides = loadPlanetOverrides();
+    if (!overrides.isEmpty()) {
+      CHEX.LOGGER.info("Applying {} planet overrides", overrides.size());
+      overrides.forEach((id, override) -> {
+        PlanetDef planet = PLANETS.get(id);
+        if (planet != null) {
+          PlanetDef overridden = applyOverrides(planet, overrides);
+          PLANETS.put(id, overridden);
+          if (DISCOVERED_PLANET_IDS.contains(id)) {
+            DISCOVERED_PLANET_IDS.remove(id);
+            registerDiscoveredPlanet(overridden);
+          }
+        }
+      });
+    }
+    
+    CHEX.LOGGER.info("Reloaded {} discovered planets", DISCOVERED_PLANET_IDS.size());
+  }
 
   public static void initialize() {
     CHEX.LOGGER.info("Initializing planet registry...");
@@ -80,12 +138,12 @@ public class PlanetRegistry {
             "chex:suits/suit1",
             "minecraft:lava",
             1,
-            false,
-            true,
-            Set.of("vacuum"),
-            Set.of("iron", "silicon", "aluminum"),
-            "lunar",
-            false);
+            false, // hasAtmosphere
+            true,  // requiresOxygen
+            Set.of("vacuum"), // hazards
+            Set.of("iron", "silicon", "aluminum"), // availableMinerals
+            "lunar", // biomeType
+            false); // isOrbit
     registerDiscoveredPlanet(applyOverrides(earthMoon, overrides));
 
     PlanetDef mercury =
@@ -96,13 +154,13 @@ public class PlanetRegistry {
             NoduleTiers.T2,
             "chex:suits/suit1",
             "minecraft:lava",
-            2,
-            false,
-            true,
-            Set.of("vacuum", "radiation"),
-            Set.of("iron", "nickel", "sulfur"),
-            "barren",
-            false);
+            2, // gravityLevel
+            false, // hasAtmosphere
+            true,  // requiresOxygen
+            Set.of("vacuum", "radiation"), // hazards
+            Set.of("iron", "nickel", "sulfur"), // availableMinerals
+            "barren", // biomeType
+            false); // isOrbit
     registerDiscoveredPlanet(applyOverrides(mercury, overrides));
 
     PlanetDef mars =
@@ -113,13 +171,13 @@ public class PlanetRegistry {
             NoduleTiers.T2,
             "chex:suits/suit1",
             "minecraft:lava",
-            2,
-            true,
-            false,
-            Set.of("vacuum", "cryogenic"),
-            Set.of("iron", "silicon", "aluminum", "water"),
-            "desert",
-            false);
+            2, // gravityLevel
+            true, // hasAtmosphere
+            false, // requiresOxygen
+            Set.of("vacuum", "cryogenic"), // hazards
+            Set.of("iron", "silicon", "aluminum", "water"), // availableMinerals
+            "desert", // biomeType
+            false); // isOrbit
     registerDiscoveredPlanet(applyOverrides(mars, overrides));
   }
 
@@ -165,12 +223,30 @@ public class PlanetRegistry {
     boolean isOrbit = obj.has("isOrbit") ? obj.get("isOrbit").getAsBoolean() : false;
     String biomeType = obj.has("source") ? obj.get("source").getAsString() : "cosmos";
 
+    // Parse hazards
+    Set<String> hazards = Collections.emptySet();
+    if (obj.has("hazards") && obj.get("hazards").isJsonArray()) {
+      Set<String> hazardSet = new HashSet<>();
+      for (JsonElement hazardElement : obj.getAsJsonArray("hazards")) {
+        if (hazardElement.isJsonPrimitive()) {
+          String hazardId = hazardElement.getAsString().toLowerCase(Locale.ROOT);
+          if (!hazardId.isEmpty()) {
+            hazardSet.add(hazardId);
+          }
+        }
+      }
+      if (!hazardSet.isEmpty()) {
+        hazards = Set.copyOf(hazardSet);
+      }
+    }
+
+    // Parse available minerals
     Set<String> minerals = Collections.emptySet();
     if (obj.has("availableMinerals") && obj.get("availableMinerals").isJsonArray()) {
-      HashSet<String> mineralSet = new HashSet<>();
+      Set<String> mineralSet = new HashSet<>();
       for (JsonElement mineralElement : obj.getAsJsonArray("availableMinerals")) {
         if (mineralElement.isJsonPrimitive()) {
-          String mineralId = mineralElement.getAsString();
+          String mineralId = mineralElement.getAsString().toLowerCase(Locale.ROOT);
           if (!mineralId.isEmpty()) {
             mineralSet.add(mineralId);
           }
@@ -189,15 +265,33 @@ public class PlanetRegistry {
         suitTag,
         fuel,
         gravityLevel,
-        hasAtmosphere,
-        requiresOxygen,
-        Set.of(),
-        minerals,
-        biomeType,
-        isOrbit);
+        hasAtmosphere, // hasAtmosphere
+        requiresOxygen, // requiresOxygen
+        hazards, // hazards
+        minerals, // availableMinerals
+        biomeType, // biomeType
+        isOrbit); // isOrbit
   }
 
   private static void registerCHEXPlanets() {
+    // LEO (Low Earth Orbit)
+    registerCHEXPlanet(
+        ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "leo"),
+        new PlanetDef(
+            ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "leo"),
+            "Low Earth Orbit",
+            "A stable orbit just above Earth's atmosphere, perfect for space stations and orbital platforms",
+            NoduleTiers.T2, // requiredRocketTier
+            "chex:suits/suit1", // requiredSuitTag
+            "chex:kerosene", // fuelType
+            0, // gravityLevel (microgravity)
+            false, // hasAtmosphere
+            true, // requiresOxygen (space suits required)
+            Set.of("vacuum", "radiation"), // hazards
+            Set.of("aluminum", "titanium", "silicon"), // availableMinerals (from space debris and asteroids)
+            "space", // biomeType
+            true)); // isOrbit
+
     // Alpha Centauri A
     registerCHEXPlanet(
         ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "alpha_centauri_a"),
@@ -205,16 +299,16 @@ public class PlanetRegistry {
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "alpha_centauri_a"),
             "Alpha Centauri A",
             "The primary star of the Alpha Centauri system",
-            NoduleTiers.T8,
-            "chex:suits/suit4",
-            "chex:lh2",
-            5,
-            true,
-            false,
-            Set.of("radiation", "extreme_heat"),
-            Set.of("hydrogen", "helium", "lithium"),
-            "stellar",
-            false));
+            NoduleTiers.T8, // requiredRocketTier
+            "chex:suits/suit4", // requiredSuitTag
+            "chex:lh2", // fuelType
+            5, // gravityLevel
+            true, // hasAtmosphere
+            false, // requiresOxygen
+            Set.of("radiation", "extreme_heat"), // hazards
+            Set.of("hydrogen", "helium", "lithium"), // availableMinerals
+            "stellar", // biomeType
+            false)); // isOrbit
 
     // Kepler-452b
     registerCHEXPlanet(
@@ -223,16 +317,16 @@ public class PlanetRegistry {
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "kepler_452b"),
             "Kepler-452b",
             "Earth's older cousin",
-            NoduleTiers.T9,
-            "chex:suits/suit5",
-            "chex:lh2",
-            3,
-            true,
-            true,
-            Set.of("radiation"),
-            Set.of("iron", "silicon", "aluminum", "water", "carbon"),
-            "temperate",
-            false));
+            NoduleTiers.T9, // requiredRocketTier
+            "chex:suits/suit5", // requiredSuitTag
+            "chex:lh2", // fuelType
+            3, // gravityLevel
+            true, // hasAtmosphere
+            true, // requiresOxygen
+            Set.of("radiation"), // hazards
+            Set.of("iron", "silicon", "aluminum", "water", "carbon"), // availableMinerals
+            "temperate", // biomeType
+            false)); // isOrbit
 
     // PANDORA - consolidated planet (multiple sub-biomes)
     registerCHEXPlanet(
@@ -242,13 +336,13 @@ public class PlanetRegistry {
             "Pandora",
             "A lush world spanning forests, floating mountains, oceans, volcanic zones and sky"
                 + " islands",
-            NoduleTiers.T6,
-            "chex:suits/suit3",
-            "chex:rp1",
-            4,
-            true,
-            true,
-            Set.of("acid", "toxic_atmosphere"),
+            NoduleTiers.T6, // requiredRocketTier
+            "chex:suits/suit3", // requiredSuitTag
+            "chex:rp1", // fuelType
+            4, // gravityLevel
+            true, // hasAtmosphere
+            true, // requiresOxygen
+            Set.of("acid", "toxic_atmosphere"), // hazards
             Set.of(
                 "unobtanium",
                 "bioluminescent_crystal",
@@ -272,9 +366,9 @@ public class PlanetRegistry {
                 "levitation_essence",
                 "cloud_metal",
                 "atmospheric_crystals",
-                "wind_essence"),
-            "pandora",
-            false));
+                "wind_essence"), // availableMinerals
+            "pandora", // biomeType
+            false)); // isOrbit
 
     // ARRAKIS - consolidated planet (multiple sub-biomes)
     registerCHEXPlanet(
@@ -283,13 +377,13 @@ public class PlanetRegistry {
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "arrakis"),
             "Arrakis",
             "A harsh desert world spanning dunes, spice mines, polar caps, sietches and stormlands",
-            NoduleTiers.T6,
-            "chex:suits/suit3",
-            "chex:kerosene",
-            4,
-            true,
-            true,
-            Set.of("vacuum", "cryogenic", "sandstorms"),
+            NoduleTiers.T6, // requiredRocketTier
+            "chex:suits/suit3", // requiredSuitTag
+            "chex:kerosene", // fuelType
+            4, // gravityLevel
+            true, // hasAtmosphere
+            true, // requiresOxygen
+            Set.of("vacuum", "cryogenic", "sandstorms"), // hazards
             Set.of(
                 "spice_melange",
                 "desert_glass",
@@ -315,9 +409,9 @@ public class PlanetRegistry {
                 "lightning_crystal",
                 "storm_essence",
                 "electromagnetic_zones",
-                "dust_devil_essence"),
-            "arrakis",
-            false));
+                "dust_devil_essence"), // availableMinerals
+            "arrakis", // biomeType
+            false)); // isOrbit
 
     // EXOTICA SYSTEM (Unique Planetary Features)
     registerCHEXPlanet(
@@ -326,109 +420,113 @@ public class PlanetRegistry {
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "ringworld_prime"),
             "Ringworld Prime",
             "A planet with massive ring systems and unique low-gravity mining",
-            NoduleTiers.T6,
-            "chex:suits/suit3",
-            "chex:rp1",
-            4,
-            true,
-            true,
-            Set.of("low_gravity", "radiation"),
+            NoduleTiers.T6, // requiredRocketTier
+            "chex:suits/suit3", // requiredSuitTag
+            "chex:rp1", // fuelType
+            4, // gravityLevel
+            true, // hasAtmosphere
+            true, // requiresOxygen
+            Set.of("low_gravity", "radiation"), // hazards
             Set.of(
                 "ring_particles",
                 "ice_crystals",
                 "metallic_dust",
                 "solar_essence",
-                "low_gravity_ore"),
-            "ring_system",
-            false));
+                "low_gravity_ore"), // availableMinerals
+            "ring_system", // biomeType
+            false)); // isOrbit
 
+    // Aqua Mundus - Water World
     registerCHEXPlanet(
         ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "aqua_mundus"),
         new PlanetDef(
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "aqua_mundus"),
             "Aqua Mundus",
             "A water world with massive ice core and underwater ecosystems",
-            NoduleTiers.T7,
-            "chex:suits/suit4",
-            "chex:lox",
-            3,
-            true,
-            true,
-            Set.of("high_pressure", "cryogenic"),
+            NoduleTiers.T7, // requiredRocketTier
+            "chex:suits/suit4", // requiredSuitTag
+            "chex:lox", // fuelType
+            3, // gravityLevel
+            true, // hasAtmosphere
+            true, // requiresOxygen
+            Set.of("high_pressure", "cryogenic"), // hazards
             Set.of(
                 "ice_core",
                 "underwater_crystals",
                 "aquatic_metals",
                 "frozen_gases",
-                "deep_sea_essence"),
-            "water_world",
-            false));
+                "deep_sea_essence"), // availableMinerals
+            "water_world", // biomeType
+            false)); // isOrbit
 
+    // Inferno Prime - Lava World
     registerCHEXPlanet(
         ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "inferno_prime"),
         new PlanetDef(
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "inferno_prime"),
             "Inferno Prime",
             "A lava world with floating obsidian islands and extreme heat",
-            NoduleTiers.T8,
-            "chex:suits/suit4",
-            "chex:lh2",
-            2,
-            false,
-            false,
-            Set.of("extreme_heat", "acid", "radiation"),
+            NoduleTiers.T8, // requiredRocketTier
+            "chex:suits/suit4", // requiredSuitTag
+            "chex:lh2", // fuelType
+            2, // gravityLevel
+            false, // hasAtmosphere
+            false, // requiresOxygen
+            Set.of("extreme_heat", "acid", "radiation"), // hazards
             Set.of(
                 "molten_ore",
                 "obsidian_crystals",
                 "volcanic_glass",
                 "lava_essence",
-                "heat_resistant_metals"),
-            "lava_world",
-            false));
+                "heat_resistant_metals"), // availableMinerals
+            "lava_world", // biomeType
+            false)); // isOrbit
 
+    // Crystalis - Ice Giant
     registerCHEXPlanet(
         ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "crystalis"),
         new PlanetDef(
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "crystalis"),
             "Crystalis",
             "An ice giant with diamond core and diamond rain phenomena",
-            NoduleTiers.T9,
-            "chex:suits/suit5",
-            "chex:lh2",
-            1,
-            false,
-            false,
-            Set.of("cryogenic", "high_pressure"),
+            NoduleTiers.T9, // requiredRocketTier
+            "chex:suits/suit5", // requiredSuitTag
+            "chex:lh2", // fuelType
+            1, // gravityLevel
+            false, // hasAtmosphere
+            false, // requiresOxygen
+            Set.of("cryogenic", "high_pressure"), // hazards
             Set.of(
                 "diamond_core",
                 "ice_crystals",
                 "frozen_gases",
                 "diamond_rain",
-                "pressure_crystals"),
-            "ice_giant",
-            false));
+                "pressure_crystals"), // availableMinerals
+            "ice_giant", // biomeType
+            false)); // isOrbit
 
+    // Stormworld - Gas Giant
     registerCHEXPlanet(
         ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "stormworld"),
         new PlanetDef(
             ResourceLocation.fromNamespaceAndPath(CHEX.MOD_ID, "stormworld"),
             "Stormworld",
             "A gas giant with massive storm systems and atmospheric mining",
-            NoduleTiers.T10,
-            "chex:suits/suit5",
-            "chex:lh2",
-            0,
-            false,
-            false,
-            Set.of("extreme_weather", "lightning", "high_pressure"),
+            NoduleTiers.T10, // requiredRocketTier
+            "chex:suits/suit5", // requiredSuitTag
+            "chex:lh2", // fuelType
+            0, // gravityLevel
+            false, // hasAtmosphere
+            false, // requiresOxygen
+            Set.of("extreme_weather", "lightning", "high_pressure"), // hazards
             Set.of(
                 "atmospheric_gases",
                 "lightning_crystals",
                 "storm_essence",
                 "wind_energy",
-                "gas_giant_core"),
-            "gas_giant",
-            false));
+                "gas_giant_core"), // availableMinerals
+            "gas_giant", // biomeType
+            false)); // isOrbit
   }
 
   public static void registerPlanet(ResourceLocation id, PlanetDef planet) {
@@ -495,15 +593,18 @@ public class PlanetRegistry {
     return result;
   }
 
-  /** Apply overrides to a planet definition */
-  private static PlanetDef applyOverrides(
+  /** 
+   * Apply overrides to a planet definition.
+   * Package-private for testing purposes.
+   */
+  static PlanetDef applyOverrides(
       PlanetDef base, Map<ResourceLocation, PlanetOverridesCore.Entry> overrides) {
     PlanetOverridesCore.Entry override = overrides.get(base.id());
     if (override == null) {
       return base;
     }
 
-    // Create PlanetInfo for merging
+    // Create PlanetInfo for merging with all fields from the base planet
     PlanetOverrideMerger.PlanetInfo baseInfo =
         new PlanetOverrideMerger.PlanetInfo(
             base.name(),
@@ -511,10 +612,40 @@ public class PlanetRegistry {
             base.requiredSuitTag(),
             base.fuelType(),
             base.description(),
-            base.hazards());
+            base.hazards(),
+            base.availableMinerals(),
+            base.biomeType(),
+            base.gravityLevel(),
+            base.hasAtmosphere(),
+            base.requiresOxygen(),
+            base.isOrbit(),
+            0.0f, // temperature (default)
+            0,    // radiationLevel (default)
+            0.0f  // baseOxygen (default)
+        );
+
+    // Create override entry with all fields
+    PlanetOverrideMerger.PlanetInfo overrideInfo =
+        new PlanetOverrideMerger.PlanetInfo(
+            override.name != null && !override.name.isEmpty() ? override.name : base.name(),
+            override.requiredRocketTier > 0 ? override.requiredRocketTier : base.requiredRocketTier().getTier(),
+            !override.requiredSuitTag.isEmpty() ? override.requiredSuitTag : base.requiredSuitTag(),
+            !override.fuelType.isEmpty() ? override.fuelType : base.fuelType(),
+            override.description != null && !override.description.isEmpty() ? override.description : base.description(),
+            !override.hazards.isEmpty() ? override.hazards : base.hazards(),
+            !override.availableMinerals.isEmpty() ? override.availableMinerals : base.availableMinerals(),
+            !override.biomeType.isEmpty() ? override.biomeType : base.biomeType(),
+            override.gravity != null ? override.gravity : base.gravityLevel(),
+            override.hasAtmosphere != null ? override.hasAtmosphere : base.hasAtmosphere(),
+            override.requiresOxygen != null ? override.requiresOxygen : base.requiresOxygen(),
+            override.isOrbit != null ? override.isOrbit : base.isOrbit(),
+            override.temperature != null ? override.temperature : 0.0f,
+            override.radiationLevel != null ? override.radiationLevel : 0,
+            override.baseOxygen != null ? override.baseOxygen : 0.0f
+        );
 
     // Merge with overrides
-    PlanetOverrideMerger.PlanetInfo merged = PlanetOverrideMerger.merge(baseInfo, override);
+    PlanetOverrideMerger.PlanetInfo merged = PlanetOverrideMerger.merge(baseInfo, overrideInfo);
 
     // Convert back to PlanetDef
     NoduleTiers tier = NoduleTiers.getByTier(merged.requiredRocketTier());
@@ -522,20 +653,21 @@ public class PlanetRegistry {
       tier = base.requiredRocketTier();
     }
 
+    // Apply all overrides, falling back to base values if not specified
     return new PlanetDef(
         base.id(),
-        merged.name().isEmpty() ? base.name() : merged.name(),
-        merged.description().isEmpty() ? base.description() : merged.description(),
+        merged.name(),
+        merged.description(),
         tier,
         merged.requiredSuitTag(),
-        merged.fuel().isEmpty() ? base.fuelType() : merged.fuel(),
-        base.gravityLevel(),
-        base.hasAtmosphere(),
-        base.requiresOxygen(),
-        merged.hazards().isEmpty() ? base.hazards() : merged.hazards(),
-        base.availableMinerals(),
-        base.biomeType(),
-        base.isOrbit());
+        merged.fuel(),
+        merged.gravity(),
+        merged.hasAtmosphere(),
+        merged.requiresOxygen(),
+        merged.hazards(),
+        merged.availableMinerals(),
+        merged.biomeType(),
+        merged.isOrbit());
   }
 
   /** Register discovered planets with overrides applied */

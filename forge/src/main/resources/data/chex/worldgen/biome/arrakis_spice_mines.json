@@ -1,0 +1,85 @@
+{
+  "temperature": 1.8,
+  "downfall": 0.0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "effects": {
+    "sky_color": 11842740,
+    "fog_color": 11842740,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "options": {
+        "type": "chex:spice_particles"
+      },
+      "probability": 0.02
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:cave_spider",
+        "weight": 50,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {
+    "minecraft:spider": {
+      "energy_budget": 0.15,
+      "charge": 1.0
+    },
+    "minecraft:cave_spider": {
+      "energy_budget": 0.2,
+      "charge": 1.0
+    }
+  },
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "chex:spice_mine_shaft"
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [
+      "chex:spice_geode"
+    ],
+    [],
+    [],
+    [],
+    [
+      "chex:spice_vein_large",
+      "chex:spice_vein_small",
+      "chex:spore_cluster"
+    ],
+    [],
+    [
+      "chex:spice_vent"
+    ],
+    [],
+    [
+      "chex:spice_crystal_formation"
+    ]
+  ]
+}
