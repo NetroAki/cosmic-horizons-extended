@@ -1,13 +1,16 @@
 # T-083 Crystalis Boss
 
 **Goal**
-- Build Cryo Monarch boss with freeze beam + minions; drop Frozen Heart unlocking cryogenics/superconductors.
+- Build the multi-phase Cryo Monarch boss (Shard Storm, Frozen Domain, Glacial Collapse) with minion support and Frozen Heart/Shardblade/Monarch Core rewards for cryogenic progression.
 
 **Scope**
-- Boss entity, arena, loot integration.
+- Boss entity implementation (phase controller, teleporting, ice shard barrages, arena collapse logic).
+- Frozen cathedral arena structure/datapack and scripted icicle hazards.
+- Loot integration: Frozen Heart tier unlock, Shardblade weapon, Monarch Core for GT recipes.
 
 **Acceptance**
-- Fight playable; reward ties into GT progression; `./gradlew check` passes.
+- Boss fight executes all phases with telegraphs, minion summons, terrain destruction matching design doc.
+- Rewards distributed correctly and progression hooks documented/tested; `./gradlew check` passes.
 
 **Checklist**
 - [ ] `bash scripts/cloud_bootstrap.sh`

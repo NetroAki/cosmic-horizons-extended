@@ -1,13 +1,16 @@
 # T-101 Ringworld Structures
 
 **Goal**
-- Add ringworld structures (arc scenery anchors, maintenance shafts, command nodes).
+- Add Ringworld structures: natural zone set pieces (ice field glaciers, dust belt ruins, meadow float pads, shadowed fungal hives) and urban constructs (habitation arcologies, neon towers, sunline reflector strips, maintenance shafts, edge trench fortifications) supporting mini-boss arenas (Ice Warden, Dust Colossus, Meadow Leviathan, Shadow Revenant, Arcology Warlord, Neon Sentinel, Heliolith, Tunnel Overseer, Trench Horror).
 
 **Scope**
-- Structure templates, processors, placement integration.
+- Structure templates/processors for each biome grouping including boss arenas and loot tables.
+- Placement integration via structure sets/biome modifiers tuned per zone.
+- Hookups for collapsing debris/falling hazard scripts referenced in design doc.
 
 **Acceptance**
-- Structures generate within band zoning; `./gradlew :forge:runData` + `./gradlew check` pass.
+- Structures spawn in correct biome strips with rotation/spacing validated; boss arenas trigger encounters as expected.
+- `./gradlew :forge:runData` + `./gradlew check` pass; documentation of any TODO FX.
 
 **Checklist**
 - [ ] `bash scripts/cloud_bootstrap.sh`

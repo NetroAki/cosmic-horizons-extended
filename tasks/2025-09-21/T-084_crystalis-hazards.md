@@ -1,13 +1,15 @@
 # T-084 Crystalis Hazards
 
 **Goal**
-- Implement cryogenic hazards (freeze damage, slippery surfaces, snow blindness) and blue aurora sky.
+- Implement cryogenic hazards (ambient frostbite debuff, cryo geyser eruptions that encase players, low-traction ice, snow blindness) plus aurora skybox + blizzard FX.
 
 **Scope**
-- Hazard systems, particle/visual effects.
+- Hazard systems tied to suit tier checks (frostbite tick, pressure depth damage over time).
+- Particle/visual effects for auroras, blizzards, geyser eruptions, frozen overlays.
 
 **Acceptance**
-- Hazards activate correctly; visuals match design; `./gradlew check` passes.
+- Hazards activate in appropriate biomes/layers with tunable configs and respect suit mitigation.
+- Visual/ambient effects (auroras, blizzards, geyser steam) align with design doc references; `./gradlew check` passes.
 
 **Checklist**
 - [ ] `bash scripts/cloud_bootstrap.sh`
