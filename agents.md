@@ -1,52 +1,93 @@
-# CHEX Cloud Agent Contract
+# CHEX Task Management
 
-You acknowledge that every edit follows this checklist exactly. Deviating causes hand-off gaps and broken builds.
+## Task Naming Convention
 
-## Setup (run in order)
+### Task ID
+- Use sequential numbers (T-001, T-002, etc.)
+- Each task gets a unique number
+- No specific ranges are enforced
 
-1. `java -version` - must report Temurin/OpenJDK 17.x
-2. `git fetch --all --prune`
-3. Linux/macOS: `bash scripts/cloud_bootstrap.sh`
-4. Windows: `powershell -ExecutionPolicy Bypass -File scripts/setup_dev_env.ps1 -InstallHooks`
-5. `bash scripts/spawn_task_branches.sh tasks/<date>/T-XXX_slug.md` - spawn feature branch + claim (use Git Bash or WSL on Windows)
+### Task File Location
+- Location: `tasks/YYYY-MM-DD/T-XXX_short-description.md`
+- Example: `tasks/2025-09-22/T-101_arrakis-terrain.md`
 
-## Claiming Workflow
+## Task Creation
 
-- **ALWAYS** run `scripts/spawn_task_branches.sh tasks/<date>/T-XXX_slug.md` - this creates both the feature branch AND the claim file
-- **NEVER** use `git switch -c feature/<task-id>` directly - this bypasses the claim system
-- Pull latest tasks before claiming: `git pull --ff-only origin master` (from master) to get newest brief
-- Verify task is free: check if `claims/<slug>.claim` already exists before starting
-- If `claims/` directory is missing: recreate it with `mkdir -p claims` and ensure `claims/.gitkeep` is tracked
-- The spawn script handles: branch creation, claim file creation, task file staging, and initial commit
-- Push immediately after claiming so other agents see the lock: `git push --set-upstream origin feature/<slug>`
-- **NEVER** edit someone else's claim file without coordination
+### Required Fields
+1. **Title**: Clear, concise description
+2. **Goal**: What needs to be accomplished
+3. **Acceptance Criteria**: Specific, testable requirements
+4. **Dependencies**: List of blocking tasks
+5. **Estimated Time**: Rough time estimate
 
-## Build (Architectury Loom 1.5.x)
+### Task Template
+```markdown
+# T-XXX: [Task Title]
 
-- `./gradlew assemble` - fast smoke compile via Loom
-- `./gradlew check` - full compile + Spotless; must pass before hand-off
+**Goal**: [Brief description of what needs to be done]
 
-## Format
+## Acceptance Criteria
+- [ ] Criteria 1
+- [ ] Criteria 2
+- [ ] Criteria 3
 
-- After touching Java: `./gradlew :common:spotlessApply :forge:spotlessApply`
-- Data-only changes: `./gradlew spotlessApply`
+## Dependencies
+- [ ] T-YYY: [Dependency 1]
+- [ ] T-ZZZ: [Dependency 2]
 
-## Validate
+## Time Estimate
+- Estimated: [X] hours
+- Actual: [ ] hours
 
-- JSON sanity: `python scripts/validate_json.py` (restore if missing)
-- Extra suites as needed: `./gradlew :forge:test`
+## Notes
+- Any additional context or references
+```
 
-## Datagen
+## Workflow
 
-- Regenerate resources with `./gradlew :forge:runData`
-- Review generated files, re-run Spotless, stage minimal diff
+```mermaid
+graph TD
+    A[Start Task] --> B{Task Type?}
+    B -->|New Feature| C[Create Task File]
+    B -->|Bug Fix| D[Create Bug Report]
+    C --> E[Implement Feature]
+    D --> F[Fix Bug]
+    E --> G[Test Locally]
+    F --> G
+    G --> H[Create Pull Request]
+    H --> I[Code Review]
+    I -->|Approved| J[Merge to Main]
+    I -->|Changes Needed| E
+```
 
-## Logging & Notes
+## Task States
 
-- Capture reasoning in `notes/<topic>.md`
-- Record milestones in `progress/stepX_<slug>.md`
-- Append numbered summary to `PROGRESS_PROMPTS.md`
-- Update `CHEX_DETAILED_TASKS.md` checkboxes when tasks advance
+1. **Not Started** - Task is defined but work hasn't begun
+2. **In Progress** - Actively being worked on
+3. **In Review** - PR created, awaiting review
+4. **Completed** - Merged to main
+5. **Blocked** - Waiting on dependencies
+
+## Task Tracking
+
+- Update `TASK_TRACKING.md` when task status changes
+- Include PR links in task updates
+- Note any blockers or issues encountered
+
+## Claiming Tasks
+
+1. Check `TASK_TRACKING.md` for available tasks
+2. Run: `bash scripts/spawn_task_branches.sh tasks/YYYY-MM-DD/T-XXX_slug.md`
+3. Work on the task in the created branch
+4. Create PR when ready for review
+
+## Best Practices
+
+- Keep tasks small and focused
+- Break large tasks into subtasks
+- Update task status promptly
+- Reference related tasks in PRs
+- Document decisions in task notes
 
 ## PR / Handoff
 
