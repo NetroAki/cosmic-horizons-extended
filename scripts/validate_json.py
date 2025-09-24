@@ -42,6 +42,16 @@ def strip_comments(json_like: str) -> str:
             continue
 
         if in_multi_comment:
+            if char == '\n':
+                result.append(char)
+                i += 1
+                continue
+
+            if char == '\r' and next_char == '\n':
+                result.append(char)
+                i += 1
+                continue
+
             if char == '*' and next_char == '/':
                 in_multi_comment = False
                 i += 2
@@ -66,6 +76,8 @@ def strip_comments(json_like: str) -> str:
             continue
 
         if char == '/' and next_char == '*':
+            if result and not result[-1].isspace():
+                result.append(' ')
             in_multi_comment = True
             i += 2
             continue
@@ -87,7 +99,7 @@ def is_valid_json(file_path: Path):
     Check if a file contains valid JSON, handling common extensions like:
     - UTF-8 BOM
     - Single-line (//) and block (/* */) comments
-    - Trailing commas in objects and arrays
+    - Single-line and block comments outside of string literals
     """
     try:
         # Try reading with utf-8-sig to handle BOM
