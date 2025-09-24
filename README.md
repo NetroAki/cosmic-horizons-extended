@@ -14,7 +14,7 @@ python scripts/validate_json.py
 ```
 
 This script will:
-- Recursively scan all JSON files in the project
+- Recursively scan all JSON and JSON5 files in the project (JSON5 validation requires the optional `json5` Python package; when absent the files are skipped with a warning)
 - Validate JSON syntax and structure
 - Handle common JSON extensions like comments and trailing commas
 - Provide clear error messages with file locations

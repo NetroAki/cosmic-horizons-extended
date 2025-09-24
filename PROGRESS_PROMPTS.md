@@ -154,3 +154,7 @@
    - Outcome: Successfully implemented all three fauna types with unique AI behaviors, custom rendering, spawn rules, and loot tables. Added cinder chitin and volcanic essence drops for progression. Integrated spawns across all Inferno biomes with balanced rates.
    - Reference: progress/stepXX_inferno_fauna.md; tasks/2025-09-21/T-072_inferno-fauna.md
 
+22. Prompt: Audit the JSON validation tooling implementation (T-004).
+   - Outcome: Ensured the validation script recognises `.json5` files, parses them when the optional `json5` dependency is present, and gracefully skips them with warnings otherwise. Documented behaviour in the README and logged the audit.
+   - Reference: progress/step21_json_validation_tool.md; tasks/2025-09-21/T-004_json-validation-tool.md
+

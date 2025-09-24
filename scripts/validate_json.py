@@ -10,42 +10,79 @@ import os
 import sys
 from pathlib import Path
 
-def strip_comments(json_like):
-    """
-    Strip comments from JSON-like text.
-    Handles both single-line (//) and block (/* */) comments.
-    """
-    lines = json_like.split('\n')
-    in_block_comment = False
-    result = []
-    
-    for line in lines:
-        # Handle block comments
-        if '/*' in line and '*/' in line:
-            # Single-line block comment
-            line = line.split('/*')[0] + line.split('*/')[-1]
-        elif '/*' in line:
-            # Start of block comment
-            line = line.split('/*')[0]
-            in_block_comment = True
-        elif '*/' in line:
-            # End of block comment
-            line = line.split('*/')[-1]
-            in_block_comment = False
-        
-        # Skip lines in block comments
-        if in_block_comment:
-            continue
-            
-        # Handle single-line comments
-        if '//' in line:
-            line = line.split('//')[0]
-            
-        result.append(line.strip())
-    
-    return '\n'.join(result)
+try:
+    import json5  # type: ignore
 
-def is_valid_json(file_path):
+    JSON5_AVAILABLE = True
+except ModuleNotFoundError:  # pragma: no cover - optional dependency
+    json5 = None  # type: ignore
+    JSON5_AVAILABLE = False
+
+def strip_comments(json_like: str) -> str:
+    """Remove ``//`` and ``/* */`` style comments while preserving string contents."""
+
+    result: list[str] = []
+    in_string = False
+    string_delim = '"'
+    in_single_comment = False
+    in_multi_comment = False
+    escape_next = False
+    i = 0
+    length = len(json_like)
+
+    while i < length:
+        char = json_like[i]
+        next_char = json_like[i + 1] if i + 1 < length else ''
+
+        if in_single_comment:
+            if char == '\n':
+                in_single_comment = False
+                result.append(char)
+            i += 1
+            continue
+
+        if in_multi_comment:
+            if char == '*' and next_char == '/':
+                in_multi_comment = False
+                i += 2
+            else:
+                i += 1
+            continue
+
+        if in_string:
+            result.append(char)
+            if escape_next:
+                escape_next = False
+            elif char == '\\':
+                escape_next = True
+            elif char == string_delim:
+                in_string = False
+            i += 1
+            continue
+
+        if char == '/' and next_char == '/':
+            in_single_comment = True
+            i += 2
+            continue
+
+        if char == '/' and next_char == '*':
+            in_multi_comment = True
+            i += 2
+            continue
+
+        if char in {'"', "'"}:
+            in_string = True
+            string_delim = char
+            result.append(char)
+            i += 1
+            continue
+
+        result.append(char)
+        i += 1
+
+    return ''.join(result)
+
+def is_valid_json(file_path: Path):
     """
     Check if a file contains valid JSON, handling common extensions like:
     - UTF-8 BOM
@@ -56,10 +93,17 @@ def is_valid_json(file_path):
         # Try reading with utf-8-sig to handle BOM
         with open(file_path, 'r', encoding='utf-8-sig') as f:
             content = f.read()
-            
-        # Strip comments before validation
+
+        if file_path.suffix.lower() == '.json5':
+            if not JSON5_AVAILABLE:
+                # Caller should skip when json5 is unavailable, but guard regardless
+                return True, None
+            json5.loads(content)  # type: ignore[arg-type]
+            return True, None
+
+        # Strip comments before validation for vanilla JSON files
         content = strip_comments(content)
-        
+
         # Try to parse the JSON
         json.loads(content)
         return True, None
@@ -69,8 +113,13 @@ def is_valid_json(file_path):
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-                content = strip_comments(content)
-                json.loads(content)
+                if file_path.suffix.lower() == '.json5':
+                    if not JSON5_AVAILABLE:
+                        return True, None
+                    json5.loads(content)  # type: ignore[arg-type]
+                else:
+                    content = strip_comments(content)
+                    json.loads(content)
             return True, None
         except json.JSONDecodeError as e:
             return False, f"Invalid JSON: {str(e)}"
@@ -97,11 +146,11 @@ def find_json_files(directory):
     for root, dirs, files in os.walk(directory, topdown=True):
         # Skip unwanted directories
         dirs[:] = [d for d in dirs if not should_skip_directory(Path(root) / d)]
-        
+
         for file in files:
-            if file.endswith('.json'):
+            if file.endswith(('.json', '.json5')):
                 json_files.append(Path(root) / file)
-    return json_files
+    return sorted(json_files)
 
 def main():
     project_root = Path(__file__).parent.parent
@@ -115,7 +164,13 @@ def main():
     print(f"Validating {len(json_files)} JSON files in {project_root}")
     
     has_errors = False
+    skipped_json5 = []
+
     for json_file in json_files:
+        if json_file.suffix.lower() == '.json5' and not JSON5_AVAILABLE:
+            skipped_json5.append(json_file)
+            continue
+
         is_valid, error = is_valid_json(json_file)
         if not is_valid:
             has_errors = True
@@ -126,6 +181,11 @@ def main():
             else:
                 print(f"❌ {rel_path} - Invalid JSON: {error}")
     
+    if skipped_json5:
+        print("\n⚠️  Skipped JSON5 validation for the following files (install the 'json5' package to validate):")
+        for skipped in skipped_json5:
+            print(f"   - {skipped.relative_to(project_root)}")
+
     if has_errors:
         if sys.platform == 'win32':
             print("\n[ERROR] Validation failed: Some JSON files are invalid")
