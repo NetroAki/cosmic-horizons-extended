@@ -142,15 +142,36 @@ def is_valid_json(file_path: Path):
     except Exception as e:
         return False, f"Error reading file: {str(e)}"
 
-def should_skip_directory(path):
+SKIP_DIR_NAMES = {
+    'build',
+    '.gradle',
+    'node_modules',
+    '.idea',
+    'out',
+    'run',
+    'generated',
+    'bin',
+    'buildsrc',
+    '.git',
+}
+
+SKIP_DIR_PREFIXES = (
+    'spotless-prettier-node-modules-',
+)
+
+
+def should_skip_directory(path: Path) -> bool:
     """Check if a directory should be skipped during JSON file search."""
-    # Skip common directories that may contain non-project JSON files
-    skip_dirs = {
-        'build', '.gradle', 'node_modules', '.idea', 'out', 'run', 'generated',
-        'spotless-prettier-node-modules-', 'bin', 'buildSrc', '.git'
-    }
-    path_str = str(path).lower()
-    return any(skip_dir in path_str for skip_dir in skip_dirs)
+
+    lower_parts = [part.lower() for part in path.parts]
+
+    for part in lower_parts:
+        if part in SKIP_DIR_NAMES:
+            return True
+        if any(part.startswith(prefix) for prefix in SKIP_DIR_PREFIXES):
+            return True
+
+    return False
 
 def find_json_files(directory):
     """Recursively find all JSON files in the given directory, excluding build dirs."""
