@@ -154,7 +154,13 @@
   "biome.cosmic_horizons_extended.pandora_sky_islands": "Pandora Sky Islands",
   "biome.cosmic_horizons_extended.arrakis_great_dunes": "Arrakis Great Dunes",
   "biome.cosmic_horizons_extended.arrakis_spice_mines": "Arrakis Spice Mines",
-  "biome.cosmic_horizons_extended.arrakis_polar_ice_caps": "Arrakis Polar Ice Caps",
+  "biome.cosmic_horizons_extended.arrakis_rocky_plateaus": "Arrakis Rocky Plateaus",
+  
+  "subtitles.cosmic_horizons_extended.ambient.pandora.biolume_hum": "Biolumes hum",
+  "subtitles.cosmic_horizons_extended.ambient.pandora.wind": "Wind howls",
+  "subtitles.cosmic_horizons_extended.hazard.pandora.updraft": "Wind rushes upward",
+  "subtitles.cosmic_horizons_extended.hazard.pandora.heat_crackle": "Heat crackles",
+  "subtitles.cosmic_horizons_extended.hazard.pandora.spore_drift": "Spores drift",
   "biome.cosmic_horizons_extended.arrakis_sietch_strongholds": "Arrakis Sietch Strongholds",
   "biome.cosmic_horizons_extended.arrakis_stormlands": "Arrakis Stormlands"
 }

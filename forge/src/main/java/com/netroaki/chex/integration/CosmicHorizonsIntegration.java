@@ -107,7 +107,25 @@ public class CosmicHorizonsIntegration {
     NoduleTiers requiredTier = getRequiredTierFromDimensionId(dimensionId);
     String suitTag = getSuitTagFromDimensionId(dimensionId);
     Set<String> minerals = getMineralsFromDimensionId(dimensionId);
+    Set<String> hazards = getHazardsFromDimensionId(dimensionId);
     String biomeType = getBiomeTypeFromDimensionId(dimensionId);
+    
+    // Default values for all fields
+    int gravityLevel = 1; // Normal gravity by default
+    boolean hasAtmosphere = true; // Most planets have atmosphere
+    boolean requiresOxygen = true; // Most planets require oxygen
+    boolean isOrbit = false; // Default to surface dimension
+    
+    // Special handling for specific planet types
+    if (dimensionId.getPath().contains("moon") || dimensionId.getPath().contains("luna")) {
+      hasAtmosphere = false;
+      gravityLevel = 0; // Lower gravity for moons
+    } else if (dimensionId.getPath().contains("gas")) {
+      requiresOxygen = false; // Gas giants don't require oxygen
+    } else if (dimensionId.getPath().contains("orbit")) {
+      isOrbit = true;
+      hasAtmosphere = false;
+    }
 
     return new PlanetDef(
         dimensionId,
@@ -116,13 +134,14 @@ public class CosmicHorizonsIntegration {
         requiredTier,
         suitTag,
         "minecraft:lava", // Default fuel
-        1, // Default gravity
-        true, // Default atmosphere
-        true, // Default oxygen
+        gravityLevel,
+        hasAtmosphere,
+        requiresOxygen,
+        hazards,
         minerals,
         biomeType,
-        false // Default orbit status
-        );
+        isOrbit
+    );
   }
 
   /** Get planet name from dimension ID */
@@ -262,6 +281,44 @@ public class CosmicHorizonsIntegration {
     } else {
       return Set.of("iron", "silicon", "aluminum", "unknown_elements");
     }
+  }
+
+  /** Get hazards present on a planet based on dimension ID */
+  private static Set<String> getHazardsFromDimensionId(ResourceLocation dimensionId) {
+    Set<String> hazards = new java.util.HashSet<>();
+    String path = dimensionId.getPath();
+
+    // Add hazards based on planet type
+    if (path.contains("venus")) {
+      hazards.add("high_temperature");
+      hazards.add("acid_rain");
+      hazards.add("high_pressure");
+    } else if (path.contains("mars")) {
+      hazards.add("low_gravity");
+      hazards.add("dust_storms");
+    } else if (path.contains("jupiter") || path.contains("saturn")) {
+      hazards.add("extreme_gravity");
+      hazards.add("radiation");
+    } else if (path.contains("europa") || path.contains("enceladus")) {
+      hazards.add("cryogenic");
+      hazards.add("high_radiation");
+    } else if (path.contains("titan")) {
+      hazards.add("cryogenic");
+      hazards.add("methane_lakes");
+    } else if (path.contains("glacio")) {
+      hazards.add("cryogenic");
+      hazards.add("blizzards");
+    } else if (path.contains("gaia")) {
+      hazards.add("gravitational_anomalies");
+    }
+
+    // All non-Earth-like planets have these hazards by default
+    if (!path.contains("overworld")) {
+      hazards.add("vacuum");
+      hazards.add("no_breathable_air");
+    }
+
+    return hazards;
   }
 
   /** Get biome type from dimension ID */

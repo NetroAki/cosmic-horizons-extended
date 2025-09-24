@@ -9,11 +9,24 @@
     }
   },
   "effects": {
-    "sky_color": 5118101,
-    "fog_color": 1772851,
+    "sky_color": 2831155,
+    "fog_color": 1052688,
     "water_color": 3831536,
-    "water_fog_color": 526879,
-    "ambient_light": 0.1,
+    "water_fog_color": 263172,
+    "foliage_color": 5691638,
+    "grass_color": 5691638,
+    "grass_color_modifier": "swamp",
+    "particle": {
+      "options": {
+        "type": "minecraft:dust",
+        "r": 0.4,
+        "g": 0.3,
+        "b": 0.7,
+        "scale": 0.8
+      },
+      "probability": 0.003
+    },
+    "ambient_light": 0.2,
     "has_skylight": true,
     "has_ceiling": false,
     "ultrawarm": false,
@@ -23,7 +36,54 @@
     "respawn_anchor_works": false,
     "bed_works": true,
     "has_raids": true,
-    "logical_height": 256,
-    "infiniburn": "minecraft:infiniburn_overworld"
+    "logical_height": 384,
+    "infiniburn": "minecraft:infiniburn_overworld",
+    "fixed_time": 18000,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.crimson_forest.additions",
+      "tick_chance": 0.02
+    },
+    "music": {
+      "sound": "minecraft:music.nether.soul_sand_valley",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    },
+    "ambient_particle": {
+      "options": {
+        "type": "minecraft:glow",
+        "r": 0.4,
+        "g": 0.2,
+        "b": 0.7,
+        "scale": 0.5
+      },
+      "probability": 0.0015
+    },
+    "monster_spawn_light_level": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 0,
+        "max_inclusive": 7
+      }
+    },
+    "monster_spawn_block_light_limit": 7,
+    "is_levitation_pocket": true,
+    "density": {
+      "air_density": 1.2,
+      "water_vapor_density": 0.8,
+      "has_precipitation": true
+    },
+    "sky_properties": {
+      "fog_effect": "cosmic_horizons_extended:pandora_twilight",
+      "fog_effect_strength": 0.7,
+      "twilight_speed": 1.5,
+      "twilight_transition": 0.5
+    }
   }
 }

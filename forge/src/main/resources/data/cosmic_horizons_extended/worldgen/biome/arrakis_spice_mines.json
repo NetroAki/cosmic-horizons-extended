@@ -1,30 +1,135 @@
-﻿{
-  "carvers": {},
-  "downfall": 0,
+{
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:canyon",
+      "minecraft:cave_extra_underground"
+    ]
+  },
+  "downfall": 0.0,
   "effects": {
     "fog_color": 10577183,
     "mood_sound": {
       "block_search_extent": 8,
-      "offset": 2,
+      "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
+    "particle": {
+      "options": {
+        "type": "minecraft:dust",
+        "r": 0.7,
+        "g": 0.4,
+        "b": 0.1,
+        "scale": 1.2
+      },
+      "probability": 0.05
+    },
     "sky_color": 14131780,
     "water_color": 3100274,
-    "water_fog_color": 924203
+    "water_fog_color": 924203,
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
+    "grass_color_modifier": "none",
+    "ambient_sound": "minecraft:ambient.crimson_forest.loop",
+    "additions_sound": {
+      "sound": "minecraft:ambient.nether_wastes.additions",
+      "tick_chance": 0.03
+    }
   },
-  "features": [],
+  "features": [
+    [
+      "cosmic_horizons_extended:arrakis_spice_geyser_placed"
+    ],
+    [
+      "cosmic_horizons_extended:spice_cactus_placed"
+    ],
+    [
+      "cosmic_horizons_extended:arrakis_sandworm_tunnel_placed"
+    ],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "cosmic_horizons_extended:arrakis_spice_deposits"
+    ],
+    [
+      "cosmic_horizons_extended:arrakis_crystalline_salt_clusters_placed"
+    ],
+    [],
+    [],
+    [],
+    [
+      "cosmic_horizons_extended:arrakis_spice_blooms"
+    ],
+    [],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ]
+  ],
   "has_precipitation": false,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "minecraft:husk": {
+      "energy_budget": 0.3,
+      "charge": 1.0
+    },
+    "minecraft:spider": {
+      "energy_budget": 0.3,
+      "charge": 1.0
+    },
+    "minecraft:cave_spider": {
+      "energy_budget": 0.3,
+      "charge": 1.0
+    }
+  },
   "spawners": {
     "ambient": [],
     "axolotls": [],
     "creature": [],
-    "misc": [],
-    "monster": [],
+    "misc": [
+      {
+        "type": "minecraft:item",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "monster": [
+      {
+        "type": "minecraft:husk",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:spider",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cave_spider",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:silverfish",
+        "weight": 80,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1.4
+  "temperature": 1.4,
+  "temperature_modifier": "none"
 }

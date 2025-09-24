@@ -1,11 +1,60 @@
 {
-  "type": "minecraft:overworld",
+  "type": "cosmic_horizons_extended:arrakis",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "minecraft:overworld",
+    "settings": "cosmic_horizons_extended:arrakis",
     "biome_source": {
-      "type": "minecraft:fixed",
+      "type": "cosmic_horizons_extended:arrakis",
+      "seed": 0,
       "biome": "cosmic_horizons_extended:arrakis_great_dunes"
+    }
+  },
+  "effects": {
+    "sky_color": 12632319,
+    "fog_color": 13224374,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
+    "grass_color_modifier": "none",
+    "particle": {
+      "options": {
+        "type": "minecraft:dust",
+        "r": 0.8,
+        "g": 0.7,
+        "b": 0.4,
+        "scale": 1.2
+      },
+      "probability": 0.1
+    },
+    "ambient_light": 0.8,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "ultrawarm": true,
+    "natural": true,
+    "coordinate_scale": 1.0,
+    "piglin_safe": false,
+    "respawn_anchor_works": false,
+    "bed_works": false,
+    "has_raids": true,
+    "logical_height": 384,
+    "infiniburn": "minecraft:infiniburn_nether",
+    "fixed_time": 6000,
+    "mood_sound": {
+      "sound": "minecraft:ambient.desert.loop",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.nether_wastes.additions",
+      "tick_chance": 0.02
+    },
+    "music": {
+      "sound": "minecraft:music.nether.basalt_deltas",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
     }
   }
 }

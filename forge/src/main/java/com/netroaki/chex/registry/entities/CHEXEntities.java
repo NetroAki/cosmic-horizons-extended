@@ -10,7 +10,9 @@ import com.netroaki.chex.entities.boss.DeepSeaSirenEntity;
 import com.netroaki.chex.entities.boss.MoltenBehemothEntity;
 import com.netroaki.chex.entities.boss.SkySovereignEntity;
 import com.netroaki.chex.entities.boss.SporeTyrantEntity;
+import com.netroaki.chex.entities.boss.StormRocEntity;
 import com.netroaki.chex.entities.boss.WorldheartAvatarEntity;
+import com.netroaki.chex.entity.crystal.FloatingCrystalShard;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +23,17 @@ public class CHEXEntities {
 
   public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
       DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CHEX.MOD_ID);
+
+  // Crystalis Entities
+  public static final RegistryObject<EntityType<FloatingCrystalShard>> FLOATING_CRYSTAL =
+      ENTITY_TYPES.register(
+          "floating_crystal",
+          () ->
+              EntityType.Builder.<FloatingCrystalShard>of(FloatingCrystalShard::new, MobCategory.AMBIENT)
+                  .sized(0.5F, 0.5F)
+                  .clientTrackingRange(6)
+                  .updateInterval(2)
+                  .build("floating_crystal"));
 
   // Pandora Fauna
   public static final RegistryObject<EntityType<GlowbeastEntity>> GLOWBEAST =
@@ -92,9 +105,18 @@ public class CHEXEntities {
           "molten_behemoth",
           () ->
               EntityType.Builder.of(MoltenBehemothEntity::new, MobCategory.MONSTER)
-                  .sized(2.5F, 4.0F)
-                  .clientTrackingRange(12)
+                  .sized(2.5F, 3.5F)
+                  .clientTrackingRange(10)
                   .build("molten_behemoth"));
+
+  public static final RegistryObject<EntityType<StormRocEntity>> STORM_ROC =
+      ENTITY_TYPES.register(
+          "storm_roc",
+          () ->
+              EntityType.Builder.of(StormRocEntity::new, MobCategory.MONSTER)
+                  .sized(3.5F, 2.5F)
+                  .clientTrackingRange(12)
+                  .build("storm_roc"));
 
   public static final RegistryObject<EntityType<SkySovereignEntity>> SKY_SOVEREIGN =
       ENTITY_TYPES.register(

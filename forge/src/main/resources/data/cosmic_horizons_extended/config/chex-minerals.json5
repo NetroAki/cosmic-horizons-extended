@@ -55,12 +55,12 @@
     },
     "cosmic_horizons_extended:pandora": {
       rocketTier: 4,
-      description: "T2→T3: Pandora - Titanium, Vanadium, Lithium, Cobalt, Nickel, Manganese",
+      description: "T2→T3: Pandora - Titanium, Vanadium, Lithium, Cobalt, Nickel, Manganese, Bismuthinite, Phosphorite, Beryllium",
       mineralTiers: [
         {
           gtTier: "MV",
           distributions: [
-            // Bioluminescent Forest - Cobalt and Nickel for bioluminescent properties
+            // Bioluminescent Forest - Cobalt, Nickel and Phosphorite for bioluminescent properties
             {
               tag: "gtceu:ores/cobalt",
               vein: "medium",
@@ -82,6 +82,16 @@
               ],
             },
             {
+              tag: "gtceu:ores/phosphorite",
+              vein: "medium",
+              count: 5,
+              minY: -16,
+              maxY: 32,
+              biomes: [
+                "cosmic_horizons_extended:pandora_bioluminescent_forest",
+              ],
+            },
+            {
               tag: "gtceu:ores/lithium",
               vein: "patch",
               count: 6,
@@ -91,7 +101,7 @@
                 "cosmic_horizons_extended:pandora_bioluminescent_forest",
               ],
             },
-            // Floating Mountains - Titanium and Vanadium for lightweight alloys
+            // Floating Mountains - Titanium, Vanadium and Beryllium for lightweight alloys
             {
               tag: "gtceu:ores/titanium",
               vein: "large",
@@ -106,6 +116,14 @@
               count: 5,
               minY: -32,
               maxY: 40,
+              biomes: ["cosmic_horizons_extended:pandora_floating_mountains"],
+            },
+            {
+              tag: "gtceu:ores/beryllium",
+              vein: "medium",
+              count: 4,
+              minY: -24,
+              maxY: 32,
               biomes: ["cosmic_horizons_extended:pandora_floating_mountains"],
             },
             {
@@ -141,7 +159,7 @@
               maxY: -8,
               biomes: ["cosmic_horizons_extended:pandora_ocean_depths"],
             },
-            // Volcanic Wasteland - Heat-resistant metals and rare elements
+            // Volcanic Wasteland - Heat-resistant metals, rare elements and bismuthinite
             {
               tag: "gtceu:ores/tungsten",
               vein: "medium",
@@ -164,6 +182,14 @@
               count: 1,
               minY: -16,
               maxY: 8,
+              biomes: ["cosmic_horizons_extended:pandora_volcanic_wasteland"],
+            },
+            {
+              tag: "gtceu:ores/bismuthinite",
+              vein: "medium",
+              count: 4,
+              minY: -32,
+              maxY: 24,
               biomes: ["cosmic_horizons_extended:pandora_volcanic_wasteland"],
             },
             // Sky Islands - Lightweight and conductive materials
@@ -640,6 +666,8 @@
     "gtceu:ores/uranium": "cosmic_horizons_extended:fallback_uranium_ore",
     "gtceu:ores/osmium": "cosmic_horizons_extended:fallback_osmium_ore",
     "gtceu:ores/beryllium": "cosmic_horizons_extended:fallback_beryllium_ore",
+    "gtceu:ores/bismuthinite": "cosmic_horizons_extended:fallback_bismuthinite_ore",
+    "gtceu:ores/phosphorite": "cosmic_horizons_extended:fallback_phosphorite_ore",
     "gtceu:ores/fluorite": "cosmic_horizons_extended:fallback_fluorite_ore",
     "gtceu:ores/ruby": "cosmic_horizons_extended:fallback_ruby_ore",
     "gtceu:ores/sapphire": "cosmic_horizons_extended:fallback_sapphire_ore",

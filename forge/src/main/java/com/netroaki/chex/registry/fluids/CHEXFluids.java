@@ -48,6 +48,99 @@ public class CHEXFluids {
   public static final RegistryObject<FlowingFluid> KEROSENE =
       FLUIDS.register("kerosene", () -> new CHEXFlowingFluid.Source(KEROSENE_PROPS));
 
+  // DT Mix Fluid
+  public static final RegistryObject<FluidType> DT_MIX_FLUID_TYPE =
+      FLUID_TYPES.register(
+          "dt_mix",
+          () ->
+              new CHEXFluidType(
+                  FluidType.Properties.create()
+                      .density(1200)
+                      .viscosity(2500)
+                      .temperature(500)
+                      .lightLevel(5)
+                      .canSwim(false)
+                      .canDrown(false)
+                      .canExtinguish(false)
+                      .canConvertToSource(false)
+                      .supportsBoating(false)));
+
+  private static final ForgeFlowingFluid.Properties DT_MIX_PROPS =
+      new ForgeFlowingFluid.Properties(
+              DT_MIX_FLUID_TYPE,
+              () -> CHEXFluids.DT_MIX.get(),
+              () -> CHEXFluids.DT_MIX_FLOWING.get())
+          .bucket(() -> CHEXItems.DT_MIX_BUCKET.get())
+          .block(() -> CHEXBlocks.DT_MIX_FLUID_BLOCK.get());
+
+  public static final RegistryObject<FlowingFluid> DT_MIX =
+      FLUIDS.register("dt_mix", () -> new CHEXFlowingFluid.Source(DT_MIX_PROPS));
+
+  public static final RegistryObject<FlowingFluid> DT_MIX_FLOWING =
+      FLUIDS.register("dt_mix_flowing", () -> new CHEXFlowingFluid.Flowing(DT_MIX_PROPS));
+
+  // He3 Blend Fluid
+  public static final RegistryObject<FluidType> HE3_BLEND_FLUID_TYPE =
+      FLUID_TYPES.register(
+          "he3_blend",
+          () ->
+              new CHEXFluidType(
+                  FluidType.Properties.create()
+                      .density(800)
+                      .viscosity(3000)
+                      .temperature(700)
+                      .lightLevel(10)
+                      .canSwim(false)
+                      .canDrown(false)
+                      .canExtinguish(false)
+                      .canConvertToSource(false)
+                      .supportsBoating(false)));
+
+  private static final ForgeFlowingFluid.Properties HE3_BLEND_PROPS =
+      new ForgeFlowingFluid.Properties(
+              HE3_BLEND_FLUID_TYPE,
+              () -> CHEXFluids.HE3_BLEND.get(),
+              () -> CHEXFluids.HE3_BLEND_FLOWING.get())
+          .bucket(() -> CHEXItems.HE3_BLEND_BUCKET.get())
+          .block(() -> CHEXBlocks.HE3_BLEND_FLUID_BLOCK.get());
+
+  public static final RegistryObject<FlowingFluid> HE3_BLEND =
+      FLUIDS.register("he3_blend", () -> new CHEXFlowingFluid.Source(HE3_BLEND_PROPS));
+
+  public static final RegistryObject<FlowingFluid> HE3_BLEND_FLOWING =
+      FLUIDS.register("he3_blend_flowing", () -> new CHEXFlowingFluid.Flowing(HE3_BLEND_PROPS));
+
+  // Exotic Mix Fluid
+  public static final RegistryObject<FluidType> EXOTIC_MIX_FLUID_TYPE =
+      FLUID_TYPES.register(
+          "exotic_mix",
+          () ->
+              new CHEXFluidType(
+                  FluidType.Properties.create()
+                      .density(1500)
+                      .viscosity(4000)
+                      .temperature(1000)
+                      .lightLevel(15)
+                      .canSwim(false)
+                      .canDrown(false)
+                      .canExtinguish(false)
+                      .canConvertToSource(false)
+                      .supportsBoating(false)));
+
+  private static final ForgeFlowingFluid.Properties EXOTIC_MIX_PROPS =
+      new ForgeFlowingFluid.Properties(
+              EXOTIC_MIX_FLUID_TYPE,
+              () -> CHEXFluids.EXOTIC_MIX.get(),
+              () -> CHEXFluids.EXOTIC_MIX_FLOWING.get())
+          .bucket(() -> CHEXItems.EXOTIC_MIX_BUCKET.get())
+          .block(() -> CHEXBlocks.EXOTIC_MIX_FLUID_BLOCK.get());
+
+  public static final RegistryObject<FlowingFluid> EXOTIC_MIX =
+      FLUIDS.register("exotic_mix", () -> new CHEXFlowingFluid.Source(EXOTIC_MIX_PROPS));
+
+  public static final RegistryObject<FlowingFluid> EXOTIC_MIX_FLOWING =
+      FLUIDS.register("exotic_mix_flowing", () -> new CHEXFlowingFluid.Flowing(EXOTIC_MIX_PROPS));
+
   public static final RegistryObject<FlowingFluid> KEROSENE_FLOWING =
       FLUIDS.register("kerosene_flowing", () -> new CHEXFlowingFluid.Flowing(KEROSENE_PROPS));
 

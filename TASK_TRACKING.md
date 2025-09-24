@@ -3,68 +3,68 @@
 Consolidated view of active task briefs under `tasks/2025-09-21`. Update checkboxes as work progresses.
 
 ## Core Infrastructure & Progression Systems
-- [ ] **T-001** – Planet definition alignment & discovery log audit
-- [ ] **T-002** – Fuel bucket registry wiring
-- [ ] **T-003** – Terrablender constant definitions
-- [ ] **T-004** – JSON validation tooling
-- [ ] **T-005** – Planet registry overrides + config merge
-- [ ] **T-006** – `/chex dumpPlanets` command implementation
-- [ ] **T-007** – Travel graph validation utilities
-- [ ] **T-008** – Player tier capability + sync
-- [ ] **T-009** – Fuel registry fallbacks & fluids
+- [x] **T-001** – Planet definition alignment & discovery log audit
+- [x] **T-002** – Fuel bucket registry wiring
+- [x] **T-003** – Terrablender constant definitions
+- [x] **T-004** – JSON validation tooling
+- [x] **T-005** – Planet registry overrides + config merge
+- [x] **T-006** – `/chex dumpPlanets` command implementation
+- [x] **T-007** – Travel graph validation utilities
+- [x] **T-008** – Player tier capability + sync
+- [x] **T-009** – Fuel registry fallbacks & fluids
 
 ## Pandora (Tier 3)
-- [ ] **T-020** – Dimension JSON & twilight atmosphere
-- [ ] **T-021** – Biome definitions
-- [ ] **T-022** – Pandorite block family
-- [ ] **T-023** – Flora generation (fungal towers, kelp, cloud islands)
-- [ ] **T-024** – Fauna (glowbeast, sporeflies, sky grazer, cliff hunter)
-- [ ] **T-025** – Boss suite culminating in Worldheart Avatar
-- [ ] **T-026** – Hazards, ambience, audio polish
-- [ ] **T-027** – GTCEu ore integration
+- [x] **T-020** – Dimension JSON & twilight atmosphere
+- [x] **T-021** – Biome definitions
+- [x] **T-022** – Pandorite block family
+- [x] **T-023** – Flora generation (fungal towers, kelp, cloud islands)
+- [x] **T-024** – Fauna (glowbeast, sporeflies, sky grazer, cliff hunter)
+- [x] **T-025** – Boss suite culminating in Worldheart Avatar
+- [x] **T-026** – Hazards, ambience, audio polish
+- [x] **T-027** – GTCEu ore integration
 
 ## Arrakis (Tier 4)
-- [ ] **T-030** – Dimension template & sandstorm environment
-- [ ] **T-031** – Biomes & climate bands
-- [ ] **T-032** – Block set (arrakite, spice nodes, etc.)
-- [ ] **T-033** – Feature generation (dunes, tunnels, geysers)
-- [ ] **T-034** – Flora set (cactus, ice reeds, shrubs)
-- [ ] **T-035** – Fauna (sandworm juvenile, storm hawks, gatherers)
-- [ ] **T-036** – Sand Emperor boss encounter
-- [ ] **T-037** – Environmental hazards & audio
+- [x] **T-030** – Dimension template & sandstorm environment
+- [x] **T-031** – Biomes & climate bands
+- [x] **T-032** – Block set (arrakite, spice nodes, etc.)
+- [x] **T-033** – Feature generation (dunes, tunnels, geysers)
+- [x] **T-034** – Flora set (cactus, ice reeds, shrubs)
+- [x] **T-035** – Fauna (sandworm juvenile, storm hawks, gatherers)
+- [x] **T-036** – Sand Emperor boss encounter
+- [x] **T-037** – Environmental hazards & audio
 
 ## Alpha Centauri A
-- [ ] **T-040** – Dimension layout (photosphere, corona)
-- [ ] **T-041** – Hazard systems (radiation, flares)
-- [ ] **T-042** – Structures (solar collectors, flux pylons)
-- [ ] **T-043** – Entities (plasma wraiths, engineer drones)
-- [ ] **T-044** – Stellar Avatar boss fight
+- [x] **T-040** – Dimension layout (photosphere, corona)
+- [x] **T-041** – Hazard systems (radiation, flares)
+- [x] **T-042** – Structures (solar collectors, flux pylons)
+- [x] **T-043** – Entities (plasma wraiths, engineer drones)
+- [x] **T-044** – Stellar Avatar boss fight
 
 ## Kepler-452b
-- [ ] **T-050** – Biome set (forest, highlands, rivers, meadow, scrub)
-- [ ] **T-051** – Tree generation + canopy assets
-- [ ] **T-052** – Fauna (grazers, flutterwings, stalkers)
-- [ ] **T-053** – Verdant Colossus boss arena
+- [x] **T-050** – Biome set (forest, highlands, rivers, meadow, scrub)
+- [x] **T-051** – Tree generation + canopy assets
+- [x] **T-052** – Fauna (grazers, flutterwings, stalkers)
+- [x] **T-053** – Verdant Colossus boss arena
 
 ## Aqua Mundus (Tier 5)
-- [ ] **T-060** – Water world dimension setup
-- [ ] **T-061** – Mechanics (pressure, oxygen, thermal)
-- [ ] **T-062** – Blocks/features (vent basalt, luminous kelp)
-- [ ] **T-063** – Fauna (luminfish, drones, leviathan, jelly)
-- [ ] **T-064** – Ocean Sovereign boss
-- [ ] **T-065** – Audio/visual polish (biolum glow, ambience)
+- [x] **T-060** – Water world dimension setup
+- [x] **T-061** – Mechanics (pressure, oxygen, thermal)
+- [x] **T-062** – Blocks/features (vent basalt, luminous kelp)
+- [x] **T-063** – Fauna (luminfish, drones, leviathan, jelly)
+- [x] **T-064** – Ocean Sovereign boss
+- [x] **T-065** – Audio/visual polish (biolum glow, ambience)
 
 ## Inferno Prime (Tier 6)
-- [ ] **T-070** – Biomes (lava seas, ash wastes, etc.)
-- [ ] **T-071** – Features (magma geysers, basalt pillars)
-- [ ] **T-072** – Fauna (ash crawlers, fire wraiths, magma hopper)
-- [ ] **T-073** – Infernal Sovereign boss
-- [ ] **T-074** – Environmental hazards & sky effects
+- [x] **T-070** – Biomes (lava seas, ash wastes, etc.)
+- [x] **T-071** – Features (magma geysers, basalt pillars, obsidian flora, ash dunes, particles)
+- [x] **T-072** – Fauna (ash crawlers, fire wraiths, magma hopper)
+- [x] **T-073** – Infernal Sovereign boss
+- [x] **T-074** – Environmental hazards & sky effects
 
 ## Crystalis (Tier 8)
-- [ ] **T-080** – Biomes (Diamond Fields, Frosted Plains, etc.)
-- [ ] **T-081** – Block set (cryostone variants, glacial glass, vents)
-- [ ] **T-082** – Flora & fauna roster per biome
+- [x] **T-080** – Biomes (Diamond Fields, Frosted Plains, etc.)
+- [x] **T-081** – Block set (cryostone variants, glacial glass, vents)
+- [x] **T-082** – Flora & fauna roster per biome
 - [ ] **T-083** – Cryo Monarch boss encounter
 - [ ] **T-084** – Hazards (frostbite, geysers, auroras)
 

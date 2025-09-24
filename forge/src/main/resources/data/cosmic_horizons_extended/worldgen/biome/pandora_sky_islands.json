@@ -1,4 +1,4 @@
-﻿{
+{
   "carvers": {},
   "downfall": 0.2,
   "effects": {
@@ -41,6 +41,12 @@
     ],
     "misc": [],
     "monster": [
+      {
+        "type": "cosmic_horizons_extended:storm_roc",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      },
       {
         "type": "cosmic_horizons_extended:sky_sovereign",
         "weight": 1,

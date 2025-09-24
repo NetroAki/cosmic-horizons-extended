@@ -12,19 +12,42 @@ import com.netroaki.chex.integration.CosmicHorizonsIntegration;
 import com.netroaki.chex.integration.KubeJSIntegration;
 import com.netroaki.chex.network.CHEXNetwork;
 import com.netroaki.chex.registry.CHEXChunkGenerators;
-import com.netroaki.chex.registry.CHEXEffects;
+import com.netroaki.chex.registry.CHEXBlocks;
+import com.netroaki.chex.registry.CHEXDimensions;
+import com.netroaki.chex.registry.CHEXItems;
+import com.netroaki.chex.menu.CHEXMenuTypes;
+import com.netroaki.chex.network.LibraryBookUpdatePacket;
 import com.netroaki.chex.registry.CHEXRegistries;
+import com.netroaki.chex.registry.CHEXStructures;
+import com.netroaki.chex.registry.LibraryStructureRegistry;
+import com.netroaki.chex.world.eden.EdenBiomeRegistry;
+import com.netroaki.chex.world.eden.EdenDimension;
+import com.netroaki.chex.world.eden.EdenEntities;
+import com.netroaki.chex.world.eden.EdenGardenAbilities;
+import com.netroaki.chex.world.eden.EdenGardenAccess;
+import com.netroaki.chex.world.eden.EdenGardenProgression;
+import com.netroaki.chex.world.library.LibraryDimension;
+import com.netroaki.chex.world.library.LibraryDimensionProvider;
 import com.netroaki.chex.registry.FuelRegistry;
 import com.netroaki.chex.registry.NoduleDesigns;
+import com.netroaki.chex.config.PandoraMobSpawnsConfig;
+import com.netroaki.chex.config.PandoraHazardsConfig;
 import com.netroaki.chex.registry.NoduleTiers;
 import com.netroaki.chex.registry.PlanetRegistry;
 import com.netroaki.chex.registry.biomes.CHEXBiomes;
+import com.netroaki.chex.registry.block_entity.CHEXBlockEntities;
 import com.netroaki.chex.registry.blocks.CHEXBlocks;
 import com.netroaki.chex.suits.SuitItems;
 import com.netroaki.chex.suits.SuitTiers;
 import com.netroaki.chex.travel.TravelGraph;
+import com.netroaki.chex.quest.QuestManager;
+import com.netroaki.chex.quest.arrakis.ArrakisQuests;
+import com.netroaki.chex.quest.QuestEventHandler;
 import com.netroaki.chex.worldgen.CHEXBiomeModifiers;
 import com.netroaki.chex.worldgen.MineralGenerationRegistry;
+import com.netroaki.chex.world.hazards.PandoraHazardManager;
+import com.netroaki.chex.world.ambience.PandoraAmbienceManager;
+import com.netroaki.chex.sound.ArrakisSounds;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -48,22 +71,46 @@ public class CHEX {
   public CHEX() {
     IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    // Register our mod's event bus
-    modEventBus.addListener(this::commonSetup);
-
     // Register registries
     CHEXRegistries.register(modEventBus);
+    CHEXBlockEntities.register(modEventBus);
+    EntityInit.register(modEventBus);
+    EdenDimension.register();
+    EdenEntities.ENTITIES.register(modEventBus);
+    LibraryStructureRegistry.STRUCTURE_TYPES.register(modEventBus);
+    
+    // Register Eden's Garden progression system
+    modEventBus.register(EdenGardenAccess.class);
+    modEventBus.register(EdenGardenAbilities.class);
+    modEventBus.register(EdenGardenProgression.class);
+    
+    // Register Infinite Library dimension
+    modEventBus.addListener(LibraryDimension::register);
     CHEXEffects.EFFECTS.register(modEventBus);
     com.netroaki.chex.config.CHEXConfig.register();
-    // Register biomes
-    CHEXBiomes.BIOMES.register(modEventBus);
-    // Ensure block items are registered so recipes for those blocks resolve
+    PandoraMobSpawnsConfig.register();
+    PandoraHazardsConfig.register();
+    
+    // Register hazard and ambience systems
+    modEventBus.register(PandoraHazardManager.class);
+    modEventBus.register(PandoraAmbienceManager.class);
+    
+    // Register Arrakis sounds
+    ArrakisSounds.register(modEventBus);
+    
+    CHEXBlocks.register(modEventBus);
     CHEXBlocks.registerBlockItems();
     CHEXChunkGenerators.CHUNK_GENERATORS.register(modEventBus);
     CHEXBiomeModifiers.register(modEventBus);
     // CHEXDensityFunctions.DENSITY_FUNCTIONS.register(modEventBus); // Temporarily
     // disabled
     SuitItems.ITEMS.register(modEventBus);
+    CHEXSoundEvents.SOUND_EVENTS.register(modEventBus);
+    com.netroaki.chex.init.SoundInit.SOUND_EVENTS.register(modEventBus);
+
+    // Register the setup method for mod loading
+    modEventBus.addListener(this::commonSetup);
+    modEventBus.addListener(this::registerBiomes);
 
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);
@@ -146,16 +193,49 @@ public class CHEX {
     // Load mineral distributions from configuration
     event.enqueueWork(MineralGenerationRegistry::reload);
 
+    // Register spawn placements for Arrakis entities
+    event.enqueueWork(() -> {
+        LOGGER.info("Registering Arrakis entity spawn placements...");
+        com.netroaki.chex.world.spawning.ArrakisSpawnPlacements.registerSpawnPlacements();
+    });
+
     // Initialize networking
     LOGGER.info("Initializing networking...");
     CHEXNetwork.register();
+    
+    // Initialize Sand Core fuel handler
+    LOGGER.info("Initializing Sand Core fuel handler...");
+    com.netroaki.chex.item.arrakis.SandCoreFuelHandler.register();
+    LOGGER.info("Sand Core fuel handler initialized");
 
-    // Register recipe condition serializer
-    CraftingHelper.register(new RecipeConditionTier.Serializer());
+    // Register packet handlers
+    event.enqueueWork(() -> {
+      int packetId = 0;
+      CHEXNetwork.INSTANCE.registerMessage(
+          packetId++,
+          LibraryBookUpdatePacket.class,
+          LibraryBookUpdatePacket::encode,
+          LibraryBookUpdatePacket::new,
+          LibraryBookUpdatePacket::handle
+      );
+    });
 
     // Initialize KubeJS integration
     LOGGER.info("Initializing KubeJS integration...");
-    KubeJSIntegration.register();
+    KubeJSIntegration.initialize();
+
+    // Initialize GTCEu integration if available
+    if (gt().isAvailable()) {
+      gt().initialize();
+    }
+
+    // Initialize quest system
+    event.enqueueWork(() -> {
+      // Register Arrakis quests
+      ArrakisQuests.registerQuests(event);
+
+      LOGGER.info("Quest system initialized");
+    });
 
     // Initialize TerraBlender regions
     LOGGER.info("Initializing TerraBlender regions...");
@@ -180,6 +260,18 @@ public class CHEX {
         LOGGER.info("CHEX LagProfiler auto-started (20ms period)");
       }
     }
+
+    // Initialize the travel graph
+    TravelGraph.INSTANCE.initialize(event.getServer());
+
+    // Initialize planet discovery system
+    PlanetDiscovery.initialize(event.getServer());
+
+    // Initialize mineral generation
+    MineralGenerationRegistry.initialize(event.getServer());
+
+    // Initialize quest system data
+    QuestManager.init(event.getServer().overworld().getDataStorage());
 
     // Dimension registry sanity check vs PlanetRegistry
     var server = event.getServer();

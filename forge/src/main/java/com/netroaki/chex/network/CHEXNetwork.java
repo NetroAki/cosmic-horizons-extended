@@ -47,6 +47,14 @@ public class CHEXNetwork {
         LaunchDenyMessage::encode,
         LaunchDenyMessage::decode,
         LaunchDenyMessage::handle);
+        
+    // Register lore knowledge sync message
+    INSTANCE.registerMessage(
+        packetId++,
+        LoreKnowledgeSyncPacket.class,
+        LoreKnowledgeSyncPacket::encode,
+        LoreKnowledgeSyncPacket::new,
+        LoreKnowledgeSyncPacket::handle);
 
     CHEX.LOGGER.info("CHEX network messages registered successfully");
   }

@@ -2,6 +2,26 @@ Cosmic Horizons Extended (CHEX)
 
 Forge 1.20.1 addon that auto-discovers Cosmic Horizons (CH) planets, adds new unique planets, and injects GTCEu mineral tiers via data-driven configs.
 
+## Development Tools
+
+### JSON Validation
+
+The project includes a JSON validation script to ensure all JSON files are properly formatted:
+
+```bash
+# Run from the project root
+python scripts/validate_json.py
+```
+
+This script will:
+- Recursively scan all JSON files in the project
+- Validate JSON syntax and structure
+- Handle common JSON extensions like comments and trailing commas
+- Provide clear error messages with file locations
+- Exit with code 0 if all files are valid, 1 if any file is invalid
+
+It automatically skips build directories (like `build/`, `.gradle/`, `node_modules/`).
+
 Setup
 
 - Requires: Forge 1.20.1, optional mods: CH, GTCEu, KubeJS, FTB Quests

@@ -1,14 +1,4 @@
 {
-  "type": "minecraft:random_patch",
-  "config": {
-    "tries": 20,
-    "xz_spread": 6,
-    "y_spread": 1,
-    "feature": {
-      "feature": "minecraft:kelp",
-      "config": {
-        "height": 20
-      }
-    }
-  }
+  "type": "cosmic_horizons_extended:pandora_kelp_forest",
+  "config": {}
 }

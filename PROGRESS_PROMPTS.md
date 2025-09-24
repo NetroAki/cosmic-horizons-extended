@@ -83,7 +83,12 @@
 - Outcome: Successfully implemented complete Pandora boss encounter system with 6 unique boss entities (Spore Tyrant, Cliff Hunter Alpha, Deep-Sea Siren, Molten Behemoth, Sky Sovereign, Worldheart Avatar) featuring advanced AI behaviors, phase transition systems, special attacks, environmental effects, and valuable drop tables. All bosses properly registered with Forge and integrated into biome spawners.
 - Reference: progress/step17_pandora_bosses.md; CHEX_DETAILED_TASKS.md Section 2.1.
 
-17. Prompt: Continue development of Cosmic Horizons Extended (CHEX) by implementing the Pandora environmental hazard system with levitation updrafts, heat aura, spore blindness, and additional biome-specific hazards with audio/visual effects.
+17. Prompt: Implement Aqua Mundus mechanics including pressure, oxygen, and thermal systems with full configuration support.
+
+   - Outcome: Successfully implemented comprehensive underwater mechanics for Aqua Mundus including depth-based pressure effects, oxygen management, and biome-based thermal systems. All features are fully configurable through Forge's config system with detailed documentation.
+   - Reference: progress/step61_aqua_mechanics.md; CHEX_DETAILED_TASKS.md Section 2.4.
+
+18. Prompt: Continue development of Cosmic Horizons Extended (CHEX) by implementing the Pandora environmental hazard system with levitation updrafts, heat aura, spore blindness, and additional biome-specific hazards with audio/visual effects.
 
 - Outcome: Successfully implemented complete Pandora environmental hazard system with 5 unique hazard types (Levitation Updraft, Heat Aura, Spore Blindness, Pressure, Wind) featuring automatic biome detection, intensity systems, burst effects, particle systems, sound integration, and comprehensive status effect application. All hazards properly integrated with game tick loop and biome registry system.
 - Reference: progress/step18_pandora_hazards.md; CHEX_DETAILED_TASKS.md Section 2.1.
@@ -97,6 +102,11 @@
 
 - Outcome: Successfully tested complete Pandora systems in-game. Server runs without critical errors, CHEX mod loads correctly with all systems initialized, and GTCEu integration follows proper 3x3 chunk section philosophy. All major Pandora systems (dimension, biomes, blocks, flora, fauna, bosses, hazards) are functional and ready for gameplay. Minor cosmetic issues with missing item models identified but don't affect functionality.
 - Reference: progress/step20_pandora_testing.md; CHEX_DETAILED_TASKS.md Section 2.1.
+
+20. Prompt: Implement Aqua Mundus blocks including vent basalt, manganese nodules, luminous kelp, and ice shelf slabs.
+
+- Outcome: Successfully implemented all Aqua Mundus blocks with proper registration, models, textures, and language entries. Created custom block behaviors for luminous kelp (with glowing variants and growth stages) and ice shelf slabs (with waterlogging). Added placeholder textures and complete asset setup.
+- Reference: progress/step62_aqua_blocks.md; CHEX_DETAILED_TASKS.md Section 2.4.
 
 14. Prompt: How can remote agents ramp quickly without the local notes?
 
@@ -114,7 +124,33 @@
    - Outcome: Added T-200..T-242 task specs for mineral systems, boss progression, client UX, docs, QA; backlog now mirrors entire CHEX_DETAILED_TASKS list.
    - Reference: progress/step18_task_matrix_complete.md; tasks/2025-09-21/.
 
+18. Prompt: Implement Crystalis fauna with AI behaviors and attributes (T-082)
+   - Outcome: Successfully implemented all 10 Crystalis fauna entities with appropriate AI behaviors, attributes, and registration. Created detailed progress documentation and next steps for flora implementation.
+   - Reference: progress/stepXX_crystalis_fauna.md; CHEX_DETAILED_TASKS.md Section 2.7.
+
+19. Prompt: Implement Infernal Sovereign boss for Inferno Prime (T-073)
+   - Outcome: Successfully implemented the Infernal Sovereign boss with phase-based mechanics, custom AI, and visual effects.
+   - Reference: progress/step18_infernal_sovereign.md; tasks/2025-09-21/T-073_infernal-sovereign.md
+
+19. Prompt: Implement Inferno Prime environmental hazards and sky effects (T-074)
+   - Outcome: Implemented heat aura, lava rain, red sky ambience, and particle effects for Inferno Prime. Added integration with suit protection system and configuration options.
+   - Reference: progress/stepXX_inferno_environment.md; tasks/2025-09-21/T-074_inferno-environment.md
+   - Outcome: Successfully implemented Infernal Sovereign as a multi-phase boss with fire rain and magma armor abilities. Added custom model, animations, boss bar, and loot table with Inferno Core drop. Created dedicated boss arena structure with appropriate spawn rules.
+   - Reference: progress/stepXX_inferno_boss.md; tasks/2025-09-21/T-073_inferno-boss.md
+
 18. Prompt: Can branch creation be automated for all tasks?
    - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
    - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
+
+19. Prompt: Implement Crystalis biomes (T-080)
+   - Outcome: Successfully implemented all five Crystalis biomes (Diamond Fields, Frosted Plains, Cryo Geysers, Ice Cliffs, Pressure Depths) with unique environmental settings, features, and ambience.
+   - Reference: progress/stepXX_crystalis_biomes.md; tasks/2025-09-21/T-080_crystalis-biomes.md
+
+20. Prompt: Implement Crystalis block set (T-081)
+   - Outcome: Successfully implemented the full Crystalis block set including cryostone variants, glacial glass, geyser stone, frozen vents, pressure crystals, prism ice, and crystal lattice with proper models, blockstates, and item models.
+   - Reference: progress/stepXX_crystalis_blocks.md; tasks/2025-09-21/T-081_crystalis-blocks.md
+
+21. Prompt: Implement Inferno Prime fauna including ash crawlers, fire wraiths, and magma hoppers with appropriate behaviors and drops.
+   - Outcome: Successfully implemented all three fauna types with unique AI behaviors, custom rendering, spawn rules, and loot tables. Added cinder chitin and volcanic essence drops for progression. Integrated spawns across all Inferno biomes with balanced rates.
+   - Reference: progress/stepXX_inferno_fauna.md; tasks/2025-09-21/T-072_inferno-fauna.md
 

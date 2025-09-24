@@ -31,6 +31,10 @@ public class CHEXRegistries {
       com.netroaki.chex.registry.entities.CHEXEntities.ENTITY_TYPES;
   public static final DeferredRegister<net.minecraft.world.level.levelgen.feature.Feature<?>>
       FEATURES = com.netroaki.chex.registry.features.CHEXFeatures.FEATURES;
+  
+  // Particle types
+  public static final DeferredRegister<net.minecraft.core.particles.ParticleType<?>> PARTICLE_TYPES =
+      com.netroaki.chex.particles.SpiceParticleType.PARTICLE_TYPES;
 
   public static void register(net.minecraftforge.eventbus.api.IEventBus eventBus) {
     CHEX.LOGGER.info("Registering CHEX registries...");

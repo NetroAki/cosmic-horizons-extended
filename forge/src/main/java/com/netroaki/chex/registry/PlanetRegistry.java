@@ -495,15 +495,21 @@ public class PlanetRegistry {
     return result;
   }
 
-  /** Apply overrides to a planet definition */
+  /** 
+   * Apply overrides to a planet definition.
+   * @param base The base planet definition to apply overrides to
+   * @param overrides Map of planet IDs to their override entries
+   * @return A new PlanetDef with overrides applied
+   */
   private static PlanetDef applyOverrides(
       PlanetDef base, Map<ResourceLocation, PlanetOverridesCore.Entry> overrides) {
+    // If no override exists for this planet, return the base definition
     PlanetOverridesCore.Entry override = overrides.get(base.id());
     if (override == null) {
       return base;
     }
 
-    // Create PlanetInfo for merging
+    // Create PlanetInfo for merging with all base values
     PlanetOverrideMerger.PlanetInfo baseInfo =
         new PlanetOverrideMerger.PlanetInfo(
             base.name(),
@@ -511,12 +517,18 @@ public class PlanetRegistry {
             base.requiredSuitTag(),
             base.fuelType(),
             base.description(),
-            base.hazards());
+            base.gravityLevel(),
+            base.hasAtmosphere(),
+            base.requiresOxygen(),
+            base.hazards(),
+            base.availableMinerals(),
+            base.biomeType(),
+            base.isOrbit());
 
     // Merge with overrides
     PlanetOverrideMerger.PlanetInfo merged = PlanetOverrideMerger.merge(baseInfo, override);
 
-    // Convert back to PlanetDef
+    // Convert back to PlanetDef with all fields
     NoduleTiers tier = NoduleTiers.getByTier(merged.requiredRocketTier());
     if (tier == null) {
       tier = base.requiredRocketTier();
@@ -524,18 +536,18 @@ public class PlanetRegistry {
 
     return new PlanetDef(
         base.id(),
-        merged.name().isEmpty() ? base.name() : merged.name(),
-        merged.description().isEmpty() ? base.description() : merged.description(),
+        merged.name(),
+        merged.description(),
         tier,
         merged.requiredSuitTag(),
-        merged.fuel().isEmpty() ? base.fuelType() : merged.fuel(),
-        base.gravityLevel(),
-        base.hasAtmosphere(),
-        base.requiresOxygen(),
-        merged.hazards().isEmpty() ? base.hazards() : merged.hazards(),
-        base.availableMinerals(),
-        base.biomeType(),
-        base.isOrbit());
+        merged.fuel(),
+        merged.gravityLevel(),
+        merged.hasAtmosphere(),
+        merged.requiresOxygen(),
+        merged.hazards(),
+        merged.availableMinerals(),
+        merged.biomeType(),
+        merged.isOrbit());
   }
 
   /** Register discovered planets with overrides applied */

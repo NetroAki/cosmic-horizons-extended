@@ -154,9 +154,9 @@ public class CHEXRegion extends Region {
         .temperature(Temperature.span(Temperature.COOL, Temperature.NEUTRAL))
         .humidity(Humidity.span(Humidity.ARID, Humidity.DRY))
         .continentalness(
-            Continentalness.span(Continentalness.HALF_INLAND, Continentalness.FAR_INLAND))
+            Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
         .erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1))
-        .depth(Depth.HIGH_OFFSET, Depth.PEAK)
+        .depth(Depth.UNDER_FLOOR, Depth.TOP_SLAB)
         .weirdness(
             Weirdness.span(
                 Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING))

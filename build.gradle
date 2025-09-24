@@ -84,7 +84,12 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 allprojects {
+    apply plugin: 'java'
     apply plugin: 'com.diffplug.spotless'
+    
+    dependencies {
+        implementation 'com.google.code.gson:gson:2.10.1'
+    }
 
     spotless {
         java {

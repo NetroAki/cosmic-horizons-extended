@@ -1,19 +1,4 @@
 {
-  "type": "minecraft:random_patch",
-  "config": {
-    "tries": 4,
-    "xz_spread": 8,
-    "y_spread": 3,
-    "feature": {
-      "feature": "minecraft:simple_block",
-      "config": {
-        "to_place": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "cosmic_horizons_extended:pandorite_polished"
-          }
-        }
-      }
-    }
-  }
+  "type": "cosmic_horizons_extended:cloudstone_island",
+  "config": {}
 }

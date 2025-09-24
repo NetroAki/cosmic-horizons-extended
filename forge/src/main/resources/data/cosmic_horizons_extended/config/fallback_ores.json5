@@ -40,6 +40,13 @@
   "gtceu:ores/quartz": "minecraft:nether_quartz_ore",
   "gtceu:ores/netherrack": "minecraft:netherrack",
   "gtceu:ores/endstone": "minecraft:end_stone",
+  
+  // Pandora-specific ores
+  "gtceu:ores/bismuthinite": "minecraft:copper_ore",
+  "gtceu:ores/phosphorite": "minecraft:glowstone",
+  "gtceu:ores/vanadium": "minecraft:iron_ore",
+  "gtceu:ores/manganese": "minecraft:iron_ore",
+  "gtceu:ores/cobalt": "minecraft:iron_ore",
 
   // Deepslate variants
   "gtceu:ores/deepslate_iron": "minecraft:deepslate_iron_ore",

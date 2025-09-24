@@ -22,12 +22,25 @@ public final class PlanetOverrides {
           + "}\n";
 
   public static final class Entry {
-    public int requiredRocketTier = 1;
-    public String requiredSuitTag = "chex:suit1";
+    // Basic information
     public String name = null;
     public String description = "";
-    public String fuel = "";
+    
+    // Requirements
+    public int requiredRocketTier = 1;
+    public String requiredSuitTag = "chex:suit1";
+    public String fuelType = "minecraft:lava";
+    
+    // Environmental properties
+    public int gravityLevel = 1;
+    public boolean hasAtmosphere = true;
+    public boolean requiresOxygen = true;
+    
+    // Content
     public Set<String> hazards = Set.of();
+    public Set<String> availableMinerals = Set.of();
+    public String biomeType = "default";
+    public boolean isOrbit = false;
   }
 
   private final Map<String, Entry> overridesById = new HashMap<>();
@@ -51,6 +64,16 @@ public final class PlanetOverrides {
               map.forEach(
                   (id, e) -> {
                     Entry en = new Entry();
+                    
+                    // Basic information
+                    if (e.name() != null) {
+                      en.name = e.name();
+                    }
+                    if (e.description() != null) {
+                      en.description = e.description();
+                    }
+                    
+                    // Requirements
                     if (e.requiredRocketTier() != null) {
                       en.requiredRocketTier = e.requiredRocketTier();
                     }
@@ -60,17 +83,33 @@ public final class PlanetOverrides {
                       en.requiredSuitTag =
                           String.format("chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
                     }
-                    if (e.name() != null) {
-                      en.name = e.name();
+                    if (e.fuelType() != null) {
+                      en.fuelType = e.fuelType();
                     }
-                    if (e.description() != null) {
-                      en.description = e.description();
+                    
+                    // Environmental properties
+                    if (e.gravityLevel() != null) {
+                      en.gravityLevel = e.gravityLevel();
                     }
-                    if (e.fuel() != null) {
-                      en.fuel = e.fuel();
+                    if (e.hasAtmosphere() != null) {
+                      en.hasAtmosphere = e.hasAtmosphere();
                     }
+                    if (e.requiresOxygen() != null) {
+                      en.requiresOxygen = e.requiresOxygen();
+                    }
+                    
+                    // Content
                     if (e.hazards() != null && !e.hazards().isEmpty()) {
                       en.hazards = Set.copyOf(e.hazards());
+                    }
+                    if (e.availableMinerals() != null && !e.availableMinerals().isEmpty()) {
+                      en.availableMinerals = Set.copyOf(e.availableMinerals());
+                    }
+                    if (e.biomeType() != null) {
+                      en.biomeType = e.biomeType();
+                    }
+                    if (e.isOrbit() != null) {
+                      en.isOrbit = e.isOrbit();
                     }
                     data.overridesById.put(id, en);
                   }));
