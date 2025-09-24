@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:structure_set",
+  "structures": [
+    {
+      "structure": "chex:ocean_sovereign_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 123456789,
+    "spacing": 32,
+    "separation": 16,
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "other_set": "minecraft:ocean_ruins",
+      "chunk_count": 10
+    }
+  }
+}
