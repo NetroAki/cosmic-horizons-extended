@@ -10,6 +10,14 @@ import os
 import sys
 from pathlib import Path
 
+try:
+    import json5  # type: ignore
+
+    JSON5_AVAILABLE = True
+except ModuleNotFoundError:  # pragma: no cover - optional dependency
+    json5 = None  # type: ignore
+    JSON5_AVAILABLE = False
+
 def strip_comments(json_like):
     """
     Strip comments from JSON-like text.
@@ -45,7 +53,7 @@ def strip_comments(json_like):
     
     return '\n'.join(result)
 
-def is_valid_json(file_path):
+def is_valid_json(file_path: Path):
     """
     Check if a file contains valid JSON, handling common extensions like:
     - UTF-8 BOM
@@ -56,10 +64,17 @@ def is_valid_json(file_path):
         # Try reading with utf-8-sig to handle BOM
         with open(file_path, 'r', encoding='utf-8-sig') as f:
             content = f.read()
-            
-        # Strip comments before validation
+
+        if file_path.suffix.lower() == '.json5':
+            if not JSON5_AVAILABLE:
+                # Caller should skip when json5 is unavailable, but guard regardless
+                return True, None
+            json5.loads(content)  # type: ignore[arg-type]
+            return True, None
+
+        # Strip comments before validation for vanilla JSON files
         content = strip_comments(content)
-        
+
         # Try to parse the JSON
         json.loads(content)
         return True, None
@@ -69,8 +84,13 @@ def is_valid_json(file_path):
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
-                content = strip_comments(content)
-                json.loads(content)
+                if file_path.suffix.lower() == '.json5':
+                    if not JSON5_AVAILABLE:
+                        return True, None
+                    json5.loads(content)  # type: ignore[arg-type]
+                else:
+                    content = strip_comments(content)
+                    json.loads(content)
             return True, None
         except json.JSONDecodeError as e:
             return False, f"Invalid JSON: {str(e)}"
@@ -101,7 +121,7 @@ def find_json_files(directory):
         dirs[:] = [d for d in dirs if not should_skip_directory(Path(root) / d)]
         
         for file in files:
-            if file.endswith('.json'):
+            if file.endswith(('.json', '.json5')):
                 json_files.append(Path(root) / file)
     return json_files
 
@@ -117,7 +137,13 @@ def main():
     print(f"Validating {len(json_files)} JSON files in {project_root}")
     
     has_errors = False
+    skipped_json5 = []
+
     for json_file in json_files:
+        if json_file.suffix.lower() == '.json5' and not JSON5_AVAILABLE:
+            skipped_json5.append(json_file)
+            continue
+
         is_valid, error = is_valid_json(json_file)
         if not is_valid:
             has_errors = True
@@ -128,6 +154,11 @@ def main():
             else:
                 print(f"❌ {rel_path} - Invalid JSON: {error}")
     
+    if skipped_json5:
+        print("\n⚠️  Skipped JSON5 validation for the following files (install the 'json5' package to validate):")
+        for skipped in skipped_json5:
+            print(f"   - {skipped.relative_to(project_root)}")
+
     if has_errors:
         if sys.platform == 'win32':
             print("\n[ERROR] Validation failed: Some JSON files are invalid")
