@@ -1,0 +1,202 @@
+
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrantEntity.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:14: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:62: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:14: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:57: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeTyrantRenderer.java:75: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrant.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:27: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:28: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:362: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\registry\structure\CHEXStructures.java:35: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\survival\DesertSurvivalHandler.java:124: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ambience\PandoraAmbienceManager.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:104: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:114: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:132: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:133: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\BioluminescentForestBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\FloatingIslandsBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\CrystalwoodGroveBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\LuminousCanopyForestBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\SporehazeThicketBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenDimension.java:46: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\entity\EdenCreature.java:75: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenGardenAccess.java:92: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenGardenAccess.java:108: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\entity\LumiflyEntity.java:129: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\features\flora\CelestialBloomBlock.java:52: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hazard\PandoraHazards.java:4: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hazards\PandoraHazardManager.java:4: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hollow\HollowWorldDimension.java:25: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:342: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:344: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:346: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:354: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:355: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:362: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:386: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:393: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:392: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:399: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:399: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:404: error: method addDebugInfo(List<String>,BlockPos,Sampler) is already defined in class RingworldBiomeProvider
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:419: error: method climateSampler() is already defined in class RingworldBiomeProvider
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:424: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldChunkGenerator.java:64: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:87: error: cannot inherit from final DimensionType
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:222: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:222: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:229: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:229: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:241: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:242: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:243: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:244: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:250: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:313: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:13: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:14: error: package net.minecraftforge.event.world does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:25: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:49: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:73: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:80: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:97: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:104: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:12: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:13: error: package net.minecraftforge.event.world does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:20: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:48: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:11: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:20: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:86: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:88: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:103: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:105: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:120: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:122: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:135: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:135: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:142: error: package LivingSpawnEvent does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\torus\TorusWorldChunkGenerator.java:9: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\torus\TorusWorldChunkGenerator.java:32: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:16: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:52: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:58: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\MagmaHopperEntity.java:163: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\InfernalSovereignEntity.java:275: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\InfernalSovereignEntity.java:281: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:731: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:737: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:772: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\particle\AshParticleHandler.java:3: error: package com.netroaki.chex.world.dimension does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\particle\AshParticleHandler.java:83: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\renderer\entity\OceanSovereignRenderer.java:6: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\sound\AquaMundusAmbientSoundHandler.java:3: error: package com.netroaki.chex.world.dimension does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\boss\verdant_colossus\VerdantColossusEntity.java:16: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\boss\verdant_colossus\VerdantColossusEntity.java:18: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrantEntity.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:14: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:62: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:14: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:57: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeTyrantRenderer.java:75: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrant.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:27: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:28: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:362: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\registry\structure\CHEXStructures.java:35: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\survival\DesertSurvivalHandler.java:124: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ambience\PandoraAmbienceManager.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:104: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:114: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:132: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:133: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\BioluminescentForestBiome.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\FloatingIslandsBiome.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\CrystalwoodGroveBiome.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\LuminousCanopyForestBiome.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\SporehazeThicketBiome.java:3: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenDimension.java:46: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\entity\EdenCreature.java:75: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenGardenAccess.java:92: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenGardenAccess.java:108: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\entity\LumiflyEntity.java:129: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\features\flora\CelestialBloomBlock.java:52: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hazard\PandoraHazards.java:4: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hazards\PandoraHazardManager.java:4: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\hollow\HollowWorldDimension.java:25: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:342: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:344: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:346: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:354: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:355: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:362: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:386: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:393: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:392: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:399: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:399: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:404: error: method addDebugInfo(List<String>,BlockPos,Sampler) is already defined in class RingworldBiomeProvider
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:419: error: method climateSampler() is already defined in class RingworldBiomeProvider
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldBiomeProvider.java:424: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldChunkGenerator.java:64: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:87: error: cannot inherit from final DimensionType
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:222: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:222: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:229: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:229: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:241: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:242: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:243: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:244: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:250: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ringworld\RingworldDimension.java:313: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:13: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:14: error: package net.minecraftforge.event.world does not exist
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:25: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:49: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:73: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:80: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:97: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawnHandler.java:104: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:12: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:13: error: package net.minecraftforge.event.world does not exist
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:20: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\spawn\PandoraMobSpawns.java:48: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:11: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:20: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:86: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:88: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:103: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:105: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:120: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:122: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:135: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:135: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\stormworld\entity\StormworldSpawns.java:142: error: package LivingSpawnEvent does not exist
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\torus\TorusWorldChunkGenerator.java:9: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\torus\TorusWorldChunkGenerator.java:32: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:16: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:52: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\ClientSetup.java:58: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\MagmaHopperEntity.java:163: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\InfernalSovereignEntity.java:275: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\inferno\InfernalSovereignEntity.java:281: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:731: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:737: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\aqua_mundus\OceanSovereignEntity.java:772: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\particle\AshParticleHandler.java:3: error: package com.netroaki.chex.world.dimension does not exist
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\particle\AshParticleHandler.java:83: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\renderer\entity\OceanSovereignRenderer.java:6: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\client\sound\AquaMundusAmbientSoundHandler.java:3: error: package com.netroaki.chex.world.dimension does not exist
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\boss\verdant_colossus\VerdantColossusEntity.java:16: error: cannot find symbol
+  C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\common\src\main\java\com\netroaki\chex\entity\boss\verdant_colossus\VerdantColossusEntity.java:18: error: cannot find symbol
+
