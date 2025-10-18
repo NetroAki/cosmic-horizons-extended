@@ -86,7 +86,9 @@ def should_skip_directory(path):
     # Skip common directories that may contain non-project JSON files
     skip_dirs = {
         'build', '.gradle', 'node_modules', '.idea', 'out', 'run', 'generated',
-        'spotless-prettier-node-modules-', 'bin', 'buildSrc', '.git'
+        'spotless-prettier-node-modules-', 'bin', 'buildSrc', '.git',
+        # External asset dumps (not part of project-controlled JSON)
+        'inventivetalentdev'
     }
     path_str = str(path).lower()
     return any(skip_dir in path_str for skip_dir in skip_dirs)

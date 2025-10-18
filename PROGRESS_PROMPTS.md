@@ -1,4 +1,19 @@
+25. Prompt: Implement Ringworld strip generator & wrap hooks scaffold (T-100)
+
+- Outcome: Added a minimal `RingworldChunkGenerator` with a data-driven CODEC and basic longitudinal strip zoning based on a configurable `strip_period`. This scaffolds future integration of gravity bands, wrap hooks, and biome zoning per design.
+- Reference: `progress/stepXX_ringworld_generator.md`; `tasks/2025-09-21/T-100_ringworld-generator.md`. Code at `forge/src/main/java/com/netroaki/chex/world/ringworld/RingworldChunkGenerator.java`.
+
 # CHEX Progress Prompts (2025-09-21)
+
+23. Prompt: Implement Stormworld layered biome configuration (T-090)
+
+- Outcome: Authored 5 biome JSONs and a dimension JSON using a `multi_noise` biome source to represent layered bands: Upper Atmosphere, Storm Bands, Lightning Fields, Eye, Metallic Hydrogen Depths. Minimal placeholders suitable for iteration; hooks for richer ambience/features can be added subsequently.
+- Reference: progress/stepXX_stormworld_biomes.md; tasks/2025-09-21/T-090_stormworld-biomes.md. Files created under `common/src/main/resources/data/cosmic_horizons_extended/worldgen/biome/` and `worldgen/dimension/stormworld.json`.
+
+24. Prompt: Implement Stormworld mechanics (gravity, lightning, hunger, pressure) (T-091)
+
+- Outcome: Implemented a configurable Stormworld mechanics system with gravity scaling (slowdown in bands, slow falling in vortices/eye), periodic lightning strikes with suit-tier mitigation, accelerated hunger in windy layers, and crushing pressure damage/effects in the metallic hydrogen depths. Added comprehensive configuration via StormworldMechanicsConfig and registered it.
+- Reference: progress/stepXX_stormworld_mechanics.md; tasks/2025-09-21/T-091_stormworld-mechanics.md. Code in `common/src/main/java/com/netroaki/chex/world/stormworld/StormworldMechanics.java` and `common/src/main/java/com/netroaki/chex/config/StormworldMechanicsConfig.java`.
 
 1. Prompt: What is the project scope and existing architecture?
 
@@ -85,8 +100,8 @@
 
 17. Prompt: Implement Aqua Mundus mechanics including pressure, oxygen, and thermal systems with full configuration support.
 
-   - Outcome: Successfully implemented comprehensive underwater mechanics for Aqua Mundus including depth-based pressure effects, oxygen management, and biome-based thermal systems. All features are fully configurable through Forge's config system with detailed documentation.
-   - Reference: progress/step61_aqua_mechanics.md; CHEX_DETAILED_TASKS.md Section 2.4.
+- Outcome: Successfully implemented comprehensive underwater mechanics for Aqua Mundus including depth-based pressure effects, oxygen management, and biome-based thermal systems. All features are fully configurable through Forge's config system with detailed documentation.
+- Reference: progress/step61_aqua_mechanics.md; CHEX_DETAILED_TASKS.md Section 2.4.
 
 18. Prompt: Continue development of Cosmic Horizons Extended (CHEX) by implementing the Pandora environmental hazard system with levitation updrafts, heat aura, spore blindness, and additional biome-specific hazards with audio/visual effects.
 
@@ -112,45 +127,62 @@
 
 - Outcome: Synced refs via git fetch and added agents.md summarizing the mandatory setup/formatting workflow for Codex cloud runs.
 - Reference: progress/step15_remote_agent.md; agents.md.
+
 15. Prompt: How is parallel cloud scaffolding configured?
-   - Outcome: Added tasks/2025-09-21 work menu (T-001..T-004), claims/ records, coordination notes, and helper scripts for spawning branches.
-   - Reference: progress/step16_parallel_setup.md; scripts/spawn_task_branches.sh; tasks/2025-09-21/.
+
+- Outcome: Added tasks/2025-09-21 work menu (T-001..T-004), claims/ records, coordination notes, and helper scripts for spawning branches.
+- Reference: progress/step16_parallel_setup.md; scripts/spawn_task_branches.sh; tasks/2025-09-21/.
 
 16. Prompt: Is the CHEX task backlog available for multi-agent work?
-   - Outcome: Populated tasks/2025-09-21 with detailed specs T-005..T-103 mirroring CHEX_DETAILED_TASKS; helper scripts and coordination files in place.
-   - Reference: progress/step17_tasks_expanded.md; tasks/2025-09-21/; scripts/spawn_task_branches.sh.
+
+- Outcome: Populated tasks/2025-09-21 with detailed specs T-005..T-103 mirroring CHEX_DETAILED_TASKS; helper scripts and coordination files in place.
+- Reference: progress/step17_tasks_expanded.md; tasks/2025-09-21/; scripts/spawn_task_branches.sh.
 
 17. Prompt: Are tasks for sections 3-7 available?
-   - Outcome: Added T-200..T-242 task specs for mineral systems, boss progression, client UX, docs, QA; backlog now mirrors entire CHEX_DETAILED_TASKS list.
-   - Reference: progress/step18_task_matrix_complete.md; tasks/2025-09-21/.
+
+- Outcome: Added T-200..T-242 task specs for mineral systems, boss progression, client UX, docs, QA; backlog now mirrors entire CHEX_DETAILED_TASKS list.
+- Reference: progress/step18_task_matrix_complete.md; tasks/2025-09-21/.
 
 18. Prompt: Implement Crystalis fauna with AI behaviors and attributes (T-082)
-   - Outcome: Successfully implemented all 10 Crystalis fauna entities with appropriate AI behaviors, attributes, and registration. Created detailed progress documentation and next steps for flora implementation.
-   - Reference: progress/stepXX_crystalis_fauna.md; CHEX_DETAILED_TASKS.md Section 2.7.
+
+- Outcome: Successfully implemented all 10 Crystalis fauna entities with appropriate AI behaviors, attributes, and registration. Created detailed progress documentation and next steps for flora implementation.
+- Reference: progress/stepXX_crystalis_fauna.md; CHEX_DETAILED_TASKS.md Section 2.7.
 
 19. Prompt: Implement Infernal Sovereign boss for Inferno Prime (T-073)
-   - Outcome: Successfully implemented the Infernal Sovereign boss with phase-based mechanics, custom AI, and visual effects.
-   - Reference: progress/step18_infernal_sovereign.md; tasks/2025-09-21/T-073_infernal-sovereign.md
+
+- Outcome: Successfully implemented the Infernal Sovereign boss with phase-based mechanics, custom AI, and visual effects.
+- Reference: progress/step18_infernal_sovereign.md; tasks/2025-09-21/T-073_infernal-sovereign.md
 
 19. Prompt: Implement Inferno Prime environmental hazards and sky effects (T-074)
-   - Outcome: Implemented heat aura, lava rain, red sky ambience, and particle effects for Inferno Prime. Added integration with suit protection system and configuration options.
-   - Reference: progress/stepXX_inferno_environment.md; tasks/2025-09-21/T-074_inferno-environment.md
-   - Outcome: Successfully implemented Infernal Sovereign as a multi-phase boss with fire rain and magma armor abilities. Added custom model, animations, boss bar, and loot table with Inferno Core drop. Created dedicated boss arena structure with appropriate spawn rules.
-   - Reference: progress/stepXX_inferno_boss.md; tasks/2025-09-21/T-073_inferno-boss.md
+
+- Outcome: Implemented heat aura, lava rain, red sky ambience, and particle effects for Inferno Prime. Added integration with suit protection system and configuration options.
+- Reference: progress/stepXX_inferno_environment.md; tasks/2025-09-21/T-074_inferno-environment.md
+- Outcome: Successfully implemented Infernal Sovereign as a multi-phase boss with fire rain and magma armor abilities. Added custom model, animations, boss bar, and loot table with Inferno Core drop. Created dedicated boss arena structure with appropriate spawn rules.
+- Reference: progress/stepXX_inferno_boss.md; tasks/2025-09-21/T-073_inferno-boss.md
 
 18. Prompt: Can branch creation be automated for all tasks?
-   - Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
-   - Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
+
+- Outcome: Added scripts/spawn_all_task_branches.sh to iterate task files, create branches, generate claim records, and push them automatically.
+- Reference: progress/step19_spawn_all_script.md; scripts/spawn_all_task_branches.sh.
 
 19. Prompt: Implement Crystalis biomes (T-080)
-   - Outcome: Successfully implemented all five Crystalis biomes (Diamond Fields, Frosted Plains, Cryo Geysers, Ice Cliffs, Pressure Depths) with unique environmental settings, features, and ambience.
-   - Reference: progress/stepXX_crystalis_biomes.md; tasks/2025-09-21/T-080_crystalis-biomes.md
+
+- Outcome: Successfully implemented all five Crystalis biomes (Diamond Fields, Frosted Plains, Cryo Geysers, Ice Cliffs, Pressure Depths) with unique environmental settings, features, and ambience.
+- Reference: progress/stepXX_crystalis_biomes.md; tasks/2025-09-21/T-080_crystalis-biomes.md
 
 20. Prompt: Implement Crystalis block set (T-081)
-   - Outcome: Successfully implemented the full Crystalis block set including cryostone variants, glacial glass, geyser stone, frozen vents, pressure crystals, prism ice, and crystal lattice with proper models, blockstates, and item models.
-   - Reference: progress/stepXX_crystalis_blocks.md; tasks/2025-09-21/T-081_crystalis-blocks.md
+
+- Outcome: Successfully implemented the full Crystalis block set including cryostone variants, glacial glass, geyser stone, frozen vents, pressure crystals, prism ice, and crystal lattice with proper models, blockstates, and item models.
+- Reference: progress/stepXX_crystalis_blocks.md; tasks/2025-09-21/T-081_crystalis-blocks.md
 
 21. Prompt: Implement Inferno Prime fauna including ash crawlers, fire wraiths, and magma hoppers with appropriate behaviors and drops.
-   - Outcome: Successfully implemented all three fauna types with unique AI behaviors, custom rendering, spawn rules, and loot tables. Added cinder chitin and volcanic essence drops for progression. Integrated spawns across all Inferno biomes with balanced rates.
-   - Reference: progress/stepXX_inferno_fauna.md; tasks/2025-09-21/T-072_inferno-fauna.md
 
+- Outcome: Successfully implemented all three fauna types with unique AI behaviors, custom rendering, spawn rules, and loot tables. Added cinder chitin and volcanic essence drops for progression. Integrated spawns across all Inferno biomes with balanced rates.
+- Reference: progress/stepXX_inferno_fauna.md; tasks/2025-09-21/T-072_inferno-fauna.md
+
+22. Prompt: Implement Crystalis hazards, overlays, and sky effects (T-084)
+
+- Outcome: Implemented ambient frostbite with suit-tier mitigation, cryo geyser encasing (configurable radius/toggle), low-traction ice with tier-based traction mitigation, snow blindness overlay/visibility reduction, aurora skybox, and blizzard overlay. Added CrystalisHazardsConfig and wired client/server systems to respect toggles. Pending Gradle validation on Java 17 toolchain.
+- Reference: progress/stepXX_crystalis_hazards.md; tasks/2025-09-21/T-084_crystalis-hazards.md. Code changes in:
+  - common: `block/crystalis/CryoGeyserBlock.java`, `block/crystalis/SlipperyIceBlock.java`, `event/FrostbiteHandler.java`, `config/CrystalisHazardsConfig.java`, `config/ModConfig.java`
+  - forge client: `client/render/CrystalisAuroraRenderer.java`, `client/render/BlizzardOverlay.java`, `client/render/FrostOverlay.java`, `client/CrystalisVisibilityHandler.java`
