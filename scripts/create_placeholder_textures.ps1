@@ -103,27 +103,27 @@ $BlockTextureMappings = @{
     # Kepler-452b Flora
     "kepler_wood_log"        = "block/oak_log"
     "kepler_wood_leaves"     = "block/oak_leaves"
-    "kepler_moss"            = "block/moss_carpet"
+    "kepler_moss"            = "block/moss_block"
     "kepler_vines"           = "block/vine"
     "kepler_blossom"         = "block/flowering_azalea_leaves"
     
     # Aqua Mundus Ocean
-    "aqua_vent_basalt"       = "block/basalt"
+    "aqua_vent_basalt"       = "block/smooth_basalt"
     "aqua_manganese_nodule"  = "block/iron_ore"
     "aqua_luminous_kelp"     = "block/kelp"
     "aqua_ice_shelf_slab"    = "block/packed_ice"
     
     # Inferno Prime
-    "inferno_magma_block"    = "block/magma_block"
+    "inferno_magma_block"    = "block/magma"
     "inferno_obsidian"       = "block/obsidian"
-    "inferno_basalt"         = "block/basalt"
+    "inferno_basalt"         = "block/basalt_side"
     
     # Arrakis
     "arrakis_sandstone"      = "block/sandstone"
     "arrakis_spice_ore"      = "block/gold_ore"
     
     # Pandora
-    "pandora_fungal_block"   = "block/mycelium"
+    "pandora_fungal_block"   = "block/mycelium_top"
     "pandora_spore_block"    = "block/end_stone"
     
     # Crystalis
@@ -165,22 +165,22 @@ $EntityTextureMappings = @{
     "spore_tyrant"       = "entity/enderman/enderman"
     
     # Arrakis Entities
-    "sandworm_hatchling" = "entity/silverfish/silverfish"
+    "sandworm_hatchling" = "entity/silverfish"
     
     # Inferno Prime Entities
     "ash_crawler"        = "entity/spider/spider"
-    "fire_wraith"        = "entity/blaze/blaze"
-    "magma_hopper"       = "entity/magma_cube/magma_cube"
+    "fire_wraith"        = "entity/blaze"
+    "magma_hopper"       = "entity/slime/magmacube"
     "infernal_sovereign" = "entity/wither/wither"
     
     # Aqua Mundus Entities
-    "ocean_sovereign"    = "entity/elder_guardian/elder_guardian"
+    "ocean_sovereign"    = "entity/guardian_elder"
     
     # Stormworld Entities
-    "windrider"          = "entity/phantom/phantom"
+    "windrider"          = "entity/phantom"
     
     # Existing Entities (if they exist)
-    "glowbeast"          = "entity/bat/bat"
+    "glowbeast"          = "entity/bat"
     "sporeflies"         = "entity/bee/bee"
 }
 
@@ -192,7 +192,8 @@ function Create-PlaceholderTexture {
         [string]$Type = "block"
     )
     
-    $sourcePath = "$SourceDir/$Type/$BaseTexture.png"
+    $normalizedBase = $BaseTexture -replace '/', [System.IO.Path]::DirectorySeparatorChar
+    $sourcePath = [System.IO.Path]::Combine($SourceDir, $normalizedBase + ".png")
     $outputPath = "$OutputDir/$Type/$Name.png"
     
     # Skip if output exists and not forcing
@@ -209,7 +210,8 @@ function Create-PlaceholderTexture {
         
         try {
             # Use ImageMagick to recolor
-            magick "$sourcePath" -modulate $bright, $sat, $hue "$outputPath"
+            $modulateArgs = "{0},{1},{2}" -f $bright, $sat, $hue
+            magick "$sourcePath" -modulate $modulateArgs "$outputPath"
             Write-Host "Created: $Name ($($colors.description))" -ForegroundColor Green
         }
         catch {

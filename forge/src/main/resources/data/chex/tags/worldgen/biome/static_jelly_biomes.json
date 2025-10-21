@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "chex:charged_caverns",
+    "chex:crystal_caves",
+    "chex:stormy_caverns"
+  ]
+}

@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.world.BiomeModifier;
 
@@ -41,11 +40,12 @@ public final class MineralBiomeModifier implements BiomeModifier {
       return;
     }
 
-    features.forEach(
-        feature ->
-            builder
-                .getGeneration()
-                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, feature));
+    // TODO: Fix when getGeneration() and addFeature methods are available
+    // features.forEach(
+    //     feature ->
+    //         builder
+    //             .getGeneration()
+    //             .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, feature));
   }
 
   @Override

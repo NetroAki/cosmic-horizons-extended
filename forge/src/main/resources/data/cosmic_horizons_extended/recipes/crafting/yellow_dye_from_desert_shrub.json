@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cosmic_horizons_extended:desert_shrub"
+    }
+  ],
+  "result": {
+    "item": "minecraft:yellow_dye",
+    "count": 2
+  }
+}

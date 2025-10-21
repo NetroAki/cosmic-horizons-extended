@@ -102,6 +102,7 @@ allprojects {
             target fileTree(projectDir) {
                 include '**/*.json', '**/*.mcmeta'
                 exclude '**/build/**', '**/.gradle/**', '**/run/**', '**/out/**', '**/bin/**'
+                exclude '**/InventivetalentDev-minecraft-assets-af628ec/**'
             }
             prettier().config(['parser': 'json'])
         }
@@ -109,6 +110,7 @@ allprojects {
             target fileTree(projectDir) {
                 include '**/*.json5'
                 exclude '**/build/**', '**/.gradle/**', '**/run/**', '**/out/**', '**/bin/**'
+                exclude '**/InventivetalentDev-minecraft-assets-af628ec/**'
             }
             prettier().config(['parser': 'json5'])
         }
@@ -116,6 +118,7 @@ allprojects {
             target fileTree(projectDir) {
                 include '**/*.md'
                 exclude '**/build/**', '**/.gradle/**', '**/out/**'
+                exclude '**/InventivetalentDev-minecraft-assets-af628ec/**'
             }
             prettier().config(['parser': 'markdown'])
         }

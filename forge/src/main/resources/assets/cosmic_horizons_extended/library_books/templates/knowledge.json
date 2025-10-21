@@ -1,0 +1,64 @@
+{
+  "title": "${adjective} ${nouns}: A Study",
+  "variables": {
+    "adjective": "wordbank:adjectives",
+    "nouns": "wordbank:nouns"
+  },
+  "pages": [
+    {
+      "template": "# ${title}\n\n## Introduction\n\nThis treatise aims to document the known properties and behaviors of the ${adjective} ${nouns}, based on ${source}.",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${source}",
+          "replacement": "extensive research,firsthand accounts,ancient manuscripts,forbidden texts,arcane records"
+        }
+      ]
+    },
+    {
+      "template": "## Properties\n\n- **Material Composition**: ${material}\n- **Energy Signature**: ${energy}\n- **Dimensional Phase**: ${phase}\n\n## Observations\n\n${observation}",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${material}",
+          "replacement": "wordbank:knowledge_materials"
+        },
+        {
+          "type": "replace",
+          "target": "${energy}",
+          "replacement": "wordbank:energy_signatures"
+        },
+        {
+          "type": "replace",
+          "target": "${phase}",
+          "replacement": "wordbank:dimensional_phases"
+        },
+        {
+          "type": "replace",
+          "target": "${observation}",
+          "replacement": "wordbank:knowledge_observations"
+        }
+      ]
+    },
+    {
+      "template": "## Practical Applications\n\nWhen combined with ${component1} and ${component2}, the ${nouns} can be used to ${application}.",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${component1}",
+          "replacement": "refined netherite,enchanted amethyst,void-touched obsidian,stabilized redstone,arcane crystals"
+        },
+        {
+          "type": "replace",
+          "target": "${component2}",
+          "replacement": "dragon's breath,ender pearl dust,blaze powder,ghast tears,phantom membranes"
+        },
+        {
+          "type": "replace",
+          "target": "${application}",
+          "replacement": "wordbank:knowledge_applications"
+        }
+      ]
+    }
+  ]
+}

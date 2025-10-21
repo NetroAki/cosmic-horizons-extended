@@ -3,9 +3,7 @@ package com.netroaki.chex.network;
 import java.util.UUID;
 import java.util.function.Supplier;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
 /** Network message for broadcasting progression updates to all players */
@@ -40,12 +38,9 @@ public class ProgressionUpdateMessage {
     context.enqueueWork(
         () -> {
           if (context.getDirection().getReceptionSide().isClient()) {
-            // Handle on client side - show notification
-            Player player = net.minecraft.client.Minecraft.getInstance().player;
-            if (player != null) {
-              String notification = getNotificationText(message.updateType, message.data);
-              player.displayClientMessage(Component.literal(notification), false);
-            }
+            // Handle on client side - use proper client-side player access
+            // Note: This will be handled by client-side code when implemented
+            // For now, we'll skip client-side handling to avoid server crashes
           } else {
             // Handle on server side - log the update
             ServerPlayer serverPlayer = context.getSender();

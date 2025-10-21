@@ -1,9 +1,0 @@
-{
-  "feature": "cosmic_horizons_extended:arrakis_storm_crystal_shards",
-  "placement": [
-    { "type": "minecraft:in_square" },
-    { "type": "minecraft:count", "count": 3 },
-    { "type": "minecraft:heightmap", "heightmap": "WORLD_SURFACE_WG" },
-    { "type": "minecraft:biome" }
-  ]
-}

@@ -1,0 +1,48 @@
+{
+  "target": "minecraft:main",
+  "passes": [
+    {
+      "name": "heat_distortion",
+      "intarget": "minecraft:main",
+      "outtarget": "minecraft:main",
+      "auxtargets": [
+        {
+          "name": "DiffuseSampler",
+          "id": "minecraft:main"
+        }
+      ],
+      "uniforms": [
+        {
+          "name": "Time",
+          "type": "float",
+          "count": 1,
+          "values": [0.0]
+        },
+        {
+          "name": "Intensity",
+          "type": "float",
+          "count": 1,
+          "values": [0.0]
+        },
+        {
+          "name": "Speed",
+          "type": "float",
+          "count": 1,
+          "values": [0.5]
+        },
+        {
+          "name": "Distortion",
+          "type": "float",
+          "count": 1,
+          "values": [0.02]
+        },
+        {
+          "name": "Rise",
+          "type": "float",
+          "count": 1,
+          "values": [0.005]
+        }
+      ]
+    }
+  ]
+}

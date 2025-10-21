@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cosmic_horizons_extended:block/pressure_crystal_block"
+    }
+  }
+}

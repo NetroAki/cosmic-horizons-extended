@@ -1,15 +1,19 @@
 # T-232 README Refresh
 
 **Goal**
+
 - Refresh README with install steps, configuration overview, progression ladder, fallback behaviour, QA matrix.
 
 **Scope**
+
 - README.md + related assets.
 
 **Acceptance**
+
 - README comprehensive/accurate; `./gradlew check` passes.
 
 **Checklist**
+
 - [ ] `bash scripts/cloud_bootstrap.sh`
 - [ ] Update README
 - [ ] `./gradlew check`

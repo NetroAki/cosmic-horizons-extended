@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "cosmic_horizons_extended:pandora_sky_islands",
-  "features": ["cosmic_horizons_extended:pandora_cloudstone_flora_placed"],
-  "step": "vegetal_decoration"
-}

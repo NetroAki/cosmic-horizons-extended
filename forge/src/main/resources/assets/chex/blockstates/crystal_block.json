@@ -1,0 +1,45 @@
+{
+  "variants": {
+    "facing=down,variant=small": { "model": "chex:block/crystal_small_down" },
+    "facing=up,variant=small": { "model": "chex:block/crystal_small_up" },
+    "facing=north,variant=small": { "model": "chex:block/crystal_small_north" },
+    "facing=south,variant=small": { "model": "chex:block/crystal_small_south" },
+    "facing=west,variant=small": { "model": "chex:block/crystal_small_west" },
+    "facing=east,variant=small": { "model": "chex:block/crystal_small_east" },
+
+    "facing=down,variant=medium": { "model": "chex:block/crystal_medium_down" },
+    "facing=up,variant=medium": { "model": "chex:block/crystal_medium_up" },
+    "facing=north,variant=medium": {
+      "model": "chex:block/crystal_medium_north"
+    },
+    "facing=south,variant=medium": {
+      "model": "chex:block/crystal_medium_south"
+    },
+    "facing=west,variant=medium": { "model": "chex:block/crystal_medium_west" },
+    "facing=east,variant=medium": { "model": "chex:block/crystal_medium_east" },
+
+    "facing=down,variant=large": { "model": "chex:block/crystal_large_down" },
+    "facing=up,variant=large": { "model": "chex:block/crystal_large_up" },
+    "facing=north,variant=large": { "model": "chex:block/crystal_large_north" },
+    "facing=south,variant=large": { "model": "chex:block/crystal_large_south" },
+    "facing=west,variant=large": { "model": "chex:block/crystal_large_west" },
+    "facing=east,variant=large": { "model": "chex:block/crystal_large_east" },
+
+    "facing=down,variant=cluster": {
+      "model": "chex:block/crystal_cluster_down"
+    },
+    "facing=up,variant=cluster": { "model": "chex:block/crystal_cluster_up" },
+    "facing=north,variant=cluster": {
+      "model": "chex:block/crystal_cluster_north"
+    },
+    "facing=south,variant=cluster": {
+      "model": "chex:block/crystal_cluster_south"
+    },
+    "facing=west,variant=cluster": {
+      "model": "chex:block/crystal_cluster_west"
+    },
+    "facing=east,variant=cluster": {
+      "model": "chex:block/crystal_cluster_east"
+    }
+  }
+}

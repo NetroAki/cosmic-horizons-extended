@@ -1,0 +1,49 @@
+{
+  "type": "cosmic_horizons_extended:crystalis",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "cosmic_horizons_extended:crystalis_diamond_fields",
+          "parameters": {
+            "temperature": -1.0,
+            "humidity": 0.2,
+            "continentalness": 0.2,
+            "erosion": 0.1,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:crystalis_frosted_plains",
+          "parameters": {
+            "temperature": -0.8,
+            "humidity": 0.4,
+            "continentalness": 0.0,
+            "erosion": 0.3,
+            "weirdness": -0.2,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:crystalis_ice_caves",
+          "parameters": {
+            "temperature": -1.2,
+            "humidity": 0.6,
+            "continentalness": -0.3,
+            "erosion": -0.6,
+            "weirdness": 0.5,
+            "depth": -0.4,
+            "offset": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

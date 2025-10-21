@@ -1,0 +1,64 @@
+# Configuration for Stormworld mob spawns
+
+[spawn_rates]
+# Base spawn weights for each mob type (higher = more common)
+stormcaller_weight = 30
+windrider_weight = 60
+static_jelly_weight = 45
+
+# Minimum and maximum group sizes for each mob
+[group_sizes]
+stormcaller_min = 1
+stormcaller_max = 2
+windrider_min = 1
+windrider_max = 3
+static_jelly_min = 1
+static_jelly_max = 1
+
+# Spawn chance modifiers (0.0 to 1.0)
+[spawn_chances]
+# Base chance to spawn (normal weather)
+stormcaller_base_chance = 0.7
+windrider_base_chance = 0.5
+static_jelly_base_chance = 0.6
+
+# Chance to spawn during storms (0.0 to 1.0)
+stormcaller_storm_chance = 0.9
+windrider_storm_chance = 0.8
+static_jelly_storm_chance = 0.8
+
+# Spawn restrictions
+[restrictions]
+# Minimum light level for spawning (0-15)
+min_light_level = 0
+# Maximum light level for spawning (0-15, -1 for no limit)
+max_light_level = -1
+# Minimum Y level for spawning
+min_y_level = 0
+# Maximum Y level for spawning (256 for no limit)
+max_y_level = 256
+
+# Weather-based spawn modifiers
+[weather_modifiers]
+# Multiplier for spawn rates during rain
+rain_spawn_multiplier = 1.5
+# Multiplier for spawn rates during thunderstorms
+thunder_spawn_multiplier = 2.0
+# Additional spawn rate during storms in Stormworld
+stormworld_storm_multiplier = 2.5
+
+# Spawn cap settings
+[spawn_caps]
+# Maximum number of mobs of each type per chunk
+max_per_chunk_stormcaller = 2
+max_per_chunk_windrider = 4
+max_per_chunk_static_jelly = 3
+# Global mob cap for all Stormworld mobs
+max_mobs_per_chunk = 10
+
+# Debug settings
+[debug]
+# Enable debug logging for spawn attempts
+log_spawn_attempts = false
+# Show spawn attempt positions in-game
+show_spawn_attempts = false

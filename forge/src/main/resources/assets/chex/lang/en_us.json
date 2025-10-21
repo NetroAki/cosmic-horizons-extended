@@ -1,0 +1,30 @@
+{
+  // Sound subtitles
+  "subtitles.chex.ambient.desert.wind": "Desert wind howls",
+  "subtitles.chex.ambient.desert.day": "Desert ambience",
+  "subtitles.chex.ambient.desert.night": "Desert night sounds",
+  "subtitles.chex.weather.sandstorm": "Sandstorm approaches",
+  "subtitles.chex.weather.sandstorm.loop": "Sandstorm rages",
+  "subtitles.chex.entity.sandworm.ambient": "Sandworm rumbles",
+  "subtitles.chex.entity.sandworm.hurt": "Sandworm hurts",
+  "subtitles.chex.entity.sandworm.death": "Sandworm dies",
+  "subtitles.chex.block.sand.shift": "Sand shifts",
+  "subtitles.chex.block.spice_crystal.ambient": "Spice crystal hums",
+
+  // Pandora Ambient Sounds
+  "subtitles.chex.ambient.pandora.forest": "Bioluminescent forest hums",
+  "subtitles.chex.ambient.pandora.caves": "Ethereal cave echoes",
+  "subtitles.chex.ambient.pandora.wind": "Alien wind howls",
+  "subtitles.chex.ambient.pandora.biolume": "Biolume creatures chirp",
+
+  // Pandora Hazard Sounds
+  "subtitles.chex.hazard.spore_cloud": "Spores hiss",
+  "subtitles.chex.hazard.levitation_field": "Energy hums",
+  "subtitles.chex.hazard.heat_haze": "Air shimmers with heat",
+
+  // Spore Tyrant Sounds
+  "subtitles.chex.entity.spore_tyrant.ambient": "Spore Tyrant rumbles",
+  "subtitles.chex.entity.spore_tyrant.hurt": "Spore Tyrant roars in pain",
+  "subtitles.chex.entity.spore_tyrant.death": "Spore Tyrant collapses",
+  "subtitles.chex.entity.spore_tyrant.spore_burst": "Spores burst violently"
+}

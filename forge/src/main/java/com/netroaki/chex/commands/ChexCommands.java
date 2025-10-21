@@ -9,7 +9,9 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.netroaki.chex.CHEX;
 import com.netroaki.chex.capabilities.PlayerTierCapability;
+import com.netroaki.chex.config.MineralsRuntime;
 import com.netroaki.chex.debug.LagProfiler;
 import com.netroaki.chex.hooks.LaunchHooks;
 import com.netroaki.chex.registry.FuelRegistry;
@@ -29,6 +31,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
 public class ChexCommands {
+
+  private static String limitString(String str, int maxLength) {
+    if (str == null) return "";
+    return str.length() > maxLength ? str.substring(0, maxLength - 3) + "..." : str;
+  }
 
   private static final SuggestionProvider<CommandSourceStack> PLANET_SUGGESTIONS =
       (context, builder) -> {
@@ -52,11 +59,12 @@ public class ChexCommands {
   public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
     // Register all command trees
     registerChexCommand(dispatcher);
-    registerTierCommands(dispatcher);
-    registerTravelCommands(dispatcher);
-    registerFuelCommands(dispatcher);
-    registerLagProfilerCommands(dispatcher);
-    
+    // TODO: Implement these command methods
+    // registerTierCommands(dispatcher);
+    // registerTravelCommands(dispatcher);
+    // registerFuelCommands(dispatcher);
+    // registerLagProfilerCommands(dispatcher);
+
     // Register lore commands
     LoreCommand.register(dispatcher);
   }
@@ -184,6 +192,12 @@ public class ChexCommands {
                                 "planet",
                                 com.mojang.brigadier.arguments.StringArgumentType.string())
                             .executes(ChexCommands::dumpMinerals)))
+            .then(
+                Commands.literal("minerals")
+                    .then(
+                        Commands.literal("reload")
+                            .requires(source -> source.hasPermission(2))
+                            .executes(ChexCommands::mineralsReload)))
             .then(Commands.literal("getTier").executes(ChexCommands::getTier))
             .then(
                 Commands.literal("setTier")
@@ -302,6 +316,25 @@ public class ChexCommands {
     return 1;
   }
 
+  private static int mineralsReload(CommandContext<CommandSourceStack> context) {
+    CommandSourceStack source = context.getSource();
+    boolean ok = MineralsRuntime.reload(source.getServer());
+    if (ok) {
+      source.sendSuccess(
+          () -> Component.literal("§aMinerals reload OK: " + MineralsRuntime.getLastStatus()),
+          true);
+      return 1;
+    } else {
+      String err = MineralsRuntime.getLastError();
+      source.sendFailure(
+          Component.literal(
+              "§cMinerals reload failed: "
+                  + MineralsRuntime.getLastStatus()
+                  + (err != null ? (" (" + err + ")") : "")));
+      return 0;
+    }
+  }
+
   private static int unlockRocketTier(CommandContext<CommandSourceStack> context)
       throws CommandSyntaxException {
     CommandSourceStack source = context.getSource();
@@ -407,10 +440,17 @@ public class ChexCommands {
 
     // Reload planet registry and discovery
     try {
+      var server = source.getServer();
+      if (server != null) {
+        // Run discovery to refresh snapshot, then reload registry from snapshot and overrides
+        com.netroaki.chex.discovery.PlanetDiscovery.discoverAndWrite(server);
+      }
       PlanetRegistry.reloadDiscoveredPlanets();
-      source.sendSuccess(() -> Component.literal("§a✓ Planet registry reloaded successfully"), false);
+      source.sendSuccess(
+          () -> Component.literal("§a✓ Planet registry reloaded successfully"), false);
     } catch (Exception e) {
-      source.sendFailure(Component.literal("§cFailed to reload planet registry: " + e.getMessage()));
+      source.sendFailure(
+          Component.literal("§cFailed to reload planet registry: " + e.getMessage()));
       return 0;
     }
 
@@ -418,63 +458,84 @@ public class ChexCommands {
     return dumpPlanetsToConsoleAndFile(source, true);
   }
 
-  private static int dumpPlanets(CommandContext<CommandSourceStack> context) {
+  private static int dumpPlanetsSimple(CommandContext<CommandSourceStack> context) {
     CommandSourceStack source = context.getSource();
     source.sendSuccess(() -> Component.literal("§6=== CHEX Planet Registry ==="), false);
     return dumpPlanetsToConsoleAndFile(source, false);
   }
 
-  private static int dumpPlanetsToConsoleAndFile(CommandSourceStack source, boolean includeReloadMessage) {
+  private static int dumpPlanetsToConsoleAndFile(
+      CommandSourceStack source, boolean includeReloadMessage) {
     // Get all planets
     var planets = PlanetRegistry.getAllPlanets();
-    
+
     // Console output
     source.sendSuccess(
-        () -> Component.literal(String.format(
-            "§eTotal Planets: %d (CHEX: %d, Cosmos: %d)",
-            planets.size(),
-            planets.keySet().stream().filter(id -> id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID)).count(),
-            planets.keySet().stream().filter(id -> !id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID)).count()
-        )),
-        false
-    );
+        () ->
+            Component.literal(
+                String.format(
+                    "§eTotal Planets: %d (CHEX: %d, Cosmos: %d)",
+                    planets.size(),
+                    planets.keySet().stream()
+                        .filter(id -> id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID))
+                        .count(),
+                    planets.keySet().stream()
+                        .filter(id -> !id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID))
+                        .count())),
+        false);
 
     // Create structured table output
     String header =
         String.format(
             "%-38s | %-20s | %-3s | %-15s | %-8s | %-8s | %-8s | %-8s | %s",
-            "Planet ID", "Name", "Tier", "Suit Tag", "Oxygen", "Atmo", "Gravity", "Source", "Hazards");
+            "Planet ID",
+            "Name",
+            "Tier",
+            "Suit Tag",
+            "Oxygen",
+            "Atmo",
+            "Gravity",
+            "Source",
+            "Hazards");
     String separator = "-".repeat(header.length());
 
     source.sendSuccess(() -> Component.literal("\n§7" + header), false);
     source.sendSuccess(() -> Component.literal("§7" + separator), false);
 
-    planets.forEach((id, planet) -> {
-      String hazards = planet.hazards().isEmpty() ? "none" : String.join(", ", planet.hazards());
-      String minerals = planet.availableMinerals().isEmpty() ? "none" : String.join(", ", planet.availableMinerals());
-      String sourceType = id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID) ? "chex" : "cosmos";
-      
-      String row = String.format(
-          "%-38s | %-20s | T%-2d | %-15s | %-8s | %-8s | %-8d | %-8s | %s",
-          id.toString(),
-          limitString(planet.name(), 20),
-          planet.requiredRocketTier().getTier(),
-          limitString(planet.requiredSuitTag(), 15).replace("chex:suits/", ""),
-          planet.requiresOxygen() ? "✓" : "✗",
-          planet.hasAtmosphere() ? "✓" : "✗",
-          planet.gravityLevel(),
-          sourceType,
-          limitString(hazards, 30)
-      );
-      source.sendSuccess(() -> Component.literal("§f" + row), false);
-      
-      if (!minerals.equals("none")) {
-        source.sendSuccess(() -> Component.literal("§7  Minerals: §f" + limitString(minerals, 80)), false);
-      }
-      if (!planet.description().isEmpty()) {
-        source.sendSuccess(() -> Component.literal("§7  " + limitString(planet.description(), 80)), false);
-      }
-    });
+    planets.forEach(
+        (id, planet) -> {
+          String hazards =
+              planet.hazards().isEmpty() ? "none" : String.join(", ", planet.hazards());
+          String minerals =
+              planet.availableMinerals().isEmpty()
+                  ? "none"
+                  : String.join(", ", planet.availableMinerals());
+          String sourceType =
+              id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID) ? "chex" : "cosmos";
+
+          String row =
+              String.format(
+                  "%-38s | %-20s | T%-2d | %-15s | %-8s | %-8s | %-8d | %-8s | %s",
+                  id.toString(),
+                  limitString(planet.name(), 20),
+                  planet.requiredRocketTier().getTier(),
+                  limitString(planet.requiredSuitTag(), 15).replace("chex:suits/", ""),
+                  planet.requiresOxygen() ? "✓" : "✗",
+                  planet.hasAtmosphere() ? "✓" : "✗",
+                  planet.gravityLevel(),
+                  sourceType,
+                  limitString(hazards, 30));
+          source.sendSuccess(() -> Component.literal("§f" + row), false);
+
+          if (!minerals.equals("none")) {
+            source.sendSuccess(
+                () -> Component.literal("§7  Minerals: §f" + limitString(minerals, 80)), false);
+          }
+          if (!planet.description().isEmpty()) {
+            source.sendSuccess(
+                () -> Component.literal("§7  " + limitString(planet.description(), 80)), false);
+          }
+        });
 
     // Write JSON dump to file
     try {
@@ -482,50 +543,56 @@ public class ChexCommands {
       JsonObject root = new JsonObject();
       root.addProperty("count", planets.size());
       root.addProperty("timestamp", java.time.Instant.now().toString());
-      
+
       JsonArray planetsArray = new JsonArray();
-      planets.forEach((id, planet) -> {
-        JsonObject planetObj = new JsonObject();
-        planetObj.addProperty("id", id.toString());
-        planetObj.addProperty("name", planet.name());
-        planetObj.addProperty("description", planet.description());
-        planetObj.addProperty("requiredRocketTier", planet.requiredRocketTier().getTier());
-        planetObj.addProperty("requiredSuitTag", planet.requiredSuitTag());
-        planetObj.addProperty("fuelType", planet.fuelType());
-        planetObj.addProperty("gravityLevel", planet.gravityLevel());
-        planetObj.addProperty("hasAtmosphere", planet.hasAtmosphere());
-        planetObj.addProperty("requiresOxygen", planet.requiresOxygen());
-        planetObj.addProperty("biomeType", planet.biomeType());
-        planetObj.addProperty("isOrbit", planet.isOrbit());
-        
-        JsonArray hazardsArray = new JsonArray();
-        planet.hazards().forEach(hazardsArray::add);
-        planetObj.add("hazards", hazardsArray);
-        
-        JsonArray mineralsArray = new JsonArray();
-        planet.availableMinerals().forEach(mineralsArray::add);
-        planetObj.add("availableMinerals", mineralsArray);
-        
-        planetObj.addProperty("source", id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID) ? "chex" : "cosmos");
-        
-        planetsArray.add(planetObj);
-      });
-      
+      planets.forEach(
+          (id, planet) -> {
+            JsonObject planetObj = new JsonObject();
+            planetObj.addProperty("id", id.toString());
+            planetObj.addProperty("name", planet.name());
+            planetObj.addProperty("description", planet.description());
+            planetObj.addProperty("requiredRocketTier", planet.requiredRocketTier().getTier());
+            planetObj.addProperty("requiredSuitTag", planet.requiredSuitTag());
+            planetObj.addProperty("fuelType", planet.fuelType());
+            planetObj.addProperty("gravityLevel", planet.gravityLevel());
+            planetObj.addProperty("hasAtmosphere", planet.hasAtmosphere());
+            planetObj.addProperty("requiresOxygen", planet.requiresOxygen());
+            planetObj.addProperty("biomeType", planet.biomeType());
+            planetObj.addProperty("isOrbit", planet.isOrbit());
+
+            JsonArray hazardsArray = new JsonArray();
+            planet.hazards().forEach(hazardsArray::add);
+            planetObj.add("hazards", hazardsArray);
+
+            JsonArray mineralsArray = new JsonArray();
+            planet.availableMinerals().forEach(mineralsArray::add);
+            planetObj.add("availableMinerals", mineralsArray);
+
+            planetObj.addProperty(
+                "source",
+                id.getNamespace().equals(com.netroaki.chex.CHEX.MOD_ID) ? "chex" : "cosmos");
+
+            planetsArray.add(planetObj);
+          });
+
       root.add("planets", planetsArray);
 
       // Ensure the chex directory exists
       java.nio.file.Path outDir = java.nio.file.Paths.get("chex");
       java.nio.file.Files.createDirectories(outDir);
-      
+
       // Create a timestamped filename
-      String timestamp = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+      String timestamp =
+          java.time.LocalDateTime.now()
+              .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
       java.nio.file.Path outFile = outDir.resolve("planets_" + timestamp + ".json");
-      
+
       // Write the file
-      try (java.io.BufferedWriter writer = java.nio.file.Files.newBufferedWriter(outFile, java.nio.charset.StandardCharsets.UTF_8)) {
+      try (java.io.BufferedWriter writer =
+          java.nio.file.Files.newBufferedWriter(outFile, java.nio.charset.StandardCharsets.UTF_8)) {
         gson.toJson(root, writer);
       }
-      
+
       // Also create a symlink to the latest file if possible
       try {
         java.nio.file.Path latestLink = outDir.resolve("planets_latest.json");
@@ -537,9 +604,10 @@ public class ChexCommands {
         // Symlink creation might fail on some systems, that's okay
         CHEX.LOGGER.debug("Could not create latest symlink", e);
       }
-      
-      source.sendSuccess(() -> Component.literal("\n§a✓ Planet data saved to " + outFile.toAbsolutePath()), false);
-      
+
+      source.sendSuccess(
+          () -> Component.literal("\n§a✓ Planet data saved to " + outFile.toAbsolutePath()), false);
+
     } catch (Exception e) {
       source.sendFailure(Component.literal("§cFailed to save planet data: " + e.getMessage()));
       CHEX.LOGGER.error("Failed to save planet data", e);

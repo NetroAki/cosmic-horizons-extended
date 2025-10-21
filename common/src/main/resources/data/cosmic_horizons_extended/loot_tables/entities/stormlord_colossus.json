@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:stormheart"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:colossus_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:thundermaul"
+        }
+      ]
+    }
+  ]
+}

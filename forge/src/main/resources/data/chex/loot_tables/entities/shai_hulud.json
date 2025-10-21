@@ -31,7 +31,11 @@
             {
               "function": "minecraft:set_lore",
               "lore": [
-                {"text":"The crystallized essence of the Sand Emperor","color":"gray","italic":true}
+                {
+                  "text": "The crystallized essence of the Sand Emperor",
+                  "color": "gray",
+                  "italic": true
+                }
               ]
             }
           ]

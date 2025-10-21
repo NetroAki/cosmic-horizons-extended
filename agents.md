@@ -8,13 +8,15 @@ Systematically execute the compilation fixes tasks in `progress/compilation_fixe
 **Workflow:**
 
 1. **Start with Master Index**
+
    - Open `progress/compilation_fixes/00_MASTER_INDEX.md`
    - Review the 9 organized tasks and execution order
    - Understand the systematic approach and time estimates
 
 2. **Execute Tasks Sequentially**
+
    - **Task 01**: Registry Import Fixes (30 min)
-   - **Task 02**: Missing Base Classes (45 min)  
+   - **Task 02**: Missing Base Classes (45 min)
    - **Task 03**: Duplicate Methods (20 min)
    - **Task 04**: Incomplete World Systems (15 min)
    - **Task 05**: Remaining Symbol Errors (30 min)
@@ -24,6 +26,7 @@ Systematically execute the compilation fixes tasks in `progress/compilation_fixe
    - **Task 09**: Entity Placeholders (30 min)
 
 3. **For Each Task:**
+
    - Read the specific task file (e.g., `01_registry_import_fixes.md`)
    - Follow the detailed solution steps
    - Apply the fixes as described
@@ -66,11 +69,13 @@ Execute the placeholder texture generation system and create all necessary asset
 **Workflow:**
 
 1. **Setup and Prerequisites**
+
    - Verify ImageMagick is installed and accessible
    - Confirm Minecraft assets are available at `InventivetalentDev-minecraft-assets-af628ec/`
    - Review the texture generation script: `scripts/create_placeholder_textures.ps1`
 
 2. **Execute Asset Generation**
+
    - Run the main texture script: `.\scripts\create_placeholder_textures.ps1`
    - Monitor the generation of:
      - **15+ Block textures** with planet themes
@@ -79,6 +84,7 @@ Execute the placeholder texture generation system and create all necessary asset
      - **Complete JSON models** (block states, item models, entity models)
 
 3. **Verify Asset Creation**
+
    - Check that all textures are generated in correct directories
    - Verify JSON model files are created properly
    - Confirm planet color themes are applied correctly:

@@ -1,0 +1,40 @@
+{
+  "textures": [
+    "chex:particle/bioluminescent_sparkle_0",
+    "chex:particle/bioluminescent_sparkle_1",
+    "chex:particle/bioluminescent_sparkle_2"
+  ],
+  "max_age": 40,
+  "size": {
+    "start": 0.1,
+    "end": 0.0,
+    "variation": 0.1
+  },
+  "color": {
+    "start": "#7ff4ff",
+    "end": "#00a2ff",
+    "variation": 0.2
+  },
+  "bright": true,
+  "glow": true,
+  "collision": {
+    "enabled": false
+  },
+  "physics": {
+    "gravity": -0.01,
+    "drag": 0.98,
+    "bounciness": 0.5
+  },
+  "motion": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "variation": 0.01
+  },
+  "lifetime": {
+    "loops": 1,
+    "variation": 0.3
+  },
+  "fade_in": 0.1,
+  "fade_out": 0.5
+}

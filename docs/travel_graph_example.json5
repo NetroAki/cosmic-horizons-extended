@@ -1,0 +1,9 @@
+// Example: travel graph configuration (chex-travel.json5)
+{
+  tiers: [
+    { tier: 3, planets: ["cosmic_horizons_extended:pandora"] },
+    { tier: 4, planets: ["cosmic_horizons_extended:arrakis"] },
+    { tier: 9, planets: ["cosmic_horizons_extended:shattered_dyson_swarm"] },
+    { tier: 10, planets: ["cosmic_horizons_extended:neutron_forge"] },
+  ],
+}

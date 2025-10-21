@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "glowing=false": {
+      "model": "chex:block/luminous_kelp_plant"
+    },
+    "glowing=true": {
+      "model": "chex:block/luminous_kelp_plant_glow"
+    }
+  }
+}

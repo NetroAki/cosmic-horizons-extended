@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "item": "cosmic_horizons_extended:apex_core",
+      "type": "boss_heart",
+      "unlocks": ["progression:tier_15_access", "materials:fusion_catalysts"],
+      "notes": "Dyson Apex heart. Grants access to Dyson tier advancements and fusion catalyst chain."
+    },
+    {
+      "item": "cosmic_horizons_extended:sovereign_heart",
+      "type": "boss_heart",
+      "unlocks": [
+        "progression:neutronforge_access",
+        "materials:neutronium_processing"
+      ],
+      "notes": "Forge Star Sovereign heart. Unlocks Neutron Forge tier and neutronium processing."
+    },
+    {
+      "item": "cosmic_horizons_extended:forge_matrix_core",
+      "type": "matrix_core",
+      "unlocks": [
+        "machines:forge_platform_controls",
+        "recipes:gravity_well_components"
+      ],
+      "notes": "Matrix core enabling forge platform control recipes and gravity well components."
+    },
+    {
+      "item": "cosmic_horizons_extended:shield_circuit",
+      "type": "mini_core",
+      "unlocks": ["gear:radiation_shield_upgrades"],
+      "notes": "Mini-core from Shelter Guardian enabling radiation shield gear upgrades."
+    },
+    {
+      "item": "cosmic_horizons_extended:magnetar_scales",
+      "type": "mini_core",
+      "unlocks": ["materials:magnetic_alloys"],
+      "notes": "Scales used to unlock magnetic alloy recipes (Magnetar biomes)."
+    }
+  ]
+}

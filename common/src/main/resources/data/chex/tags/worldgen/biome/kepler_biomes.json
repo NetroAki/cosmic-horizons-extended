@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "chex:kepler_temperate_forest",
+    "chex:kepler_highlands",
+    "chex:kepler_river_valleys",
+    "chex:kepler_meadowlands",
+    "chex:kepler_rocky_scrub"
+  ]
+}

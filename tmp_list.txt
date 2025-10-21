@@ -1,0 +1,700 @@
+--- forge/PlanetOverridesCore.java
+package com.netroaki.chex.config;
+
+import com.google.gson.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+public final class PlanetOverridesCore {
+  public static final class Entry {
+    public final Integer requiredRocketTier;
+    public final String requiredSuitTag;
+    public final String name;
+    public final String description;
+    public final String fuelType;
+    public final Integer gravityLevel;
+    public final Boolean hasAtmosphere;
+    public final Boolean requiresOxygen;
+    public final Set<String> hazards;
+    public final Set<String> availableMinerals;
+    public final String biomeType;
+    public final Boolean isOrbit;
+
+    public Entry(
+        Integer requiredRocketTier,
+        String requiredSuitTag,
+        String name,
+        String description,
+        String fuelType,
+        Integer gravityLevel,
+        Boolean hasAtmosphere,
+        Boolean requiresOxygen,
+        Set<String> hazards,
+        Set<String> availableMinerals,
+        String biomeType,
+        Boolean isOrbit) {
+      this.requiredRocketTier = requiredRocketTier;
+      this.requiredSuitTag = requiredSuitTag;
+      this.name = name;
+      this.description = description;
+      this.fuelType = fuelType;
+      this.gravityLevel = gravityLevel;
+      this.hasAtmosphere = hasAtmosphere;
+      this.requiresOxygen = requiresOxygen;
+      this.hazards = hazards != null ? Set.copyOf(hazards) : Set.of();
+      this.availableMinerals = availableMinerals != null ? Set.copyOf(availableMinerals) : Set.of();
+      this.biomeType = biomeType;
+      this.isOrbit = isOrbit;
+    }
+  }
+
+  private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
+  private PlanetOverridesCore() {}
+
+  public static Optional<Map<String, Entry>> load(Path file) {
+    try {
+      if (!Files.exists(file)) {
+        return Optional.empty();
+      }
+      try (BufferedReader reader = new BufferedReader(new FileReader(file.toFile()))) {
+        com.google.gson.stream.JsonReader jr = new com.google.gson.stream.JsonReader(reader);
+        jr.setLenient(true);
+        JsonObject root = GSON.fromJson(jr, JsonObject.class);
+        Map<String, Entry> map = new HashMap<>();
+
+        for (Map.Entry<String, JsonElement> e : root.entrySet()) {
+          if (e.getValue().isJsonObject()) {
+            JsonObject obj = e.getValue().getAsJsonObject();
+
+            // Required fields with defaults
+            Integer tier =
+                obj.has("requiredRocketTier")
+                    ? Math.max(1, obj.get("requiredRocketTier").getAsInt())
+                    : null;
+
+            String suit =
+                obj.has("requiredSuitTag") ? obj.get("requiredSuitTag").getAsString() : null;
+
+            // Optional fields
+            String name = obj.has("name") ? obj.get("name").getAsString() : null;
+            String description =
+                obj.has("description") ? obj.get("description").getAsString() : null;
+            String fuelType = obj.has("fuelType") ? obj.get("fuelType").getAsString() : null;
+            Integer gravityLevel =
+                obj.has("gravityLevel") ? obj.get("gravityLevel").getAsInt() : null;
+            Boolean hasAtmosphere =
+                obj.has("hasAtmosphere") ? obj.get("hasAtmosphere").getAsBoolean() : null;
+            Boolean requiresOxygen =
+                obj.has("requiresOxygen") ? obj.get("requiresOxygen").getAsBoolean() : null;
+            String biomeType = obj.has("biomeType") ? obj.get("biomeType").getAsString() : null;
+            Boolean isOrbit = obj.has("isOrbit") ? obj.get("isOrbit").getAsBoolean() : null;
+
+            // Handle hazards array
+            Set<String> hazards = new java.util.HashSet<>();
+            if (obj.has("hazards") && obj.get("hazards").isJsonArray()) {
+              for (JsonElement hazard : obj.getAsJsonArray("hazards")) {
+                hazards.add(hazard.getAsString().toLowerCase());
+              }
+            }
+
+            // Handle availableMinerals array
+            Set<String> availableMinerals = new java.util.HashSet<>();
+            if (obj.has("availableMinerals") && obj.get("availableMinerals").isJsonArray()) {
+              for (JsonElement mineral : obj.getAsJsonArray("availableMinerals")) {
+                availableMinerals.add(mineral.getAsString().toLowerCase());
+              }
+            }
+
+            map.put(
+                e.getKey(),
+                new Entry(
+                    tier,
+                    suit,
+                    name,
+                    description,
+                    fuelType,
+                    gravityLevel,
+                    hasAtmosphere,
+                    requiresOxygen,
+                    hazards,
+                    availableMinerals,
+                    biomeType,
+                    isOrbit));
+          }
+        }
+        return Optional.of(map);
+      }
+    } catch (Exception e) {
+      return Optional.empty();
+    }
+  }
+}
+--- common/PlanetOverridesCore.java
+package com.netroaki.chex.config;
+
+import com.google.gson.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+
+public final class PlanetOverridesCore {
+  /**
+   * Represents a set of overrides that can be applied to a planet definition. All fields are
+   * nullable, with null indicating that the field should not be overridden.
+   */
+  public static final class Entry {
+    // Basic information
+    private final String name;
+    private final String description;
+
+    // Requirements
+    private final Integer requiredRocketTier;
+    private final Integer requiredSuitTier;
+    private final String requiredSuitTag;
+    private final String fuelType;
+
+    // Environmental properties
+    private final Integer gravityLevel;
+    private final Boolean hasAtmosphere;
+    private final Boolean requiresOxygen;
+    private final Boolean isOrbit;
+
+    // Content
+    private final Set<String> hazards;
+    private final Set<String> availableMinerals;
+    private final String biomeType;
+
+    public Entry(
+        Integer requiredRocketTier,
+        Integer requiredSuitTier,
+        String requiredSuitTag,
+        String name,
+        String description,
+        String fuelType,
+        Set<String> hazards,
+        Integer gravityLevel,
+        Boolean hasAtmosphere,
+        Boolean requiresOxygen,
+        Set<String> availableMinerals,
+        String biomeType,
+        Boolean isOrbit) {
+      // Requirements
+      this.requiredRocketTier = requiredRocketTier;
+      this.requiredSuitTier = requiredSuitTier;
+      this.requiredSuitTag = requiredSuitTag;
+      this.fuelType = fuelType;
+
+      // Basic information
+      this.name = name;
+      this.description = description;
+
+      // Environmental properties
+      this.gravityLevel = gravityLevel;
+      this.hasAtmosphere = hasAtmosphere;
+      this.requiresOxygen = requiresOxygen;
+      this.isOrbit = isOrbit;
+
+      // Content
+      this.hazards = hazards != null ? Set.copyOf(hazards) : null;
+      this.availableMinerals = availableMinerals != null ? Set.copyOf(availableMinerals) : null;
+      this.biomeType = biomeType;
+    }
+
+    public Integer requiredRocketTier() {
+      return requiredRocketTier;
+    }
+
+    public Integer requiredSuitTier() {
+      return requiredSuitTier;
+    }
+
+    public String requiredSuitTag() {
+      return requiredSuitTag;
+    }
+
+    public String name() {
+      return name;
+    }
+
+    public String description() {
+      return description;
+    }
+
+    public String fuelType() {
+      return fuelType;
+    }
+
+    public Integer gravityLevel() {
+      return gravityLevel;
+    }
+
+    public Boolean hasAtmosphere() {
+      return hasAtmosphere;
+    }
+
+    public Boolean requiresOxygen() {
+      return requiresOxygen;
+    }
+
+    public Boolean isOrbit() {
+      return isOrbit;
+    }
+
+    public Set<String> availableMinerals() {
+      return availableMinerals;
+    }
+
+    public String biomeType() {
+      return biomeType;
+    }
+
+    public Set<String> hazards() {
+      return hazards;
+    }
+  }
+
+  private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
+  private PlanetOverridesCore() {}
+
+  /**
+   * Loads planet overrides from a JSON5 file. The expected format is a flat JSON object where keys
+   * are planet IDs and values are override objects. Example: { "cosmichorizons:earth_moon": {
+   * "requiredRocketTier": 2, "name": "Moon" }, "cosmichorizons:mars_lands": { "requiredRocketTier":
+   * 4, "requiredSuitTag": "chex:suits/suit2" } }
+   */
+  public static Optional<Map<String, Entry>> load(Path file) {
+    try {
+      if (!Files.exists(file)) {
+        return Optional.empty();
+      }
+      try (BufferedReader reader = new BufferedReader(new FileReader(file.toFile()))) {
+        com.google.gson.stream.JsonReader jr = new com.google.gson.stream.JsonReader(reader);
+        jr.setLenient(true); // Allow comments and other JSON5 features
+        JsonObject root = GSON.fromJson(jr, JsonObject.class);
+        Map<String, Entry> map = new HashMap<>();
+
+        // Iterate through each entry in the root object
+        for (Map.Entry<String, JsonElement> entry : root.entrySet()) {
+          String planetId = entry.getKey();
+          if (entry.getValue().isJsonObject()) {
+            try {
+              JsonObject overrideObj = entry.getValue().getAsJsonObject();
+              Entry override = parseEntry(overrideObj);
+              map.put(planetId, override);
+            } catch (Exception e) {
+              System.err.println(
+                  "Failed to parse override for " + planetId + ": " + e.getMessage());
+            }
+          }
+        }
+
+        return Optional.of(map);
+      }
+    } catch (Exception e) {
+      System.err.println("Failed to load planet overrides: " + e.getMessage());
+      return Optional.empty();
+    }
+  }
+
+  /**
+   * Parses a JSON object into a PlanetOverridesCore.Entry object. Handles all possible fields that
+   * can be overridden for a planet.
+   */
+  private static Entry parseEntry(JsonObject obj) {
+    // Basic information
+    String name = getString(obj, "name");
+    String description = getString(obj, "description");
+
+    // Requirements
+    Integer requiredRocketTier = getInteger(obj, "requiredRocketTier", 1, 10);
+    Integer requiredSuitTier = getInteger(obj, "requiredSuitTier", 1, 5);
+    String requiredSuitTag = getString(obj, "requiredSuitTag");
+    String fuelType = getString(obj, "fuelType");
+
+    // Environmental properties
+    Integer gravityLevel = getInteger(obj, "gravityLevel", 0, 10);
+    Boolean hasAtmosphere = getBoolean(obj, "hasAtmosphere");
+    Boolean requiresOxygen = getBoolean(obj, "requiresOxygen");
+    Boolean isOrbit = getBoolean(obj, "isOrbit");
+
+    // Content
+    Set<String> hazards = parseStringSet(obj, "hazards");
+    Set<String> availableMinerals = parseStringSet(obj, "availableMinerals");
+    String biomeType = getString(obj, "biomeType");
+
+    return new Entry(
+        requiredRocketTier,
+        requiredSuitTier,
+        requiredSuitTag,
+        name,
+        description,
+        fuelType,
+        hazards,
+        gravityLevel,
+        hasAtmosphere,
+        requiresOxygen,
+        availableMinerals,
+        biomeType,
+        isOrbit);
+  }
+
+  private static Integer getInteger(JsonObject obj, String key, int min, int max) {
+    if (!obj.has(key)) {
+      return null;
+    }
+    try {
+      int value = obj.get(key).getAsInt();
+      if (value < min) value = min;
+      if (value > max) value = max;
+      return value;
+    } catch (Exception ignored) {
+      return null;
+    }
+  }
+
+  /**
+   * Parses a string set from a JSON array in the given object. Returns null if the key doesn't
+   * exist or the value is not an array.
+   */
+  private static Set<String> parseStringSet(JsonObject obj, String key) {
+    if (!obj.has(key) || !obj.get(key).isJsonArray()) {
+      return null;
+    }
+
+    Set<String> result = new LinkedHashSet<>();
+    JsonArray array = obj.getAsJsonArray(key);
+    for (JsonElement element : array) {
+      if (element.isJsonPrimitive()) {
+        String value = element.getAsString().trim().toLowerCase();
+        if (!value.isEmpty()) {
+          result.add(value);
+        }
+      }
+    }
+    return result.isEmpty() ? null : result;
+  }
+--- forge/PandoraHazardsConfig.java
+package com.netroaki.chex.config;
+
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
+
+public class PandoraHazardsConfig {
+  public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
+  public static final ForgeConfigSpec SPEC;
+
+  public static void register() {
+    ModLoadingContext.get()
+        .registerConfig(ModConfig.Type.COMMON, SPEC, "chex-pandora-hazards.toml");
+  }
+
+  // General Settings
+  public static final ForgeConfigSpec.IntValue HAZARD_CHECK_INTERVAL;
+
+  // Levitation Updrafts
+  public static final ForgeConfigSpec.BooleanValue ENABLE_LEVITATION_UPDRAFTS;
+  public static final ForgeConfigSpec.DoubleValue LEVITATION_STRENGTH;
+  public static final ForgeConfigSpec.IntValue LEVITATION_DURATION;
+  public static final ForgeConfigSpec.IntValue LEVITATION_IMMUNE_TIER;
+
+  // Heat Aura
+  public static final ForgeConfigSpec.BooleanValue ENABLE_HEAT_AURA;
+  public static final ForgeConfigSpec.IntValue HEAT_DAMAGE_INTERVAL;
+  public static final ForgeConfigSpec.DoubleValue HEAT_DAMAGE_AMOUNT;
+  public static final ForgeConfigSpec.IntValue HEAT_IMMUNE_TIER;
+
+  // Spore Blindness
+  public static final ForgeConfigSpec.BooleanValue ENABLE_SPORE_BLINDNESS;
+  public static final ForgeConfigSpec.IntValue BLINDNESS_DURATION;
+  public static final ForgeConfigSpec.IntValue BLINDNESS_IMMUNE_TIER;
+
+  // Ambient Audio
+  public static final ForgeConfigSpec.BooleanValue ENABLE_AMBIENT_AUDIO;
+  public static final ForgeConfigSpec.IntValue AMBIENT_SOUND_INTERVAL;
+  public static final ForgeConfigSpec.DoubleValue AMBIENT_SOUND_VOLUME;
+
+  static {
+    BUILDER.push("Pandora Hazards Configuration");
+
+    // General Settings
+    BUILDER.comment("General settings for Pandora hazards");
+    HAZARD_CHECK_INTERVAL =
+        BUILDER
+            .comment("How often (in ticks) to check for hazards (20 ticks = 1 second)")
+            .defineInRange("hazardCheckInterval", 10, 1, 100);
+
+    // Levitation Updrafts
+    BUILDER.push("Levitation Updrafts");
+    ENABLE_LEVITATION_UPDRAFTS =
+        BUILDER
+            .comment("Enable levitation updrafts in Pandora's floating islands")
+            .define("enableLevitationUpdrafts", true);
+    LEVITATION_STRENGTH =
+        BUILDER
+            .comment("Strength of the levitation effect (0.0 to 1.0)")
+            .defineInRange("levitationStrength", 0.1, 0.01, 1.0);
+    LEVITATION_DURATION =
+        BUILDER
+            .comment("Duration of the levitation effect in ticks (20 ticks = 1 second)")
+            .defineInRange("levitationDuration", 100, 20, 600);
+    LEVITATION_IMMUNE_TIER =
+        BUILDER
+            .comment(
+                "Suit tier required to be immune to levitation (0 = no immunity, higher = better"
+                    + " protection)")
+            .defineInRange("levitationImmuneTier", 3, 0, 10);
+    BUILDER.pop();
+
+    // Heat Aura
+    BUILDER.push("Heat Aura");
+    ENABLE_HEAT_AURA =
+        BUILDER.comment("Enable heat damage in volcanic areas").define("enableHeatAura", true);
+    HEAT_DAMAGE_INTERVAL =
+        BUILDER
+            .comment("Interval between heat damage ticks (20 ticks = 1 second)")
+            .defineInRange("heatDamageInterval", 40, 10, 200);
+    HEAT_DAMAGE_AMOUNT =
+        BUILDER
+            .comment("Amount of damage dealt by heat (in half-hearts)")
+            .defineInRange("heatDamageAmount", 1.0, 0.1, 10.0);
+    HEAT_IMMUNE_TIER =
+        BUILDER
+            .comment("Suit tier required to be immune to heat damage")
+            .defineInRange("heatImmuneTier", 4, 0, 10);
+    BUILDER.pop();
+
+    // Spore Blindness
+    BUILDER.push("Spore Blindness");
+    ENABLE_SPORE_BLINDNESS =
+        BUILDER
+            .comment("Enable spore blindness in fungal biomes")
+            .define("enableSporeBlindness", true);
+    BLINDNESS_DURATION =
+        BUILDER
+            .comment("Base duration of spore blindness in ticks (20 ticks = 1 second)")
+            .defineInRange("blindnessDuration", 200, 20, 1200);
+    BLINDNESS_IMMUNE_TIER =
+        BUILDER
+            .comment("Suit tier required to be immune to spore blindness")
+            .defineInRange("blindnessImmuneTier", 2, 0, 10);
+    BUILDER.pop();
+
+    // Ambient Audio
+    BUILDER.push("Ambient Audio");
+    ENABLE_AMBIENT_AUDIO =
+        BUILDER.comment("Enable ambient sounds in Pandora").define("enableAmbientAudio", true);
+    AMBIENT_SOUND_INTERVAL =
+        BUILDER
+            .comment("Average interval between ambient sounds in ticks (20 ticks = 1 second)")
+            .defineInRange("ambientSoundInterval", 200, 20, 1200);
+    AMBIENT_SOUND_VOLUME =
+        BUILDER
+            .comment("Volume of ambient sounds (0.0 to 1.0)")
+            .defineInRange("ambientSoundVolume", 0.7, 0.1, 1.0);
+    BUILDER.pop();
+
+    BUILDER.pop();
+    SPEC = BUILDER.build();
+  }
+
+  // Helper methods to get config values
+  public static int getHazardCheckInterval() {
+    return HAZARD_CHECK_INTERVAL.get();
+  }
+
+  public static boolean isLevitationEnabled() {
+    return ENABLE_LEVITATION_UPDRAFTS.get();
+  }
+
+  public static float getLevitationStrength() {
+    return LEVITATION_STRENGTH.get().floatValue();
+  }
+
+  public static int getLevitationDuration() {
+    return LEVITATION_DURATION.get();
+  }
+
+  public static int getLevitationImmuneTier() {
+    return LEVITATION_IMMUNE_TIER.get();
+  }
+
+  public static boolean isHeatAuraEnabled() {
+    return ENABLE_HEAT_AURA.get();
+  }
+
+  public static int getHeatDamageInterval() {
+    return HEAT_DAMAGE_INTERVAL.get();
+  }
+
+  public static float getHeatDamageAmount() {
+    return HEAT_DAMAGE_AMOUNT.get().floatValue();
+  }
+
+  public static int getHeatImmuneTier() {
+    return HEAT_IMMUNE_TIER.get();
+  }
+
+  public static boolean isSporeBlindnessEnabled() {
+    return ENABLE_SPORE_BLINDNESS.get();
+  }
+
+  public static int getBlindnessDuration() {
+    return BLINDNESS_DURATION.get();
+  }
+
+  public static int getBlindnessImmuneTier() {
+    return BLINDNESS_IMMUNE_TIER.get();
+  }
+
+  public static boolean isAmbientAudioEnabled() {
+    return ENABLE_AMBIENT_AUDIO.get();
+  }
+
+  public static int getAmbientSoundInterval() {
+    return AMBIENT_SOUND_INTERVAL.get();
+  }
+
+  public static float getAmbientSoundVolume() {
+    return AMBIENT_SOUND_VOLUME.get().floatValue();
+  }
+}
+--- common/PandoraHazardsConfig.java
+package com.netroaki.chex.config;
+
+import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
+
+@Mod.EventBusSubscriber
+public class PandoraHazardsConfig {
+  public static final String CATEGORY_HAZARDS = "hazards";
+  public static final String CATEGORY_AMBIENCE = "ambience";
+
+  // Hazard Toggles
+  public static ForgeConfigSpec.BooleanValue ENABLE_LEVITATION_UPDRAFTS;
+  public static ForgeConfigSpec.BooleanValue ENABLE_HEAT_AURA;
+  public static ForgeConfigSpec.BooleanValue ENABLE_SPORE_BLINDNESS;
+
+  // Hazard Settings
+  public static ForgeConfigSpec.IntValue UPDRAFT_STRENGTH;
+  public static ForgeConfigSpec.IntValue HEAT_DAMAGE_INTERVAL;
+  public static ForgeConfigSpec.IntValue SPORE_EFFECT_DURATION;
+
+  // Ambience Toggles
+  public static ForgeConfigSpec.BooleanValue ENABLE_BIOLUME_HUM;
+  public static ForgeConfigSpec.BooleanValue ENABLE_WIND_SOUNDS;
+  public static ForgeConfigSpec.BooleanValue ENABLE_PARTICLES;
+
+  // Ambience Settings
+  public static ForgeConfigSpec.DoubleValue BIOLUME_HUM_VOLUME;
+  public static ForgeConfigSpec.DoubleValue WIND_SOUND_VOLUME;
+  public static ForgeConfigSpec.IntValue PARTICLE_DENSITY;
+
+  private static ForgeConfigSpec COMMON_CONFIG;
+
+  static {
+    ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+
+    COMMON_BUILDER.comment("Pandora Hazards Configuration").push(CATEGORY_HAZARDS);
+
+    // Hazard Toggles
+    COMMON_BUILDER.comment("Enable or disable specific hazards in Pandora");
+    ENABLE_LEVITATION_UPDRAFTS =
+        COMMON_BUILDER
+            .comment("Enable levitation updrafts in floating mountains")
+            .define("enable_levitation_updrafts", true);
+    ENABLE_HEAT_AURA =
+        COMMON_BUILDER
+            .comment("Enable heat aura in volcanic wastelands")
+            .define("enable_heat_aura", true);
+    ENABLE_SPORE_BLINDNESS =
+        COMMON_BUILDER
+            .comment("Enable spore blindness in bioluminescent forests")
+            .define("enable_spore_blindness", true);
+
+    // Hazard Settings
+    COMMON_BUILDER.comment("Hazard Settings").push("settings");
+    UPDRAFT_STRENGTH =
+        COMMON_BUILDER
+            .comment("Strength of levitation effect (1-10)")
+            .defineInRange("updraft_strength", 5, 1, 10);
+    HEAT_DAMAGE_INTERVAL =
+        COMMON_BUILDER
+            .comment("Ticks between heat damage (20 = 1 second)")
+            .defineInRange("heat_damage_interval", 40, 10, 200);
+    SPORE_EFFECT_DURATION =
+        COMMON_BUILDER
+            .comment("Duration of spore effects in ticks (20 = 1 second)")
+            .defineInRange("spore_effect_duration", 100, 20, 600);
+    COMMON_BUILDER.pop();
+    COMMON_BUILDER.pop();
+
+    // Ambience Settings
+    COMMON_BUILDER.comment("Pandora Ambience Configuration").push(CATEGORY_AMBIENCE);
+
+    // Ambience Toggles
+    COMMON_BUILDER.comment("Enable or disable ambience features");
+    ENABLE_BIOLUME_HUM =
+        COMMON_BUILDER
+            .comment("Enable biolume hum sound in bioluminescent forests")
+            .define("enable_biolume_hum", true);
+    ENABLE_WIND_SOUNDS =
+        COMMON_BUILDER
+            .comment("Enable wind sounds in sky islands and floating mountains")
+            .define("enable_wind_sounds", true);
+    ENABLE_PARTICLES =
+        COMMON_BUILDER.comment("Enable ambient particles").define("enable_particles", true);
+
+    // Ambience Settings
+    COMMON_BUILDER.comment("Ambience Settings").push("settings");
+    BIOLUME_HUM_VOLUME =
+        COMMON_BUILDER
+            .comment("Volume of biolume hum (0.0 - 1.0)")
+            .defineInRange("biolume_hum_volume", 0.7, 0.0, 1.0);
+    WIND_SOUND_VOLUME =
+        COMMON_BUILDER
+            .comment("Volume of wind sounds (0.0 - 1.0)")
+            .defineInRange("wind_sound_volume", 0.5, 0.0, 1.0);
+    PARTICLE_DENSITY =
+        COMMON_BUILDER
+            .comment("Density of ambient particles (1-10)")
+            .defineInRange("particle_density", 5, 1, 10);
+    COMMON_BUILDER.pop();
+    COMMON_BUILDER.pop();
+
+    COMMON_CONFIG = COMMON_BUILDER.build();
+  }
+
+  public static void register() {
+    ModLoadingContext.get()
+        .registerConfig(
+            ModConfig.Type.COMMON, COMMON_CONFIG, "cosmic_horizons_extended-hazards.toml");
+  }
+
+  @SubscribeEvent
+  public static void onLoad(final ModConfigEvent.Loading configEvent) {
+    // Config loaded - update any values that need updating
+  }
+
+  @SubscribeEvent
+  public static void onReload(final ModConfigEvent.Reloading configEvent) {
+    // Config reloaded - update any values that need updating
+  }
+}

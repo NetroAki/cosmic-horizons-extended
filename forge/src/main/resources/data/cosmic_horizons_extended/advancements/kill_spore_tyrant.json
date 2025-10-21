@@ -1,0 +1,15 @@
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "cosmic_horizons_extended:spore_tyrant"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

@@ -1,62 +1,16 @@
 {
-  "carvers": {},
+  "temperature": 0.7,
   "downfall": 0.2,
+  "has_precipitation": false,
   "effects": {
-    "fog_color": 15135999,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 13625855,
+    "sky_color": 13631743,
+    "fog_color": 15132390,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "foliage_color": 16776960,
-    "grass_color": 16776960
+    "grass_color": 11196942
   },
-  "features": [
-    "cosmic_horizons_extended:pandora_cloudstone_islands_placed",
-    "cosmic_horizons_extended:pandora_cloudstone_flora_placed",
-    "cosmic_horizons_extended:pandora_sky_polished_plate_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
-  ],
-  "has_precipitation": true,
-  "spawn_costs": {
-    "sky_sovereign": {
-      "energy_budget": 0.3,
-      "charge": 1.0
-    }
-  },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "cosmic_horizons_extended:sky_grazer",
-        "weight": 4,
-        "minCount": 1,
-        "maxCount": 2
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "cosmic_horizons_extended:storm_roc",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "cosmic_horizons_extended:sky_sovereign",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "temperature": 0.7
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
 }

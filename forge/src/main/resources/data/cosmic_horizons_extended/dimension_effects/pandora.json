@@ -1,0 +1,32 @@
+{
+  "effects": {
+    "sky_color": 5118101,
+    "fog_color": 1772851,
+    "water_color": 3831536,
+    "water_fog_color": 526879,
+    "ambient_light": 0.1,
+    "fog_identifier": "cosmic_horizons_extended:pandora_fog",
+    "particle": {
+      "probability": 0.002,
+      "options": {
+        "type": "minecraft:white_ash"
+      }
+    },
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "additions_sound": {
+      "sound": "cosmic_horizons_extended:ambient.pandora.wind",
+      "tick_chance": 0.01
+    },
+    "music": {
+      "sound": "cosmic_horizons_extended:music.pandora.ambient",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
+  }
+}

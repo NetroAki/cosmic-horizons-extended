@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "cosmic_horizons_extended:pandora_bioluminescent_forest",
-  "features": [
-    "cosmic_horizons_extended:pandora_fungal_tower_placed",
-    "cosmic_horizons_extended:pandora_crystal_cluster_placed"
-  ],
-  "step": "vegetal_decoration"
-}

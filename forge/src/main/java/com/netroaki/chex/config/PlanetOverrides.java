@@ -25,17 +25,17 @@ public final class PlanetOverrides {
     // Basic information
     public String name = null;
     public String description = "";
-    
+
     // Requirements
     public int requiredRocketTier = 1;
     public String requiredSuitTag = "chex:suit1";
     public String fuelType = "minecraft:lava";
-    
+
     // Environmental properties
     public int gravityLevel = 1;
     public boolean hasAtmosphere = true;
     public boolean requiresOxygen = true;
-    
+
     // Content
     public Set<String> hazards = Set.of();
     public Set<String> availableMinerals = Set.of();
@@ -64,7 +64,7 @@ public final class PlanetOverrides {
               map.forEach(
                   (id, e) -> {
                     Entry en = new Entry();
-                    
+
                     // Basic information
                     if (e.name() != null) {
                       en.name = e.name();
@@ -72,7 +72,7 @@ public final class PlanetOverrides {
                     if (e.description() != null) {
                       en.description = e.description();
                     }
-                    
+
                     // Requirements
                     if (e.requiredRocketTier() != null) {
                       en.requiredRocketTier = e.requiredRocketTier();
@@ -81,12 +81,13 @@ public final class PlanetOverrides {
                       en.requiredSuitTag = e.requiredSuitTag();
                     } else if (e.requiredSuitTier() != null) {
                       en.requiredSuitTag =
-                          String.format("chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
+                          String.format(
+                              "chex:suits/suit%d", Math.max(1, Math.min(5, e.requiredSuitTier())));
                     }
                     if (e.fuelType() != null) {
                       en.fuelType = e.fuelType();
                     }
-                    
+
                     // Environmental properties
                     if (e.gravityLevel() != null) {
                       en.gravityLevel = e.gravityLevel();
@@ -97,7 +98,7 @@ public final class PlanetOverrides {
                     if (e.requiresOxygen() != null) {
                       en.requiresOxygen = e.requiresOxygen();
                     }
-                    
+
                     // Content
                     if (e.hazards() != null && !e.hazards().isEmpty()) {
                       en.hazards = Set.copyOf(e.hazards());

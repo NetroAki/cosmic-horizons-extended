@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "cosmic_horizons_extended:spice_cactus"
+  },
+  "result": "cosmic_horizons_extended:dried_spice",
+  "conditions": [{ "type": "forge:true" }],
+  "experience": 0.35,
+  "cookingtime": 200
+}

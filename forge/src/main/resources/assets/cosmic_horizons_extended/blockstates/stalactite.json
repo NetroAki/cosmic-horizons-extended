@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "cosmic_horizons_extended:block/stalactite",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "cosmic_horizons_extended:block/stalactite",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cosmic_horizons_extended:block/stalactite",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "cosmic_horizons_extended:block/stalactite",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "cosmic_horizons_extended:block/stalactite"
+    },
+    "facing=west": {
+      "model": "cosmic_horizons_extended:block/stalactite",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

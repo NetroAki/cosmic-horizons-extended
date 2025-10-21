@@ -1,0 +1,160 @@
+{
+  "variants": {
+    "age=0,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant0"
+    },
+    "age=1,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant1"
+    },
+    "age=2,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant2"
+    },
+    "age=3,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant3"
+    },
+    "age=4,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant4"
+    },
+    "age=5,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant5"
+    },
+    "age=6,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant6"
+    },
+    "age=7,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant7"
+    },
+    "age=8,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant8"
+    },
+    "age=9,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant9"
+    },
+    "age=10,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant10"
+    },
+    "age=11,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant11"
+    },
+    "age=12,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant12"
+    },
+    "age=13,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant13"
+    },
+    "age=14,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant14"
+    },
+    "age=15,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant15"
+    },
+    "age=16,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant16"
+    },
+    "age=17,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant17"
+    },
+    "age=18,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant18"
+    },
+    "age=19,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant19"
+    },
+    "age=20,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant20"
+    },
+    "age=21,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant21"
+    },
+    "age=22,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant22"
+    },
+    "age=23,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant23"
+    },
+    "age=24,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant24"
+    },
+    "age=25,glowing=false": {
+      "model": "chex:block/luminous_kelp_plant"
+    },
+    "age=0,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant0_glow"
+    },
+    "age=1,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant1_glow"
+    },
+    "age=2,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant2_glow"
+    },
+    "age=3,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant3_glow"
+    },
+    "age=4,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant4_glow"
+    },
+    "age=5,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant5_glow"
+    },
+    "age=6,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant6_glow"
+    },
+    "age=7,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant7_glow"
+    },
+    "age=8,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant8_glow"
+    },
+    "age=9,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant9_glow"
+    },
+    "age=10,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant10_glow"
+    },
+    "age=11,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant11_glow"
+    },
+    "age=12,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant12_glow"
+    },
+    "age=13,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant13_glow"
+    },
+    "age=14,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant14_glow"
+    },
+    "age=15,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant15_glow"
+    },
+    "age=16,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant16_glow"
+    },
+    "age=17,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant17_glow"
+    },
+    "age=18,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant18_glow"
+    },
+    "age=19,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant19_glow"
+    },
+    "age=20,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant20_glow"
+    },
+    "age=21,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant21_glow"
+    },
+    "age=22,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant22_glow"
+    },
+    "age=23,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant23_glow"
+    },
+    "age=24,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant24_glow"
+    },
+    "age=25,glowing=true": {
+      "model": "chex:block/luminous_kelp_plant_glow"
+    }
+  }
+}

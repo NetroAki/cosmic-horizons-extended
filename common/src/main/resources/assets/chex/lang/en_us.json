@@ -1,0 +1,67 @@
+{
+  "block.chex.vent_basalt": "Vent Basalt",
+  "block.chex.manganese_nodule": "Manganese Nodule",
+  "block.chex.luminous_kelp": "Luminous Kelp",
+  "block.chex.luminous_kelp_plant": "Luminous Kelp Plant",
+  "block.chex.ice_shelf_slab": "Ice Shelf Slab",
+  "block.chex.ice_shelf_block": "Ice Shelf Block",
+  "item.chex.ocean_core": "Ocean Core",
+  "item.chex.ocean_core.desc": "The heart of the Ocean Sovereign, pulsing with ancient power",
+  "item.chex.ocean_core.effect": "§7Inflicts §bSlowness§7 and §cWeakness§7 on hit",
+
+  "item.chex.stellar_core": "Stellar Core",
+  "item.chex.stellar_core.lore1": "The concentrated essence of a fallen star",
+  "item.chex.stellar_core.lore2": "Burns with the fury of a thousand suns",
+
+  // Aqua Mundus Entities
+  "entity.chex.ocean_sovereign": "Ocean Sovereign",
+  "entity.chex.luminfish": "Luminfish",
+  "entity.chex.hydrothermal_drone": "Hydrothermal Drone",
+  "entity.chex.tidal_jelly": "Tidal Jelly",
+  "entity.chex.abyssal_leviathan": "Abyssal Leviathan",
+
+  // Aqua Mundus Subtitles - Environment
+  "subtitles.chex.aqua_mundus_ambient_underwater": "Deep ocean hums",
+  "subtitles.chex.aqua_mundus_ambient_caverns": "Echoing water currents",
+  "subtitles.chex.aqua_mundus_whirlpool_loop": "Water swirls violently",
+  "subtitles.chex.aqua_mundus_bubble_column": "Bubbles rise",
+
+  // Aqua Mundus Subtitles - Luminfish
+  "subtitles.chex.luminfish_ambient": "Luminfish chirps",
+  "subtitles.chex.luminfish_hurt": "Luminfish squeals",
+
+  // Aqua Mundus Subtitles - Hydrothermal Drone
+  "subtitles.chex.hydrothermal_drone_ambient": "Hydrothermal Drone hums",
+  "subtitles.chex.hydrothermal_drone_hurt": "Hydrothermal Drone clanks",
+
+  // Aqua Mundus Subtitles - Ocean Sovereign
+  "subtitles.chex.ocean_sovereign_ambient": "Ocean Sovereign hums",
+  "subtitles.chex.ocean_sovereign_hurt": "Ocean Sovereign roars",
+  "subtitles.chex.ocean_sovereign_death": "Ocean Sovereign dies",
+  "subtitles.chex.ocean_sovereign_whirlpool": "Ocean Sovereign creates whirlpool",
+  "subtitles.chex.ocean_sovereign_sonic_boom": "Ocean Sovereign unleashes sonic boom",
+  "subtitles.chex.ocean_sovereign_charge": "Ocean Sovereign charges",
+
+  "advancements.chex.defeat_ocean_sovereign.title": "Tidebreaker",
+  "advancements.chex.defeat_ocean_sovereign.description": "Defeat the Ocean Sovereign and claim its core",
+
+  "death.attack.ocean_sovereign": "%1$s was devoured by the Ocean Sovereign",
+  "death.attack.ocean_sovereign.player": "%1$s was dragged into the depths by the Ocean Sovereign while fighting %2$s",
+
+  "entity.chex.stellar_avatar": "Stellar Avatar",
+  "subtitles.chex.stellar_avatar_ambient": "Stellar Avatar hums",
+  "subtitles.chex.stellar_avatar_hurt": "Stellar Avatar hurts",
+  "subtitles.chex.stellar_avatar_death": "Stellar Avatar dies",
+  "subtitles.chex.stellar_avatar_phase_change": "Stellar Avatar changes phase",
+  "subtitles.chex.stellar_avatar_attack_flare": "Stellar Avatar unleashes solar flare",
+  "subtitles.chex.stellar_avatar_attack_coronal": "Stellar Avatar ejects corona",
+  "subtitles.chex.stellar_avatar_attack_nova": "Stellar Avatar begins supernova",
+  "subtitles.chex.stellar_avatar_shield_activate": "Stellar Avatar activates shield",
+  "subtitles.chex.stellar_avatar_shield_break": "Stellar Avatar's shield breaks",
+
+  "advancements.chex.defeat_stellar_avatar.title": "Stellar Conqueror",
+  "advancements.chex.defeat_stellar_avatar.description": "Defeat the Stellar Avatar and claim its core",
+
+  "death.attack.stellar_avatar": "%1$s was incinerated by the Stellar Avatar's fury",
+  "death.attack.stellar_avatar.player": "%1$s was incinerated by the Stellar Avatar while fighting %2$s"
+}

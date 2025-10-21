@@ -3,16 +3,19 @@
 ## Changes Made
 
 1. **Sand Core Item**
+
    - Created `SandCoreItem` class with custom tooltip
    - Registered the item with the `ArrakisItems` registry
    - Added to the INGREDIENTS creative tab
 
 2. **Loot Tables**
+
    - Created main loot table for Shai-Hulud boss
    - Added common and rare drop tables for varied rewards
    - Implemented custom loot functions for special drops
 
 3. **Localization**
+
    - Added English translations for the Sand Core item
    - Included tooltip text explaining its purpose
    - Added entity name for the Sand Emperor

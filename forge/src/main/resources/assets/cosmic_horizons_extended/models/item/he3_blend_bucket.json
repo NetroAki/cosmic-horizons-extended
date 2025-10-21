@@ -1,5 +1,6 @@
 {
-  "parent": "forge:item/default",
-  "loader": "forge:fluid_container",
-  "fluid": "cosmic_horizons_extended:he3_blend"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cosmic_horizons_extended:item/kerosene_bucket"
+  }
 }

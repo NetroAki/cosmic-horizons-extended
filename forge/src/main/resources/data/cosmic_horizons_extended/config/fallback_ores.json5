@@ -40,7 +40,7 @@
   "gtceu:ores/quartz": "minecraft:nether_quartz_ore",
   "gtceu:ores/netherrack": "minecraft:netherrack",
   "gtceu:ores/endstone": "minecraft:end_stone",
-  
+
   // Pandora-specific ores
   "gtceu:ores/bismuthinite": "minecraft:copper_ore",
   "gtceu:ores/phosphorite": "minecraft:glowstone",

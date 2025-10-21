@@ -495,8 +495,9 @@ public class PlanetRegistry {
     return result;
   }
 
-  /** 
+  /**
    * Apply overrides to a planet definition.
+   *
    * @param base The base planet definition to apply overrides to
    * @param overrides Map of planet IDs to their override entries
    * @return A new PlanetDef with overrides applied

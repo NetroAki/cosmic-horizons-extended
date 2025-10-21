@@ -1,0 +1,67 @@
+{
+  // Configurable suit hazard profiles per planet or biome tag
+  rules: [
+    {
+      id: "cosmic_horizons_extended:shattered_dyson_swarm",
+      scope: "planet",
+      vacuum: 0.7, // baseline intensity (0..1)
+      thermal: 0.4,
+      radiation: 0.9,
+      corrosive: 0.0,
+      pressure: 0.1,
+    },
+    {
+      id: "cosmic_horizons_extended:neutron_forge",
+      scope: "planet",
+      vacuum: 0.3,
+      thermal: 0.8,
+      radiation: 0.8,
+      corrosive: 0.0,
+      pressure: 0.9,
+    },
+  ],
+  // Mitigation multipliers applied by highest suit tier ≤ player tier
+  // 0.0 = no protection, 1.0 = full protection
+  suitMitigations: [
+    {
+      tier: 1,
+      vacuum: 0.1,
+      thermal: 0.1,
+      radiation: 0.05,
+      corrosive: 0.0,
+      pressure: 0.05,
+    },
+    {
+      tier: 2,
+      vacuum: 0.25,
+      thermal: 0.2,
+      radiation: 0.1,
+      corrosive: 0.05,
+      pressure: 0.1,
+    },
+    {
+      tier: 3,
+      vacuum: 0.5,
+      thermal: 0.35,
+      radiation: 0.25,
+      corrosive: 0.2,
+      pressure: 0.25,
+    },
+    {
+      tier: 4,
+      vacuum: 0.7,
+      thermal: 0.55,
+      radiation: 0.45,
+      corrosive: 0.4,
+      pressure: 0.5,
+    },
+    {
+      tier: 5,
+      vacuum: 0.9,
+      thermal: 0.8,
+      radiation: 0.75,
+      corrosive: 0.65,
+      pressure: 0.8,
+    },
+  ],
+}

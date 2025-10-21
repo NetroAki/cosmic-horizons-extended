@@ -1,16 +1,13 @@
 package com.netroaki.chex.registry.blocks;
 
 import com.netroaki.chex.CHEX;
-import com.netroaki.chex.blocks.RingworldWallBlock;
-import com.netroaki.chex.registry.fluids.CHEXFluids;
-import com.netroaki.chex.ring.block.ArcSceneryBlock;
 import com.netroaki.chex.block.arrakis.DesertShrubBlock;
 import com.netroaki.chex.block.arrakis.IceReedsBlock;
 import com.netroaki.chex.block.arrakis.SpiceCactusBlock;
 import com.netroaki.chex.block.crystal.CrystalBlock;
 import com.netroaki.chex.block.crystal.CrystalCoreOreBlock;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import com.netroaki.chex.blocks.RingworldWallBlock;
+import com.netroaki.chex.ring.block.ArcSceneryBlock;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -22,7 +19,10 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -52,26 +52,28 @@ public class CHEXBlocks {
           () -> new ArcSceneryBlock(BlockBehaviour.Properties.of().noOcclusion().noCollission()));
 
   // Crystalis Blocks
-  public static final RegistryObject<Block> CRYSTAL_BLOCK = BLOCKS.register(
-      "crystal_block",
-      () -> new CrystalBlock(BlockBehaviour.Properties.of()
-          .mapColor(MapColor.COLOR_CYAN)
-          .instrument(NoteBlockInstrument.HAT)
-          .requiresCorrectToolForDrops()
-          .strength(1.5F, 6.0F)
-          .lightLevel(state -> 5)
-          .noOcclusion()
-      ));
-      
+  public static final RegistryObject<Block> CRYSTAL_BLOCK =
+      BLOCKS.register(
+          "crystal_block",
+          () ->
+              new CrystalBlock(
+                  BlockBehaviour.Properties.of()
+                      .mapColor(MapColor.COLOR_CYAN)
+                      .instrument(NoteBlockInstrument.HAT)
+                      .requiresCorrectToolForDrops()
+                      .strength(1.5F, 6.0F)
+                      .lightLevel(state -> 5)
+                      .noOcclusion()));
+
   // Crystal Core Ores
-  public static final RegistryObject<Block> CRYSTAL_CORE_ORE = BLOCKS.register("crystal_core_ore",
-      () -> new CrystalCoreOreBlock(1, 3));
-      
-  public static final RegistryObject<Block> DEEPSLATE_CRYSTAL_CORE_ORE = BLOCKS.register("deepslate_crystal_core_ore",
-      () -> new CrystalCoreOreBlock(2, 4));
-      
-  public static final RegistryObject<Block> END_CRYSTAL_CORE_ORE = BLOCKS.register("end_crystal_core_ore",
-      () -> new CrystalCoreOreBlock(3, 5));
+  public static final RegistryObject<Block> CRYSTAL_CORE_ORE =
+      BLOCKS.register("crystal_core_ore", () -> new CrystalCoreOreBlock(1, 3));
+
+  public static final RegistryObject<Block> DEEPSLATE_CRYSTAL_CORE_ORE =
+      BLOCKS.register("deepslate_crystal_core_ore", () -> new CrystalCoreOreBlock(2, 4));
+
+  public static final RegistryObject<Block> END_CRYSTAL_CORE_ORE =
+      BLOCKS.register("end_crystal_core_ore", () -> new CrystalCoreOreBlock(3, 5));
 
   // Placeholder surface blocks per-dimension/biome
   public static final RegistryObject<Block> ARRAKIS_SAND =
@@ -98,6 +100,65 @@ public class CHEXBlocks {
       BLOCKS.register(
           "pandora_grass",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).strength(0.6f)));
+
+  // Kepler-452b Blocks (temperate Earth-like planet)
+  public static final RegistryObject<Block> KEPLER_WOOD_LOG =
+      BLOCKS.register(
+          "kepler_wood_log",
+          () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+
+  public static final RegistryObject<Block> KEPLER_WOOD_LEAVES =
+      BLOCKS.register(
+          "kepler_wood_leaves",
+          () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+
+  public static final RegistryObject<Block> KEPLER_MOSS =
+      BLOCKS.register(
+          "kepler_moss",
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.MOSS_CARPET).noCollission().instabreak()));
+
+  public static final RegistryObject<Block> KEPLER_VINES =
+      BLOCKS.register(
+          "kepler_vines",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.VINE).noCollission().instabreak()));
+
+  public static final RegistryObject<Block> KEPLER_BLOSSOM =
+      BLOCKS.register(
+          "kepler_blossom",
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.FLOWERING_AZALEA_LEAVES)
+                      .lightLevel(state -> 3)));
+
+  // Aqua Mundus Blocks (ocean world)
+  public static final RegistryObject<Block> AQUA_VENT_BASALT =
+      BLOCKS.register(
+          "aqua_vent_basalt",
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.BASALT)
+                      .strength(1.2f)
+                      .lightLevel(state -> 5)));
+
+  public static final RegistryObject<Block> AQUA_MANGANESE_NODULE =
+      BLOCKS.register(
+          "aqua_manganese_nodule",
+          () ->
+              new DropExperienceBlock(
+                  BlockBehaviour.Properties.copy(Blocks.IRON_ORE).strength(2.0f),
+                  UniformInt.of(2, 5)));
+
+  public static final RegistryObject<Block> AQUA_LUMINOUS_KELP =
+      BLOCKS.register(
+          "aqua_luminous_kelp",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.KELP).lightLevel(state -> 8)));
+
+  public static final RegistryObject<Block> AQUA_ICE_SHELF_SLAB =
+      BLOCKS.register(
+          "aqua_ice_shelf_slab",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(0.8f)));
 
   public static final RegistryObject<Block> NEUTRON_STAR_BASALT =
       BLOCKS.register(
@@ -160,7 +221,7 @@ public class CHEXBlocks {
                   BlockBehaviour.Properties.copy(Blocks.REDSTONE_ORE)
                       .strength(1.0f)
                       .lightLevel(s -> 7)));
-                      
+
   // Spice Mine blocks
   public static final RegistryObject<Block> SPICE_DEPOSIT =
       BLOCKS.register(
@@ -171,7 +232,7 @@ public class CHEXBlocks {
                       .strength(1.2f)
                       .lightLevel(s -> 4)
                       .sound(SoundType.AMETHYST)));
-                      
+
   public static final RegistryObject<Block> CRYSTALLINE_SALT_CLUSTER =
       BLOCKS.register(
           "crystalline_salt_cluster",
@@ -180,51 +241,54 @@ public class CHEXBlocks {
                   BlockBehaviour.Properties.copy(Blocks.QUARTZ_BLOCK)
                       .strength(0.8f)
                       .sound(SoundType.AMETHYST_CLUSTER)));
-                      
+
   // Sietch Stronghold blocks
   public static final RegistryObject<Block> SIETCH_STONE =
       BLOCKS.register(
           "sietch_stone",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).strength(1.8f)));
-          
+
   public static final RegistryObject<Block> SIETCH_STONE_BRICKS =
       BLOCKS.register(
           "sietch_stone_bricks",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).strength(2.0f)));
-          
+
   public static final RegistryObject<Block> SIETCH_STONE_CHISELED =
       BLOCKS.register(
           "sietch_stone_chiseled",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS).strength(2.0f)));
-          
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS).strength(2.0f)));
+
   // Stormlands blocks
   // Arrakis Flora
   public static final RegistryObject<Block> SPICE_CACTUS =
       BLOCKS.register(
           "spice_cactus",
-          () -> new SpiceCactusBlock(
-              BlockBehaviour.Properties.copy(Blocks.CACTUS)
-                  .sound(SoundType.WOOL) // Softer sound than normal cactus
-                  .lightLevel(state -> state.getValue(SpiceCactusBlock.AGE) == 3 ? 3 : 0)
-          ));
-          
+          () ->
+              new SpiceCactusBlock(
+                  BlockBehaviour.Properties.copy(Blocks.CACTUS)
+                      .sound(SoundType.WOOL) // Softer sound than normal cactus
+                      .lightLevel(state -> state.getValue(SpiceCactusBlock.AGE) == 3 ? 3 : 0)));
+
   public static final RegistryObject<Block> ICE_REEDS =
       BLOCKS.register(
           "ice_reeds",
-          () -> new IceReedsBlock(
-              BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE)
-                  .sound(SoundType.GLASS) // Icy sound
-                  .lightLevel(state -> 2) // Subtle glow
-          ));
-          
+          () ->
+              new IceReedsBlock(
+                  BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE)
+                      .sound(SoundType.GLASS) // Icy sound
+                      .lightLevel(state -> 2) // Subtle glow
+                  ));
+
   public static final RegistryObject<Block> DESERT_SHRUB =
       BLOCKS.register(
           "desert_shrub",
-          () -> new DesertShrubBlock(
-              BlockBehaviour.Properties.copy(Blocks.DEAD_BUSH)
-                  .sound(SoundType.GRASS)
-                  .noOcclusion()
-          ));
+          () ->
+              new DesertShrubBlock(
+                  BlockBehaviour.Properties.copy(Blocks.DEAD_BUSH)
+                      .sound(SoundType.GRASS)
+                      .noOcclusion()));
 
   // Stormlands blocks
   public static final RegistryObject<Block> STORMGLASS =
@@ -236,12 +300,12 @@ public class CHEXBlocks {
                       .strength(0.8f)
                       .sound(SoundType.GLASS)
                       .isValidSpawn((state, world, pos, type) -> false)));
-                      
+
   public static final RegistryObject<Block> HARDENED_DUNE_SAND =
       BLOCKS.register(
           "hardened_dune_sand",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.SANDSTONE).strength(1.5f)));
-          
+
   public static final RegistryObject<Block> SANDSTORM_GLASS =
       BLOCKS.register(
           "sandstorm_glass",
@@ -293,50 +357,58 @@ public class CHEXBlocks {
                   BlockBehaviour.Properties.copy(Blocks.PRISMARINE)
                       .strength(0.6f)
                       .lightLevel(s -> 10)));
-                      
+
   // Crystal-clad Pandorite variants
-  public static final RegistryObject<Block> CRYSTAL_CLAD_PANDORITE = 
+  public static final RegistryObject<Block> CRYSTAL_CLAD_PANDORITE =
       BLOCKS.register(
           "crystal_clad_pandorite",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
-              .strength(2.0f, 6.0f)
-              .lightLevel(s -> 4)));
-              
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
+                      .strength(2.0f, 6.0f)
+                      .lightLevel(s -> 4)));
+
   public static final RegistryObject<Block> CRYSTAL_CLAD_PANDORITE_BRICKS =
       BLOCKS.register(
           "crystal_clad_pandorite_bricks",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
-              .strength(2.0f, 6.0f)
-              .lightLevel(s -> 4)));
-              
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
+                      .strength(2.0f, 6.0f)
+                      .lightLevel(s -> 4)));
+
   public static final RegistryObject<Block> CRYSTAL_CLAD_PANDORITE_POLISHED =
       BLOCKS.register(
           "crystal_clad_pandorite_polished",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
-              .strength(2.0f, 6.0f)
-              .lightLevel(s -> 4)));
-              
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
+                      .strength(2.0f, 6.0f)
+                      .lightLevel(s -> 4)));
+
   // Volcanic blocks for Pandora's volcanic wasteland
   public static final RegistryObject<Block> VOLCANIC_BASALT =
       BLOCKS.register(
           "volcanic_basalt",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.BASALT).strength(1.5f, 6.0f)));
-          
+
   public static final RegistryObject<Block> VOLCANIC_ASH =
       BLOCKS.register(
           "volcanic_ash",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.SOUL_SAND).strength(0.5f)));
-          
+
   public static final RegistryObject<Block> OBSIDIAN_GLASS =
       BLOCKS.register(
           "obsidian_glass",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.GLASS)
-              .strength(3.0f, 1200.0f)
-              .noOcclusion()
-              .isValidSpawn((state, world, pos, type) -> false)
-              .isRedstoneConductor((state, world, pos) -> false)
-              .isSuffocating((state, world, pos) -> false)
-              .isViewBlocking((state, world, pos) -> false)));
+          () ->
+              new Block(
+                  BlockBehaviour.Properties.copy(Blocks.GLASS)
+                      .strength(3.0f, 1200.0f)
+                      .noOcclusion()
+                      .isValidSpawn((state, world, pos, type) -> false)
+                      .isRedstoneConductor((state, world, pos) -> false)
+                      .isSuffocating((state, world, pos) -> false)
+                      .isViewBlocking((state, world, pos) -> false)));
 
   // Fallback ore blocks for GTCEu-less deployments
   public static final RegistryObject<Block> FALLBACK_BAUXITE_ORE = registerFallbackOre("bauxite");
@@ -388,49 +460,56 @@ public class CHEXBlocks {
           "kerosene_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.KEROSENE.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.KEROSENE.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> RP1_FLUID_BLOCK =
       BLOCKS.register(
           "rp1_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.RP1.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.RP1.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> LOX_FLUID_BLOCK =
       BLOCKS.register(
           "lox_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.LOX.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.LOX.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> LH2_FLUID_BLOCK =
       BLOCKS.register(
           "lh2_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.LH2.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.LH2.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> DT_MIX_FLUID_BLOCK =
       BLOCKS.register(
           "dt_mix_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.DT_MIX.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.DT_MIX.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> HE3_BLEND_FLUID_BLOCK =
       BLOCKS.register(
           "he3_blend_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.HE3_BLEND.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.HE3_BLEND.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   public static final RegistryObject<LiquidBlock> EXOTIC_MIX_FLUID_BLOCK =
       BLOCKS.register(
           "exotic_mix_fluid_block",
           () ->
               new LiquidBlock(
-                  () -> CHEXFluids.EXOTIC_MIX.get(), BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  () -> com.netroaki.chex.registry.fluids.CHEXFluids.EXOTIC_MIX.get(),
+                  BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   // Aurelia ringworld wall - unbreakable, black
   public static final RegistryObject<Block> AURELIA_WALL =
@@ -498,7 +577,7 @@ public class CHEXBlocks {
     registerBlockItem(STORMGLASS);
     registerBlockItem(HARDENED_DUNE_SAND);
     registerBlockItem(SANDSTORM_GLASS);
-    
+
     // Arrakis Flora
     registerBlockItem(SPICE_CACTUS);
     registerBlockItem(ICE_REEDS);
@@ -514,6 +593,20 @@ public class CHEXBlocks {
     registerBlockItem(AURELIAN_LOG);
     registerBlockItem(AURELIAN_LEAVES);
     registerBlockItem(AURELIAN_GRASS);
+
+    // Kepler-452b
+    registerBlockItem(KEPLER_WOOD_LOG);
+    registerBlockItem(KEPLER_WOOD_LEAVES);
+    registerBlockItem(KEPLER_MOSS);
+    registerBlockItem(KEPLER_VINES);
+    registerBlockItem(KEPLER_BLOSSOM);
+
+    // Aqua Mundus
+    registerBlockItem(AQUA_VENT_BASALT);
+    registerBlockItem(AQUA_MANGANESE_NODULE);
+    registerBlockItem(AQUA_LUMINOUS_KELP);
+    registerBlockItem(AQUA_ICE_SHELF_SLAB);
+
     FALLBACK_ORE_BLOCKS.forEach(CHEXBlocks::registerBlockItem);
   }
 

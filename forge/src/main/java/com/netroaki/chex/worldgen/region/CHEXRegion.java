@@ -35,9 +35,11 @@ public class CHEXRegion extends Region {
     }
     VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
 
-    // TODO: fold in the remaining CHEX worlds once their biome sets are production-ready.
+    // TODO: fold in the remaining CHEX worlds once their biome sets are
+    // production-ready.
 
-    // Arrakis - distribute sub-biomes across hot/arid slices without touching vanilla temperate
+    // Arrakis - distribute sub-biomes across hot/arid slices without touching
+    // vanilla temperate
     // bands
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.WARM, Temperature.HOT))
@@ -60,7 +62,9 @@ public class CHEXRegion extends Region {
         .depth(Depth.SURFACE)
         .weirdness(
             Weirdness.span(
-                Weirdness.LOW_SLICE_NORMAL_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING))
+                // TODO: Fix when Weirdness constants are available
+                // Weirdness.LOW_SLICE_NORMAL_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING
+                Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING))
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_SPICE_MINES));
 
@@ -101,7 +105,8 @@ public class CHEXRegion extends Region {
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.ARRAKIS_STORMLANDS));
 
-    // Pandora - tie each sub-biome to distinct humidity/height slices for vertical variety
+    // Pandora - tie each sub-biome to distinct humidity/height slices for vertical
+    // variety
     new ParameterPointListBuilder()
         .temperature(Temperature.span(Temperature.NEUTRAL, Temperature.WARM))
         .humidity(Humidity.span(Humidity.NEUTRAL, Humidity.WET))
@@ -133,7 +138,9 @@ public class CHEXRegion extends Region {
         .continentalness(Continentalness.span(Continentalness.COAST, Continentalness.NEAR_INLAND))
         .erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1))
         .depth(Depth.FULL_RANGE)
-        .weirdness(Weirdness.span(Weirdness.DEEP_OCEAN, Weirdness.MID_SLICE_VARIANT_DESCENDING))
+        .weirdness(
+            Weirdness.span(
+                Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING))
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_OCEAN_DEPTHS));
 
@@ -146,7 +153,7 @@ public class CHEXRegion extends Region {
         .depth(Depth.SURFACE)
         .weirdness(
             Weirdness.span(
-                Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.LOW_SLICE_VARIANT_DESCENDING))
+                Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING))
         .build()
         .forEach(point -> builder.add(point, CHEXBiomes.PANDORA_VOLCANIC_WASTELAND));
 
@@ -156,7 +163,7 @@ public class CHEXRegion extends Region {
         .continentalness(
             Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
         .erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1))
-        .depth(Depth.UNDER_FLOOR, Depth.TOP_SLAB)
+        .depth(Depth.UNDERGROUND, Depth.SURFACE)
         .weirdness(
             Weirdness.span(
                 Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING))

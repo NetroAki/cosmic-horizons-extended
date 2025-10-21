@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:prime_core"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:nano_circuit_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:guardians_blade"
+        }
+      ]
+    }
+  ]
+}

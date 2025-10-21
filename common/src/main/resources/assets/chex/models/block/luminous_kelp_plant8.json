@@ -1,0 +1,7 @@
+﻿{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "chex:block/luminous_kelp_plant8"
+  },
+  "render_type": "cutout"
+}

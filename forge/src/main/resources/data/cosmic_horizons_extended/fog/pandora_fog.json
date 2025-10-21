@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:density_function",
+  "function": "minecraft:overworld/atmosphere",
+  "modifiers": [
+    {
+      "type": "minecraft:interpolated",
+      "argument": {
+        "type": "minecraft:interpolated",
+        "argument": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:temperature",
+          "xz_scale": 1.0,
+          "y_scale": 1.0
+        }
+      }
+    },
+    {
+      "type": "minecraft:add",
+      "value": -0.2
+    },
+    {
+      "type": "minecraft:mul",
+      "value": 0.7
+    }
+  ]
+}

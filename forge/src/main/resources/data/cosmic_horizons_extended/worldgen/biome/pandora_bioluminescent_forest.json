@@ -1,69 +1,17 @@
-﻿{
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
-  },
+{
+  "temperature": 0.95,
   "downfall": 0.9,
-  "effects": {
-    "fog_color": 1772851,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 5118101,
-    "water_color": 3831536,
-    "water_fog_color": 526879,
-    "foliage_color": 65280,
-    "grass_color": 65280
-  },
-  "features": [
-    "cosmic_horizons_extended:pandora_fungal_tower_placed",
-    "cosmic_horizons_extended:pandora_biolume_moss_patch_placed",
-    "cosmic_horizons_extended:pandora_spore_soil_patch_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
-  ],
   "has_precipitation": true,
-  "spawn_costs": {
-    "glowbeast": {
-      "energy_budget": 0.12,
-      "charge": 1.0
-    }
+  "effects": {
+    "sky_color": 5116053,
+    "fog_color": 1776419,
+    "water_color": 3839730,
+    "water_fog_color": 526111,
+    "grass_color": 6005541,
+    "foliage_color": 4780096
   },
-  "spawners": {
-    "ambient": [
-      {
-        "type": "cosmic_horizons_extended:sporeflies",
-        "weight": 10,
-        "minCount": 2,
-        "maxCount": 4
-      }
-    ],
-    "axolotls": [],
-    "creature": [
-      {
-        "type": "cosmic_horizons_extended:glowbeast",
-        "weight": 8,
-        "minCount": 1,
-        "maxCount": 3
-      }
-    ],
-    "misc": [],
-    "monster": [
-      {
-        "type": "cosmic_horizons_extended:spore_tyrant",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "temperature": 0.95
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
 }

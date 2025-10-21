@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:hollow_heart"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:tyrant_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:tyrant_fangblade"
+        }
+      ]
+    }
+  ]
+}

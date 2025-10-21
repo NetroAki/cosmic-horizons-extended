@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cosmic_horizons_extended:block/void_stone"
+  },
+  "render_type": "translucent"
+}

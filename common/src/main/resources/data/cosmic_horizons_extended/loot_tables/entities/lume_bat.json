@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "cosmic_horizons_extended:bat_oil" }
+      ],
+      "conditions": [{ "condition": "minecraft:killed_by_player" }]
+    }
+  ]
+}

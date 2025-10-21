@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "chex:aqua_mundus_shallow_seas",
+    "chex:aqua_mundus_kelp_forest",
+    "chex:aqua_mundus_abyssal_trench",
+    "chex:aqua_mundus_hydrothermal_vents",
+    "chex:aqua_mundus_ice_shelves"
+  ]
+}

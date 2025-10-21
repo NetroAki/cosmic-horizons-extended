@@ -1,0 +1,4 @@
+{
+  "parent": "cosmic_horizons_extended:block/desert_shrub_stage2",
+  "render_type": "minecraft:cutout"
+}

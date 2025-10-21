@@ -1,0 +1,18 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_bioluminescent_forest",
+    "cosmic_horizons_extended:pandora_floating_mountains",
+    "cosmic_horizons_extended:pandora_volcanic_wasteland",
+    "cosmic_horizons_extended:pandora_sky_islands"
+  ],
+  "spawners": [
+    {
+      "type": "monster",
+      "entity": "cosmic_horizons_extended:spore_tyrant",
+      "weight": 1,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "chex:block/kepler_oak_log" },
+    "axis=z": { "model": "chex:block/kepler_oak_log", "x": 90 },
+    "axis=x": { "model": "chex:block/kepler_oak_log", "x": 90, "y": 90 }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "cosmic_horizons_extended:arrakis_great_dunes",
-  "features": ["cosmic_horizons_extended:arrakis_spice_cactus_patch_placed"],
-  "step": "vegetal_decoration"
-}

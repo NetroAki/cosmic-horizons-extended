@@ -1,12 +1,14 @@
 package com.netroaki.chex.capabilities;
 
 import com.netroaki.chex.CHEX;
+import com.netroaki.chex.network.CHEXNetwork;
 import com.netroaki.chex.registry.NoduleTiers;
 import java.util.HashSet;
 import java.util.Set;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -14,6 +16,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
@@ -256,6 +259,37 @@ public class PlayerTierCapability implements INBTSerializable<CompoundTag> {
       AttachCapabilitiesEvent<net.minecraft.world.entity.Entity> event) {
     if (event.getObject() instanceof net.minecraft.world.entity.player.Player) {
       event.addCapability(ID, new Provider());
+    }
+  }
+
+  // Copy capability data when the player is cloned (e.g., on death/respawn)
+  @SubscribeEvent
+  public static void onPlayerClone(PlayerEvent.Clone event) {
+    var original = event.getOriginal();
+    var player = event.getEntity();
+    if (player == null || original == null) return;
+    original
+        .getCapability(PlayerTierCapability.INSTANCE)
+        .ifPresent(
+            oldCap ->
+                player
+                    .getCapability(PlayerTierCapability.INSTANCE)
+                    .ifPresent(newCap -> newCap.deserializeNBT(oldCap.serializeNBT())));
+  }
+
+  // Sync capability to client on login
+  @SubscribeEvent
+  public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+    if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+      CHEXNetwork.sendPlayerTierToClient(serverPlayer);
+    }
+  }
+
+  // Sync capability to client on respawn
+  @SubscribeEvent
+  public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+    if (event.getEntity() instanceof ServerPlayer serverPlayer) {
+      CHEXNetwork.sendPlayerTierToClient(serverPlayer);
     }
   }
 }

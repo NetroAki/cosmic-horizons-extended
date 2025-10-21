@@ -1,15 +1,19 @@
 # T-062 Aqua Block Set
 
 **Goal**
+
 - Add Aqua Mundus blocks (vent basalt, manganese nodules, luminous kelp fronds, ice shelf slabs).
 
 **Scope**
+
 - Block registrations, assets, loot/recipes.
 
 **Acceptance**
+
 - Blocks registered with placeholder textures if needed; `./gradlew check` passes.
 
 **Checklist**
+
 - [ ] `bash scripts/cloud_bootstrap.sh`
 - [ ] Implement blocks + assets
 - [ ] `./gradlew :common:spotlessApply :forge:spotlessApply`

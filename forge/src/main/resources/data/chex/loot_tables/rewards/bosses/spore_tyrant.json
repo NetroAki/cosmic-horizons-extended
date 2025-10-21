@@ -1,0 +1,36 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chex:tyrant_trophy",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'{\"text\":\"Spore Tyrant Trophy\",\"color\":\"#55FF55\"}',Lore:['{\"text\":\"A trophy earned by defeating the Spore Tyrant\"}']}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_ward",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{Name:'{\"text\":\"Music Disc - Spore Tyrant's Lament\"}',Lore:['{\"text\":\"A haunting melody from the depths of Pandora\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

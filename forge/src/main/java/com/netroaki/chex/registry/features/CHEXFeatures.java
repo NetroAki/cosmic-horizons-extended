@@ -19,24 +19,25 @@ public class CHEXFeatures {
 
   // Pandora Features
   public static final RegistryObject<Feature<NoneFeatureConfiguration>> PANDORA_FUNGAL_TOWER =
-      FEATURES.register("pandora_fungal_tower", 
+      FEATURES.register(
+          "pandora_fungal_tower",
           () -> new PandoraFungalTowerFeature(NoneFeatureConfiguration.CODEC));
-          
+
   public static final RegistryObject<Feature<NoneFeatureConfiguration>> SKYBARK_TREE =
-      FEATURES.register("skybark_tree", 
-          () -> new SkybarkTreeFeature(NoneFeatureConfiguration.CODEC));
-          
+      FEATURES.register(
+          "skybark_tree", () -> new SkybarkTreeFeature(NoneFeatureConfiguration.CODEC));
+
   public static final RegistryObject<Feature<NoneFeatureConfiguration>> PANDORA_KELP_FOREST =
-      FEATURES.register("pandora_kelp_forest", 
+      FEATURES.register(
+          "pandora_kelp_forest",
           () -> new PandoraKelpForestFeature(NoneFeatureConfiguration.CODEC));
-          
+
   public static final RegistryObject<Feature<NoneFeatureConfiguration>> MAGMA_SPIRE =
-      FEATURES.register("magma_spire", 
-          () -> new MagmaSpireFeature(NoneFeatureConfiguration.CODEC));
-          
+      FEATURES.register("magma_spire", () -> new MagmaSpireFeature(NoneFeatureConfiguration.CODEC));
+
   public static final RegistryObject<Feature<NoneFeatureConfiguration>> CLOUDSTONE_ISLAND =
-      FEATURES.register("cloudstone_island", 
-          () -> new CloudstoneIslandFeature(NoneFeatureConfiguration.CODEC));
+      FEATURES.register(
+          "cloudstone_island", () -> new CloudstoneIslandFeature(NoneFeatureConfiguration.CODEC));
 
   // GTCEu integration is now handled directly through world generation events
   // No custom features needed for GTCEu ore generation

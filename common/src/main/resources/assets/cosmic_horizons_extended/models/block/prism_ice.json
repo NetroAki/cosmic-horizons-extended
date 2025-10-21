@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cosmic_horizons_extended:block/prism_ice"
+  },
+  "render_type": "translucent"
+}

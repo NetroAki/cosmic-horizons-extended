@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=bottom,waterlogged=false": {
+      "model": "chex:block/ice_shelf_slab"
+    },
+    "type=top,waterlogged=false": {
+      "model": "chex:block/ice_shelf_slab_top"
+    },
+    "type=double,waterlogged=false": {
+      "model": "chex:block/ice_shelf_block"
+    },
+    "type=bottom,waterlogged=true": {
+      "model": "chex:block/ice_shelf_slab_waterlogged"
+    },
+    "type=top,waterlogged=true": {
+      "model": "chex:block/ice_shelf_slab_top_waterlogged"
+    },
+    "type=double,waterlogged=true": {
+      "model": "chex:block/ice_shelf_block_waterlogged"
+    }
+  }
+}

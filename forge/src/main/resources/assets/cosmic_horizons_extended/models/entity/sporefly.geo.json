@@ -1,0 +1,47 @@
+{
+  "minecraft:geometry": [
+    {
+      "description": {
+        "visible_bounds_height": 2,
+        "identifier": "geometry.sporefly",
+        "visible_bounds_offset": [
+          0,
+          0,
+          0
+        ],
+        "texture_height": 64,
+        "texture_width": 64,
+        "visible_bounds_width": 2
+      },
+      "bones": [
+        {
+          "cubes": [
+            {
+              "uv": [
+                0,
+                0
+              ],
+              "size": [
+                8,
+                8,
+                8
+              ],
+              "origin": [
+                -4,
+                0,
+                -4
+              ]
+            }
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "name": "body"
+        }
+      ]
+    }
+  ],
+  "format_version": "1.12.0"
+}

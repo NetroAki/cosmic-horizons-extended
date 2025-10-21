@@ -1,0 +1,86 @@
+{
+  "parent": "minecraft:block/kelp_plant",
+  "textures": {
+    "particle": "chex:block/luminous_kelp_plant_glow",
+    "texture": "chex:block/luminous_kelp_plant_glow"
+  },
+  "render_type": "cutout",
+  "display": {
+    "gui": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "ground": {
+      "translation": [0, 3, 0],
+      "scale": [0.25, 0.25, 0.25]
+    },
+    "head": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "fixed": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "thirdperson_lefthand": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "firstperson_lefthand": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "firstperson_righthand": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "thirdperson_righthand": {
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    }
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        },
+        "east": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        },
+        "south": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        },
+        "west": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        },
+        "up": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        },
+        "down": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#texture",
+          "tintindex": 0,
+          "emissivity": 15
+        }
+      }
+    }
+  ]
+}

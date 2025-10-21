@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "age=0,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage0"
+    },
+    "age=1,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage1"
+    },
+    "age=2,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage2"
+    },
+    "age=3,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage3"
+    },
+    "age=4,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage4"
+    },
+    "age=5,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage5"
+    },
+    "age=6,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage6"
+    },
+    "age=7,waterlogged=false": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage7"
+    },
+    "age=0,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage0_waterlogged"
+    },
+    "age=1,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage1_waterlogged"
+    },
+    "age=2,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage2_waterlogged"
+    },
+    "age=3,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage3_waterlogged"
+    },
+    "age=4,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage4_waterlogged"
+    },
+    "age=5,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage5_waterlogged"
+    },
+    "age=6,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage6_waterlogged"
+    },
+    "age=7,waterlogged=true": {
+      "model": "cosmic_horizons_extended:block/ice_reeds_stage7_waterlogged"
+    }
+  }
+}

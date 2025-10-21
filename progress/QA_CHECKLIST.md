@@ -1,0 +1,23 @@
+# CHEX Manual QA Checklist
+
+- [ ] Minerals runtime reload: run `/chex minerals reload` and confirm success.
+- [ ] Launch validation:
+  - [ ] Deny on insufficient tier with localized toast.
+  - [ ] Deny on missing discovery with localized toast.
+  - [ ] Deny on insufficient fuel (volume/type) with localized toast.
+  - [ ] Deny on missing destination key (Sovereign Heart) for Neutron Forge.
+  - [ ] Allow when all conditions satisfied.
+- [ ] Boss systems:
+  - [ ] Boss phases reported to controller (logs or HUD if present).
+  - [ ] Defeat broadcasts fire correctly (if hooked).
+- [ ] Suit hazards:
+  - [ ] Dyson: radiation/vacuum scale down with higher suit tiers.
+  - [ ] Neutron Forge: plasma/pressure/radiation scale down with higher suit tiers.
+- [ ] Client UX:
+  - [ ] Tooltips display for suits/fuel/controller.
+  - [ ] JEI shows CHEX categories and content.
+  - [ ] Launch deny toasts appear localized.
+- [ ] Ambience & visual filters:
+  - [ ] Dyson ambient hum and alarm under severe radiation.
+  - [ ] Visual fog tint changes per configured dimension.
+- [ ] Localization keys present (no missing key placeholders in UI).

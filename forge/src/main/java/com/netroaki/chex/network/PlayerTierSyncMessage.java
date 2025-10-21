@@ -5,7 +5,8 @@ import java.util.UUID;
 import java.util.function.Supplier;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 /** Network message for syncing player tier capabilities between client and server */
@@ -37,19 +38,13 @@ public class PlayerTierSyncMessage {
     context.enqueueWork(
         () -> {
           if (context.getDirection().getReceptionSide().isClient()) {
-            // Handle on client side
-            Player player =
-                context.getSender() != null
-                    ? context.getSender()
-                    : net.minecraft.client.Minecraft.getInstance().player;
-            if (player != null && player.getUUID().equals(message.playerId)) {
-              player
-                  .getCapability(PlayerTierCapability.INSTANCE)
-                  .ifPresent(
-                      capability -> {
-                        capability.deserializeNBT(message.capability.serializeNBT());
-                      });
-            }
+            // On client, update a client-side cache safely without touching server-only classes
+            DistExecutor.unsafeRunWhenOn(
+                Dist.CLIENT,
+                () ->
+                    () ->
+                        com.netroaki.chex.network.client.ClientTierCache.update(
+                            message.playerId, message.capability));
           } else {
             // Handle on server side
             ServerPlayer serverPlayer = context.getSender();

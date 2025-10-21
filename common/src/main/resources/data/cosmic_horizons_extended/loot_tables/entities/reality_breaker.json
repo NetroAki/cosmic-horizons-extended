@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:exotic_heart"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:breaker_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:fractablade"
+        }
+      ]
+    }
+  ]
+}

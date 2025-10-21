@@ -35,9 +35,12 @@ repositories {
         content {
             excludeGroup 'com.github.glitchfiend'
         }
-    }
-    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
     maven { url = 'https://maven.firstdarkdev.xyz/snapshots' }
+    maven {
+        name = 'AzureDoom Mods'
+        url = 'https://maven.azuredoom.com/mods'
+    }
 }
 
 dependencies {
@@ -57,6 +60,15 @@ dependencies {
     modRuntimeOnly 'maven.modrinth:cosmic-horizons-cosmos:0.0.7.3'
     modCompileOnly 'curse.maven:cosmos-unbound-1200939:6195968'
     modRuntimeOnly 'curse.maven:cosmos-unbound-1200939:6195968'
+
+    modImplementation 'mod.azure.azurelib:azurelib-forge-1.20.1:1.0.34'
+    modRuntimeOnly 'mod.azure.azurelib:azurelib-forge-1.20.1:1.0.34'
+
+    modCompileOnly "mezz.jei:jei-1.20.1-forge-api:15.2.0.27"
+    compileOnly "mezz.jei:jei-1.20.1-common-api:15.2.0.27"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
 }
  
 loom {
@@ -72,6 +84,78 @@ loom {
         }
     }
 }
+
+sourceSets {
+    main {
+        java {
+            srcDir("${rootProject.projectDir}/common/src/main/java")
+            exclude 'com/netroaki/chex/quest/**'
+            exclude 'com/netroaki/chex/commands/QuestCommands.java'
+            exclude 'com/netroaki/chex/config/legacy/**'
+            exclude 'com/netroaki/chex/world/library/**'
+            exclude 'com/netroaki/chex/client/EntityRenderers.java'
+            exclude 'com/netroaki/chex/client/render/entity/SpiceGathererRenderer.java'
+            exclude 'com/netroaki/chex/client/render/entity/StormHawkRenderer.java'
+            exclude 'com/netroaki/chex/client/render/SpiceBlowRenderer.java'
+            exclude 'com/netroaki/chex/client/screen/LibraryBookScreen.java'
+            exclude 'com/netroaki/chex/client/renderer/dimension/LibrarySkyRenderer.java'
+            exclude 'com/netroaki/chex/world/eden/**'
+            exclude 'com/netroaki/chex/world/ringworld/**'
+            exclude 'com/netroaki/chex/world/hollow/**'
+            exclude 'com/netroaki/chex/world/hazard/**'
+            exclude 'com/netroaki/chex/world/hazards/**'
+            exclude 'com/netroaki/chex/client/**'
+            exclude 'com/netroaki/chex/CHEXClient.java'
+            exclude 'com/netroaki/chex/world/spawn/**'
+            exclude 'com/netroaki/chex/world/spawning/**'
+            exclude 'com/netroaki/chex/world/torus/**'
+            exclude 'com/netroaki/chex/world/SpawnPlacements.java'
+            exclude 'com/netroaki/chex/world/stormworld/StormworldMechanics.java'
+            exclude 'com/netroaki/chex/world/structures/**'
+            exclude 'com/netroaki/chex/world/structure/**'
+            exclude 'com/netroaki/chex/world/stormworld/**'
+            exclude 'com/netroaki/chex/world/feature/**'
+            exclude 'com/netroaki/chex/world/biome/**'
+            exclude 'com/netroaki/chex/world/ambience/**'
+            exclude 'com/netroaki/chex/world/arrakis/**'
+            exclude 'com/netroaki/chex/world/aqua_mundus/**'
+            exclude 'com/netroaki/chex/world/environment/**'
+            exclude 'com/netroaki/chex/world/gen/structure/**'
+            exclude 'com/netroaki/chex/world/dyson/**'
+            exclude 'com/netroaki/chex/world/InfernoSpawnPlacements.java'
+            exclude 'com/netroaki/chex/blocks/HollowWorldPortalBlock.java'
+            exclude 'com/netroaki/chex/registry/biome/HollowWorldBiomeRegistry.java'
+            exclude 'com/netroaki/chex/registry/biome/RingworldBiomeRegistry.java'
+            exclude 'com/netroaki/chex/registry/structure/CHEXPieces.java'
+            exclude 'com/netroaki/chex/entity/aqua_mundus/**'
+            exclude 'com/netroaki/chex/entity/alpha_centauri/**'
+            exclude 'com/netroaki/chex/entity/arrakis/**'
+            exclude 'com/netroaki/chex/entity/inferno/**'
+            exclude 'com/netroaki/chex/entity/crystalis/**'
+            exclude 'com/netroaki/chex/entity/stormworld/**'
+            exclude 'com/netroaki/chex/entity/kepler/**'
+            exclude 'com/netroaki/chex/entity/ai/SandEmperor**'
+            exclude 'com/netroaki/chex/entity/OceanSovereignEntity.java'
+            exclude 'com/netroaki/chex/entity/ModEntities.java'
+            exclude 'com/netroaki/chex/entity/projectile/IceShardProjectile.java'
+            exclude 'com/netroaki/chex/entity/projectile/SolarFlareProjectile.java'
+        }
+        resources {
+            srcDir("${rootProject.projectDir}/common/src/main/resources")
+        }
+    }
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+tasks.withType(org.gradle.language.jvm.tasks.ProcessResources).configureEach {
+    duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.EXCLUDE
+}
+
+
+
 
 
 

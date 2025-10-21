@@ -1,55 +1,15 @@
-﻿{
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
-  },
+{
+  "temperature": 1.3,
   "downfall": 0.1,
+  "has_precipitation": false,
   "effects": {
-    "fog_color": 2887691,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 8465181,
+    "sky_color": 8485149,
+    "fog_color": 2889483,
     "water_color": 4159204,
-    "water_fog_color": 329011,
-    "foliage_color": 16711680,
-    "grass_color": 16711680
+    "water_fog_color": 329011
   },
-  "features": [
-    "cosmic_horizons_extended:pandora_magma_spire_placed",
-    "cosmic_horizons_extended:pandora_volcanic_brick_cluster_placed",
-    "cosmic_horizons_extended:pandora_volcanic_brick_cluster_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
-  ],
-  "has_precipitation": true,
-  "spawn_costs": {
-    "molten_behemoth": {
-      "energy_budget": 0.25,
-      "charge": 1.0
-    }
-  },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
-    "monster": [
-      {
-        "type": "cosmic_horizons_extended:molten_behemoth",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [],
-    "water_creature": []
-  },
-  "temperature": 1.3
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
 }

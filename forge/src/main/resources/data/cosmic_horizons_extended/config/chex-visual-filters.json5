@@ -1,0 +1,15 @@
+{
+  // Per-dimension visual filters. Values are 0..1 for fog color, skyTint multiplier reserved.
+  entries: [
+    {
+      dimension: "cosmic_horizons_extended:shattered_dyson_swarm",
+      fog: [0.6, 0.62, 0.68],
+      skyTint: 1.0,
+    },
+    {
+      dimension: "cosmic_horizons_extended:neutron_forge",
+      fog: [0.8, 0.65, 0.55],
+      skyTint: 1.1,
+    },
+  ],
+}

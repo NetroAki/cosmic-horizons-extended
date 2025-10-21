@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "chex:block/kepler_oak_log_top",
+    "side": "chex:block/kepler_oak_log"
+  }
+}

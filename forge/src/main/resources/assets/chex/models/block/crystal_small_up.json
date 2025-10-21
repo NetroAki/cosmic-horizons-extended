@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "chex:block/crystal_small"
+  },
+  "render_type": "cutout"
+}

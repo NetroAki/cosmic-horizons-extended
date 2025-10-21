@@ -109,13 +109,13 @@ public class CosmicHorizonsIntegration {
     Set<String> minerals = getMineralsFromDimensionId(dimensionId);
     Set<String> hazards = getHazardsFromDimensionId(dimensionId);
     String biomeType = getBiomeTypeFromDimensionId(dimensionId);
-    
+
     // Default values for all fields
     int gravityLevel = 1; // Normal gravity by default
     boolean hasAtmosphere = true; // Most planets have atmosphere
     boolean requiresOxygen = true; // Most planets require oxygen
     boolean isOrbit = false; // Default to surface dimension
-    
+
     // Special handling for specific planet types
     if (dimensionId.getPath().contains("moon") || dimensionId.getPath().contains("luna")) {
       hasAtmosphere = false;
@@ -140,8 +140,7 @@ public class CosmicHorizonsIntegration {
         hazards,
         minerals,
         biomeType,
-        isOrbit
-    );
+        isOrbit);
   }
 
   /** Get planet name from dimension ID */

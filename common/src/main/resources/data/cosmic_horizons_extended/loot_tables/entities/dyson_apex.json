@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:apex_core"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:quantum_lens"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cosmic_horizons_extended:dyson_spear"
+        }
+      ]
+    }
+  ]
+}

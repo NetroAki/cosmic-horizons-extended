@@ -1,0 +1,73 @@
+{
+  "type": "cosmic_horizons_extended:aqua_mundus",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 0,
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "cosmic_horizons_extended:aqua_shallow_seas",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": 1.0,
+            "continentalness": -0.3,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": -0.2,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:aqua_kelp_forests",
+          "parameters": {
+            "temperature": 0.4,
+            "humidity": 1.0,
+            "continentalness": -0.5,
+            "erosion": 0.2,
+            "weirdness": 0.3,
+            "depth": -0.4,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:aqua_abyssal_trenches",
+          "parameters": {
+            "temperature": 0.2,
+            "humidity": 1.0,
+            "continentalness": -0.8,
+            "erosion": -0.5,
+            "weirdness": -0.3,
+            "depth": -0.9,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:aqua_hydrothermal_vents",
+          "parameters": {
+            "temperature": 0.8,
+            "humidity": 1.0,
+            "continentalness": -0.7,
+            "erosion": 0.5,
+            "weirdness": 0.6,
+            "depth": -0.7,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "cosmic_horizons_extended:aqua_ice_shelves",
+          "parameters": {
+            "temperature": -0.5,
+            "humidity": 0.8,
+            "continentalness": 0.2,
+            "erosion": -0.2,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [{ "type": "forge:false" }],
+  "pattern": ["PPP", "P P"],
+  "key": {
+    "P": {
+      "item": "minecraft:prismarine_crystals"
+    }
+  },
+  "result": {
+    "item": "chex:aqua_mundus_helmet"
+  }
+}

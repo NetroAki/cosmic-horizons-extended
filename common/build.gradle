@@ -29,10 +29,9 @@ dependencies {
 
 sourceSets {
     main {
-        java {
-            setSrcDirs(['src/main/java'])
-            include 'com/netroaki/**'
-        }
+        // Disable compiling sources here; they will be compiled by :forge under Loom
+        java { setSrcDirs([]) }
+        resources { setSrcDirs([]) }
     }
 }
 

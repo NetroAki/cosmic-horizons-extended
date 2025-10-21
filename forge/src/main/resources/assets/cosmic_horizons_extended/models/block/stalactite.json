@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "cosmic_horizons_extended:block/stalactite"
+  },
+  "render_type": "cutout"
+}

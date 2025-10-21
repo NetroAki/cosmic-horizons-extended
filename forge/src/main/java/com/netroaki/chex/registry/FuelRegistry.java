@@ -1,15 +1,16 @@
 package com.netroaki.chex.registry;
 
 import com.netroaki.chex.CHEX;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.registries.ForgeRegistries;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 /** Fuel registry system for nodule tiers */
 public class FuelRegistry {
@@ -91,9 +92,10 @@ public class FuelRegistry {
   public static boolean isValidFuel(int tier, Fluid fluid) {
     return getFuelRequirement(tier).map(req -> req.getFluid() == fluid).orElse(false);
   }
-  
+
   /**
    * Registers an item as fuel for a specific tier
+   *
    * @param tier The tier this fuel is valid for
    * @param itemId The item ID to register as fuel
    * @param burnTime The burn time in ticks (1 item = 1 bucket equivalent)
@@ -103,7 +105,7 @@ public class FuelRegistry {
       CHEX.LOGGER.warn("Invalid burn time {} for item {}", burnTime, itemId);
       return;
     }
-    
+
     Item item = ForgeRegistries.ITEMS.getValue(itemId);
     if (item != null) {
       ITEM_FUELS.put(itemId, new ItemFuelInfo(tier, burnTime));
@@ -112,36 +114,24 @@ public class FuelRegistry {
       CHEX.LOGGER.warn("Failed to register item fuel: {} not found", itemId);
     }
   }
-  
-  /**
-   * Gets the fuel info for an item, if it's registered as fuel
-   */
+
+  /** Gets the fuel info for an item, if it's registered as fuel */
   public static Optional<ItemFuelInfo> getItemFuelInfo(Item item) {
     ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(item);
     return Optional.ofNullable(ITEM_FUELS.get(itemId));
   }
-  
-  /**
-   * Checks if an item is valid fuel for a specific tier
-   */
+
+  /** Checks if an item is valid fuel for a specific tier */
   public static boolean isItemValidForTier(ItemStack stack, int tier) {
-    return getItemFuelInfo(stack.getItem())
-        .map(info -> info.tier() == tier)
-        .orElse(false);
-  }
-  
-  /**
-   * Gets the burn time for an item if it's registered as fuel
-   */
-  public static int getItemBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
-    return getItemFuelInfo(stack.getItem())
-        .map(ItemFuelInfo::burnTime)
-        .orElse(0);
+    return getItemFuelInfo(stack.getItem()).map(info -> info.tier() == tier).orElse(false);
   }
 
-  /**
-   * Information about a fuel requirement for a tier
-   */
+  /** Gets the burn time for an item if it's registered as fuel */
+  public static int getItemBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
+    return getItemFuelInfo(stack.getItem()).map(ItemFuelInfo::burnTime).orElse(0);
+  }
+
+  /** Information about a fuel requirement for a tier */
   public static class FuelRequirement {
     private final Fluid fluid;
     private final ResourceLocation fluidId;
@@ -159,14 +149,10 @@ public class FuelRegistry {
       return fluidId;
     }
   }
-  
-  /**
-   * Information about an item-based fuel
-   */
+
+  /** Information about an item-based fuel */
   public record ItemFuelInfo(int tier, int burnTime) {
-    /**
-     * Gets the number of items needed to match one bucket of fluid fuel
-     */
+    /** Gets the number of items needed to match one bucket of fluid fuel */
     public int getItemsPerBucket() {
       // Default to 1 item = 1 bucket (1000mB)
       return Math.max(1, 1000 / (burnTime / 20)); // Convert burn time to mB equivalent

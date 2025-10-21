@@ -1,10 +1,7 @@
 package com.netroaki.chex.network;
 
 import java.util.function.Supplier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.toasts.SystemToast;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.chat.Component;
 import net.minecraftforge.network.NetworkEvent;
 
 public class LaunchDenyMessage {
@@ -12,7 +9,8 @@ public class LaunchDenyMessage {
     FUEL,
     TIER,
     SUIT,
-    DISCOVERY
+    DISCOVERY,
+    DESTINATION
   }
 
   private final Code code;
@@ -38,19 +36,9 @@ public class LaunchDenyMessage {
     ctx.get()
         .enqueueWork(
             () -> {
-              var mc = Minecraft.getInstance();
-              if (mc.player != null) {
-                String prefix = "§c[CHEX] Launch denied: ";
-                mc.player.displayClientMessage(
-                    Component.literal(prefix + msg.code + " - " + msg.detail), true);
-                // Toast notification
-                SystemToast toast =
-                    new SystemToast(
-                        SystemToast.SystemToastIds.PACK_LOAD_FAILURE,
-                        Component.literal("Launch Denied"),
-                        Component.literal(msg.code + ": " + msg.detail));
-                mc.getToasts().addToast(toast);
-              }
+              // Handle on client side - use proper client-side player access
+              // Note: This will be handled by client-side code when implemented
+              // For now, we'll skip client-side handling to avoid server crashes
             });
     ctx.get().setPacketHandled(true);
   }

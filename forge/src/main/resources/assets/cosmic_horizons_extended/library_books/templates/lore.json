@@ -1,0 +1,44 @@
+{
+  "title": "${adjective} ${nouns}",
+  "variables": {
+    "adjective": "wordbank:adjectives",
+    "nouns": "wordbank:nouns"
+  },
+  "pages": [
+    {
+      "template": "# ${title}\n\nThe ${nouns} of the ${adjective} ${nouns} has long been a subject of speculation among scholars.\n\n${lore_fragment}",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${lore_fragment}",
+          "replacement": "wordbank:lore_fragments"
+        }
+      ]
+    },
+    {
+      "template": "## Historical Accounts\n\nAccording to ancient texts, the ${nouns} was first discovered by the ${adjective} ${nouns} during the Age of ${nouns}.\n\nMany believe it holds the key to ${lore_secret}.",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${lore_secret}",
+          "replacement": "wordbank:lore_secrets"
+        }
+      ]
+    },
+    {
+      "template": "## Warnings\n\n#warning\nDo not attempt to ${warning_action} the ${nouns} without proper ${warning_preparation}. The consequences could be dire.",
+      "components": [
+        {
+          "type": "replace",
+          "target": "${warning_action}",
+          "replacement": "awaken,summon,disturb,approach,unseal"
+        },
+        {
+          "type": "replace",
+          "target": "${warning_preparation}",
+          "replacement": "precautions,warding,protection,guidance,preparation"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,12 @@
 package com.netroaki.chex.entities;
 
 import javax.annotation.Nonnull;
+import mod.azure.azurelib.animatable.GeoEntity;
+import mod.azure.azurelib.core.animatable.instance.AnimatableInstanceCache;
+import mod.azure.azurelib.core.animation.AnimatableManager.ControllerRegistrar;
+import mod.azure.azurelib.core.animation.AnimationController;
+import mod.azure.azurelib.core.animation.RawAnimation;
+import mod.azure.azurelib.util.AzureLibUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -17,9 +23,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-public class SporefliesEntity extends AmbientCreature {
+public class SporefliesEntity extends AmbientCreature implements GeoEntity {
 
   private int sporeCooldown = 0;
+  private final AnimatableInstanceCache cache = AzureLibUtil.createInstanceCache(this);
 
   public SporefliesEntity(EntityType<? extends AmbientCreature> entityType, Level level) {
     super(entityType, level);
@@ -39,6 +46,28 @@ public class SporefliesEntity extends AmbientCreature {
         .add(Attributes.MAX_HEALTH, 8.0D)
         .add(Attributes.MOVEMENT_SPEED, 0.3D)
         .add(Attributes.FLYING_SPEED, 0.4D);
+  }
+
+  // AzureLib animations
+  private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle");
+  private static final RawAnimation FLY = RawAnimation.begin().thenLoop("fly");
+
+  @Override
+  public void registerControllers(ControllerRegistrar controllers) {
+    controllers.add(
+        new AnimationController<>(
+            this,
+            "controller",
+            5,
+            state -> {
+              // movement based animation swap
+              return state.setAndContinue(this.getDeltaMovement().lengthSqr() > 0.001 ? FLY : IDLE);
+            }));
+  }
+
+  @Override
+  public AnimatableInstanceCache getAnimatableInstanceCache() {
+    return cache;
   }
 
   @Override

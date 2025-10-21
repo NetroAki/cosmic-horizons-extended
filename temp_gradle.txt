@@ -1,0 +1,137 @@
+plugins {
+    id 'java'
+    id 'dev.architectury.loom'
+}
+
+group = rootProject.group
+version = rootProject.version
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://maven.architectury.dev/' }
+    maven { url = 'https://api.modrinth.com/maven' }
+    maven { url = 'https://cursemaven.com' }
+    maven {
+        name = 'Glitchfiend'
+        url = 'https://maven.glitchfiend.com'
+        content { includeGroup 'com.glitchfiend' }
+    }
+    maven { url = 'https://maven.blamejared.com' }
+    maven { url = 'https://maven.teamresourceful.com/repository/maven-releases/' }
+    maven {
+        name = 'GTCEu Maven'
+        url = 'https://maven.gtceu.com'
+        content { includeGroup 'com.gregtechceu.gtceu' }
+    }
+    maven {
+        url = 'https://jitpack.io'
+        content {
+            excludeGroup 'com.github.glitchfiend'
+        }
+    }
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    maven { url = 'https://maven.firstdarkdev.xyz/snapshots' }
+    maven {
+        name = 'AzureDoom Mods'
+        url = 'https://maven.azuredoom.com/mods'
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.ext.mc_version}"
+    mappings loom.officialMojangMappings()
+    forge 'net.minecraftforge:forge:1.20.1-47.4.1'
+
+    implementation project(':common')
+    modImplementation files("${rootProject.projectDir}/libs/architectury-9.2.9999-forge.jar")
+    modImplementation 'maven.modrinth:terrablender:3.0.1.10'
+    modImplementation 'io.github.llamalad7:mixinextras-forge:0.3.5'
+    modImplementation 'maven.modrinth:ldlib:mc1.20.1-1.0.45-forge'
+    modImplementation files("${rootProject.projectDir}/libs/configuration-forge-1.20.1-3.1.0.jar")
+    modCompileOnly "com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}"
+    modRuntimeOnly "com.gregtechceu.gtceu:gtceu-${rootProject.ext.mc_version}:${rootProject.ext.gtm_version}"
+    modCompileOnly 'maven.modrinth:cosmic-horizons-cosmos:0.0.7.3'
+    modRuntimeOnly 'maven.modrinth:cosmic-horizons-cosmos:0.0.7.3'
+    modCompileOnly 'curse.maven:cosmos-unbound-1200939:6195968'
+    modRuntimeOnly 'curse.maven:cosmos-unbound-1200939:6195968'
+
+    modImplementation 'mod.azure.azurelib:azurelib-forge-1.20.1:1.0.34'
+    modRuntimeOnly 'mod.azure.azurelib:azurelib-forge-1.20.1:1.0.34'
+
+    modCompileOnly "mezz.jei:jei-1.20.1-forge-api:15.2.0.27"
+    compileOnly "mezz.jei:jei-1.20.1-common-api:15.2.0.27"
+}
+ 
+loom {
+    silentMojangMappingsLicense()
+    runs {
+        client {
+            client()
+            vmArg '-Dforge.logging.console.level=info'
+        }
+        server {
+            server()
+            vmArg '-Dforge.logging.console.level=info'
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir("${rootProject.projectDir}/common/src/main/java")
+            exclude 'com/netroaki/chex/quest/**'
+            exclude 'com/netroaki/chex/commands/QuestCommands.java'
+            exclude 'com/netroaki/chex/config/legacy/**'
+            exclude 'com/netroaki/chex/world/library/**'
+            exclude 'com/netroaki/chex/client/EntityRenderers.java'
+            exclude 'com/netroaki/chex/client/render/entity/SpiceGathererRenderer.java'
+            exclude 'com/netroaki/chex/client/render/entity/StormHawkRenderer.java'
+            exclude 'com/netroaki/chex/client/render/SpiceBlowRenderer.java'
+            exclude 'com/netroaki/chex/client/screen/LibraryBookScreen.java'
+            exclude 'com/netroaki/chex/client/renderer/dimension/LibrarySkyRenderer.java'
+            exclude 'com/netroaki/chex/world/eden/**'
+            exclude 'com/netroaki/chex/world/ringworld/**'
+            exclude 'com/netroaki/chex/world/hollow/**'
+            exclude 'com/netroaki/chex/world/hazard/**'
+            exclude 'com/netroaki/chex/world/hazards/**'
+            exclude 'com/netroaki/chex/client/**'
+            exclude 'com/netroaki/chex/world/spawn/**'
+            exclude 'com/netroaki/chex/world/torus/**'
+            exclude 'com/netroaki/chex/blocks/HollowWorldPortalBlock.java'
+            exclude 'com/netroaki/chex/registry/biome/HollowWorldBiomeRegistry.java'
+            exclude 'com/netroaki/chex/registry/biome/RingworldBiomeRegistry.java'
+            exclude 'com/netroaki/chex/registry/structure/CHEXPieces.java'
+            exclude 'com/netroaki/chex/entity/aqua_mundus/**'
+            exclude 'com/netroaki/chex/entity/crystalis/**'
+            exclude 'com/netroaki/chex/entity/boss/verdant_colossus/**'
+            exclude 'com/netroaki/chex/entity/boss/stellar_avatar/**'
+        }
+        resources {
+            srcDir("${rootProject.projectDir}/common/src/main/resources")
+        }
+    }
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+
+
+
+
+
+
+
+
+
+
+

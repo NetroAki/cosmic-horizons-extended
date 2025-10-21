@@ -12,7 +12,10 @@ import com.netroaki.chex.entities.boss.SkySovereignEntity;
 import com.netroaki.chex.entities.boss.SporeTyrantEntity;
 import com.netroaki.chex.entities.boss.StormRocEntity;
 import com.netroaki.chex.entities.boss.WorldheartAvatarEntity;
+import com.netroaki.chex.entity.SporeCloudEntity;
+import com.netroaki.chex.entity.Sporefly;
 import com.netroaki.chex.entity.crystal.FloatingCrystalShard;
+import com.netroaki.chex.entity.projectile.SporeCloudProjectile;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,7 +32,8 @@ public class CHEXEntities {
       ENTITY_TYPES.register(
           "floating_crystal",
           () ->
-              EntityType.Builder.<FloatingCrystalShard>of(FloatingCrystalShard::new, MobCategory.AMBIENT)
+              EntityType.Builder.<FloatingCrystalShard>of(
+                      FloatingCrystalShard::new, MobCategory.AMBIENT)
                   .sized(0.5F, 0.5F)
                   .clientTrackingRange(6)
                   .updateInterval(2)
@@ -53,6 +57,55 @@ public class CHEXEntities {
                   .sized(0.5F, 0.5F)
                   .clientTrackingRange(8)
                   .build("sporeflies"));
+
+  public static final RegistryObject<EntityType<Sporefly>> SPOREFLY =
+      ENTITY_TYPES.register(
+          "sporefly",
+          () ->
+              EntityType.Builder.<Sporefly>of(Sporefly::new, MobCategory.AMBIENT)
+                  .sized(0.75F, 0.75F)
+                  .clientTrackingRange(8)
+                  .build("sporefly"));
+
+  public static final RegistryObject<EntityType<Sporefly>> SPORELING =
+      ENTITY_TYPES.register(
+          "sporeling",
+          () ->
+              EntityType.Builder.<Sporefly>of(Sporefly::new, MobCategory.AMBIENT)
+                  .sized(0.6F, 0.6F)
+                  .clientTrackingRange(8)
+                  .build("sporeling"));
+
+  public static final RegistryObject<EntityType<Sporefly>> ELITE_SPORELING =
+      ENTITY_TYPES.register(
+          "elite_sporeling",
+          () ->
+              EntityType.Builder.<Sporefly>of(Sporefly::new, MobCategory.MONSTER)
+                  .sized(0.6F, 0.6F)
+                  .clientTrackingRange(8)
+                  .build("elite_sporeling"));
+
+  public static final RegistryObject<EntityType<SporeCloudEntity>> SPORE_CLOUD =
+      ENTITY_TYPES.register(
+          "spore_cloud",
+          () ->
+              EntityType.Builder.<SporeCloudEntity>of(
+                      (type, level) -> new SporeCloudEntity(type, level), MobCategory.MISC)
+                  .sized(0.2F, 0.2F)
+                  .clientTrackingRange(6)
+                  .updateInterval(10)
+                  .build("spore_cloud"));
+
+  public static final RegistryObject<EntityType<SporeCloudProjectile>> SPORE_CLOUD_PROJECTILE =
+      ENTITY_TYPES.register(
+          "spore_cloud_projectile",
+          () ->
+              EntityType.Builder.<SporeCloudProjectile>of(
+                      (type, level) -> new SporeCloudProjectile(type, level), MobCategory.MISC)
+                  .sized(0.25F, 0.25F)
+                  .clientTrackingRange(8)
+                  .updateInterval(1)
+                  .build("spore_cloud_projectile"));
 
   public static final RegistryObject<EntityType<SkyGrazerEntity>> SKY_GRAZER =
       ENTITY_TYPES.register(

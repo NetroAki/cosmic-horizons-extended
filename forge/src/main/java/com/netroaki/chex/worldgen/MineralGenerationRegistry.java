@@ -259,7 +259,7 @@ public final class MineralGenerationRegistry {
       TagKey<Block> oreTag = TagKey.create(Registries.BLOCK, tagLoc);
       var holderSet = blockTags.getTag(oreTag);
       if (!holderSet.isEmpty()) {
-        return holderSet.iterator().next().value().defaultBlockState();
+        return holderSet.iterator().next().defaultBlockState();
       }
     }
 

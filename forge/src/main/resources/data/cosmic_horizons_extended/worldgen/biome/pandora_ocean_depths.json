@@ -1,70 +1,15 @@
-﻿{
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ],
-    "liquid": ["minecraft:underwater_cave"]
-  },
-  "downfall": 1,
-  "effects": {
-    "fog_color": 861248,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
-    "sky_color": 2248312,
-    "water_color": 2251407,
-    "water_fog_color": 399916,
-    "foliage_color": 16711935,
-    "grass_color": 16711935
-  },
-  "features": [
-    "cosmic_horizons_extended:pandora_lumicoral_cluster_placed",
-    "cosmic_horizons_extended:pandora_kelp_forests_placed",
-    "cosmic_horizons_extended:pandora_ocean_kelp_patch_placed",
-    "cosmic_horizons_extended:pandora_pandorite_outcrop_placed"
-  ],
+{
+  "temperature": 0.3,
+  "downfall": 1.0,
   "has_precipitation": true,
-  "spawn_costs": {
-    "deep_sea_siren": {
-      "energy_budget": 0.2,
-      "charge": 1.0
-    }
+  "effects": {
+    "sky_color": 2240120,
+    "fog_color": 861248,
+    "water_color": 2264847,
+    "water_fog_color": 401708
   },
-  "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
-    "monster": [
-      {
-        "type": "cosmic_horizons_extended:deep_sea_siren",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
-    "underground_water_creature": [],
-    "water_ambient": [
-      {
-        "type": "cosmic_horizons_extended:luminfish",
-        "weight": 15,
-        "minCount": 4,
-        "maxCount": 8
-      }
-    ],
-    "water_creature": [
-      {
-        "type": "cosmic_horizons_extended:abyss_leviathan",
-        "weight": 2,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ]
-  },
-  "temperature": 0.3
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
 }

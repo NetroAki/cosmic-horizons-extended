@@ -2,6 +2,7 @@ package com.netroaki.chex.hooks;
 
 import com.netroaki.chex.CHEX;
 import com.netroaki.chex.capabilities.PlayerTierCapability;
+import com.netroaki.chex.item.ModItems;
 import com.netroaki.chex.network.CHEXNetwork;
 import com.netroaki.chex.network.LaunchDenyMessage;
 import com.netroaki.chex.registry.FuelRegistry;
@@ -63,13 +64,27 @@ public final class LaunchHooks {
       return false;
     }
 
+    // Destination-specific restrictions (example: Neutron Forge requires Sovereign Heart)
+    if (requiresBossKey(target) && !hasBossKey(player, target)) {
+      CHEXNetwork.sendTo(
+          (net.minecraft.server.level.ServerPlayer) player,
+          new LaunchDenyMessage(
+              LaunchDenyMessage.Code.DESTINATION,
+              "Requires Sovereign Heart to access this destination"));
+      return false;
+    }
+
     // Check suit requirements
     if (!validateSuitRequirements(player, target)) {
       return false;
     }
 
-    // Check fuel requirements
-    if (!validateFuelRequirements(player, rocketTierLevel)) {
+    // Cargo mass and fuel quality modifiers
+    double cargoMult = computeCargoMultiplier(player);
+    double fuelQuality = estimateFuelQuality(rocketTierLevel);
+
+    // Check fuel requirements considering cargo/quality
+    if (!validateFuelRequirements(player, rocketTierLevel, cargoMult, fuelQuality)) {
       return false;
     }
 
@@ -83,6 +98,41 @@ public final class LaunchHooks {
     return true;
   }
 
+  /** Estimate a simple fuel quality factor based on tier or configured fuel; 1.0 = best. */
+  private static double estimateFuelQuality(int rocketTier) {
+    // Heuristic: lower tiers often use kerosene-class fuels (less efficient), higher tiers LOX/LH2
+    // Use a mild penalty for low tiers; can be replaced by real fuel property later.
+    if (rocketTier <= 3) return 1.10; // 10% more fuel required
+    if (rocketTier <= 5) return 1.05;
+    return 1.00;
+  }
+
+  /** Compute cargo multiplier based on items carried. Caps at 2.0x. */
+  private static double computeCargoMultiplier(Player player) {
+    int itemCount = 0;
+    for (var stack : player.getInventory().items)
+      itemCount += stack.isEmpty() ? 0 : stack.getCount();
+    for (var stack : player.getInventory().offhand)
+      itemCount += stack.isEmpty() ? 0 : stack.getCount();
+    // Every 64 items adds 0.25x, up to +1.0x (2.0 total)
+    double steps = Math.min(4, Math.max(0, (int) Math.ceil(itemCount / 64.0)));
+    return 1.0 + steps * 0.25;
+  }
+
+  /** Some destinations require a boss key item. */
+  private static boolean requiresBossKey(ResourceKey<Level> target) {
+    // Example policy: Neutron Forge requires Sovereign Heart
+    return target.location().toString().equals("cosmic_horizons_extended:neutron_forge");
+  }
+
+  private static boolean hasBossKey(Player player, ResourceKey<Level> target) {
+    if (!requiresBossKey(target)) return true;
+    var heart = ModItems.SOVEREIGN_HEART.get();
+    for (var stack : player.getInventory().items) if (stack.getItem() == heart) return true;
+    for (var stack : player.getInventory().offhand) if (stack.getItem() == heart) return true;
+    return false;
+  }
+
   /**
    * Consume fuel buckets from the player's inventory for a successful launch. Returns true if
    * consumption succeeded or was not required.
@@ -92,7 +142,11 @@ public final class LaunchHooks {
     if (fuelReq.isEmpty()) {
       return true;
     }
-    int requiredVolume = FuelRegistry.getFuelVolume(rocketTier);
+    // Recompute using default multipliers; consumption matches validation path in canLaunch
+    int baseVolume = FuelRegistry.getFuelVolume(rocketTier);
+    double cargoMult = computeCargoMultiplier(player);
+    double fuelQuality = estimateFuelQuality(rocketTier);
+    int requiredVolume = (int) Math.ceil(baseVolume * cargoMult * fuelQuality);
     int neededBuckets = Math.max(1, (int) Math.ceil(requiredVolume / 1000.0));
 
     net.minecraft.world.item.Item requiredBucket = null;
@@ -224,7 +278,8 @@ public final class LaunchHooks {
   }
 
   /** Validates fuel requirements for rocket launch */
-  private static boolean validateFuelRequirements(Player player, int rocketTier) {
+  private static boolean validateFuelRequirements(
+      Player player, int rocketTier, double cargoMultiplier, double fuelQualityFactor) {
     // Get fuel requirement for this rocket tier
     var fuelReq = FuelRegistry.getFuelRequirement(rocketTier);
     if (fuelReq.isEmpty()) {
@@ -232,16 +287,21 @@ public final class LaunchHooks {
       return true; // Allow launch if no fuel requirement
     }
 
-    int requiredVolume = FuelRegistry.getFuelVolume(rocketTier);
+    int baseVolume = FuelRegistry.getFuelVolume(rocketTier);
+    int requiredVolume = (int) Math.ceil(baseVolume * cargoMultiplier * fuelQualityFactor);
     String fuelName = fuelReq.get().getFluidId().toString();
 
     // Simplified survival check: require carrying enough buckets of the required
     // fuel
     CHEX.LOGGER.info(
-        "Fuel validation: player={}, requiredFuel={}, requiredVolume={}mB, noduleTier={}",
+        "Fuel validation: player={}, requiredFuel={}, requiredVolume={}mB (base={} * cargo={} *"
+            + " quality={}), noduleTier={}",
         player.getGameProfile().getName(),
         fuelName,
         requiredVolume,
+        baseVolume,
+        String.format("%.2f", cargoMultiplier),
+        String.format("%.2f", fuelQualityFactor),
         rocketTier);
 
     int neededBuckets = Math.max(1, (int) Math.ceil(requiredVolume / 1000.0));

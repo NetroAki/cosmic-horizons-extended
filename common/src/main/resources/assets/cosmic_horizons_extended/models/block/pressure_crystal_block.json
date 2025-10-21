@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cosmic_horizons_extended:block/pressure_crystal_block"
+  },
+  "render_type": "translucent"
+}

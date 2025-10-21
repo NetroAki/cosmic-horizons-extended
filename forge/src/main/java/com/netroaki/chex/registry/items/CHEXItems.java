@@ -1,6 +1,7 @@
 package com.netroaki.chex.registry.items;
 
 import com.netroaki.chex.CHEX;
+import com.netroaki.chex.item.library.LibraryBookItem;
 import com.netroaki.chex.registry.fluids.CHEXFluids;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,13 +50,42 @@ public class CHEXItems {
   public static final RegistryObject<Item> HE3_BLEND_BUCKET =
       ITEMS.register(
           "he3_blend_bucket",
-          () -> new BucketItem(() -> CHEXFluids.HE3_BLEND.get(), new Item.Properties().stacksTo(1)));
+          () ->
+              new BucketItem(() -> CHEXFluids.HE3_BLEND.get(), new Item.Properties().stacksTo(1)));
 
   // Exotic Mix Bucket
   public static final RegistryObject<Item> EXOTIC_MIX_BUCKET =
       ITEMS.register(
           "exotic_mix_bucket",
-          () -> new BucketItem(() -> CHEXFluids.EXOTIC_MIX.get(), new Item.Properties().stacksTo(1)));
+          () ->
+              new BucketItem(() -> CHEXFluids.EXOTIC_MIX.get(), new Item.Properties().stacksTo(1)));
+
+  // Pandora drops & boss rewards
+  public static final RegistryObject<Item> LUMINOUS_DUST =
+      ITEMS.register("luminous_dust", () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> SPORE_TYRANT_HEART =
+      ITEMS.register(
+          "spore_tyrant_heart",
+          () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+  public static final RegistryObject<Item> LIBRARY_BOOK =
+      ITEMS.register(
+          "library_book",
+          () ->
+              new LibraryBookItem(
+                  new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).setNoRepair()));
+
+  public static final RegistryObject<Item> CRYSTAL_SHARD =
+      ITEMS.register("crystal_shard", () -> new Item(new Item.Properties()));
+
+  public static final RegistryObject<Item> RARE_CRYSTAL_SHARD =
+      ITEMS.register(
+          "rare_crystal_shard", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+  public static final RegistryObject<Item> ENERGIZED_CRYSTAL_SHARD =
+      ITEMS.register(
+          "energized_crystal_shard", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
 
   // Space Suits - Tier 1
   public static final RegistryObject<Item> SPACE_SUIT_HELMET_T1 =

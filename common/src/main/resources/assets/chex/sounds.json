@@ -1,0 +1,124 @@
+{
+  // Aqua Mundus Ambient
+  "aqua_mundus_ambient_underwater": {
+    "subtitle": "subtitles.chex.aqua_mundus_ambient_underwater",
+    "sounds": [
+      "chex:aqua/ambient/underwater1",
+      "chex:aqua/ambient/underwater2",
+      "chex:aqua/ambient/underwater3"
+    ]
+  },
+  "aqua_mundus_ambient_caverns": {
+    "subtitle": "subtitles.chex.aqua_mundus_ambient_caverns",
+    "sounds": ["chex:aqua/ambient/caverns1", "chex:aqua/ambient/caverns2"]
+  },
+
+  // Luminfish
+  "luminfish_ambient": {
+    "subtitle": "subtitles.chex.luminfish_ambient",
+    "sounds": [
+      "chex:aqua/entity/luminfish/ambient1",
+      "chex:aqua/entity/luminfish/ambient2"
+    ]
+  },
+  "luminfish_hurt": {
+    "subtitle": "subtitles.chex.luminfish_hurt",
+    "sounds": [
+      "chex:aqua/entity/luminfish/hurt1",
+      "chex:aqua/entity/luminfish/hurt2"
+    ]
+  },
+
+  // Hydrothermal Drone
+  "hydrothermal_drone_ambient": {
+    "subtitle": "subtitles.chex.hydrothermal_drone_ambient",
+    "sounds": [
+      "chex:aqua/entity/hydrothermal_drone/ambient1",
+      "chex:aqua/entity/hydrothermal_drone/ambient2"
+    ]
+  },
+  "hydrothermal_drone_hurt": {
+    "subtitle": "subtitles.chex.hydrothermal_drone_hurt",
+    "sounds": [
+      "chex:aqua/entity/hydrothermal_drone/hurt1",
+      "chex:aqua/entity/hydrothermal_drone/hurt2"
+    ]
+  },
+
+  // Ocean Sovereign Boss
+  "ocean_sovereign_ambient": {
+    "subtitle": "subtitles.chex.ocean_sovereign_ambient",
+    "sounds": [
+      "chex:aqua/boss/ocean_sovereign/ambient1",
+      "chex:aqua/boss/ocean_sovereign/ambient2"
+    ]
+  },
+  "ocean_sovereign_hurt": {
+    "subtitle": "subtitles.chex.ocean_sovereign_hurt",
+    "sounds": [
+      "chex:aqua/boss/ocean_sovereign/hurt1",
+      "chex:aqua/boss/ocean_sovereign/hurt2"
+    ]
+  },
+  "ocean_sovereign_sonic_boom": {
+    "subtitle": "subtitles.chex.ocean_sovereign_sonic_boom",
+    "sounds": ["chex:aqua/boss/ocean_sovereign/sonic_boom"]
+  },
+  "ocean_sovereign_whirlpool": {
+    "subtitle": "subtitles.chex.ocean_sovereign_whirlpool",
+    "sounds": ["chex:aqua/boss/ocean_sovereign/whirlpool"]
+  },
+
+  // Environment
+  "aqua_mundus_whirlpool_loop": {
+    "subtitle": "subtitles.chex.aqua_mundus_whirlpool_loop",
+    "sounds": ["chex:aqua/environment/whirlpool_loop"]
+  },
+  "aqua_mundus_bubble_column": {
+    "subtitle": "subtitles.chex.aqua_mundus_bubble_column",
+    "sounds": [
+      "chex:aqua/environment/bubble_column1",
+      "chex:aqua/environment/bubble_column2"
+    ]
+  },
+
+  // Stellar Avatar (existing sounds)
+  "stellar_avatar_hurt": {
+    "subtitle": "subtitles.chex.stellar_avatar_hurt",
+    "sounds": ["chex:stellar_avatar_hurt1", "chex:stellar_avatar_hurt2"]
+  },
+  "stellar_avatar_death": {
+    "subtitle": "subtitles.chex.stellar_avatar_death",
+    "sounds": ["chex:stellar_avatar_death"]
+  },
+  "stellar_avatar_phase_change": {
+    "subtitle": "subtitles.chex.stellar_avatar_phase_change",
+    "sounds": ["chex:stellar_avatar_phase_change"]
+  },
+  "stellar_avatar_attack_flare": {
+    "subtitle": "subtitles.chex.stellar_avatar_attack_flare",
+    "sounds": [
+      "chex:stellar_avatar_attack_flare1",
+      "chex:stellar_avatar_attack_flare2"
+    ]
+  },
+  "stellar_avatar_attack_coronal": {
+    "subtitle": "subtitles.chex.stellar_avatar_attack_coronal",
+    "sounds": [
+      "chex:stellar_avatar_attack_coronal1",
+      "chex:stellar_avatar_attack_coronal2"
+    ]
+  },
+  "stellar_avatar_attack_nova": {
+    "subtitle": "subtitles.chex.stellar_avatar_attack_nova",
+    "sounds": ["chex:stellar_avatar_attack_nova"]
+  },
+  "stellar_avatar_shield_activate": {
+    "subtitle": "subtitles.chex.stellar_avatar_shield_activate",
+    "sounds": ["chex:stellar_avatar_shield_activate"]
+  },
+  "stellar_avatar_shield_break": {
+    "subtitle": "subtitles.chex.stellar_avatar_shield_break",
+    "sounds": ["chex:stellar_avatar_shield_break"]
+  }
+}

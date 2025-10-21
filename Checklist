@@ -166,3 +166,19 @@ Hollow World    → Flexible aux resources
 \================================================================================
 END OF LIST
 ===========
+
+\================================================================================
+11) RECENT CROSS-PLANET & CLIENT UX UPDATES
+===========================================
+
+• Boss controller framework added; bosses report phase to controller.
+• Boss core matrix progression data authored (data-driven unlock mapping).
+• Suit hazards system implemented (JSON5 config + runtime cache), integrated into Dyson/Neutron Forge hazards.
+• Minerals config runtime reload via /chex minerals reload.
+• Launch validation enhanced: cargo mass multiplier, fuel quality factor, and destination lock (Sovereign Heart required for Neutron Forge). Localized deny toasts.
+• Client tooltips for suits, fuel buckets, and controller; JEI categories for Rocket Assembly and Planet Resources.
+• Ambience & soundscape cues wired (launch countdown, suit alarm, Dyson hum, Forge pulse) with subtitles.
+• Visual filters per-dimension (fog tint) applied via client event with JSON5 config.
+
+Dependency Decision:
+• GTCEu is a hard dependency for CHEX; fallback ore processing is intentionally omitted.

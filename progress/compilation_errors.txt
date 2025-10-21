@@ -1,0 +1,52 @@
+
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\EntityRenderers.java:4: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrantEntity.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\entity\SpiceGathererRenderer.java:5: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\entity\SpiceGathererRenderer.java:15: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\entity\SpiceGathererRenderer.java:28: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\entity\StormHawkRenderer.java:5: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\entity\StormHawkRenderer.java:13: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\render\SpiceBlowRenderer.java:303: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\dimension\LibrarySkyRenderer.java:263: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:33: error: package AbilityRegistry does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:14: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:43: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:48: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:97: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:106: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:292: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Glowbeast.java:297: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\GlowbeastRenderer.java:62: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Sporefly.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Sporefly.java:35: error: package AbilityRegistry does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:14: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Sporefly.java:129: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Sporefly.java:132: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\Sporefly.java:141: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeflyRenderer.java:57: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\renderer\entity\SporeTyrantRenderer.java:75: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\screen\LibraryBookScreen.java:5: error: package com.netroaki.chex.world.library.item does not exist
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\screen\LibraryBookScreen.java:13: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\client\screen\LibraryBookScreen.java:20: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\boss\SporeTyrant.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\projectile\SporeCloudProjectile.java:27: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:28: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\entity\stormworld\WindriderEntity.java:362: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\registry\structure\CHEXStructures.java:35: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\survival\DesertSurvivalHandler.java:124: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\ambience\PandoraAmbienceManager.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:104: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:114: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:123: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:132: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\arrakis\structure\SandEmperorArenaStructure.java:133: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\BioluminescentForestBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\FloatingIslandsBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\CrystalwoodGroveBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\LuminousCanopyForestBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\biome\variants\SporehazeThicketBiome.java:3: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\EdenDimension.java:46: error: cannot find symbol
+C:\Users\zacpa\intellij\Cosmic_Horizons_Expanded\forge\src\main\java\com\netroaki\chex\world\eden\entity\EdenCreature.java:75: error: cannot find symbol
+

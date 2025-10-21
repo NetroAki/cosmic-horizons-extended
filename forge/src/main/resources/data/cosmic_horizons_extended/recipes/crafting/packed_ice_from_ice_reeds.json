@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cosmic_horizons_extended:ice_reeds"
+    },
+    {
+      "item": "cosmic_horizons_extended:ice_reeds"
+    },
+    {
+      "item": "cosmic_horizons_extended:ice_reeds"
+    },
+    {
+      "item": "cosmic_horizons_extended:ice_reeds"
+    }
+  ],
+  "result": {
+    "item": "minecraft:packed_ice"
+  }
+}

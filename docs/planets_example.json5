@@ -1,0 +1,25 @@
+// Example: planets override configuration (chex-planets.json5)
+{
+  planets: [
+    {
+      id: "cosmic_horizons_extended:shattered_dyson_swarm", // dimension id
+      displayName: "Shattered Dyson Swarm", // UI name override
+      requiredRocketTier: 9, // 1..10
+      requiredSuitTag: "chex:suits/suit4", // tag implying suit tier
+      hazards: {
+        vacuum: 0.7, // 0..1 baseline intensity
+        radiation: 0.9,
+        thermal: 0.4,
+        corrosive: 0.0,
+        pressure: 0.1,
+      },
+    },
+    {
+      id: "cosmic_horizons_extended:neutron_forge",
+      displayName: "Neutron Star Forge",
+      requiredRocketTier: 10,
+      requiredSuitTag: "chex:suits/suit5",
+      hazards: { thermal: 0.8, radiation: 0.8, pressure: 0.9 },
+    },
+  ],
+}

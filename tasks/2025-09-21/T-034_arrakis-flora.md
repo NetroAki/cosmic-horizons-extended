@@ -1,16 +1,20 @@
 # T-034 Arrakis Flora
 
 **Goal**
+
 - Implement Arrakis flora (spice cactus, ice reeds, desert shrubs) with growth logic and harvest drops.
 
 **Scope**
+
 - Plant block classes/assets, loot/recipes.
 
 **Acceptance**
+
 - Flora grows/harvests according to design; drops feed GT chain.
 - `./gradlew check` passes.
 
 **Checklist**
+
 - [ ] `bash scripts/cloud_bootstrap.sh`
 - [ ] Implement flora blocks + behaviours
 - [ ] `./gradlew :common:spotlessApply :forge:spotlessApply`

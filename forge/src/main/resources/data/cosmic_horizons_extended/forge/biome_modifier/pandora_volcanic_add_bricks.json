@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "cosmic_horizons_extended:pandora_volcanic_wasteland",
-  "features": [
-    "cosmic_horizons_extended:pandora_volcanic_brick_cluster_placed"
-  ],
-  "step": "vegetal_decoration"
-}
