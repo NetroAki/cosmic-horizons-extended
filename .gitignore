@@ -57,3 +57,7 @@ eula.txt
 *.swp
 *.swo
 *~
+
+### Local Development Folders ###
+InventivetalentDev-minecraft-assets-af628ec/
+Example/
