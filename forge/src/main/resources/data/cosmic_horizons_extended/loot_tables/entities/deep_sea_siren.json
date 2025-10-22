@@ -34,7 +34,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{Enchantments:[{id:\"minecraft:depth_strider\",lvl:1}]}"
+              "tag": "{Enchantments:[{id:"minecraft:depth_strider",lvl:1}]}"
             }
           ]
         }
@@ -42,3 +42,4 @@
     }
   ]
 }
+

@@ -1,10 +1,11 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:arrakis_sietch_strongholds\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:arrakis_sietch_strongholds"
   ],
-  \"features\": [
+  "features": [
     "cosmic_horizons_extended:arrakis/rock_pile"
   ],
-  \"step\": \"vegetal_decoration\"
+  "step": "vegetal_decoration"
 }
+

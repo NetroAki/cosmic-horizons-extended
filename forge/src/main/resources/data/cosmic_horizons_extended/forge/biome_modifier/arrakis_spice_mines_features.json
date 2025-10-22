@@ -1,10 +1,11 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:arrakis_spice_mines\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:arrakis_spice_mines"
   ],
-  \"features\": [
+  "features": [
     "cosmic_horizons_extended:arrakis/spice_cactus",\n    "cosmic_horizons_extended:arrakis/spice_node"
   ],
-  \"step\": \"vegetal_decoration\"
+  "step": "vegetal_decoration"
 }
+

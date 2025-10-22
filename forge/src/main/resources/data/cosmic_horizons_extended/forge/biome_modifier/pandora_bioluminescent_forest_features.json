@@ -1,11 +1,12 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:pandora_bioluminescent_forest\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_bioluminescent_forest"
   ],
-  \"features\": [
-    \"cosmic_horizons_extended:pandora_fungal_tower\",
-    \"cosmic_horizons_extended:pandora_spore_reed\"
+  "features": [
+    "cosmic_horizons_extended:pandora_fungal_tower",
+    "cosmic_horizons_extended:pandora_spore_reed"
   ],
-  \"step\": \"vegetal_decoration\"
+  "step": "vegetal_decoration"
 }
+

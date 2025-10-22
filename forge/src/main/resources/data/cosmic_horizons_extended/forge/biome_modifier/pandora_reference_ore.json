@@ -1,14 +1,15 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:pandora_bioluminescent_forest\",
-    \"cosmic_horizons_extended:pandora_floating_mountains\",
-    \"cosmic_horizons_extended:pandora_ocean_depths\",
-    \"cosmic_horizons_extended:pandora_volcanic_wasteland\",
-    \"cosmic_horizons_extended:pandora_sky_islands\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_bioluminescent_forest",
+    "cosmic_horizons_extended:pandora_floating_mountains",
+    "cosmic_horizons_extended:pandora_ocean_depths",
+    "cosmic_horizons_extended:pandora_volcanic_wasteland",
+    "cosmic_horizons_extended:pandora_sky_islands"
   ],
-  \"features\": [
-    \"cosmic_horizons_extended:pandora_reference_ore\"
+  "features": [
+    "cosmic_horizons_extended:pandora_reference_ore"
   ],
-  \"step\": \"underground_ores\"
+  "step": "underground_ores"
 }
+

@@ -92,7 +92,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'{\"text\":\"Pandoran Heartseed\",\"color\":\"#55FF55\"}',Lore:['{\"text\":\"A pulsating seed imbued with the essence of Pandora\"}']}}"
+              "tag": "{display:{Name:'{"text":"Pandoran Heartseed","color":"#55FF55"}',Lore:['{"text":"A pulsating seed imbued with the essence of Pandora"}']}}"
             }
           ]
         },
@@ -110,7 +110,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'{\"text\":\"Biolume Core\",\"color\":\"#55FFFF\"}',Lore:['{\"text\":\"A core of bioluminescent energy, pulsing with life\"}']}}"
+              "tag": "{display:{Name:'{"text":"Biolume Core","color":"#55FFFF"}',Lore:['{"text":"A core of bioluminescent energy, pulsing with life"}']}}"
             }
           ]
         },
@@ -121,7 +121,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'{\"text\":\"Sporeblade\",\"color\":\"#AA00FF\"}',Lore:['{\"text\":\"A blade infused with the essence of the Spore Tyrant\"}']},Enchantments:[{id:\"minecraft:smite\",lvl:3s},{id:\"minecraft:knockback\",lvl:2s}],Unbreakable:1b}"
+              "tag": "{display:{Name:'{"text":"Sporeblade","color":"#AA00FF"}',Lore:['{"text":"A blade infused with the essence of the Spore Tyrant"}']},Enchantments:[{id:"minecraft:smite",lvl:3s},{id:"minecraft:knockback",lvl:2s}],Unbreakable:1b}"
             }
           ]
         }
@@ -151,3 +151,4 @@
     }
   ]
 }
+

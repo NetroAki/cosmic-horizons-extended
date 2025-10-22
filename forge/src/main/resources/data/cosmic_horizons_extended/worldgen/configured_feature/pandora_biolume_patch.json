@@ -1,28 +1,28 @@
 {
-  \"type\": \"minecraft:random_patch\",
-  \"config\": {
-    \"tries\": 80,
-    \"xz_spread\": 6,
-    \"y_spread\": 3,
-    \"feature\": {
-      \"type\": \"minecraft:simple_block\",
-      \"config\": {
-        \"to_place\": {
-          \"type\": \"minecraft:weighted_state_provider\",
-          \"entries\": [
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 80,
+    "xz_spread": 6,
+    "y_spread": 3,
+    "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
             {
-              \"weight\": 4,
-              \"data\": {
-                \"state\": {
-                  \"Name\": \"cosmic_horizons_extended:pandora_bloom\"
+              "weight": 4,
+              "data": {
+                "state": {
+                  "Name": "cosmic_horizons_extended:pandora_bloom"
                 }
               }
             },
             {
-              \"weight\": 1,
-              \"data\": {
-                \"state\": {
-                  \"Name\": \"minecraft:glow_lichen\"
+              "weight": 1,
+              "data": {
+                "state": {
+                  "Name": "minecraft:glow_lichen"
                 }
               }
             }
@@ -32,3 +32,4 @@
     }
   }
 }
+

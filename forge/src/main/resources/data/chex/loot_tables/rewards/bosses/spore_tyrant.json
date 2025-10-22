@@ -10,7 +10,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'{\"text\":\"Spore Tyrant Trophy\",\"color\":\"#55FF55\"}',Lore:['{\"text\":\"A trophy earned by defeating the Spore Tyrant\"}']}}"
+              "tag": "{display:{Name:'{"text":"Spore Tyrant Trophy","color":"#55FF55"}',Lore:['{"text":"A trophy earned by defeating the Spore Tyrant"}']}}"
             }
           ]
         }
@@ -26,7 +26,7 @@
           "functions": [
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'{\"text\":\"Music Disc - Spore Tyrant's Lament\"}',Lore:['{\"text\":\"A haunting melody from the depths of Pandora\"}']}}"
+              "tag": "{display:{Name:'{"text":"Music Disc - Spore Tyrant's Lament"}',Lore:['{"text":"A haunting melody from the depths of Pandora"}']}}"
             }
           ]
         }
@@ -34,3 +34,4 @@
     }
   ]
 }
+

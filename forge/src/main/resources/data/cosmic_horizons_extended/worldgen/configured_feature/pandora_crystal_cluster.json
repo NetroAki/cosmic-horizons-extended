@@ -1,28 +1,28 @@
 {
-  \"type\": \"minecraft:random_patch\",
-  \"config\": {
-    \"tries\": 32,
-    \"xz_spread\": 4,
-    \"y_spread\": 2,
-    \"feature\": {
-      \"type\": \"minecraft:simple_block\",
-      \"config\": {
-        \"to_place\": {
-          \"type\": \"minecraft:weighted_state_provider\",
-          \"entries\": [
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 32,
+    "xz_spread": 4,
+    "y_spread": 2,
+    "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+        "to_place": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
             {
-              \"weight\": 3,
-              \"data\": {
-                \"state\": {
-                  \"Name\": \"minecraft:amethyst_cluster\"
+              "weight": 3,
+              "data": {
+                "state": {
+                  "Name": "minecraft:amethyst_cluster"
                 }
               }
             },
             {
-              \"weight\": 1,
-              \"data\": {
-                \"state\": {
-                  \"Name\": \"minecraft:budding_amethyst\"
+              "weight": 1,
+              "data": {
+                "state": {
+                  "Name": "minecraft:budding_amethyst"
                 }
               }
             }
@@ -32,3 +32,4 @@
     }
   }
 }
+

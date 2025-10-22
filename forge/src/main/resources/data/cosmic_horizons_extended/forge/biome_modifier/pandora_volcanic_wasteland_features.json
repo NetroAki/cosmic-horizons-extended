@@ -1,10 +1,11 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:pandora_volcanic_wasteland\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_volcanic_wasteland"
   ],
-  \"features\": [
-    \"cosmic_horizons_extended:pandora_floating_cluster\"
+  "features": [
+    "cosmic_horizons_extended:pandora_floating_cluster"
   ],
-  \"step\": \"local_modifications\"
+  "step": "local_modifications"
 }
+

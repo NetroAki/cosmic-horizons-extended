@@ -1,10 +1,11 @@
 {
-  \"type\": \"forge:add_features\",
-  \"biomes\": [
-    \"cosmic_horizons_extended:arrakis_great_dunes\"
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:arrakis_great_dunes"
   ],
-  \"features\": [
+  "features": [
     "cosmic_horizons_extended:arrakis/dune_shrub"
   ],
-  \"step\": \"vegetal_decoration\"
+  "step": "vegetal_decoration"
 }
+

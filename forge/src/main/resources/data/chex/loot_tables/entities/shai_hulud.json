@@ -26,7 +26,7 @@
             },
             {
               "function": "minecraft:set_nbt",
-              "tag": "{display:{Name:'\"{\\\"text\\\":\\\"Sand Core\\\",\\\"color\\\":\\\"gold\\\",\\\"italic\\\":false}'}}"
+              "tag": "{display:{Name:'"{\\"text\\":\\"Sand Core\\",\\"color\\":\\"gold\\",\\"italic\\":false}'}}"
             },
             {
               "function": "minecraft:set_lore",
@@ -55,3 +55,4 @@
     }
   ]
 }
+
