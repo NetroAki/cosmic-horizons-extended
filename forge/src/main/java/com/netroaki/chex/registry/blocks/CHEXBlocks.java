@@ -101,6 +101,31 @@ public class CHEXBlocks {
           "pandora_grass",
           () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK).strength(0.6f)));
 
+  public static final RegistryObject<Block> PANDORITE_STONE =
+      BLOCKS.register(
+          "pandorite_stone",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.3f)));
+
+  public static final RegistryObject<Block> PANDORITE_COBBLED =
+      BLOCKS.register(
+          "pandorite_cobbled",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(1.5f)));
+
+  public static final RegistryObject<Block> PANDORITE_BRICKS =
+      BLOCKS.register(
+          "pandorite_bricks",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).strength(1.5f)));
+
+  public static final RegistryObject<Block> PANDORITE_MOSSY =
+      BLOCKS.register(
+          "pandorite_mossy",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS).strength(1.5f)));
+
+  public static final RegistryObject<Block> PANDORITE_POLISHED =
+      BLOCKS.register(
+          "pandorite_polished",
+          () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE).strength(1.5f)));
+
   // Kepler-452b Blocks (temperate Earth-like planet)
   public static final RegistryObject<Block> KEPLER_WOOD_LOG =
       BLOCKS.register(
@@ -315,28 +340,6 @@ public class CHEXBlocks {
                       .strength(1.0f)
                       .isValidSpawn((state, world, pos, type) -> false)));
 
-  // Pandora base blocks
-  public static final RegistryObject<Block> PANDORITE_STONE =
-      BLOCKS.register(
-          "pandorite_stone",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f)));
-  public static final RegistryObject<Block> PANDORITE_COBBLED =
-      BLOCKS.register(
-          "pandorite_cobbled",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).strength(1.5f)));
-  public static final RegistryObject<Block> PANDORITE_BRICKS =
-      BLOCKS.register(
-          "pandorite_bricks",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS).strength(1.5f)));
-  public static final RegistryObject<Block> PANDORITE_MOSSY =
-      BLOCKS.register(
-          "pandorite_mossy",
-          () ->
-              new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS).strength(1.5f)));
-  public static final RegistryObject<Block> PANDORITE_POLISHED =
-      BLOCKS.register(
-          "pandorite_polished",
-          () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE).strength(1.5f)));
   public static final RegistryObject<Block> SPORE_SOIL =
       BLOCKS.register(
           "spore_soil",
@@ -553,14 +556,19 @@ public class CHEXBlocks {
     registerBlockItem(ARC_SCENERY);
     registerBlockItem(ARRAKIS_SAND);
     registerBlockItem(INFERNO_STONE);
-    registerBlockItem(CRYSTALIS_CRYSTAL);
-    registerBlockItem(AQUA_MUNDUS_STONE);
-    registerBlockItem(PANDORA_GRASS);
-    registerBlockItem(NEUTRON_STAR_BASALT);
-    registerBlockItem(ARRAKIS_ROCK);
-    registerBlockItem(INFERNO_ASH);
-    registerBlockItem(CRYSTALIS_CLEAR);
-    registerBlockItem(AQUA_DARK_PRISM);
+      registerBlockItem(CRYSTALIS_CRYSTAL);
+      registerBlockItem(AQUA_MUNDUS_STONE);
+      registerBlockItem(PANDORA_GRASS);
+      registerBlockItem(PANDORITE_STONE);
+      registerBlockItem(PANDORITE_COBBLED);
+      registerBlockItem(PANDORITE_BRICKS);
+      registerBlockItem(PANDORITE_MOSSY);
+      registerBlockItem(PANDORITE_POLISHED);
+      registerBlockItem(NEUTRON_STAR_BASALT);
+      registerBlockItem(ARRAKIS_ROCK);
+      registerBlockItem(INFERNO_ASH);
+      registerBlockItem(CRYSTALIS_CLEAR);
+      registerBlockItem(AQUA_DARK_PRISM);
     registerBlockItem(PANDORA_BLOOM);
     registerBlockItem(NEUTRON_STAR_PLATE);
     registerBlockItem(ARRAKITE_SANDSTONE);

@@ -18,6 +18,7 @@
   "gtceu:ores/iridium": "minecraft:diamond_ore",
 
   // Advanced metals (HV tier)
+  "gtceu:ores/beryllium": "minecraft:emerald_ore",
   "gtceu:ores/tungsten": "minecraft:ancient_debris",
   "gtceu:ores/molybdenum": "minecraft:ancient_debris",
 
@@ -31,6 +32,7 @@
 
   // Additional common GTCEu ores
   "gtceu:ores/iron": "minecraft:iron_ore",
+  "gtceu:ores/lithium": "minecraft:diamond_ore",
   "gtceu:ores/gold": "minecraft:gold_ore",
   "gtceu:ores/diamond": "minecraft:diamond_ore",
   "gtceu:ores/emerald": "minecraft:emerald_ore",

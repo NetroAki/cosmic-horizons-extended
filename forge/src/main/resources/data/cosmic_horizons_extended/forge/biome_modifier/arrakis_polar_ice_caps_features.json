@@ -1,0 +1,10 @@
+{
+  \"type\": \"forge:add_features\",
+  \"biomes\": [
+    \"cosmic_horizons_extended:arrakis_polar_ice_caps\"
+  ],
+  \"features\": [
+    "cosmic_horizons_extended:arrakis/ice_reeds"
+  ],
+  \"step\": \"vegetal_decoration\"
+}

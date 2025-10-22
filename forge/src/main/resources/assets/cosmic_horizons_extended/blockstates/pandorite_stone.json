@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "cosmic_horizons_extended:block/pandorite_stone" }
+    "": {
+      "model": "cosmic_horizons_extended:block/pandorite_stone"
+    }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_sky_islands"
+  ],
+  "features": [
+    "minecraft:trees_birch_and_oak",
+    "minecraft:patch_grass_plain"
+  ],
+  "step": "vegetal_decoration"
+}

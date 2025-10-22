@@ -2,21 +2,26 @@
   "minecraft:geometry": [
     {
       "description": {
-        "visible_bounds_height": 2,
-        "identifier": "geometry.glowbeast",
         "visible_bounds_offset": [
           0,
           0,
           0
         ],
+        "identifier": "geometry.glowbeast",
+        "visible_bounds_height": 2,
         "texture_height": 64,
-        "texture_width": 64,
-        "visible_bounds_width": 2
+        "visible_bounds_width": 2,
+        "texture_width": 64
       },
       "bones": [
         {
           "cubes": [
             {
+              "origin": [
+                -4,
+                0,
+                -4
+              ],
               "uv": [
                 0,
                 0
@@ -25,11 +30,6 @@
                 8,
                 8,
                 8
-              ],
-              "origin": [
-                -4,
-                0,
-                -4
               ]
             }
           ],

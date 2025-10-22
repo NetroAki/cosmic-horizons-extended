@@ -1,0 +1,289 @@
+{
+  "disable_mob_generation": false,
+  "aquifers_enabled": true,
+  "noise_caves_enabled": true,
+  "deepslate_enabled": true,
+  "ore_veins_enabled": true,
+  "use_legacy_random_source": false,
+  "sea_level": 63,
+  "default_block": {
+    "Name": "cosmic_horizons_extended:pandorite_stone"
+  },
+  "default_fluid": {
+    "Properties": {
+      "level": "0"
+    },
+    "Name": "minecraft:water"
+  },
+  "noise": {
+    "min_y": -64,
+    "height": 320,
+    "size_horizontal": 1,
+    "size_vertical": 2
+  },
+  "surface_rule": {
+    "type": "minecraft:sequence",
+    "sequence": [
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:is_biome",
+          "biome": "cosmic_horizons_extended:pandora_volcanic_wasteland"
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:magma_block"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:is_biome",
+          "biome": "cosmic_horizons_extended:pandora_ocean_depths"
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:prismarine"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "true_at_and_below": {
+            "below_top": 1
+          },
+          "false_at_and_above": {
+            "below_top": 0
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "cosmic_horizons_extended:pandora_grass"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:vertical_gradient",
+          "true_at_and_below": {
+            "below_top": 4
+          },
+          "false_at_and_above": {
+            "below_top": 0
+          }
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "minecraft:dirt"
+          }
+        }
+      },
+      {
+        "type": "minecraft:block",
+        "result_state": {
+          "Name": "cosmic_horizons_extended:pandorite_stone"
+        }
+      }
+    ]
+  },
+  "spawn_target": [
+    {
+      "creature_spawn_probability": 0.1,
+      "targets": [
+        {
+          "name": "minecraft:monster",
+          "weight": 5
+        },
+        {
+          "name": "minecraft:creature",
+          "weight": 5
+        }
+      ]
+    }
+  ],
+  "noise_router": {
+    "barrier": {
+      "type": "minecraft:constant",
+      "value": 0.0
+    },
+    "fluid_level_floodedness": {
+      "type": "minecraft:constant",
+      "value": -1.0
+    },
+    "fluid_level_spread": {
+      "type": "minecraft:constant",
+      "value": 1.0
+    },
+    "lava": {
+      "type": "minecraft:constant",
+      "value": -0.5
+    },
+    "temperature": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:temperature",
+      "xz_scale": 0.25,
+      "y_scale": 0.0,
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z"
+    },
+    "vegetation": {
+      "type": "minecraft:shifted_noise",
+      "noise": "minecraft:vegetation",
+      "xz_scale": 0.5,
+      "y_scale": 0.0,
+      "shift_x": "minecraft:shift_x",
+      "shift_y": 0.0,
+      "shift_z": "minecraft:shift_z"
+    },
+    "continentalness": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:continentalness"
+    },
+    "erosion": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:erosion"
+    },
+    "depth": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": -64,
+      "to_y": 192,
+      "from_value": 1.0,
+      "to_value": -1.5
+    },
+    "ridge": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:ridge"
+    },
+    "initial_density_without_jaggedness": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:mul",
+        "argument1": {
+          "type": "minecraft:blend_density",
+          "input": {
+            "type": "minecraft:noise",
+            "noise": "minecraft:factor"
+          }
+        },
+        "argument2": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:depth"
+        }
+      },
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "minecraft:jaggedness"
+      }
+    },
+    "final_density": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:mul",
+        "argument1": {
+          "type": "minecraft:constant",
+          "value": 0.65
+        },
+        "argument2": {
+          "type": "minecraft:noise",
+          "noise": "minecraft:shift"
+        }
+      },
+      "argument2": {
+        "type": "minecraft:slide",
+        "argument": {
+          "type": "minecraft:range_choice",
+          "input": {
+            "type": "minecraft:add",
+            "argument1": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:noise",
+                "noise": "minecraft:continentalness"
+              },
+              "argument2": {
+                "type": "minecraft:constant",
+                "value": 0.9
+              }
+            },
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:noise",
+                "noise": "minecraft:erosion"
+              },
+              "argument2": {
+                "type": "minecraft:constant",
+                "value": 0.4
+              }
+            }
+          },
+          "range": [
+            -0.6,
+            0.6
+          ],
+          "when_in_range": {
+            "type": "minecraft:add",
+            "argument1": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": -24,
+              "to_y": 160,
+              "from_value": 1.2,
+              "to_value": -1.0
+            },
+            "argument2": {
+              "type": "minecraft:mul",
+              "argument1": {
+                "type": "minecraft:noise",
+                "noise": "minecraft:continentalness"
+              },
+              "argument2": {
+                "type": "minecraft:constant",
+                "value": 0.6
+              }
+            }
+          },
+          "when_above_range": {
+            "type": "minecraft:constant",
+            "value": -0.3
+          },
+          "when_below_range": {
+            "type": "minecraft:constant",
+            "value": 0.3
+          }
+        },
+        "slide": {
+          "type": "minecraft:slide",
+          "slide_up": {
+            "size": 1,
+            "offset": -0.1
+          },
+          "slide_down": {
+            "size": 0,
+            "offset": 0.0
+          }
+        }
+      }
+    },
+    "vein_toggle": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:vein_toggle"
+    },
+    "vein_ridged": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:vein_ridged"
+    },
+    "vein_gap": {
+      "type": "minecraft:noise",
+      "noise": "minecraft:vein_gap"
+    }
+  }
+}

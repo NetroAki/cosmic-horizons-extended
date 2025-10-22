@@ -1,0 +1,10 @@
+{
+  \"type\": \"forge:add_features\",
+  \"biomes\": [
+    \"cosmic_horizons_extended:arrakis_stormlands\"
+  ],
+  \"features\": [
+    "cosmic_horizons_extended:arrakis/stormglass",\n    "cosmic_horizons_extended:arrakis/dune_shrub"
+  ],
+  \"step\": \"vegetal_decoration\"
+}

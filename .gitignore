@@ -1,3 +1,23 @@
+# Generated/temporary files
+/build/
+/out/
+/run/
+
+# Forge dev run logs
+/forge/run/logs/
+*.log
+*.log.gz
+
+# Gradle caches and wrappers
+/.gradle/
+/.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+*.iml
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar

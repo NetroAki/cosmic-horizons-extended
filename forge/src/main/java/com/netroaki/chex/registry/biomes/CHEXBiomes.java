@@ -322,4 +322,5 @@ public final class CHEXBiomes {
         .generationSettings(BiomeGenerationSettings.EMPTY)
         .build();
   }
+
 }

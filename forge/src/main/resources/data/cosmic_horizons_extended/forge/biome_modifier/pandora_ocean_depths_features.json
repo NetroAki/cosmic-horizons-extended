@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_ocean_depths"
+  ],
+  "features": [
+    "cosmic_horizons_extended:pandora_vent_geyser",
+    "minecraft:seagrass_warm",
+    "minecraft:kelp_warm"
+  ],
+  "step": "vegetal_decoration"
+}

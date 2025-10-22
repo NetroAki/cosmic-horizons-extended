@@ -45,6 +45,13 @@ public class CHEX {
   private static final GtBridge GT_BRIDGE = new GregTechBridge();
 
   public CHEX() {
+    try {
+      Class.forName("com.llamalad7.mixinextras.MixinExtrasBootstrap")
+          .getMethod("init")
+          .invoke(null);
+    } catch (Throwable ignored) {
+      LOGGER.debug("MixinExtras not available; skipping bootstrap.");
+    }
     IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
     // Register registries

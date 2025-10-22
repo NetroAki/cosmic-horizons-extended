@@ -1,0 +1,30 @@
+{
+  \"type\": \"minecraft:random_patch\",
+  \"config\": {
+    \"tries\": 64,
+    \"xz_spread\": 6,
+    \"y_spread\": 2,
+    \"feature\": {
+      \"type\": \"minecraft:simple_block\",
+      \"config\": {
+        \"to_place\": {
+          \"type\": \"minecraft:weighted_state_provider\",
+          \"entries\": [
+            {
+              \"weight\": 4,
+              \"data\": {
+                \"state\": { \"Name\": \"cosmic_horizons_extended:desert_shrub\" }
+              }
+            },
+            {
+              \"weight\": 1,
+              \"data\": {
+                \"state\": { \"Name\": \"minecraft:dead_bush\" }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

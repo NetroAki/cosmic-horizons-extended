@@ -112,19 +112,37 @@ $BlockTextureMappings = @{
     "aqua_manganese_nodule"  = "block/iron_ore"
     "aqua_luminous_kelp"     = "block/kelp"
     "aqua_ice_shelf_slab"    = "block/packed_ice"
-    
+
     # Inferno Prime
     "inferno_magma_block"    = "block/magma"
     "inferno_obsidian"       = "block/obsidian"
     "inferno_basalt"         = "block/basalt_side"
     
     # Arrakis
+    "arrakis_sand"           = "block/sand"
+    "arrakis_rock"           = "block/smooth_sandstone"
+    "arrakis_salt"           = "block/white_terracotta"
     "arrakis_sandstone"      = "block/sandstone"
     "arrakis_spice_ore"      = "block/gold_ore"
-    
+    "arrakite_sandstone"     = "block/cut_sandstone"
+    "arrakite_sandstone_cut" = "block/cut_sandstone"
+    "arrakite_sandstone_chiseled" = "block/chiseled_sandstone"
+    "arrakite_sandstone_smooth"   = "block/smooth_sandstone"
+    "spice_node"             = "block/redstone_ore"
+    "spice_deposit"          = "block/amethyst_block"
+    "crystalline_salt_cluster" = "block/amethyst_cluster"
+    "spice_cactus"           = "block/cactus"
+    "ice_reeds"              = "block/sugar_cane_top"
+    "desert_shrub"           = "block/dead_bush"
+
     # Pandora
     "pandora_fungal_block"   = "block/mycelium_top"
     "pandora_spore_block"    = "block/end_stone"
+    "pandorite_stone"        = "block/stone"
+    "pandorite_cobbled"      = "block/cobblestone"
+    "pandorite_bricks"       = "block/stone_bricks"
+    "pandorite_mossy"        = "block/mossy_stone_bricks"
+    "pandorite_polished"     = "block/polished_andesite"
     
     # Crystalis
     "crystalis_ice"          = "block/ice"
@@ -159,31 +177,6 @@ $ItemTextureMappings = @{
 }
 
 # Entity texture mappings (using vanilla entities as base)
-$EntityTextureMappings = @{
-    # Pandora Entities
-    "sporefly"           = "entity/bee/bee"
-    "spore_tyrant"       = "entity/enderman/enderman"
-    
-    # Arrakis Entities
-    "sandworm_hatchling" = "entity/silverfish"
-    
-    # Inferno Prime Entities
-    "ash_crawler"        = "entity/spider/spider"
-    "fire_wraith"        = "entity/blaze"
-    "magma_hopper"       = "entity/slime/magmacube"
-    "infernal_sovereign" = "entity/wither/wither"
-    
-    # Aqua Mundus Entities
-    "ocean_sovereign"    = "entity/guardian_elder"
-    
-    # Stormworld Entities
-    "windrider"          = "entity/phantom"
-    
-    # Existing Entities (if they exist)
-    "glowbeast"          = "entity/bat"
-    "sporeflies"         = "entity/bee/bee"
-}
-
 function Create-PlaceholderTexture {
     param(
         [string]$Name,
@@ -370,8 +363,8 @@ foreach ($mapping in $BlockTextureMappings.GetEnumerator()) {
     $planet = if ($blockName -like "kepler_*") { "kepler" }
     elseif ($blockName -like "aqua_*") { "aqua" }
     elseif ($blockName -like "inferno_*") { "inferno" }
-    elseif ($blockName -like "arrakis_*") { "arrakis" }
-    elseif ($blockName -like "pandora_*") { "pandora" }
+    elseif ($blockName -like "arrakis_*" -or $blockName -like "arrakite_*" -or $blockName -like "spice_*") { "arrakis" }
+    elseif ($blockName -like "pandora_*" -or $blockName -like "pandorite_*") { "pandora" }
     elseif ($blockName -like "crystalis_*") { "crystalis" }
     elseif ($blockName -like "stormworld_*") { "stormworld" }
     else { "default" }
@@ -397,20 +390,61 @@ foreach ($mapping in $ItemTextureMappings.GetEnumerator()) {
     Create-ItemModelJson -ItemName $itemName
 }
 
+$EntityTextureMappings = @{
+    # Pandora entities
+    "sporefly"               = "entity/bee/bee"
+    "spore_tyrant"           = "entity/enderman/enderman"
+    "sporeflies"             = "entity/bee/bee"
+    "sporeling"              = "entity/bee/bee"
+    "elite_sporeling"        = "entity/bee/bee"
+    "spore_cloud"            = "entity/slime/slime"
+    "spore_cloud_projectile" = "entity/slime/slime"
+
+    # Arrakis entities
+    "sandworm_hatchling"     = "entity/silverfish"
+
+    # Crystalis entities
+    "floating_crystal"       = "entity/allay/allay"
+
+    # Inferno Prime entities
+    "ash_crawler"            = "entity/spider/spider"
+    "fire_wraith"            = "entity/blaze"
+    "magma_hopper"           = "entity/slime/magmacube"
+    "infernal_sovereign"     = "entity/wither/wither"
+    "molten_behemoth"        = "entity/iron_golem/iron_golem"
+
+    # Aqua Mundus entities
+    "ocean_sovereign"        = "entity/guardian_elder"
+    "deep_sea_siren"         = "entity/guardian"
+
+    # Stormworld entities
+    "windrider"              = "entity/phantom"
+    "sky_grazer"             = "entity/parrot/parrot_blue"
+    "storm_roc"              = "entity/phantom"
+    "sky_sovereign"          = "entity/enderdragon/dragon"
+
+    # Cliff / worldheart entities
+    "glowbeast"              = "entity/bat"
+    "cliff_hunter"           = "entity/wolf/wolf"
+    "cliff_hunter_alpha"     = "entity/wolf/wolf"
+    "worldheart_avatar"      = "entity/warden/warden"
+}
+
 # Create all entity textures
 Write-Host "`nCreating entity textures..." -ForegroundColor Yellow
 foreach ($mapping in $EntityTextureMappings.GetEnumerator()) {
     $entityName = $mapping.Key
     $baseEntity = $mapping.Value
-    
+
     # Determine planet from entity name
     $planet = if ($entityName -like "spore*") { "pandora" }
     elseif ($entityName -like "sandworm*") { "arrakis" }
-    elseif ($entityName -like "ash*" -or $entityName -like "fire*" -or $entityName -like "magma*" -or $entityName -like "infernal*") { "inferno" }
-    elseif ($entityName -like "ocean*") { "aqua" }
-    elseif ($entityName -like "wind*") { "stormworld" }
+    elseif ($entityName -like "*crystal*") { "crystalis" }
+    elseif ($entityName -like "ash*" -or $entityName -like "fire*" -or $entityName -like "magma*" -or $entityName -like "infernal*" -or $entityName -like "*molten*") { "inferno" }
+    elseif ($entityName -like "ocean*" -or $entityName -like "*sea*" -or $entityName -like "*siren*") { "aqua" }
+    elseif ($entityName -like "wind*" -or $entityName -like "sky*" -or $entityName -like "storm*") { "stormworld" }
     else { "default" }
-    
+
     Create-PlaceholderTexture -Name $entityName -BaseTexture $baseEntity -Planet $planet -Type "entity"
     Create-EntityModelJson -EntityName $entityName
     Create-EntityGeoJson -EntityName $entityName

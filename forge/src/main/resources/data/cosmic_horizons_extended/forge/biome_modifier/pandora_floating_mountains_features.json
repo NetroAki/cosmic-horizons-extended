@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "cosmic_horizons_extended:pandora_floating_mountains"
+  ],
+  "features": [
+    "cosmic_horizons_extended:pandora_biolume_patch",
+    "cosmic_horizons_extended:pandora_crystal_cluster",
+    "minecraft:trees_cherry"
+  ],
+  "step": "vegetal_decoration"
+}
