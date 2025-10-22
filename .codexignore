@@ -1,0 +1,27 @@
+# Ignore build and runtime artifacts
+/build/
+/out/
+/run/
+
+# Node modules and package caches
+/node_modules/
+/npm-debug.log*
+/yarn-error.log*
+
+# Gradle cache and IDE files
+/.gradle/
+/.idea/
+
+# Forge dev run logs and other runtime logs
+/forge/run/logs/
+*.log
+*.log.gz
+
+# Large asset packs and dumps (keep out of patch payloads)
+/InventivetalentDev-minecraft-assets-af628ec/
+/libs/
+
+# Sensitive or local config
+.env
+local.properties
+secrets.yml
